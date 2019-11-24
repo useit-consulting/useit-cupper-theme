@@ -1,0 +1,118 @@
+{{ define "main" }}
+  <main id="main">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      {{ .Title }}
+    </h1>
+    {{ if isset .Params "tags" }}
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          {{ range .Params.tags }}
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+    {{ if eq .Params.weight 1 }}
+      <aside aria-label="warning" class="note warning">
+        <div>
+          <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
+            <use xlink:href="#warning"></use>
+          </svg>
+          This is a high priority issue that risks excluding your users!
+        </div>
+      </aside>
+      {{ end }}
+    {{ if ne .Params.TOC false }}
+      {{ partial "toc" . }}
+    {{ end }}
+
+    <h2>Problem description</h2>
+    {{ .Params.problemDescription | markdownify }}
+
+    <h2>Suggested solution</h2>
+    {{ .Params.suggestedSolution | markdownify }}
+
+    <div class="expandable-section">
+      <h2>
+      <button aria-expanded="true" data-expands="js-expandable-priority">
+      <span class="expandable-label">Priority</span>
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+        <g transform="translate(0 -981.5)">
+          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
+          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
+        </g>
+      </svg>
+      </button>
+      </h2>
+      <div id="js-expandable-priority">
+      {{ if eq $.Page.Params.weight 1 }} Critical ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 2 }} High priority ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 3 }} Medium priority ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 4 }} Low priority ({{ .Params.weight }}) {{ end }}
+    </div>
+    </div>
+
+    <div class="expandable-section">
+      <h2>
+        <button aria-expanded="false" data-expands="js-expandable-usergroups">
+          <span class="expandable-label">Affected user groups</span>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+            <g transform="translate(0 -981.5)">
+              <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
+              <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
+            </g>
+          </svg>
+        </button>
+      </h2>
+      <div id="js-expandable-usergroups" hidden>
+        <ul class="usergroups">
+          {{ range .Params.usergroups }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+
+      <div class="expandable-section">
+        <h2>
+          <button aria-expanded="false" data-expands="js-expandable-wcag">
+            <span class="expandable-label">WCAG 2.1 violations</span>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+              <g transform="translate(0 -981.5)">
+                <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
+                <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
+              </g>
+            </svg>
+          </button>
+        </h2>
+
+        <div id="js-expandable-wcag" hidden>
+          {{ $JSON := $.Site.Data.wcag }}
+          {{ $included := .Params.wcag }}
+          <ul class="wcag">
+            {{ range $JSON }}
+            {{ if in $.Page.Params.wcag .ref_id }}
+            <li>
+              <strong><a href="{{ .url }}">
+                <svg class="wcag-icon" viewBox="0 0 127.09899 67.763" aria-hidden="true" focusable="false">
+                  <use xlink:href="#w3c"></use>
+                </svg>
+                {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
+              </strong>
+            </li>
+            {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+  </main>
+{{ end }}

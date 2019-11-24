@@ -1,0 +1,116 @@
+{{ define "title" }}
+  {{ .Site.Title }}
+{{ end }}
+
+{{ define "nav" }}
+<!-- silence is golden -->
+{{ end }}
+
+{{ define "main" }}
+  <main id="main">
+    <nav id="toc" class="toc patterns" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">Table of contents</h2>
+      {{ $current := . }}
+      {{ range $.Site.Home.Sections }}
+        <ul id="patterns-list">
+          {{ range .Pages.ByWeight }}
+          {{ if ne .Title "Problems" }}
+            <li class="pattern">
+              <a href="#{{ .Title | urlize }}" {{ if eq $current.Title .Title  }}aria-current="page"{{ end }}>
+                <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                  <use xlink:href="#bookmark"></use>
+                </svg>
+                <span class="text">{{ .Title }}</span>
+              </a>
+            </li>
+          {{ end }}
+          {{ end }}
+          {{ range .Sections.ByWeight }}
+            <li>
+              <h3>{{ .Title }}</h3>
+              <ul>
+                {{ range .Pages.ByWeight }}
+                  <li class="pattern">
+                    <a href="#{{ .Title | urlize }}" {{ if eq $current.Title .Title  }}aria-current="page"{{ end }}>
+                      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                        <use xlink:href="#bookmark"></use>
+                      </svg>
+                      <span class="text">{{ .Title }}</span>
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </nav>
+    {{ $current := . }}
+
+    {{ range $.Site.Home.Sections }}
+      {{ range .Pages.ByWeight }}
+        <div class="pattern-section">
+            <h1 id="{{ .Title | urlize }}" tabindex="-1">
+              <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                <use xlink:href="#bookmark"></use>
+              </svg>
+              {{ .Title }}
+            </h1>
+            {{ if eq .Params.weight 1 }}
+            <aside aria-label="warning" class="note warning">
+              <div>
+                <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
+                  <use xlink:href="#warning"></use>
+                </svg>
+                This is a high priority issue that risks excluding your users!
+              </div>
+            </aside>
+            {{ end }}
+            <h2>Problem description</h2>
+            {{ .Params.problemDescription | markdownify }}
+
+            <h2>Suggested solution</h2>
+            {{ .Params.suggestedSolution | markdownify }}
+
+            <h2>Priority</h2>
+            {{ if eq .Params.weight 1 }} <p>Critical ({{ .Params.weight }})</p>{{ end }}
+            {{ if eq .Params.weight 2 }} <p>High priority ({{ .Params.weight }}) </p>{{ end }}
+            {{ if eq .Params.weight 3 }} <p>Medium priority ({{ .Params.weight }}) </p>{{ end }}
+            {{ if eq .Params.weight 4 }} <p>Low priority ({{ .Params.weight }}) </p>{{ end }}
+
+            <h2>Affected user groups</h2>
+            <ul class="usergroups">
+              {{ range .Params.usergroups }}
+              <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+
+            <h2>WCAG 2.1 violations</h2>
+            {{ $JSON := $.Site.Data.wcag }}
+            {{ $included := .Params.wcag }}
+            <ul class="wcag">
+              {{ range $JSON }}
+              {{ if in $included .ref_id }}
+              <li>
+                <strong><a href="{{ .url }}">
+                  <svg class="wcag-icon" viewBox="0 0 127.09899 67.763" aria-hidden="true" focusable="false">
+                    <use xlink:href="#w3c"></use>
+                  </svg>
+                  {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
+                </strong>
+              </li>
+              {{ end }}
+              {{ end }}
+            </ul>
+        </div>
+      {{ end }}
+      {{ range .Sections.ByWeight }}
+
+
+        {{ range .Pages.ByWeight }}
+          
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </main>
+{{ end }}

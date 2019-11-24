@@ -1,0 +1,7 @@
+<p class="priority">
+  {{ $.Page.Params.priority }}
+  {{ if eq $.Page.Params.priority "Critical" }} (1) {{ end }}
+  {{ if eq $.Page.Params.priority "High" }} (2) {{ end }}
+  {{ if eq $.Page.Params.priority "Medium" }} (3) {{ end }}
+  {{ if eq $.Page.Params.priority "Low" }} (4) {{ end }}
+</p>

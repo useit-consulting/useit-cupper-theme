@@ -1,0 +1,16 @@
+{{ $staff := replace (.Get "name") ", " "," }}
+{{ $staff := split $staff "," }}
+<span>
+<div class="staff">
+  <div class="staff_image">
+  <img alt="Tommy" src="images/tommy.png">
+  </div>
+  <div class="staff_text">
+    <h3>Tommy Feldt</h3>
+  <p>UX designer and accessibility specialist</p>
+  <p>CPWA certified</p>
+    <p><a href="mailto:tommy@useit.se">tommy@useit.se</a></p>
+    <p><a href="tel:+46793138696">+46 79 313 86 96</a></p>
+    </div>
+</div>
+</span>

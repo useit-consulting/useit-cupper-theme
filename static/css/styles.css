@@ -1005,6 +1005,24 @@ h1 svg {
     font-size: 1rem;
 }
 .fistbump {
-    margin: 0 auto;
-    margin-top: 10rem;
+    margin: 10rem auto 0;
+}
+
+.summary-page {
+    background-color: #fbf3df;
+    text-align: center;
+}
+
+.summary-page h1{
+    position: fixed;
+    right: 50%;
+    top: 50%;
+    transform: translateX(50%);
+}
+
+.summary-page body{
+}
+
+.summary-page img{
+
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="summary-page">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
     </title>
   </head>
   <body>
-    <h1>You are being redirected...</h1>
-    <script>window.location.pathname = '{{ "summary" | absURL }}'</script>
+    <h1>Hang on, taking you to the report...</h1>
+    <script>window.location.pathname = '{{ "summary" | relURL }}'</script>
   </body>
 </html>

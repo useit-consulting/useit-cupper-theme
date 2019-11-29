@@ -121,7 +121,7 @@
     //Set image url
     const depth = window.location.pathname.split("/").length - 1;
     const s = '../';
-    const imgUrlStart = s.repeat(depth - 1) + "images/";
+    const imgUrlStart = s.repeat(depth - window.location.host == "reports.useit.se" ? 1 : 2) + "images/";
     const logo = (media === 'screen' ? imgUrlStart+'useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
     image.setAttribute('src', logo)
   }

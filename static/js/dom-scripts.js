@@ -107,6 +107,7 @@
 
   var checkbox = document.getElementById('themer');
   var inverter = document.getElementById('inverter');
+  var image = document.getElementById('useit-logo');
 
   if (!CSSSupported('filter', 'invert(100%)')) {
     checkbox.parentNode.hidden = true;
@@ -117,10 +118,17 @@
     inverter.setAttribute('media', media);
     inverter.textContent = inverter.textContent.trim();
     localStorage.setItem('darkTheme', media);
+    //Set image url
+    const depth = window.location.pathname.split("/").length - 1;
+    const s = '../';
+    const imgUrlStart = s.repeat(depth - 1) + "images/";
+    const logo = (media === 'screen' ? imgUrlStart+'useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
+    image.setAttribute('src', logo)
   }
 
   checkbox.addEventListener('change', function () {
     darkTheme(this.checked ? 'screen' : 'none');
+    this.checked
   });
 
   window.addEventListener('DOMContentLoaded', function () {

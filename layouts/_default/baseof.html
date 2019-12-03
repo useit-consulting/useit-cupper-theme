@@ -81,39 +81,78 @@
                 </button>
                 {{ $current := . }}
 
-                {{ range $.Site.Home.Sections }}
-                  <ul id="patterns-list">
+                <nav id="results-nav" class="patterns" role="navigation">
+                  {{ $current := . }}
+
+                  <h3>Critical priority</h3>
+                  {{ range $.Site.Home.Sections }}
+                  <ul id="results-list" aria-label="Critical priority issues">
                     {{ range .Pages.ByWeight }}
-                    {{ if ne .Kind "section" }}
-                      <li class="pattern">
-                        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                          <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                            <use xlink:href="#bookmark"></use>
-                          </svg>
-                          <span class="text">{{ .Title }}</span>
-                        </a>
-                      </li>
+                    {{ if eq .Weight 1 }}
+                    <li class="pattern">
+                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
+                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+                          <use xlink:href="#bookmark"></use>
+                        </svg>
+                        <span class="text">{{ .Title }}</span>
+                      </a>
+                    </li>
                     {{ end }}
-                    {{ end }}
-                    {{ range .Sections.ByWeight }}
-                      <li>
-                        <h3>{{ .Title }}</h3>
-                        <ul>
-                          {{ range .Pages.ByWeight }}
-                            <li class="pattern">
-                              <a href="{{ .RelPermalink }}" {{ if eq $current.Title .Title  }}aria-current="page"{{ end }}>
-                                <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-                                  <use xlink:href="#bookmark"></use>
-                                </svg>
-                                <span class="text">{{ .Title }}</span>
-                              </a>
-                            </li>
-                          {{ end }}
-                        </ul>
-                      </li>
                     {{ end }}
                   </ul>
-                {{ end }}
+                  {{ end }}
+                  <h3>High priority</h3>
+                  {{ range $.Site.Home.Sections }}
+                  <ul id="results-list" aria-label="High priority issues">
+                    {{ range .Pages.ByWeight }}
+                    {{ if eq .Weight 2 }}
+                    <li class="pattern">
+                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
+                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+                          <use xlink:href="#bookmark"></use>
+                        </svg>
+                        <span class="text">{{ .Title }}</span>
+                      </a>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+                  <h3>Medium priority</h3>
+                  {{ range $.Site.Home.Sections }}
+                  <ul id="results-list" aria-label="Medium priority issues">
+                    {{ range .Pages.ByWeight }}
+                    {{ if eq .Weight 3 }}
+                    <li class="pattern">
+                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
+                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+                          <use xlink:href="#bookmark"></use>
+                        </svg>
+                        <span class="text">{{ .Title }}</span>
+                      </a>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+                  <h3>Low priority</h3>
+                  {{ range $.Site.Home.Sections }}
+                  <ul id="results-list" aria-label="Low priority issues">
+                    {{ range .Pages.ByWeight }}
+                    {{ if eq .Weight 4 }}
+                    <li class="pattern">
+                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
+                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+                          <use xlink:href="#bookmark"></use>
+                        </svg>
+                        <span class="text">{{ .Title }}</span>
+                      </a>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+                </nav>
               </nav>
             {{ end }}
           </div>

@@ -364,7 +364,7 @@ caption {
     font-size: 1rem;
 }
 .patterns h3 + ul {
-    margin-top: 0.75rem;
+    margin: 0.75rem 0 1.5rem 0;
 }
 .patterns li {
     line-height: 1.125;
@@ -1025,4 +1025,15 @@ h1 svg {
 
 .summary-page img{
 
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }

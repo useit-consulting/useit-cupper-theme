@@ -30,12 +30,25 @@
   }
 }());
 
-/* Main menu being hidden from start on mobile */
-(function () {
+// media query change
+function WidthChange(mq) {
   var menu = document.getElementById('main-menu-container');
-  var x = window.matchMedia("screen and (max-width: 45em)");
-  menu.hidden=x.matches;
+  if (mq.matches) {
+    menu.hidden=mq.matches;
+  } else {
+    menu.hidden=false;
+  }
+}
+
+// media query event handler
+(function () {
+  if (matchMedia) {
+    const mq = window.matchMedia("screen and (max-width: 45em)");
+    mq.addListener(WidthChange);
+    WidthChange(mq);
+  }
 }());
+
 
 /* persist navigation scroll point */
 (function () {

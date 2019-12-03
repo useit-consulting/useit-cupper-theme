@@ -80,13 +80,11 @@
                   Menu
                 </button>
                 {{ $current := . }}
-
-                <nav id="results-nav" class="patterns" role="navigation">
-                  {{ $current := . }}
+                <div id="main-menu-container" >
 
                   <h3>Critical priority</h3>
                   {{ range $.Site.Home.Sections }}
-                  <ul id="results-list" aria-label="Critical priority issues">
+                  <ul aria-label="Critical priority issues">
                     {{ range .Pages.ByWeight }}
                     {{ if eq .Weight 1 }}
                     <li class="pattern">
@@ -103,7 +101,7 @@
                   {{ end }}
                   <h3>High priority</h3>
                   {{ range $.Site.Home.Sections }}
-                  <ul id="results-list" aria-label="High priority issues">
+                  <ul aria-label="High priority issues">
                     {{ range .Pages.ByWeight }}
                     {{ if eq .Weight 2 }}
                     <li class="pattern">
@@ -120,7 +118,7 @@
                   {{ end }}
                   <h3>Medium priority</h3>
                   {{ range $.Site.Home.Sections }}
-                  <ul id="results-list" aria-label="Medium priority issues">
+                  <ul aria-label="Medium priority issues">
                     {{ range .Pages.ByWeight }}
                     {{ if eq .Weight 3 }}
                     <li class="pattern">
@@ -137,7 +135,7 @@
                   {{ end }}
                   <h3>Low priority</h3>
                   {{ range $.Site.Home.Sections }}
-                  <ul id="results-list" aria-label="Low priority issues">
+                  <ul aria-label="Low priority issues">
                     {{ range .Pages.ByWeight }}
                     {{ if eq .Weight 4 }}
                     <li class="pattern">
@@ -151,8 +149,8 @@
                     {{ end }}
                     {{ end }}
                   </ul>
+                </div>
                   {{ end }}
-                </nav>
               </nav>
             {{ end }}
           </div>

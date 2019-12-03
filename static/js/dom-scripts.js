@@ -21,12 +21,20 @@
 (function () {
   var button = document.getElementById('menu-button');
   if (button) {
-    var menu = document.getElementById('patterns-list');
+    var menu = document.getElementById('main-menu-container');
     button.addEventListener('click', function() {
       var expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !expanded);
+      menu.hidden = !menu.hidden;
     })
   }
+}());
+
+/* Main menu being hidden from start on mobile */
+(function () {
+  var menu = document.getElementById('main-menu-container');
+  var x = window.matchMedia("screen and (max-width: 45em)");
+  menu.hidden=x.matches;
 }());
 
 /* persist navigation scroll point */

@@ -12,7 +12,7 @@
 html {
     font-size: calc(1em + 0.33vw);
     font-family: 'Lato', sans-serif;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #111;
     background-color: #fefefe;
 }
@@ -21,6 +21,9 @@ template {
 }
 * + * {
     margin-top: 1.5rem;
+}
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p{
+    margin-top: 1rem;
 }
 br,
 dt,
@@ -35,7 +38,7 @@ body,
     margin-top: 0;
 }
 p + p {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 .priority {
   margin-top: 0;
@@ -52,6 +55,11 @@ abbr {
 img {
     max-width: 100%;
     max-height: 50vh;
+    border: 2px solid #999
+}
+
+img.no-border {
+    border: none;
 }
 p img {
     margin: 0.75rem 0;
@@ -60,7 +68,7 @@ figure p img {
     margin: 0;
 }
 :focus:not([tabindex="-1"]),
-[data-expands]:focus svg,
+[data-expands]:focus svg.expandable-icon,
 .patterns a:focus .text,
 [for="themer"] :focus + [aria-hidden] {
     outline: 4px solid #999;
@@ -708,6 +716,29 @@ h1 svg {
   width: 0.85em;
   height: 0.85em;
 }
+.expandable-section button > span:first-child {
+    display: inline-flex;
+    align-items: center;
+}
+.expandable-label {
+    margin-top: 0;
+}
+
+.icon-background {
+    display: inherit;
+    border-radius: 50%;
+    background-color: #efefef;
+    margin-right: 0.5em;
+    padding: 0.1em;
+    width: 44px;
+    height: 44px;
+}
+
+.icon-background svg {
+    background-color: unset;
+    margin: auto;
+}
+
 .wcag-icon {
   width: 1.25em;
 }

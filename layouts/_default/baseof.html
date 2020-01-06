@@ -24,7 +24,7 @@
     <meta name="theme-color" content="#ffffff">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato|Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ "css/prism.css" | absURL }}" media="none" onload="this.media='all';">
+    <link rel="stylesheet" href="{{ "css/a11y-light.css" | absURL }}" media="none" onload="this.media='all';">
     <link rel="stylesheet" type="text/css" href="{{ "css/styles.css" | absURL }}">
     <style id="inverter" media="none">
       html { filter: invert(100%) }
@@ -50,7 +50,7 @@
           <div>
             <div class="intro">
               <a class="logo" href="{{ "/summary/" | relURL }}" aria-label="{{ .Site.Title }} home page">
-                <img id="useit-logo" src="{{ "images/useit-logo.png" | relURL }}" alt="">
+                <img id="useit-logo" class="no-border" src="{{ "images/useit-logo.png" | relURL }}" alt="">
               </a>
               <p class="library-desc">
                 {{ .Site.Params.Description | markdownify }}
@@ -71,7 +71,7 @@
               {{ end }}
             </div>
             {{ block "nav" . }}
-              <nav id="patterns-nav" class="patterns" role="navigation">
+              <nav id="main-nav" class="patterns" role="navigation">
                 <h2 class="vh">Main navigation</h2>
                 <button id="menu-button" aria-expanded="false">
                   <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
@@ -81,76 +81,9 @@
                 </button>
                 {{ $current := . }}
                 <div id="main-menu-container" >
-
-                  <h3>Critical priority</h3>
-                  {{ range $.Site.Home.Sections }}
-                  <ul aria-label="Critical priority issues">
-                    {{ range .Pages.ByWeight }}
-                    {{ if eq .Weight 1 }}
-                    <li class="pattern">
-                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                          <use xlink:href="#bookmark"></use>
-                        </svg>
-                        <span class="text">{{ .Title }}</span>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ end }}
-                  </ul>
-                  {{ end }}
-                  <h3>High priority</h3>
-                  {{ range $.Site.Home.Sections }}
-                  <ul aria-label="High priority issues">
-                    {{ range .Pages.ByWeight }}
-                    {{ if eq .Weight 2 }}
-                    <li class="pattern">
-                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                          <use xlink:href="#bookmark"></use>
-                        </svg>
-                        <span class="text">{{ .Title }}</span>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ end }}
-                  </ul>
-                  {{ end }}
-                  <h3>Medium priority</h3>
-                  {{ range $.Site.Home.Sections }}
-                  <ul aria-label="Medium priority issues">
-                    {{ range .Pages.ByWeight }}
-                    {{ if eq .Weight 3 }}
-                    <li class="pattern">
-                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                          <use xlink:href="#bookmark"></use>
-                        </svg>
-                        <span class="text">{{ .Title }}</span>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ end }}
-                  </ul>
-                  {{ end }}
-                  <h3>Low priority</h3>
-                  {{ range $.Site.Home.Sections }}
-                  <ul aria-label="Low priority issues">
-                    {{ range .Pages.ByWeight }}
-                    {{ if eq .Weight 4 }}
-                    <li class="pattern">
-                      <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                          <use xlink:href="#bookmark"></use>
-                        </svg>
-                        <span class="text">{{ .Title }}</span>
-                      </a>
-                    </li>
-                    {{ end }}
-                    {{ end }}
-                  </ul>
+                  {{ partial "problems-list.html" . }}
                 </div>
-                  {{ end }}
+
               </nav>
             {{ end }}
           </div>
@@ -166,7 +99,6 @@
                 <span aria-hidden="true"></span>
               </label>
             </div>
-            <div data-netlify-identity-button></div>
             Powered by <a href="https://thepaciellogroup.github.io/cupper/"><strong>Cupper</strong></a><br>
           </footer>
         </div>

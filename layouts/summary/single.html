@@ -8,7 +8,14 @@
   <div class="expandable-section">
     <h2>
       <button aria-expanded="false" data-expands="js-expandable-date">
-        <span class="expandable-label">Date</span>
+        <span>
+          <span class="icon-background">
+                <svg class="calendar-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <use xlink:href="#calendar"></use>
+                </svg>
+              </span>
+          <span class="expandable-label">Date</span>
+        </span>
         <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
           <g transform="translate(0 -981.5)">
             <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
@@ -25,8 +32,15 @@
   <div class="expandable-section">
     <h2>
       <button aria-expanded="false" data-expands="js-expandable-reviewer">
+        <span>
+        <span class="icon-background">
+                <svg class="write-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <use xlink:href="#write"></use>
+                </svg>
+              </span>
         <span class="expandable-label">Reviewer(s)</span>
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+        </span>
+        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
           <g transform="translate(0 -981.5)">
             <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
             <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
@@ -56,8 +70,15 @@
     <div class="expandable-section">
       <h2>
         <button aria-expanded="false" data-expands="js-expandable-materials">
-          <span class="expandable-label">Materials reviewed</span>
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+          <span>
+            <span class="icon-background">
+                <svg class="materials-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <use xlink:href="#materials"></use>
+                </svg>
+              </span>
+            <span class="expandable-label">Materials reviewed</span>
+          </span>
+          <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
             <g transform="translate(0 -981.5)">
               <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
               <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
@@ -79,8 +100,15 @@
       <div class="expandable-section">
         <h2>
           <button aria-expanded="false" data-expands="js-expandable-tools">
-            <span class="expandable-label">Equipment</span>
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+            <span>
+              <span class="icon-background">
+                <svg class="devices-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <use xlink:href="#devices"></use>
+                </svg>
+              </span>
+              <span class="expandable-label">Equipment</span>
+            </span>
+            <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
               <g transform="translate(0 -981.5)">
                 <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
                 <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
@@ -108,81 +136,11 @@
   <div class="h2-container">
     <h2 id="results" tabindex="-1">Results</h2><a href="#results" aria-label="This Results section"><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
   </div>
-
-              <nav id="results-nav" class="patterns" role="navigation">
-                {{ $current := . }}
-
-                <h3>Critical priority</h3>
-                {{ range $.Site.Home.Sections }}
-                  <ul id="results-list" aria-label="Critical priority issues">
-                    {{ range .Pages.ByWeight }}
-                        {{ if eq .Weight 1 }}
-                        <li class="pattern">
-                          <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                              <use xlink:href="#bookmark"></use>
-                            </svg>
-                            <span class="text">{{ .Title }}</span>
-                          </a>
-                        </li>
-                        {{ end }}
-                    {{ end }}
-                  </ul>
-                {{ end }}
-                <h3>High priority</h3>
-                {{ range $.Site.Home.Sections }}
-                <ul id="results-list" aria-label="High priority issues">
-                  {{ range .Pages.ByWeight }}
-                  {{ if eq .Weight 2 }}
-                  <li class="pattern">
-                    <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                      <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                        <use xlink:href="#bookmark"></use>
-                      </svg>
-                      <span class="text">{{ .Title }}</span>
-                    </a>
-                  </li>
-                  {{ end }}
-                  {{ end }}
-                </ul>
-                {{ end }}
-                <h3>Medium priority</h3>
-                {{ range $.Site.Home.Sections }}
-                <ul id="results-list" aria-label="Medium priority issues">
-                  {{ range .Pages.ByWeight }}
-                  {{ if eq .Weight 3 }}
-                  <li class="pattern">
-                    <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                      <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                        <use xlink:href="#bookmark"></use>
-                      </svg>
-                      <span class="text">{{ .Title }}</span>
-                    </a>
-                  </li>
-                  {{ end }}
-                  {{ end }}
-                </ul>
-                {{ end }}
-                <h3>Low priority</h3>
-                {{ range $.Site.Home.Sections }}
-                <ul id="results-list" aria-label="Low priority issues">
-                  {{ range .Pages.ByWeight }}
-                  {{ if eq .Weight 4 }}
-                  <li class="pattern">
-                    <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-                      <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                        <use xlink:href="#bookmark"></use>
-                      </svg>
-                      <span class="text">{{ .Title }}</span>
-                    </a>
-                  </li>
-                  {{ end }}
-                  {{ end }}
-                </ul>
-                {{ end }}
-              </nav>
+              <div id="summary-results-nav" class="patterns">
+                {{ partial "problems-list.html" . }}
+              </div>
 
   {{ .Content }}
-  <div class="fistbump"><img src='{{ "images/Aceit.png" | relURL }}' alt="Fist bump through computer screen, illustration"></div>
+  <div class="fistbump"><img src='{{ "images/Aceit.png" | relURL }}' class="no-border" alt="Fist bump through computer screen, illustration"></div>
 </main>
 {{ end }}

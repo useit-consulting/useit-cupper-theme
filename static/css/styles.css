@@ -91,7 +91,6 @@ div:not([tabindex]):focus {
 [href="#main"] {
     display: block;
     width: 100%;
-    padding: 0.75rem;
     color: #fefefe;
     background: #000;
     position: absolute;

@@ -389,7 +389,7 @@ caption {
     display: flex;
     flex-wrap: nowrap;
     align-items: baseline;
-    font-weight: bold;
+    font-weight: normal;
     padding: 0 1rem;
 }
 .pattern a:focus {

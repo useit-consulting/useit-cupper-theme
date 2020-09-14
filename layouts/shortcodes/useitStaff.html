@@ -1,16 +1,44 @@
-{{ $staff := replace (.Get "name") ", " "," }}
-{{ $staff := split $staff "," }}
-<span>
+{{ define "tommy" }}
 <div class="staff">
   <div class="staff_image">
-  <img alt="Tommy" src="images/tommy.png">
+    <img alt="Tommy" src="images/tommy.png">
   </div>
   <div class="staff_text">
     <h3>Tommy Feldt</h3>
-  <p>UX designer and accessibility specialist</p>
-  <p>CPWA certified</p>
+    <p>UX designer and accessibility specialist</p>
+    <p>CPWA certified</p>
     <p><a href="mailto:tommy@useit.se">tommy@useit.se</a></p>
     <p><a href="tel:+46793138696">+46 79 313 86 96</a></p>
-    </div>
+  </div>
 </div>
-</span>
+{{ end }}
+
+{{ define "sandra" }}
+<div class="staff">
+  <div class="staff_image">
+    <img alt="Sandra" src="images/sandra.png">
+  </div>
+  <div class="staff_text">
+    <h3>Sandra Eriksson</h3>
+    <p>Accessibility specialist</p>
+    <p>CPWA certified</p>
+    <p><a href="mailto:sandra@useit.se">sandra@useit.se</a></p>
+    <p><a href="tel:+4676944270">+46 76 94 42 70</a></p>
+  </div>
+</div>
+{{ end }}
+
+{{ if in $.Page.Params.reviewers "Tommy" }}
+<div class="staff">
+  <div class="staff_image">
+    <img alt="Tommy" src="images/tommy.png">
+  </div>
+  <div class="staff_text">
+    <h3>Tommy Feldt</h3>
+    <p>UX designer and accessibility specialist</p>
+    <p>CPWA certified</p>
+    <p><a href="mailto:tommy@useit.se">tommy@useit.se</a></p>
+    <p><a href="tel:+46793138696">+46 79 313 86 96</a></p>
+  </div>
+</div>
+{{ end }}

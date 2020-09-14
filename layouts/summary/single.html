@@ -49,20 +49,51 @@
       </button>
     </h2>
     <div id="js-expandable-reviewer" hidden>
-      <span>
-  <div class="staff">
-    <div class="staff_image">
-    <img alt="Tommy" src="{{ "images/tommy.png" | relURL }}">
-    </div>
-    <div class="staff_text">
-      <h3>Tommy Feldt</h3>
-    <p>UX designer and accessibility specialist</p>
-    <p>CPWA certified</p>
-      <p><a href="mailto:tommy@useit.se">tommy@useit.se</a></p>
-      <p><a href="tel:+46793138696">+46 79 313 86 96</a></p>
-      </div>
-  </div>
-  </span>
+      <ul class="reviewers"><li>
+        {{ if in $.Page.Params.reviewers "Tommy" }}
+        <div class="staff">
+          <div class="staff_image">
+            <img alt="Tommy" src='{{ "images/tommy.png" | relURL }}'>
+          </div>
+          <div class="staff_text">
+            <h3>Tommy Feldt</h3>
+            <p>UX designer and accessibility specialist</p>
+            <p>CPWA certified</p>
+            <p><a href="mailto:tommy@useit.se">tommy@useit.se</a></p>
+            <p><a href="tel:+46793138696">+46 79 313 86 96</a></p>
+          </div>
+        </div>
+        {{ end }}
+        {{ if in $.Page.Params.reviewers "Sandra" }}
+        <div class="staff">
+          <div class="staff_image">
+            <img alt="Sandra" src='{{ "images/sandra.png" | relURL }}'>
+          </div>
+          <div class="staff_text">
+            <h3>Sandra Eriksson</h3>
+            <p>Accessibility specialist</p>
+            <p>CPWA certified</p>
+            <p><a href="mailto:sandra@useit.se">sandra@useit.se</a></p>
+            <p><a href="tel:+4676944270">+46 76 94 42 70</a></p>
+          </div>
+        </div>
+        {{ end }}
+        {{ if in $.Page.Params.reviewers "Frida" }}
+        <div class="staff">
+          <div class="staff_image">
+            <img alt="Frida" src='{{ "images/frida.png" | relURL }}'>
+          </div>
+          <div class="staff_text">
+            <h3>Frida Fredblad</h3>
+            <p>Accessibility specialist</p>
+            <p>CPACC certified</p>
+            <p><a href="mailto:frida@useit.se">frida@useit.se</a></p>
+            <p><a href="tel:+4676944270">+46 76 94 42 70</a></p>
+          </div>
+        </div>
+        {{ end }}
+      </li>
+      </ul>
     </div>
   </div>
 {{ end }}
@@ -92,7 +123,6 @@
           <li>{{ . }}</li>
           {{ end }}
           </ul>
-        </ul>
       </div>
     </div>
   {{ end }}

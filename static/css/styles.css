@@ -1022,7 +1022,14 @@ h1 svg {
     width:200px;
     border-radius: 50%;
 }
+.staff_image {
+    min-width: 200px;
+    height: 200px;
+    display: flex;
+}
+
 .staff_text{
+    flex-grow: 1;
     margin-top: 0rem;
     margin-left: 2rem;
 }
@@ -1066,4 +1073,17 @@ h1 svg {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.reviewers {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.reviewers li {
+    margin-bottom: 48px;
+}
+
+.certification_logo {
+    margin-top: 1rem;
 }

@@ -26,10 +26,14 @@
     {{ end }}
 
     <h2>Problem description</h2>
-    {{ .Params.problemDescription | markdownify }}
+    <div class="text-container">
+      {{ .Params.problemDescription | markdownify }}
+    </div>
 
     <h2>Suggested solution</h2>
-    {{ .Params.suggestedSolution | markdownify }}
+    <div class="text-container">
+      {{ .Params.suggestedSolution | markdownify }}
+    </div>
 
     <div class="expandable-section">
       <h2>

@@ -25,6 +25,10 @@
       {{ partial "toc" . }}
     {{ end }}
 
+    <button type="button" class="copyBtn" onclick="generateJiraDescription()">Copy as JIRA</button>
+    <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">Copy as Markdown</button>
+
+
     <h2>Problem description</h2>
     <div class="text-container">
       {{ .Params.problemDescription | markdownify }}
@@ -134,4 +138,15 @@
         </div>
       </div>
   </main>
+<script>
+  const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
+  const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
+
+  function generateJiraDescription() {
+    return copyRichText(`${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## Problem description\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## Suggested solution\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## Priority\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} Critical ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} High priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} Medium priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} Low priority ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## Affected user groups\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## WCAG 2.1 violations\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * No {{ end }}')}`)
+  }
+  function generateMarkdownDescription() {
+    return copyRichText(`# {{ .Title }}\n\n## Problem description\n\n${problemDescriptionWithImage}\n\n## Suggested solution\n\n${suggestedSolutionsWithImage}\n\n## Priority\n\n{{ if eq $.Page.Params.weight 1 }} Critical ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} High priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} Medium priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} Low priority ({{ .Params.weight }}) {{ end }}\n\n## Affected user groups\n\n{{ range .Params.usergroups }}- {{ . }}\ {{ end }}\n\n## WCAG 2.1 violations\n\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * No {{ end }}`)
+  }
+</script>
 {{ end }}

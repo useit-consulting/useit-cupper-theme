@@ -1091,3 +1091,7 @@ h1 svg {
 .text-container {
     margin-top: 1rem;
 }
+
+.copyBtn {
+    font-size: 0.75rem;
+}

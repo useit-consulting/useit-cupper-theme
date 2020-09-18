@@ -1,0 +1,11 @@
+{{ define "main" }}
+
+<h2>Generic taxonomy</h2>
+
+<ul class="patterns-list">
+    {{ range .Data.Pages }}
+        {{ .Render "li"}}
+    {{ end }}
+</ul>
+
+{{ end }}

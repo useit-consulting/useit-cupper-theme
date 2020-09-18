@@ -437,8 +437,8 @@ caption {
     list-style: none;
     margin-left: 0;
 }
-.patterns-list h2 {
-    font-size: 1.25rem;
+.patterns-list h2, .patterns-list h3 {
+    font-size: 1rem;
 }
 .patterns-list li + li {
     margin-top: 1rem;
@@ -1092,6 +1092,39 @@ h1 svg {
     margin-top: 1rem;
 }
 
-.copyBtn {
+.copy-buttons {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.copy-buttons button {
     font-size: 0.75rem;
+    background-color: #be4350;
+    cursor: pointer;
+}
+
+.copy-buttons button:hover {
+    background-color: #ab3c48;
+}
+
+.wcag-text {
+    background-color: #fbf3df;
+    padding: 1rem;
+}
+
+.wcag-text button {
+    font-size: 1rem;
+}
+.wcag-desc {
+
+}
+.wcag-special {
+    margin-top: 1.5rem;
+}
+
+.wcag-special strong {
+    font-weight: bolder;
+}
+.wcag-special p {
+    margin-top: 0.25rem;
 }

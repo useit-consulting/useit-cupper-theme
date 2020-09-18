@@ -2,7 +2,7 @@
     {
         "ref_id": "1.1.1",
         "title": "Non-text Content",
-        "description": "All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below. (",
+        "description": "All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below.",
         "url": "https://www.w3.org/TR/WCAG20/#text-equiv-all",
         "level": "A",
         "special_cases": [

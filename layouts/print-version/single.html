@@ -152,10 +152,6 @@
   </div>
   {{ . | markdownify}}
   {{ end }}
-
-    
-
-
   {{ end }}
 {{ end }}
 
@@ -171,10 +167,12 @@
               {{ .Title }}
             </h1>
             <h2>Problem description</h2>
-            {{ .Params.problemDescription | markdownify }}
+          <div class="text-container">{{ .Params.problemDescription | markdownify }}</div>
 
             <h2>Suggested solution</h2>
+          <div class="text-container">
             {{ .Params.suggestedSolution | markdownify }}
+          </div>
 
             <h2>Priority</h2>
             {{ if eq .Params.weight 1 }} <p>Critical ({{ .Params.weight }})</p>{{ end }}

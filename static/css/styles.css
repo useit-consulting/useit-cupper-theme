@@ -1128,3 +1128,13 @@ h1 svg {
 .wcag-special p {
     margin-top: 0.25rem;
 }
+
+.wcag-link {
+    display: flex;
+    justify-content: space-between;
+}
+.number-issues {
+    color: #767676;
+    margin-top: initial;
+    font-weight: normal;
+}

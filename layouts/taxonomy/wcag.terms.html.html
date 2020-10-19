@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ $JSON := $.Site.Data.wcag }}
+{{ $this := "" }}
+
+<main id="main">
+    <h1>
+        Web Content Accessibility Guidelines 2.1 (AA-level)
+    </h1>
+    <h2>Failed criteria</h2>
+    <ul class="patterns-list">
+        {{ range .Data.Pages }}
+            {{ .Render "li"}}
+        {{ end }}
+    </ul>
+
+    <h2>Passed criteria</h2>
+
+    <ul class="patterns-list">
+
+    </ul>
+
+</main>
+{{ end }}

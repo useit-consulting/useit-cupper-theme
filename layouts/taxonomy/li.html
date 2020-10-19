@@ -1,0 +1,22 @@
+{{ $JSON := $.Site.Data.wcag }}
+{{ $this := "" }}
+
+
+{{ range $JSON }}
+    {{ if eq $.Page.Title .ref_id }}
+        {{ $this = . }}
+        <li>
+            <h2>
+                <a href="{{ $.Page.Permalink }}" class="wcag-link">
+                    <span>
+                        <svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                        <use xlink:href="#bookmark"></use>
+                    </svg>
+                    {{ $this.ref_id }} {{ $this.title }} ({{ $this.level }})
+                    </span>
+                    <span class="number-issues">{{ len $.Page.Data.Pages }} issue(s)</span>
+                </a>
+            </h2>
+        </li>
+    {{ end }}
+{{ end }}

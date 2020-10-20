@@ -1,3 +1,7 @@
+{{ define "title" }}
+    Web Content Accessibility Guidelines 2.1 summary | {{ .Site.Title }}
+{{ end }}
+
 {{ define "main" }}
 {{ $JSON := $.Site.Data.wcag }}
 {{ $this := "" }}
@@ -13,9 +17,24 @@
         {{ end }}
     </ul>
 
-    <h2>Passed criteria</h2>
+    <h2>Passed or not applicable criteria</h2>
 
     <ul class="patterns-list">
+        {{ range $JSON }}
+            {{ $this = . }}
+            {{ $hasIssues := false }}
+            {{ range $.Data.Pages }}
+                {{ if eq .Title $this.ref_id }}
+                    {{ $hasIssues = true }}
+                {{ end }}
+            {{ end }}
+            {{ if eq $hasIssues false }}
+                {{ if ne $this.level "AAA" }}
+                <li>{{ $this.ref_id }} {{ $this.title }} ({{ $this.level }})</li>
+                {{ end }}
+            {{ end }}
+
+        {{ end }}
 
     </ul>
 

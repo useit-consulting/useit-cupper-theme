@@ -830,6 +830,41 @@
         ]
     },
     {
+        "ref_id": "2.1.4",
+        "title": "Character Key Shortcuts",
+        "description": "If a keyboard shortcut is implemented in content using only letter (including upper- and lower-case letters), punctuation, number, or symbol characters, then at least one of the following is true:",
+        "url": "https://www.w3.org/TR/WCAG21/#character-key-shortcuts",
+        "level": "A",
+        "special_cases": [
+            {
+                "type": "at_least_one",
+                "title": "Turn off",
+                "description": "A mechanism is available to turn the shortcut off;"
+            },
+            {
+                "type": "at_least_one",
+                "title": "Remap",
+                "description": "A mechanism is available to remap the shortcut to use one or more non-printable keyboard characters (e.g. Ctrl, Alt, etc);"
+            },
+            {
+                "type": "at_least_one",
+                "title": "Active only on focus",
+                "description": "The keyboard shortcut for a user interface component is only active when that component has focus."
+            }
+        ],
+        "notes": null,
+        "references": [
+            {
+                "title": "How to Meet 2.1.4",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#character-key-shortcuts"
+            },
+            {
+                "title": "Understanding 2.1.4",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html"
+            }
+        ]
+    },
+    {
         "ref_id": "2.2.1",
         "title": "Timing Adjustable",
         "description": "For each time limit that is set by the content, at least one of the following is true:",
@@ -984,6 +1019,29 @@
         ]
     },
     {
+        "ref_id": "2.2.6",
+        "title": "Timeouts",
+        "description": "Users are warned of the duration of any user inactivity that could cause data loss, unless the data is preserved for more than 20 hours when the user does not take any actions.",
+        "url": "https://www.w3.org/TR/WCAG21/#timeouts",
+        "level": "AAA",
+        "special_cases": null,
+        "notes": [
+            {
+                "content": "Privacy regulations may require explicit user consent before user identification has been authenticated and before user data is preserved. In cases where the user is a minor, explicit consent may not be solicited in most jurisdictions, countries or regions. Consultation with privacy professionals and legal counsel is advised when considering data preservation as an approach to satisfy this success criterion."
+            }
+        ],
+        "references": [
+            {
+                "title": "How to Meet 2.2.6",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#timeouts"
+            },
+            {
+                "title": "Understanding 2.2.6",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/timeouts.html"
+            }
+        ]
+    },
+    {
         "ref_id": "2.3.1",
         "title": "Three Flashes or Below Threshold",
         "description": "Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds",
@@ -1022,6 +1080,25 @@
             {
                 "title": "Understanding 2.3.2",
                 "url": "http://www.w3.org/TR/UNDERSTANDING-WCAG20/seizure-three-times.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.3.3",
+        "title": "Animation from Interactions",
+        "description": "Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.",
+        "url": "https://www.w3.org/TR/WCAG21/#animation-from-interactions",
+        "level": "AAA",
+        "special_cases": null,
+        "notes": null,
+        "references": [
+            {
+                "title": "How to Meet 2.3.3",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#animation-from-interactions"
+            },
+            {
+                "title": "Understanding 2.3.3",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html"
             }
         ]
     },
@@ -1219,6 +1296,188 @@
             {
                 "title": "Understanding 2.4.10",
                 "url": "http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-headings.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.5.1",
+        "title": "Pointer Gestures",
+        "description": "All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture, unless a multipoint or path-based gesture is essential.",
+        "url": "https://www.w3.org/TR/WCAG21/#pointer-gestures",
+        "level": "A",
+        "special_cases": null,
+        "notes": [
+            {
+                "content": "This requirement applies to web content that interprets pointer actions (i.e. this does not apply to actions that are required to operate the user agent or assistive technology)."
+            }
+        ],
+        "references": [
+            {
+                "title": "How to Meet 2.5.1",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#pointer-gestures"
+            },
+            {
+                "title": "Understanding 2.5.1",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/pointer-gestures.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.5.2",
+        "title": "Pointer Cancellation",
+        "description": "For functionality that can be operated using a single pointer, at least one of the following is true:",
+        "url": "https://www.w3.org/TR/WCAG21/#pointer-cancellation",
+        "level": "A",
+        "special_cases": [
+            {
+                "type": "at_least_one",
+                "title": "No Down-Event",
+                "description": "The down-event of the pointer is not used to execute any part of the function;"
+            },
+            {
+                "type": "at_least_one",
+                "title": "Abort or Undo",
+                "description": "Completion of the function is on the up-event, and a mechanism is available to abort the function before completion or to undo the function after completion;"
+            },
+            {
+                "type": "at_least_one",
+                "title": "Up Reversal",
+                "description": "The up-event reverses any outcome of the preceding down-event;"
+            },
+            {
+                "type": "at_least_one",
+                "title": "Essential",
+                "description": "Completing the function on the down-event is essential."
+            }
+        ],
+        "notes": [
+            {
+                "content": "Functions that emulate a keyboard or numeric keypad key press are considered essential."
+            },
+            {
+                "content": "This requirement applies to web content that interprets pointer actions (i.e. this does not apply to actions that are required to operate the user agent or assistive technology)."
+            }
+        ],
+        "references": [
+            {
+                "title": "How to Meet 2.5.2",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#pointer-cancellation"
+            },
+            {
+                "title": "Understanding 2.5.2",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.5.3",
+        "title": "Label in Name",
+        "description": "For user interface components with labels that include text or images of text, the name contains the text that is presented visually.",
+        "url": "https://www.w3.org/TR/WCAG21/#label-in-name",
+        "level": "A",
+        "special_cases": null,
+        "notes": [
+            {
+                "content": "A best practice is to have the text of the label at the start of the name."
+            }
+        ],
+        "references": [
+            {
+                "title": "How to Meet 2.5.3",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#label-in-name"
+            },
+            {
+                "title": "Understanding 2.5.3",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.5.4",
+        "title": "Motion Actuation",
+        "description": "Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when:",
+        "url": "https://www.w3.org/TR/WCAG21/#motion-actuation",
+        "level": "A",
+        "special_cases": [
+            {
+                "type": "exception",
+                "title": "Supported Interface",
+                "description": "The motion is used to operate functionality through an accessibility supported interface;"
+            },
+            {
+                "type": "exception",
+                "title": "Essential",
+                "description": "The motion is essential for the function and doing so would invalidate the activity."
+            }
+        ],
+        "notes": null,
+        "references": [
+            {
+                "title": "How to Meet 2.5.4",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#motion-actuation"
+            },
+            {
+                "title": "Understanding 2.5.4",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/motion-actuation.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.5.5",
+        "title": "Target Size",
+        "description": "The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when:",
+        "url": "https://www.w3.org/TR/WCAG21/#target-size",
+        "level": "AAA",
+        "special_cases": [
+            {
+                "type": "exception",
+                "title": "Equivalent",
+                "description": "The target is available through an equivalent link or control on the same page that is at least 44 by 44 CSS pixels;"
+            },
+            {
+                "type": "exception",
+                "title": "Inline",
+                "description": "The target is in a sentence or block of text;"
+            },
+            {
+                "type": "exception",
+                "title": "User Agent Control",
+                "description": "The size of the target is determined by the user agent and is not modified by the author;"
+            },
+            {
+                "type": "exception",
+                "title": "Essential",
+                "description": "A particular presentation of the target is essential to the information being conveyed."
+            }
+        ],
+        "notes": null,
+        "references": [
+            {
+                "title": "How to Meet 2.5.5",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#target-size"
+            },
+            {
+                "title": "Understanding 2.5.5",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/target-size.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "2.5.6",
+        "title": "Concurrent Input Mechanisms",
+        "description": "Web content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.",
+        "url": "https://www.w3.org/TR/WCAG21/#concurrent-input-mechanisms",
+        "level": "AAA",
+        "special_cases": null,
+        "notes": null,
+        "references": [
+            {
+                "title": "How to Meet 2.5.6",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#concurrent-input-mechanisms"
+            },
+            {
+                "title": "Understanding 2.5.6",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/concurrent-input-mechanisms.html"
             }
         ]
     },
@@ -1620,6 +1879,25 @@
             {
                 "title": "Understanding 4.1.2",
                 "url": "http://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html"
+            }
+        ]
+    },
+    {
+        "ref_id": "4.1.3",
+        "title": "Status Messages",
+        "description": "In content implemented using markup languages, status messages can be programmatically determined through role or properties such that they can be presented to the user by assistive technologies without receiving focus.",
+        "url": "https://www.w3.org/TR/WCAG21/#status-messages",
+        "level": "AA",
+        "special_cases": null,
+        "notes": null,
+        "references": [
+            {
+                "title": "How to Meet 4.1.3",
+                "url": "https://www.w3.org/WAI/WCAG21/quickref/#status-messages"
+            },
+            {
+                "title": "Understanding 4.1.3",
+                "url": "https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html"
             }
         ]
     }

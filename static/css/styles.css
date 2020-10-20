@@ -1138,3 +1138,7 @@ h1 svg {
     margin-top: initial;
     font-weight: normal;
 }
+
+.margin-top {
+    margin-top: 3rem;
+}

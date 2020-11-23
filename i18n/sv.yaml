@@ -1,0 +1,72 @@
+- id: print_version
+  translation: "Utskriftsvänlig version"
+- id: date
+  translation: "Datum"
+- id: reviewers
+  translation: "Granskare"
+- id: materials
+  translation: "Granskat material"
+- id: equipment
+  translation: "Utrustning"
+- id: summary
+  translation: "Sammanfattning"
+- id: results
+  translation: "Resultat"
+- id: critical_priority
+  translation: "Kritisk prioritet"
+- id: critical_priority_issues
+  translation: "Problem med kritisk prioritet"
+- id: high_priority
+  translation: "Hög prioritet"
+- id: high_priority_issues
+  translation: "Problem med hög prioritet"
+- id: medium_priority
+  translation: "Mellan prioritet"
+- id: medium_priority_issues
+  translation: "Problem med mellan prioritet"
+- id: low_priority
+  translation: "Låg prioritet"
+- id: low_priority_issues
+  translation: "Problem med låg prioritet"
+- id: tags
+  translation: "Taggar"
+- id: problem_description
+  translation: "Problembeskrivning"
+- id: suggested_solution
+  translation: "Lösningsförslag"
+- id: priority
+  translation: "Prioritet"
+- id: affected_user_groups
+  translation: "Påverkade användare"
+- id: wcag_violations
+  translation: "WCAG 2.1 (AA)"
+- id: copy_as_markdown
+  translation: "Kopiera som Markdown"
+- id: copy_as_jira
+  translation: "Kopiera som JIRA"
+- id: start_page
+  translation: "Startsida"
+- id: table_of_contents
+  translation: "Innehållsförteckning"
+- id: dark_theme
+  translation: "Mörkt läge"
+- id: fist_bump_alt
+  translation: "En användare gör en fist bump genom datorskärmen, illustration"
+- id: wcag_summary
+  translation: "Sammanfattning WCAG 2.1 (AA)"
+- id: passed_or_not_applicable
+  translation: "Godkända eller ej bedömda krav"
+- id: failed_criteria
+  translation: "Underkända krav"
+- id: show_all_wcag_criteria
+  translation: "Visa alla WCAG-krav"
+- id: quick_navigation
+  translation: "Snabbnavigering"
+- id: what_does_the_criteria_say
+  translation: "Vad säger kriteriet?"
+- id: identified_issues_related_to
+  translation: "Identifierade problem relaterade till "
+- id: read_more
+  translation: "Läs mer"
+- id: tagged
+  translation: "Taggade med"

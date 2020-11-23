@@ -26,9 +26,9 @@
 {{ end }}
 
 {{ if eq $hasCritical true }}
-<h3>Critical priority</h3>
+<h3>{{ i18n "critical_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
-<ul aria-label="Critical priority issues">
+<ul aria-label='{{ i18n "critical_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
     {{ if eq .Weight 1 }}
     <li class="pattern">
@@ -45,9 +45,9 @@
 {{ end }}
 {{ end }}
 {{ if eq $hasHigh true }}
-<h3>High priority</h3>
+<h3>{{ i18n "high_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
-<ul aria-label="High priority issues">
+<ul aria-label='{{ i18n "high_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
     {{ if eq .Weight 2 }}
     <li class="pattern">
@@ -64,9 +64,9 @@
 {{ end }}
 {{ end }}
 {{ if eq $hasMedium true }}
-<h3>Medium priority</h3>
+<h3>{{ i18n "medium_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
-<ul aria-label="Medium priority issues">
+<ul aria-label='{{ i18n "medium_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
     {{ if eq .Weight 3 }}
     <li class="pattern">
@@ -83,9 +83,9 @@
 {{ end }}
 {{ end }}
 {{ if eq $hasLow true }}
-<h3>Low priority</h3>
+<h3>{{ i18n "low_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
-<ul aria-label="Low priority issues">
+<ul aria-label='{{ i18n "low_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
     {{ if eq .Weight 4 }}
     <li class="pattern">

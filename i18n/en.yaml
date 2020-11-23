@@ -1,0 +1,72 @@
+- id: print_version
+  translation: "Print version"
+- id: date
+  translation: "Date"
+- id: reviewers
+  translation: "Reviewer(s)"
+- id: materials
+  translation: "Materials reviewed"
+- id: equipment
+  translation: "Equipment used"
+- id: summary
+  translation: "Summary"
+- id: results
+  translation: "Results"
+- id: critical_priority
+  translation: "Critical priority"
+- id: critical_priority_issues
+  translation: "Critical issues"
+- id: high_priority
+  translation: "High priority"
+- id: high_priority_issues
+  translation: "High priority issues"
+- id: medium_priority
+  translation: "Medium priority"
+- id: medium_priority_issues
+  translation: "Medium priority issues"
+- id: low_priority
+  translation: "Low priority"
+- id: low_priority_issues
+  translation: "Low priority issues"
+- id: tags
+  translation: "Tags"
+- id: problem_description
+  translation: "Problem description"
+- id: suggested_solution
+  translation: "Suggested solution"
+- id: priority
+  translation: "Priority"
+- id: affected_user_groups
+  translation: "Affected user groups"
+- id: wcag_violations
+  translation: "WCAG 2.1 (AA) violations"
+- id: copy_as_markdown
+  translation: "Copy as Markdown"
+- id: copy_as_jira
+  translation: "Copy as JIRA"
+- id: start_page
+  translation: "Start page"
+- id: table_of_contents
+  translation: "Table of contents"
+- id: dark_theme
+  translation: "Dark theme"
+- id: fist_bump_alt
+  translation: "Fist bump through computer screen, illustration"
+- id: wcag_summary
+  translation: "WCAG 2.1 (AA-level) summary"
+- id: passed_or_not_applicable
+  translation: "Passed or not applicable criteria"
+- id: failed_criteria
+  translation: "Failed criteria"
+- id: show_all_wcag_criteria
+  translation: "Show all WCAG criteria"
+- id: quick_navigation
+  translation: "Quick navigation"
+- id: what_does_the_criteria_say
+  translation: "What does the criteria say?"
+- id: identified_issues_related_to
+  translation: "Identified issues related to"
+- id: read_more
+  translation: "Read more"
+- id: tagged
+  translation: "Tagged"

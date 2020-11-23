@@ -42,14 +42,14 @@
   </head>
   <body>
     {{ if ne .Type "print-version" }}
-      <a href="#main">skip to content</a>
+      <a href="#main">{{ i18n "skip_to_content" }}</a>
     {{ end }}
     {{ partial "svg.html" . }}
     <div class="wrapper {{ if eq .Type "print-version" }}print-version{{ end }}">
         <header class="intro-and-nav" role="banner">
           <div>
             <div class="intro">
-              <a class="logo" href="{{ "/summary/" | relURL }}" aria-label="{{ .Site.Title }} home page">
+              <a class="logo" href="{{ .Site.Home.RelPermalink }}summary" aria-label='{{ .Site.Title }} {{ i18n "start_page" }}'>
                 <img id="useit-logo" class="no-border" src="{{ "images/useit-logo.png" | relURL }}" alt="">
               </a>
               <p class="library-desc">
@@ -58,21 +58,21 @@
                   <a class="print" href="{{ "print-version" | absURL }}">
                     <svg viewBox="0 0 35 45" aria-hidden="true" focusable="false">
                       <use xlink:href="#doc"></use>
-                    </svg>Print version
+                    </svg>{{ i18n "print_version" }}
                  {{ end }}
                </a>
               </p>
               {{ if eq .Type "print-version" }}
                 <p class="toc-link">
                   <span aria-hidden="true">&#x2193;</span>
-                  <a href="#toc">Table of contents</a>
+                  <a href="#toc">{{ i18n "table_of_contents" }}</a>
                   <span aria-hidden="true">&#x2193;</span>
                 </p>
               {{ end }}
             </div>
             {{ block "nav" . }}
               <nav id="main-nav" class="patterns" role="navigation">
-                <h2 class="vh">Main navigation</h2>
+                <h2 class="vh">{{ i18n "main_navigation" }}</h2>
                 <button id="menu-button" aria-expanded="false">
                   <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
                     <use xlink:href="#menu"></use>
@@ -95,7 +95,7 @@
           <footer role="contentinfo">
             <div>
               <label for="themer">
-                dark theme: <input type="checkbox" id="themer" class="vh">
+                {{ i18n "dark_theme" }}: <input type="checkbox" id="themer" class="vh">
                 <span aria-hidden="true"></span>
               </label>
             </div>

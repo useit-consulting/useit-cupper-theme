@@ -8,7 +8,7 @@
     </h1>
     {{ if isset .Params "tags" }}
       <div class="tags">
-        <strong aria-hidden="true">Tags: </strong>
+        <strong aria-hidden="true">{{ i18n "tags" }}: </strong>
         <ul aria-label="tags">
           {{ range .Params.tags }}
             <li>
@@ -33,12 +33,12 @@
       {{ partial "toc" . }}
     {{ end }}
 
-    <h2>Problem description</h2>
+    <h2>{{ i18n "problem_description" }}</h2>
     <div class="text-container">
       {{ .Params.problemDescription | markdownify }}
     </div>
 
-    <h2>Suggested solution</h2>
+    <h2>{{ i18n "suggested_solution" }}</h2>
     <div class="text-container">
       {{ .Params.suggestedSolution | markdownify }}
     </div>
@@ -52,7 +52,7 @@
                 <use xlink:href="#priority"></use>
               </svg>
             </span>
-            <span class="expandable-label">Priority (1-4)</span>
+            <span class="expandable-label">{{ i18n "priority" }}(1-4)</span>
           </span>
       <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -63,10 +63,10 @@
       </button>
       </h2>
       <div id="js-expandable-priority">
-      {{ if eq $.Page.Params.weight 1 }} Critical ({{ .Params.weight }}) {{ end }}
-      {{ if eq $.Page.Params.weight 2 }} High priority ({{ .Params.weight }}) {{ end }}
-      {{ if eq $.Page.Params.weight 3 }} Medium priority ({{ .Params.weight }}) {{ end }}
-      {{ if eq $.Page.Params.weight 4 }} Low priority ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }}
+      {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}
     </div>
     </div>
 
@@ -79,7 +79,7 @@
               <use xlink:href="#users"></use>
             </svg>
             </span>
-            <span class="expandable-label">Affected user groups</span>
+            <span class="expandable-label">{{ i18n "affected_user_groups" }}</span>
           </span>
           <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
             <g transform="translate(0 -981.5)">
@@ -106,7 +106,7 @@
               <use xlink:href="#w3c"></use>
             </svg>
             </span>
-            <span class="expandable-label">WCAG 2.1 violations</span>
+            <span class="expandable-label">{{ i18n "wcag_violations" }}</span>
           </span>
             <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
               <g transform="translate(0 -981.5)">
@@ -139,8 +139,8 @@
         </div>
       </div>
     <div class="copy-buttons">
-      <button type="button" class="copyBtn" onclick="generateJiraDescription()">Copy as JIRA</button>
-      <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">Copy as Markdown</button>
+      <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
+      <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown" }}</button>
     </div>
 
   </main>
@@ -149,7 +149,7 @@
   const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
 
   function generateJiraDescription() {
-    return copyRichText(`${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## Problem description\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## Suggested solution\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## Priority\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} Critical ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} High priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} Medium priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} Low priority ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## Affected user groups\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## WCAG 2.1 violations\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * No {{ end }}')}`)
+    return copyRichText(`${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`)
   }
   function generateMarkdownDescription() {
     return copyRichText(`# {{ .Title }}\n\n## Problem description\n\n${problemDescriptionWithImage}\n\n## Suggested solution\n\n${suggestedSolutionsWithImage}\n\n## Priority\n\n{{ if eq $.Page.Params.weight 1 }} Critical ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} High priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} Medium priority ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} Low priority ({{ .Params.weight }}) {{ end }}\n\n## Affected user groups\n\n{{ range .Params.usergroups }}- {{ . }}\ {{ end }}\n\n## WCAG 2.1 violations\n\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * No {{ end }}`)

@@ -1,5 +1,5 @@
 {{ define "title" }}
-    Web Content Accessibility Guidelines 2.1 summary | {{ .Site.Title }}
+    {{ i18n "wcag_summary" }} | {{ .Site.Title }}
 {{ end }}
 
 {{ define "main" }}
@@ -8,9 +8,9 @@
 
 <main id="main">
     <h1>
-        Web Content Accessibility Guidelines 2.1 (AA-level)
+        {{ i18n "wcag_summary" }}
     </h1>
-    <h2>Failed criteria</h2>
+    <h2>{{ i18n "failed_criteria" }}</h2>
     <ul class="patterns-list">
         {{ range .Data.Pages }}
             {{ .Render "li"}}
@@ -20,7 +20,7 @@
     <div class="expandable-section margin-top">
         <h2>
             <button aria-expanded="false" data-expands="js-expandable-passed-criteria" >
-                <span class="expandable-label">Passed or not applicable criteria</span>
+                <span class="expandable-label">{{ i18n "passed_or_not_applicable" }}</span>
                 <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
                     <g transform="translate(0 -981.5)">
                         <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />

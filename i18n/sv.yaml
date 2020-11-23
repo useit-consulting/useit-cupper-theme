@@ -37,7 +37,7 @@
 - id: priority
   translation: "Prioritet"
 - id: affected_user_groups
-  translation: "Påverkade användare"
+  translation: "Användare som påverkas"
 - id: wcag_violations
   translation: "WCAG 2.1 (AA)"
 - id: copy_as_markdown
@@ -63,7 +63,7 @@
 - id: quick_navigation
   translation: "Snabbnavigering"
 - id: what_does_the_criteria_say
-  translation: "Vad säger kriteriet?"
+  translation: "Vad säger kravet?"
 - id: identified_issues_related_to
   translation: "Identifierade problem relaterade till "
 - id: read_more

@@ -76,3 +76,11 @@
   translation: "problem"
 - id: taking_you_to_report
   translation: "Vänta lite, rapporten laddas..."
+- id: critical_explanation
+  translation: "Detta är problem som har mycket stor påverkan på användarnas förmåga att använda gränssnittet. En del användare blir troligen helt utestängda."
+- id: high_explanation
+  translation: "Detta är problem som har en stor påverkan på användarnas förmåga att använda och förstå gränssnittet."
+- id: medium_explanation
+  translation: "Detta är problem som påverkar en del användares förmåga att förstå och använda gränssnittet."
+- id: low_explanation
+  translation: "Detta är problem som bör korrigeras för att minimera risken för problem hos användarna."

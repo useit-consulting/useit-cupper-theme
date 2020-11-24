@@ -27,7 +27,6 @@
 
 {{ if eq $hasCritical true }}
 <h3>{{ i18n "critical_priority" }}</h3>
-<div class="priority-text">{{ i18n "critical_explanation" }}</div>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "critical_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
@@ -47,7 +46,6 @@
 {{ end }}
 {{ if eq $hasHigh true }}
 <h3>{{ i18n "high_priority" }}</h3>
-<div class="priority-text">{{ i18n "high_explanation" }}</div>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "high_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
@@ -67,7 +65,6 @@
 {{ end }}
 {{ if eq $hasMedium true }}
 <h3>{{ i18n "medium_priority" }}</h3>
-<div class="priority-text">{{ i18n "medium_explanation" }}</div>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "medium_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
@@ -87,7 +84,6 @@
 {{ end }}
 {{ if eq $hasLow true }}
 <h3>{{ i18n "low_priority" }}</h3>
-<div class="priority-text">{{ i18n "low_explanation" }}</div>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "low_priority_issues" }}'>
     {{ range .Pages.ByWeight }}

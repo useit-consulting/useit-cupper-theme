@@ -72,3 +72,5 @@
   translation: "Taggade med"
 - id: this_section
   translation: "Det här avsnittet"
+- id: problems
+  translation: "problem"

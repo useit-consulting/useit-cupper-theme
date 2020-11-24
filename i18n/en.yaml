@@ -72,3 +72,5 @@
   translation: "Tagged"
 - id: this_section
   translation: "This section"
+- id: problems
+  translation: "issue(s)"

@@ -76,3 +76,19 @@
   translation: "issue(s)"
 - id: taking_you_to_report
   translation: "Hang on, taking you to the report..."
+- id: go_back
+  translation: "Go back"
+- id: skip_to_content
+  translation: "Skip to content"
+- id: main_navigation
+  translation: "Main navigation"
+- id: show_wcag_results
+  translation: "Show failed and passed WCAG 2.1 (AA) criteria"
+- id: critical_explanation
+  translation: ""
+- id: high_explanation
+  translation: ""
+- id: medium_explanation
+  translation: ""
+- id: low_explanation
+  translation: ""

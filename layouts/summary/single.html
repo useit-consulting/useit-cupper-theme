@@ -7,7 +7,7 @@
   <h1>{{ .Title }}</h1>
   <div class="expandable-section">
     <h2>
-      <button aria-expanded="false" data-expands="js-expandable-date">
+      <button aria-expanded="true" data-expands="js-expandable-date">
         <span>
           <span class="icon-background">
                 <svg class="calendar-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
@@ -24,7 +24,7 @@
         </svg>
       </button>
     </h2>
-    <div id="js-expandable-date" hidden>
+    <div id="js-expandable-date">
         {{ .Params.reportDate }}
     </div>
   </div>
@@ -180,9 +180,14 @@
   <div class="h2-container">
     <h2 id="results" tabindex="-1">{{ i18n "results" }}</h2><a href="#results" aria-label='{{ i18n "this_section" }} ({{ i18n "results" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
   </div>
-              <div id="summary-results-nav" class="patterns">
-                {{ partial "problems-list.html" . }}
-              </div>
+
+  <div class="results-container">
+    <a href='{{ ref $.Page "wcag" }}'>{{ i18n "show_wcag_results" }}</a>
+  </div>
+
+  <div id="summary-results-nav" class="patterns">
+    {{ partial "problems-list.html" . }}
+  </div>
 
   {{ .Content }}
   <div class="fistbump"><img src='{{ "images/Aceit.png" | relURL }}' class="no-border" alt='{{ i18n "fist_bump_alt" }}'></div>

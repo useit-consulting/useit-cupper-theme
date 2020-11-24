@@ -390,6 +390,7 @@ caption {
     align-items: baseline;
     font-weight: normal;
     padding: 0 1rem;
+    text-decoration: underline;
 }
 .pattern a:focus {
     outline: none;
@@ -1162,4 +1163,9 @@ h1 svg {
 
 .priority-text + ul {
     margin: 0.75rem 0 1.5rem 0;
+}
+
+.results-container {
+    padding: 1rem;
+    background-color: #fbf3df;
 }

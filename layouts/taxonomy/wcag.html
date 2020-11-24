@@ -47,17 +47,6 @@
     {{ end }}
   </div>
 
-
-  <h2>
-    {{ i18n "identified_issues_related_to" }} {{ $this.ref_id }} ({{ $this.level }})
-  </h2>
-  <ul class="patterns-list">
-
-
-    {{ range $.Page.Data.Pages }}
-      {{ .Render "li"}}
-    {{ end }}
-  </ul>
   <h2>
     {{ i18n "read_more" }}
   </h2>
@@ -72,6 +61,18 @@
         <use xlink:href="#w3c"></use>
       </svg> <span>{{ (index $this.references 1).title }}</span></a>
     </li>
+  </ul>
+
+
+  <h2>
+    {{ i18n "identified_issues_related_to" }} {{ $this.ref_id }} ({{ $this.level }})
+  </h2>
+  <ul class="patterns-list">
+
+
+    {{ range $.Page.Data.Pages }}
+      {{ .Render "li"}}
+    {{ end }}
   </ul>
 </main>
 

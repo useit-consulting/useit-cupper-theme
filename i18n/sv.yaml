@@ -74,3 +74,5 @@
   translation: "Det här avsnittet"
 - id: problems
   translation: "problem"
+- id: taking_you_to_report
+  translation: "Vänta lite, rapporten laddas..."

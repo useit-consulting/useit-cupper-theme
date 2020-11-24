@@ -10,7 +10,9 @@
     <h1>
         {{ i18n "wcag_summary" }}
     </h1>
-    <h2>{{ i18n "failed_criteria" }}</h2>
+    <div class="h2-container">
+        <h2 id="failed_criteria" tabindex="-1">{{ i18n "failed_criteria" }}</h2><a href="#failed_criteria" aria-label='{{ i18n "this_section" }} ({{ i18n "failed_criteria" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+    </div>
     <ul class="patterns-list">
         {{ range .Data.Pages }}
             {{ .Render "li"}}

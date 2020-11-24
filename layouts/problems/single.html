@@ -33,12 +33,17 @@
       {{ partial "toc" . }}
     {{ end }}
 
-    <h2>{{ i18n "problem_description" }}</h2>
+
+    <div class="h2-container">
+      <h2 id="problem_description" tabindex="-1">{{ i18n "problem_description" }}</h2><a href="#problem_description" aria-label='{{ i18n "this_section" }} ({{ i18n "problem_description" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+    </div>
     <div class="text-container">
       {{ .Params.problemDescription | markdownify }}
     </div>
 
-    <h2>{{ i18n "suggested_solution" }}</h2>
+    <div class="h2-container">
+      <h2 id="suggested_solution" tabindex="-1">{{ i18n "suggested_solution" }}</h2><a href="#suggested_solution" aria-label='{{ i18n "this_section" }} ({{ i18n "suggested_solution" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+    </div>
     <div class="text-container">
       {{ .Params.suggestedSolution | markdownify }}
     </div>

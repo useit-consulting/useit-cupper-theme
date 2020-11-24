@@ -747,7 +747,13 @@ h1 svg {
 .link-icon {
   width: 0.75em;
   height: 0.75em;
+  color: #959595;
+    transition: color 100ms ease-in;
 }
+.link-icon:hover, .link-icon:focus {
+    color: #000;
+}
+
 .tags svg, .link-icon {
   vertical-align: middle;
 }
@@ -810,6 +816,10 @@ h1 svg {
     line-height: 1;
     left: -1em;
     border: 0;
+}
+
+.h2-container a:focus svg {
+    color: #000
 }
 /* Single page layout */
 
@@ -1108,7 +1118,7 @@ h1 svg {
 }
 
 .wcag-text {
-    background-color: #fbf3df;
+    background-color: #f2fafe;
     padding: 1rem;
 }
 

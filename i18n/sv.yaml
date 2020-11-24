@@ -70,3 +70,5 @@
   translation: "Läs mer"
 - id: tagged
   translation: "Taggade med"
+- id: this_section
+  translation: "Det här avsnittet"

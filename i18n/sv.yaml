@@ -77,7 +77,9 @@
 - id: taking_you_to_report
   translation: "Vänta lite, rapporten laddas..."
 - id: critical_explanation
-  translation: "Kritiska problem har mycket stor påverkan på användarnas förmåga att använda gränssnittet. En del användare blir troligen helt utestängda."
+  translation: "Kritiska problem har mycket stor påverkan på användarnas förmåga att använda gränssnittet."
+- id: critical_highlighted
+  translation: "En del användare blir troligen helt utestängda."
 - id: high_explanation
   translation: "Detta är problem som har en stor påverkan på användarnas förmåga att använda och förstå gränssnittet."
 - id: medium_explanation
@@ -86,6 +88,8 @@
   translation: "Detta är problem som bör korrigeras för att minimera risken för problem hos användarna."
 - id: go_back
   translation: "Gå tillbaka"
+- id: go_back_to_start
+  translation: "Gå tillbaka till startsidan"
 - id: skip_to_content
   translation: "Hoppa till innehållet"
 - id: main_navigation

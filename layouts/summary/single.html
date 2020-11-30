@@ -49,63 +49,7 @@
       </button>
     </h2>
     <div id="js-expandable-reviewer" hidden>
-      <ul class="reviewers">
-        {{ if in $.Page.Params.reviewers "Tommy" }}
-        <li>
-          <div class="staff">
-            <div class="staff_image">
-              <img alt="Tommy" src='{{ "images/tommy.png" | relURL }}'>
-            </div>
-            <div class="staff_text">
-              <h3>Tommy Feldt</h3>
-              <p>UX designer and accessibility specialist</p>
-              <p><a href="mailto:tommy@useit.se">tommy@useit.se</a></p>
-              <p><a href="tel:+46793138696">+46 79 313 86 96</a></p>
-              <div class="certification_logo">
-                <img alt="Certified Professional in Web Accessibility by Internation Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPWA.jpg" | relURL }}'>
-              </div>
-            </div>
-          </div>
-        </li>
-        {{ end }}
-        {{ if in $.Page.Params.reviewers "Sandra" }}
-        <li>
-          <div class="staff">
-            <div class="staff_image">
-              <img alt="Sandra" src='{{ "images/sandra2.png" | relURL }}'>
-            </div>
-            <div class="staff_text">
-              <h3>Sandra Eriksson</h3>
-              <p>Accessibility specialist</p>
-              <p><a href="mailto:sandra@useit.se">sandra@useit.se</a></p>
-              <p><a href="tel:+4676944270">+46 76 94 42 70</a></p>
-              <div class="certification_logo">
-                <img alt="Certified Professional in Web Accessibility by Internation Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPWA.jpg" | relURL }}'>
-              </div>
-            </div>
-          </div>
-        </li>
-        {{ end }}
-        {{ if in $.Page.Params.reviewers "Frida" }}
-        <li>
-          <div class="staff">
-            <div class="staff_image">
-              <img alt="Frida" src='{{ "images/frida.jpg" | relURL }}'>
-            </div>
-            <div class="staff_text">
-              <h3>Frida Fredblad</h3>
-              <p>Accessibility specialist</p>
-              <p><a href="mailto:frida@useit.se">frida@useit.se</a></p>
-              <p><a href="tel:+4676944270">+46 76 94 42 70</a></p>
-              <div class="certification_logo">
-                <img alt="Certified Professional in Accessibility Core Competencies by Internation Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPACC.jpg" | relURL }}'>
-              </div>
-            </div>
-          </div>
-        </li>
-        {{ end }}
-      </ul>
-
+      {{ partial "reviewers.html" . }}
     </div>
   </div>
 {{ end }}

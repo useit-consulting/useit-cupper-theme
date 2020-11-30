@@ -27,7 +27,7 @@
 
 {{ if eq $hasCritical true }}
 <h3>{{ i18n "critical_priority" }}</h3>
-<div class="priority-text">{{ i18n "critical_explanation" }}</div>
+<div class="priority-text">{{ i18n "critical_explanation" }} <strong>{{ i18n "critical_highlighted" }}</strong></div>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "critical_priority_issues" }}'>
     {{ range .Pages.ByWeight }}

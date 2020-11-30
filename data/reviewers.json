@@ -1,0 +1,30 @@
+
+[
+  {
+    "id": "Tommy",
+    "name": "Tommy Feldt",
+    "title": "UX designer and accessibility specialist",
+    "certification": "CPWA",
+    "phone": "+46 79 313 86 96",
+    "email": "tommy@useit.se",
+    "img": "tommy.png"
+  },
+  {
+    "id": "Sandra",
+    "name": "Sandra Eriksson",
+    "title": "Accessibility specialist",
+    "certification": "CPWA",
+    "phone": "+46 76 94 42 70",
+    "email": "sandra@useit.se",
+    "img": "sandra2.png"
+  },
+  {
+    "id": "Frida",
+    "name": "Frida Fredblad",
+    "title": "Accessibility specialist",
+    "certification": "CPACC",
+    "phone": "+46 76 94 42 70",
+    "email": "frida@useit.se",
+    "img": "frida.jpg"
+  }
+]

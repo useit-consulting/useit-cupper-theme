@@ -111,16 +111,19 @@ h4 {
     font-family: 'Poppins', sans-serif;
     line-height: 1.125;
 }
-h1 {
+h1, .print-version .pattern-section h3 {
     font-size: 2rem;
     font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
-h2 {
+h2, .print-version .pattern-section h4 {
     font-size: 1.66rem;
     font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
-h3 {
+h3, .print-version .pattern-section h5 {
     font-size: 1.25rem;
+    font-family: 'Poppins', sans-serif;
 }
 h4,
 h5 {
@@ -424,6 +427,7 @@ caption {
     font-size: 0.85rem;
     border: 1px solid;
     padding: 1.5rem;
+    margin-top: 2rem;
 }
 .toc h2 {
     font-size: 1rem;
@@ -705,13 +709,15 @@ p:empty {
 a svg,
 button svg,
 h1 svg,
+h2 svg,
+h3 svg,
 th svg,
 li > svg {
     height: 0.75em;
     width: 0.75em;
     margin-right: 0.25em;
 }
-h1 svg {
+h1 svg, h2 svg, h3 svg {
   margin-right: 0;
   width: 0.85em;
   height: 0.85em;
@@ -860,8 +866,13 @@ h1 svg {
     font-size: 1.25rem;
 }
 .wrapper.print-version .patterns {
-  margin-top: 0;
+  margin-top: 2rem;
 }
+
+.print-version .h2-container + .pattern-section {
+    margin-top: 2.5rem;
+}
+
 .pattern-section:not(:last-child) {
     padding-bottom: 2.25rem;
     border-bottom: 2px solid;

@@ -129,6 +129,8 @@ function WidthChange(mq) {
   var checkbox = document.getElementById('themer');
   var inverter = document.getElementById('inverter');
   var image = document.getElementById('useit-logo');
+  var fistbump = document.getElementById('fistbump');
+
 
   if (!CSSSupported('filter', 'invert(100%)')) {
     checkbox.parentNode.hidden = true;
@@ -143,8 +145,10 @@ function WidthChange(mq) {
     const depth = window.location.pathname.split("/").length - 1;
     const s = '../';
     const imgUrlStart = s.repeat(depth - window.location.host == "reports.useit.se" ? 1 : 2) + "images/";
-    const logo = (media === 'screen' ? imgUrlStart+'useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
-    image.setAttribute('src', logo)
+    const logo = (media === 'screen' ? imgUrlStart+'/useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
+    const aceit = (media === 'screen' ? imgUrlStart+'/Aceit2--dark.png' : imgUrlStart+'/Aceit2.png');
+    image.setAttribute('src', logo);
+    fistbump.setAttribute('src', aceit);
   }
 
   checkbox.addEventListener('change', function () {

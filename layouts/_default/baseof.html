@@ -151,7 +151,9 @@
 
         window.addEventListener('DOMContentLoaded', function () {
           if ('filter' in document.body.style) {
-            if (localStorage.getItem('darkTheme') === 'screen') {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+              console.log("Dark mode detected!");
+            if (localStorage.getItem('darkTheme') === 'screen' || (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
               checkbox.click();
             }
           }

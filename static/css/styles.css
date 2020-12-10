@@ -1164,6 +1164,9 @@ h1 svg, h2 svg, h3 svg {
 .margin-top {
     margin-top: 3rem;
 }
+.margin-top-small {
+    margin-top: 1.5rem;
+}
 
 .priority-text {
     padding: 1rem;
@@ -1179,4 +1182,9 @@ h1 svg, h2 svg, h3 svg {
 .results-container {
     padding: 1rem;
     background-color: #fbf3df;
+}
+
+.none-found {
+    list-style: disc;
+    margin-left: 2rem;
 }

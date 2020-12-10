@@ -53,7 +53,7 @@
 - id: fist_bump_alt
   translation: "Fist bump through computer screen, illustration"
 - id: wcag_summary
-  translation: "WCAG 2.1 (AA-level) summary"
+  translation: "WCAG 2.1 (AA) status"
 - id: passed_or_not_applicable
   translation: "Passed or not applicable criteria"
 - id: failed_criteria
@@ -92,3 +92,9 @@
   translation: ""
 - id: low_explanation
   translation: ""
+- id: outside_wcag
+  translation: "Issues outside WCAG 2.1 (AA)"
+- id: outside_wcag_explanation
+  translation: "Some accessibility issues are not covered by WCAG 2.1. This applies to many cognitive accessibility problems. We strongly recommend that you take these issues into account regardless, to create the best possible user experience."
+- id: no_non_wcag_issues_found
+  translation: "No non-WCAG issues were found"

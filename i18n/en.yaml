@@ -102,3 +102,5 @@
   translation: "No non-WCAG issues were found"
 - id: nope
   translation: "No"
+- id: faces_alt_text
+  translation: "Faces looking at a computer screen, illustration"

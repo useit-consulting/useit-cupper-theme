@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="summary-page">
+<html lang="en" class="redirect-page">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,6 +38,68 @@
     </title>
   </head>
   <body>
+  <div class="redirect-container">
     <h1>{{ i18n "taking_you_to_report" }}</h1>
+    <img class="image" src='{{ "images/faces.png" | relURL }}' alt='{{ i18n "faces_alt_text" }}'>
+  </div>
+  <footer role="contentinfo">
+    <div>
+      <label for="themer">
+        {{ i18n "dark_theme" }}: <input type="checkbox" id="themer" class="vh">
+        <span aria-hidden="true"></span>
+      </label>
+    </div>
+    Powered by <a href="https://thepaciellogroup.github.io/cupper/"><strong>Cupper</strong></a><br>
+  </footer>
+  <script>
+    /* Switch and persist theme */
+    (function () {
+      function CSSSupported (property, value) {
+        var prop = property + ':',
+                el = document.createElement('test'),
+                mStyle = el.style;
+        el.style.cssText = prop + value;
+        return mStyle[property];
+      }
+
+      var checkbox = document.getElementById('themer');
+      var inverter = document.getElementById('inverter');
+      var image = document.getElementById('useit-logo');
+      var fistbump = document.getElementById('fistbump');
+
+
+      if (!CSSSupported('filter', 'invert(100%)')) {
+        checkbox.parentNode.hidden = true;
+        return;
+      }
+
+      function darkTheme(media) {
+        inverter.setAttribute('media', media);
+        inverter.textContent = inverter.textContent.trim();
+        localStorage.setItem('darkTheme', media);
+        //Set image url
+        const imgUrlStart = '{{ .Site.BaseURL }}images';
+        const logo = (media === 'screen' ? imgUrlStart+'/useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
+        const aceit = (media === 'screen' ? imgUrlStart+'/Aceit2--dark.png' : imgUrlStart+'/Aceit2.png');
+        image.setAttribute('src', logo);
+        fistbump.setAttribute('src', aceit);
+      }
+
+      checkbox.addEventListener('change', function () {
+        darkTheme(this.checked ? 'screen' : 'none');
+        this.checked
+      });
+
+      window.addEventListener('DOMContentLoaded', function () {
+        if ('filter' in document.body.style) {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+            console.log("Dark mode detected!");
+          if (localStorage.getItem('darkTheme') === 'screen' || (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
+            checkbox.click();
+          }
+        }
+      });
+    }());
+  </script>
   </body>
 </html>

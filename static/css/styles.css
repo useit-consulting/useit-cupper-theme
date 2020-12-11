@@ -1067,23 +1067,17 @@ h1 svg, h2 svg, h3 svg {
     margin: 10rem auto 0;
 }
 
-.summary-page {
+.redirect-page {
     background-color: #fbf3df;
     text-align: center;
 }
 
-.summary-page h1{
-    position: fixed;
-    right: 50%;
-    top: 50%;
-    transform: translateX(50%);
+.redirect-page .redirect-container{
+    margin-top: 25vh;
 }
 
-.summary-page body{
-}
-
-.summary-page img{
-
+.redirect-page img{
+    border: none;
 }
 
 ::-webkit-scrollbar {
@@ -1187,4 +1181,8 @@ h1 svg, h2 svg, h3 svg {
 .none-found {
     list-style: disc;
     margin-left: 2rem;
+}
+
+.redirect-container {
+
 }

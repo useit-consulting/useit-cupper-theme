@@ -100,3 +100,11 @@
   translation: "Identifierade problem"
 - id: show_wcag_results
   translation: "Visa underkända och godkända krav i WCAG 2.1 (AA)"
+- id: outside_wcag
+  translation: ""
+- id: outside_wcag_explanation
+  translation: ""
+- id: no_non_wcag_issues_found
+  translation: ""
+- id: nope
+  translation: "Nej"

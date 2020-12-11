@@ -86,6 +86,8 @@
   translation: "Show failed and passed WCAG 2.1 (AA) criteria"
 - id: critical_explanation
   translation: ""
+- id: critical_highlighted
+  translation: ""
 - id: high_explanation
   translation: ""
 - id: medium_explanation
@@ -98,3 +100,5 @@
   translation: "Some accessibility issues are not covered by WCAG 2.1. This applies to many cognitive accessibility problems. We strongly recommend that you take these issues into account regardless, to create the best possible user experience."
 - id: no_non_wcag_issues_found
   translation: "No non-WCAG issues were found"
+- id: nope
+  translation: "No"

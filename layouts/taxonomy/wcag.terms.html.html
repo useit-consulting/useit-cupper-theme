@@ -54,28 +54,30 @@
         </div>
     </div>
 
-    <div class="h2-container margin-top">
-        <h2 id="non_wcag" tabindex="-1">{{ i18n "outside_wcag" }} </h2><a href="#failed_criteria" aria-label='{{ i18n "this_section" }} ({{ i18n "outside_wcag" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
-    </div>
-    <div class="priority-text">{{ i18n "outside_wcag_explanation" }}</div>
-
-    <ul class="patterns-list margin-top-small">
-        {{ $hasNonWcagIssues := false }}
-        {{ range where $.Site.Pages "Section" "problems" }}
-            {{ if not (isset .Params "wcag") }}
-                {{ if isset .Params "weight" }}
-                    {{ .Render "li"}}
-                    {{ $hasNonWcagIssues = true }}
-                {{ end }}
+    {{ $hasNonWcagIssues := false }}
+    {{ range where $.Site.Pages "Section" "problems" }}
+        {{ if not (isset .Params "wcag") }}
+            {{ if isset .Params "weight" }}
+                {{ $hasNonWcagIssues = true }}
             {{ end }}
         {{ end }}
-        {{ if eq $hasNonWcagIssues false }}
-            <li class="none-found">{{ i18n "no_non_wcag_issues_found" }}</li>
-        {{ end }}
+    {{ end }}
+    {{ if eq $hasNonWcagIssues true }}
+        <div class="h2-container margin-top">
+            <h2 id="non_wcag" tabindex="-1">{{ i18n "outside_wcag" }} </h2><a href="#failed_criteria" aria-label='{{ i18n "this_section" }} ({{ i18n "outside_wcag" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+        </div>
+        <div class="priority-text">{{ i18n "outside_wcag_explanation" }}</div>
+        <ul class="patterns-list margin-top-small">
+            {{ range where $.Site.Pages "Section" "problems" }}
+                {{ if not (isset .Params "wcag") }}
+                    {{ if isset .Params "weight" }}
+                        {{ .Render "li"}}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        </ul>
+    {{ end }}
 
-
-
-    </ul>
 
 </main>
 {{ end }}

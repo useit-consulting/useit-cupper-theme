@@ -17,6 +17,26 @@
   })
 }());
 
+/* close buttons */
+(function () {
+
+  function close (button, target) {
+    console.log(target)
+    target.hidden = !target.hidden;
+  }
+
+  var closebuttons = document.querySelectorAll('[data-controls]');
+
+  Array.prototype.forEach.call(closebuttons, function (closebutton) {
+    var target = document.getElementById(closebutton.getAttribute('data-controls'));
+
+    closebutton.addEventListener('click', function () {
+      console.log("clicking!");
+      close(closebutton, target);
+    })
+  })
+}());
+
 /* menu button */
 (function () {
   var button = document.getElementById('menu-button');

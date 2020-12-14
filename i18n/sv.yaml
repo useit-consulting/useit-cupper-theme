@@ -109,4 +109,6 @@
 - id: nope
   translation: "Nej"
 - id: faces_alt_text
-  translation: ""
+  translation: "Ansikten som tittar på en datorskärm, illustration"
+- id: close
+  translation: "Stäng"

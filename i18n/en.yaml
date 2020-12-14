@@ -85,9 +85,9 @@
 - id: show_wcag_results
   translation: "Show failed and passed WCAG 2.1 (AA) criteria"
 - id: critical_explanation
-  translation: ""
+  translation: "Critical priority issues have a severe impact on users' ability to perceive, understand or make use of important parts othe interface."
 - id: critical_highlighted
-  translation: ""
+  translation: "Some users will likely to excluded altogether."
 - id: high_explanation
   translation: ""
 - id: medium_explanation
@@ -104,3 +104,5 @@
   translation: "No"
 - id: faces_alt_text
   translation: "Faces looking at a computer screen, illustration"
+- id: close
+  translation: "Close"

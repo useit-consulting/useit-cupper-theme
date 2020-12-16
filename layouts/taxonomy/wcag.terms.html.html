@@ -64,7 +64,7 @@
     {{ end }}
     {{ if eq $hasNonWcagIssues true }}
         <div class="h2-container margin-top">
-            <h2 id="non_wcag" tabindex="-1">{{ i18n "outside_wcag" }} </h2><a href="#failed_criteria" aria-label='{{ i18n "this_section" }} ({{ i18n "outside_wcag" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+            <h2 id="non_wcag" tabindex="-1">{{ i18n "outside_wcag" }} </h2><a href="#non_wcag" aria-label='{{ i18n "this_section" }} ({{ i18n "outside_wcag" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
         </div>
         <div class="priority-text">{{ i18n "outside_wcag_explanation" }}</div>
         <ul class="patterns-list margin-top-small">

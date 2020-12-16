@@ -34,6 +34,19 @@
       {{ partial "toc" . }}
     {{ end }}
 
+    {{ if isset .Params "pages" }}
+      <div class="h2-container">
+        <h2 id="affected_pages" tabindex="-1">{{ i18n "affected_pages" }}</h2><a href="#affected_pages" aria-label='{{ i18n "this_section" }} ({{ i18n "affected_pages" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+      </div>
+      <div class="text-container">
+        <ul class="pages">
+          {{ range .Params.pages }}
+          <li>{{ . | markdownify }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
 
     <div class="h2-container">
       <h2 id="problem_description" tabindex="-1">{{ i18n "problem_description" }}</h2><a href="#problem_description" aria-label='{{ i18n "this_section" }} ({{ i18n "problem_description" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>

@@ -7,7 +7,7 @@
 {{ $this := "" }}
 
 <main id="main">
-    <nav aria-label='{{ i18n "quick_navigation" }}'><a href='{{ ref $.Page "summary" }}'>{{ i18n "go_back_to_start" }}</a></nav>
+    <nav aria-label='{{ i18n "quick_navigation" }}'><a href='{{ .Site.Home.RelPermalink }}'>{{ i18n "go_back_to_start" }}</a></nav>
     <h1>
         {{ i18n "wcag_summary" }}
     </h1>

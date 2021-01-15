@@ -85,15 +85,15 @@
 - id: show_wcag_results
   translation: "Show failed and passed WCAG 2.1 (AA) criteria"
 - id: critical_explanation
-  translation: "Critical priority issues have a severe impact on users' ability to perceive, understand or make use of important parts othe interface."
+  translation: "Critical priority issues have a severe impact on users' ability to perceive, understand or make use of important parts of the interface."
 - id: critical_highlighted
   translation: "Some users will likely to excluded altogether."
 - id: high_explanation
-  translation: ""
+  translation: "These issues have a significant impact on users' ability to understand and use the interface."
 - id: medium_explanation
-  translation: ""
+  translation: "These issues will have a negative impact some users' ability to make use of the interface, but there will be ways around the problem."
 - id: low_explanation
-  translation: ""
+  translation: "These are problems that are not critical but should be fixed to improve the user experience of the interface."
 - id: outside_wcag
   translation: "Issues outside WCAG 2.1 (AA)"
 - id: outside_wcag_explanation

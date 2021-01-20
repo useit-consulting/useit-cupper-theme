@@ -112,3 +112,5 @@
   translation: "Ansikten som tittar på en datorskärm, illustration"
 - id: close
   translation: "Stäng"
+- id: affected_pages
+  translation: "Sidor som påverkas"

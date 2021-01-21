@@ -101,11 +101,11 @@
 - id: show_wcag_results
   translation: "Visa underkända och godkända krav i WCAG 2.1 (AA)"
 - id: outside_wcag
-  translation: ""
+  translation: "Problem utanför WCAG 2.1 (AA)"
 - id: outside_wcag_explanation
-  translation: ""
+  translation: "Todo: Översättning här"
 - id: no_non_wcag_issues_found
-  translation: ""
+  translation: "Todo: Översättning här"
 - id: nope
   translation: "Nej"
 - id: faces_alt_text

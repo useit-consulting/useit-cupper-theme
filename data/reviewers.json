@@ -7,7 +7,7 @@
     "certification": "CPWA",
     "phone": "+46 79 313 86 96",
     "email": "tommy@useit.se",
-    "img": "tommy.png"
+    "img": "tommy2.jpg"
   },
   {
     "id": "Sandra",
@@ -26,5 +26,41 @@
     "phone": "+46 76 94 42 70",
     "email": "frida@useit.se",
     "img": "frida.jpg"
+  },
+  {
+    "id": "Saja",
+    "name": "Saja Andersson",
+    "title": "UX designer and accessibility specialist",
+    "certification": "CPACC",
+    "phone": "+47 41 307 694",
+    "email": "saja@useitconsulting.no",
+    "img": "saja.jpg"
+  },
+  {
+    "id": "Danne",
+    "name": "Danne Borell",
+    "title": "Accessibility specialist",
+    "certification": "CPWA",
+    "phone": "+46 73 643 647 6",
+    "email": "danne@useit.se",
+    "img": "danne.jpg"
+  },
+  {
+    "id": "Raouf",
+    "name": "Raouf Sormunen",
+    "title": "Accessibility specialist",
+    "certification": "CPWA",
+    "phone": "+46 760 24 25 73",
+    "email": "raouf@useit.se",
+    "img": "raouf.jpg"
+  },
+  {
+    "id": "Moa",
+    "name": "Moa Glantz",
+    "title": "UX designer and accessibility specialist",
+    "certification": "",
+    "phone": "+46 70 597 46 30",
+    "email": "moa@useit.se",
+    "img": "Moa.jpg"
   }
 ]

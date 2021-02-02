@@ -1042,6 +1042,7 @@ h1 svg, h2 svg, h3 svg {
 .staff_image img {
     width:200px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .staff_image {
     min-width: 200px;

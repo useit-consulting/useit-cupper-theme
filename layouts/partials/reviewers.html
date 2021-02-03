@@ -15,10 +15,13 @@
         <div class="certification_logo">
 
           {{ if eq .certification "CPWA" }}
-          <img alt="Certified Professional in Web Accessibility by Internation Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPWA.jpg" | relURL }}'>
+          <img alt="Certified Professional in Web Accessibility by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPWA.jpg" | relURL }}'>
           {{ end }}
           {{ if eq .certification "CPACC" }}
-          <img alt="Certified Professional in Accessibility Core Competencies by Internation Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPACC.jpg" | relURL }}'>
+          <img alt="Certified Professional in Accessibility Core Competencies by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPACC.jpg" | relURL }}'>
+          {{ end }}
+          {{ if eq .certification "WAS" }}
+          <img alt="Certified Web Accessibility Specialist by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_WAS.jpg" | relURL }}'>
           {{ end }}
         </div>
       </div>

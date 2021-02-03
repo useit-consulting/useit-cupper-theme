@@ -21,7 +21,7 @@
   {
     "id": "Frida",
     "name": "Frida Fredblad",
-    "title": "Accessibility specialist",
+    "title": "UX designer and accessibility specialist",
     "certification": "CPACC",
     "phone": "+46 76 94 42 70",
     "email": "frida@useit.se",
@@ -39,7 +39,7 @@
   {
     "id": "Danne",
     "name": "Danne Borell",
-    "title": "Accessibility specialist",
+    "title": "Accessibility specialist and educator",
     "certification": "CPWA",
     "phone": "+46 73 643 647 6",
     "email": "danne@useit.se",
@@ -62,5 +62,14 @@
     "phone": "+46 70 597 46 30",
     "email": "moa@useit.se",
     "img": "Moa.jpg"
+  },
+  {
+    "id": "Andreas",
+    "name": "Andreas Cederbom",
+    "title": "Accessibility Guru",
+    "certification": "WAS",
+    "phone": "+46 79 339 77 11",
+    "email": "andreas@useit.se",
+    "img": "andreas.jpg"
   }
 ]

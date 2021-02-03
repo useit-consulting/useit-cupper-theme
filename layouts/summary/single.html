@@ -76,7 +76,7 @@
       <div id="js-expandable-materials" hidden>
         <ul class="materials">
           {{ range $.Page.Params.materials }}
-          <li>{{ . }}</li>
+          <li>{{ . | markdownify }}</li>
           {{ end }}
           </ul>
       </div>
@@ -105,7 +105,7 @@
         <div id="js-expandable-tools" hidden>
           <ul class="materials">
             {{ range $.Page.Params.equipment }}
-            <li>{{ . }}</li>
+            <li>{{ . | markdownify }}</li>
             {{ end }}
           </ul>
         </div>

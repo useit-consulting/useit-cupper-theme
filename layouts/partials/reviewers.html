@@ -9,7 +9,14 @@
       </div>
       <div class="staff_text">
         <h3>{{ .name }}</h3>
-        <p>{{ .title }}</p>
+        <p>
+          {{ if eq site.Language.Lang "sv" }}
+            {{ .titleSv }}
+          {{ end }}
+          {{ if eq site.Language.Lang "en" }}
+            {{ .titleEn }}
+          {{ end }}
+        </p>
         <p><a href="mailto:{{ .email }}">{{ .email }}</a></p>
         <p><a href="tel:{{ .phone }}">{{ .phone }}</a></p>
         <div class="certification_logo">

@@ -3,7 +3,8 @@
   {
     "id": "Tommy",
     "name": "Tommy Feldt",
-    "title": "UX designer and accessibility specialist",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": "CPWA",
     "phone": "+46 79 313 86 96",
     "email": "tommy@useit.se",
@@ -12,7 +13,8 @@
   {
     "id": "Sandra",
     "name": "Sandra Eriksson",
-    "title": "Accessibility specialist",
+    "titleEn": "Accessibility specialist",
+    "titleSv": "Tillgänglighetsexpert",
     "certification": "CPWA",
     "phone": "+46 76 94 42 70",
     "email": "sandra@useit.se",
@@ -21,7 +23,8 @@
   {
     "id": "Frida",
     "name": "Frida Fredblad",
-    "title": "UX designer and accessibility specialist",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": "CPACC",
     "phone": "+46 76 94 42 70",
     "email": "frida@useit.se",
@@ -30,7 +33,8 @@
   {
     "id": "Saja",
     "name": "Saja Andersson",
-    "title": "UX designer and accessibility specialist",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": "CPACC",
     "phone": "+47 41 307 694",
     "email": "saja@useitconsulting.no",
@@ -39,7 +43,8 @@
   {
     "id": "Danne",
     "name": "Danne Borell",
-    "title": "Accessibility specialist and educator",
+    "titleEn": "Accessibility specialist and educator",
+    "titleSv": "Tillgänglighetsexpert och utbildare",
     "certification": "CPWA",
     "phone": "+46 73 643 647 6",
     "email": "danne@useit.se",
@@ -48,7 +53,8 @@
   {
     "id": "Raouf",
     "name": "Raouf Sormunen",
-    "title": "Accessibility specialist",
+    "titleEn": "Accessibility specialist",
+    "titleSv": "Tillgänglighetsexpert",
     "certification": "CPWA",
     "phone": "+46 760 24 25 73",
     "email": "raouf@useit.se",
@@ -57,7 +63,8 @@
   {
     "id": "Moa",
     "name": "Moa Glantz",
-    "title": "UX designer and accessibility specialist",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": "",
     "phone": "+46 70 597 46 30",
     "email": "moa@useit.se",
@@ -66,7 +73,8 @@
   {
     "id": "Andreas",
     "name": "Andreas Cederbom",
-    "title": "Accessibility Guru",
+    "titleEn": "Accessibility guru",
+    "titleSv": "Tillgänglighetsguru",
     "certification": "WAS",
     "phone": "+46 79 339 77 11",
     "email": "andreas@useit.se",

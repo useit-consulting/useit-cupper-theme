@@ -1,0 +1,116 @@
+- id: print_version
+  translation: "Utskriftsvennlig versjon"
+- id: date
+  translation: "Dato"
+- id: reviewers
+  translation: "Gransker"
+- id: materials
+  translation: "Gransket materiale"
+- id: equipment
+  translation: "Utstyr"
+- id: summary
+  translation: "Sammendrag"
+- id: results
+  translation: "Resultat"
+- id: critical_priority
+  translation: "Kritisk prioritet"
+- id: critical_priority_issues
+  translation: "Problem med kritisk prioritet"
+- id: high_priority
+  translation: "Høy prioritet"
+- id: high_priority_issues
+  translation: "Problem med høy prioritet"
+- id: medium_priority
+  translation: "Mellomstor prioritet"
+- id: medium_priority_issues
+  translation: "Problem med mellomstor prioritet"
+- id: low_priority
+  translation: "Lav prioritet"
+- id: low_priority_issues
+  translation: "Problem med lav prioritet"
+- id: tags
+  translation: "Tagger"
+- id: problem_description
+  translation: "Problembeskrivelse"
+- id: suggested_solution
+  translation: "Løsningsforslag"
+- id: priority
+  translation: "Prioritet"
+- id: affected_user_groups
+  translation: "Brukere som påvirkes"
+- id: wcag_violations
+  translation: "WCAG 2.1 (AA)"
+- id: copy_as_markdown
+  translation: "Kopier som Markdown"
+- id: copy_as_jira
+  translation: "Kopier som JIRA"
+- id: start_page
+  translation: "Startside"
+- id: table_of_contents
+  translation: "Innholdsfortegnelse"
+- id: dark_theme
+  translation: "Mørk modus"
+- id: fist_bump_alt
+  translation: "En bruker slenger ut en fist bump gjennom PC-skjermen, illustrasjon"
+- id: wcag_summary
+  translation: "Sammendrag WCAG 2.1 (AA)"
+- id: passed_or_not_applicable
+  translation: "Godkjente eller ikke bedømte krav"
+- id: failed_criteria
+  translation: "Ikke godkjente krav"
+- id: show_all_wcag_criteria
+  translation: "Vis alle WCAG-krav"
+- id: quick_navigation
+  translation: "Hurtignavigering"
+- id: what_does_the_criteria_say
+  translation: "Hva sier kravet?"
+- id: identified_issues_related_to
+  translation: "Identifiserte problem relatert til "
+- id: read_more
+  translation: "Les mer"
+- id: tagged
+  translation: "Tagget med"
+- id: this_section
+  translation: "Dette avsnittet"
+- id: problems
+  translation: "problem"
+- id: taking_you_to_report
+  translation: "Vent litt, rapporten lastes..."
+- id: critical_explanation
+  translation: "Kritiske problem har svært stor påvirkning på brukernes evne til å benytte grensesnittet."
+- id: critical_highlighted
+  translation: "En del brukere blir sannsynligvis helt utestengt."
+- id: high_explanation
+  translation: "Dette er problem som har stor påvirkning på brukernes evner til å benytte og forstå grensesnittet."
+- id: medium_explanation
+  translation: "Dette er problem som påvirker en del brukeres evner til å forstå og benytte grensesnittet."
+- id: low_explanation
+  translation: "Dette er problem som bør korrigeres for å minimere risikoen for problemer hos brukerne."
+- id: go_back
+  translation: "Gå tilbake"
+- id: go_back_to_start
+  translation: "Gå tilbake til startsiden"
+- id: skip_to_content
+  translation: "Hopp til innholdet"
+- id: main_navigation
+  translation: "Hovednavigasjon"
+- id: wcag_results
+  translation: "Oversikt over WCAG 2.1 (AA)"
+- id: issues_results
+  translation: "Identifiserte problem"
+- id: show_wcag_results
+  translation: "Vis ikke-godkjente og godkjente krav i WCAG 2.1 (AA)"
+- id: outside_wcag
+  translation: "Problem utenfor WCAG 2.1 (AA)"
+- id: outside_wcag_explanation
+  translation: "Utenfor WCAG"
+- id: no_non_wcag_issues_found
+  translation: "Ingen problemer med WCAG funnet"
+- id: nope
+  translation: "Nei"
+- id: faces_alt_text
+  translation: "Ansikt som ser på en PC-skjerm, illustrasjon"
+- id: close
+  translation: "Lukk"
+- id: affected_pages
+  translation: "Sider som påvirkes"

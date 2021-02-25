@@ -19,6 +19,14 @@
               <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
             </li>
           {{ end }}
+          {{ range .Params.areas }}
+          <li>
+            <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+              <use xlink:href="#tag"></use>
+            </svg>
+            <a href="{{ "/areas/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          </li>
+          {{ end }}
           {{ range .Params.wcag }}
           <li>
             <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">

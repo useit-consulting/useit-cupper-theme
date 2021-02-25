@@ -68,6 +68,8 @@
   translation: "Identifiserte problem relatert til "
 - id: read_more
   translation: "Les mer"
+- id: problems_tagged
+  translation: "Problem tagget med"
 - id: tagged
   translation: "Tagget med"
 - id: this_section

@@ -68,6 +68,8 @@
   translation: "Identifierade problem relaterade till "
 - id: read_more
   translation: "Läs mer"
+- id: problems_tagged
+  translation: "Problem taggade med"
 - id: tagged
   translation: "Taggade med"
 - id: this_section

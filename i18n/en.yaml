@@ -68,6 +68,8 @@
   translation: "Identified issues related to"
 - id: read_more
   translation: "Read more"
+- id: problems_tagged
+  translation: "Problems tagged with"
 - id: tagged
   translation: "Tagged"
 - id: this_section

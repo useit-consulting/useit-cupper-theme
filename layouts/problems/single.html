@@ -7,7 +7,7 @@
       </svg>
       {{ .Title }}
     </h1>
-    {{ if isset .Params "tags" }}
+    {{ if or (isset .Params "tags") (isset .Params "areas") }}
       <div class="tags">
         <strong aria-hidden="true">{{ i18n "tags" }}: </strong>
         <ul aria-label="tags">

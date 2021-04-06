@@ -31,7 +31,7 @@
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "critical_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
-    {{ if eq .Weight 1 }}
+    {{ if and (eq .Weight 1) (ne .Params.draft true) }}
     <li class="pattern">
         <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
             <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
@@ -51,7 +51,7 @@
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "high_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
-    {{ if eq .Weight 2 }}
+    {{ if and (eq .Weight 2) (ne .Params.draft true) }}
     <li class="pattern">
         <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
             <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
@@ -71,7 +71,7 @@
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "medium_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
-    {{ if eq .Weight 3 }}
+    {{ if and (eq .Weight 3) (ne .Params.draft true) }}
     <li class="pattern">
         <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
             <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
@@ -91,7 +91,7 @@
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "low_priority_issues" }}'>
     {{ range .Pages.ByWeight }}
-    {{ if eq .Weight 4 }}
+    {{ if and (eq .Weight 4) (ne .Params.draft true) }}
     <li class="pattern">
         <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
             <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">

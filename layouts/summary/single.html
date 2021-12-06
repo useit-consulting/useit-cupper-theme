@@ -129,6 +129,10 @@
     <a href='{{ "wcag/" | relURL }}'>{{ i18n "show_wcag_results" }}</a>
   </div>
 
+  <div class="results-container">
+    <a href='{{ "components/" | relURL }}'>Show issues sorted by SKAPA component</a>
+  </div>
+
   <div id="summary-results-nav" class="patterns">
     {{ partial "problems-list.html" . }}
   </div>

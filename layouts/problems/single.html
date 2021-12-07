@@ -105,6 +105,7 @@
     </div>
     </div>
 
+    {{ with .Params.components }}
     <div class="expandable-section">
       <h2>
         <button aria-expanded="true" data-expands="js-expandable-components">
@@ -123,7 +124,7 @@
       </h2>
       <div id="js-expandable-components">
         <ul class="components">
-          {{ range .Params.components }}
+          {{ range . }}
           <li>
             <a href="{{ "/components/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
           </li>
@@ -131,6 +132,7 @@
         </ul>
       </div>
     </div>
+    {{ end }}
 
     <div class="expandable-section">
       <h2>

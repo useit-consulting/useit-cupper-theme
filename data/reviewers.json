@@ -35,6 +35,8 @@
     "name": "Saja Andersson",
     "titleEn": "UX designer and accessibility specialist",
     "titleSv": "UX-designer och tillgänglighetsexpert",
+    "altSv": "Svartvitt porträtt av Saja som ler mot kameran. Hon är cirka 30 år och har kortklippt blont hår.",
+    "altEn": "Black and white portrait of Saja who is smiling towards the camera. She is about 30 years old with short blonde hair.",
     "certification": "CPACC",
     "phone": "+47 41 307 694",
     "email": "saja@useitconsulting.no",
@@ -79,5 +81,15 @@
     "phone": "+46 79 339 77 11",
     "email": "andreas@useit.se",
     "img": "andreas.jpg"
+  },
+  {
+    "id": "Melad",
+    "name": "Melad Munther",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
+    "certification": "",
+    "phone": "+46 73 783 37 34",
+    "email": "melad@useit.se",
+    "img": "melad.png"
   }
 ]

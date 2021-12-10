@@ -91,15 +91,15 @@
 - id: critical_highlighted
   translation: "Some users will likely to excluded altogether."
 - id: high_explanation
-  translation: "These issues have a significant impact on users' ability to understand and use the interface."
+  translation: "High priority issues have a significant impact on users' ability to understand and use the interface."
 - id: medium_explanation
-  translation: "These issues will have a negative impact some users' ability to make use of the interface, but there will be ways around the problem."
+  translation: "Medium priority issues will have a negative impact some users' ability to make use of the interface, but there will be ways around the problem."
 - id: low_explanation
-  translation: "These are problems that are not critical but should be fixed to improve the user experience of the interface."
+  translation: "Low priority issues are problems that are not critical but should be fixed to improve the user experience of the interface. They can still include WCAG violations."
 - id: outside_wcag
   translation: "Issues outside WCAG 2.1 (AA)"
 - id: outside_wcag_explanation
-  translation: "Some of the accessibility issues we found are not covered by WCAG 2.1. This is often true for cognitive accessibility problems and design-related problems. We strongly recommend that you take these issues into account regardless, to create the best possible user experience."
+  translation: "Some of the accessibility issues we found are not covered by WCAG 2.1 (AA). This is often true for cognitive accessibility problems and design-related problems. We strongly recommend that you take these issues into account regardless to create the best possible user experience."
 - id: no_non_wcag_issues_found
   translation: "No non-WCAG issues were found"
 - id: nope

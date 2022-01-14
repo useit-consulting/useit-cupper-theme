@@ -13,37 +13,10 @@
       <h2 id="toc-heading">{{ i18n "table_of_contents" }}</h2>
       {{ $current := . }}
       {{ range $.Site.Home.Sections }}
-        <ul id="patterns-list">
-          {{ range .Pages.ByWeight }}
-          {{ if ne .Title "Problems" }}
-            <li class="pattern">
-              <a href="#{{ .Title | urlize }}" {{ if eq $current.Title .Title  }}aria-current="page"{{ end }}>
-                <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-                  <use xlink:href="#bookmark"></use>
-                </svg>
-                <span class="text">{{ .Title }}</span>
-              </a>
-            </li>
-          {{ end }}
-          {{ end }}
-          {{ range .Sections.ByWeight }}
-            <li>
-              <h3>{{ .Title }}</h3>
-              <ul>
-                {{ range .Pages.ByWeight }}
-                  <li class="pattern">
-                    <a href="#{{ .Title | urlize }}" {{ if eq $current.Title .Title  }}aria-current="page"{{ end }}>
-                      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-                        <use xlink:href="#bookmark"></use>
-                      </svg>
-                      <span class="text">{{ .Title }}</span>
-                    </a>
-                  </li>
-                {{ end }}
-              </ul>
-            </li>
-          {{ end }}
-        </ul>
+        {{ $current := . }}
+      <ul id="patterns-list">
+          {{ partial "problems-list-print.html" . }}
+      </ul>
       {{ end }}
     </nav>
     {{ $current := . }}
@@ -139,37 +112,39 @@
       <h2 id="results" tabindex="-1">{{ i18n "results" }}</h2><a href="#results" aria-label='{{ i18n "this_section" }} ({{ i18n "results" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
     </div>
 
+    <h2>{{ i18n "critical_priority" }}</h2>
     {{ range $.Site.Home.Sections }}
       {{ range .Pages.ByWeight }}
+      {{ if and (eq .Weight 1) (ne .Params.draft true) }}
         <div class="pattern-section">
-            <h3 id="{{ .Title | urlize }}" tabindex="-1">
+            <h1 id="{{ .Title | urlize }}" tabindex="-1">
               <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
                 <use xlink:href="#bookmark"></use>
               </svg>
               {{ .Title }}
-            </h3>
-            <h4>{{ i18n "problem_description" }}</h4>
-          <div class="text-container">{{ .Params.problemDescription | markdownify }}</div>
+            </h1>
+            <h2>{{ i18n "problem_description" }}</h2>
+            <div class="text-container">{{ .Params.problemDescription | markdownify }}</div>
 
-            <h4>{{ i18n "suggested_solution" }}</h4>
-          <div class="text-container">
-            {{ .Params.suggestedSolution | markdownify }}
-          </div>
+            <h2>{{ i18n "suggested_solution" }}</h2>
+            <div class="text-container">
+              {{ .Params.suggestedSolution | markdownify }}
+            </div>
 
-            <h4>{{ i18n "priority" }}</h4>
+            <h2>{{ i18n "priority" }}</h2>
             {{ if eq .Params.weight 1 }} <p>{{ i18n "critical_priority" }} ({{ .Params.weight }})</p>{{ end }}
             {{ if eq .Params.weight 2 }} <p>{{ i18n "high_priority" }} ({{ .Params.weight }}) </p>{{ end }}
             {{ if eq .Params.weight 3 }} <p>{{ i18n "medium_priority" }} ({{ .Params.weight }}) </p>{{ end }}
             {{ if eq .Params.weight 4 }} <p>{{ i18n "low_priority" }} ({{ .Params.weight }}) </p>{{ end }}
 
-            <h4>{{ i18n "affected_user_groups" }}</h4>
+            <h2>{{ i18n "affected_user_groups" }}</h2>
             <ul class="usergroups">
               {{ range .Params.usergroups }}
               <li>{{ . }}</li>
               {{ end }}
             </ul>
 
-            <h4>{{ i18n "wcag_violations" }}</h4>
+            <h2>{{ i18n "wcag_violations" }}</h2>
             {{ $JSON := $.Site.Data.wcag }}
             {{ $included := .Params.wcag }}
             <ul class="wcag">
@@ -188,13 +163,166 @@
             </ul>
         </div>
       {{ end }}
-      {{ range .Sections.ByWeight }}
+    {{ end }}
+    {{ end }}
+    <h2>{{ i18n "high_priority" }}</h2>
+    {{ range $.Site.Home.Sections }}
+    {{ range .Pages.ByWeight }}
+    {{ if and (eq .Weight 2) (ne .Params.draft true) }}
+    <div class="pattern-section">
+      <h1 id="{{ .Title | urlize }}" tabindex="-1">
+        <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+          <use xlink:href="#bookmark"></use>
+        </svg>
+        {{ .Title }}
+      </h1>
+      <h2>{{ i18n "problem_description" }}</h2>
+      <div class="text-container">{{ .Params.problemDescription | markdownify }}</div>
 
+      <h2>{{ i18n "suggested_solution" }}</h2>
+      <div class="text-container">
+        {{ .Params.suggestedSolution | markdownify }}
+      </div>
 
-        {{ range .Pages.ByWeight }}
-          
+      <h2>{{ i18n "priority" }}</h2>
+      {{ if eq .Params.weight 1 }} <p>{{ i18n "critical_priority" }} ({{ .Params.weight }})</p>{{ end }}
+      {{ if eq .Params.weight 2 }} <p>{{ i18n "high_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+      {{ if eq .Params.weight 3 }} <p>{{ i18n "medium_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+      {{ if eq .Params.weight 4 }} <p>{{ i18n "low_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+
+      <h2>{{ i18n "affected_user_groups" }}</h2>
+      <ul class="usergroups">
+        {{ range .Params.usergroups }}
+        <li>{{ . }}</li>
         {{ end }}
-      {{ end }}
+      </ul>
+
+      <h2>{{ i18n "wcag_violations" }}</h2>
+      {{ $JSON := $.Site.Data.wcag }}
+      {{ $included := .Params.wcag }}
+      <ul class="wcag">
+        {{ range $JSON }}
+        {{ if in $included .ref_id }}
+        <li>
+          <strong><a href="{{ .url }}">
+            <svg class="wcag-icon" viewBox="0 0 127.09899 67.763" aria-hidden="true" focusable="false">
+              <use xlink:href="#w3c"></use>
+            </svg>
+            {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
+          </strong>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+    <h2>{{ i18n "medium_priority" }}</h2>
+    {{ range $.Site.Home.Sections }}
+    {{ range .Pages.ByWeight }}
+    {{ if and (eq .Weight 3) (ne .Params.draft true) }}
+    <div class="pattern-section">
+      <h1 id="{{ .Title | urlize }}" tabindex="-1">
+        <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+          <use xlink:href="#bookmark"></use>
+        </svg>
+        {{ .Title }}
+      </h1>
+      <h2>{{ i18n "problem_description" }}</h2>
+      <div class="text-container">{{ .Params.problemDescription | markdownify }}</div>
+
+      <h2>{{ i18n "suggested_solution" }}</h2>
+      <div class="text-container">
+        {{ .Params.suggestedSolution | markdownify }}
+      </div>
+
+      <h2>{{ i18n "priority" }}</h2>
+      {{ if eq .Params.weight 1 }} <p>{{ i18n "critical_priority" }} ({{ .Params.weight }})</p>{{ end }}
+      {{ if eq .Params.weight 2 }} <p>{{ i18n "high_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+      {{ if eq .Params.weight 3 }} <p>{{ i18n "medium_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+      {{ if eq .Params.weight 4 }} <p>{{ i18n "low_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+
+      <h2>{{ i18n "affected_user_groups" }}</h2>
+      <ul class="usergroups">
+        {{ range .Params.usergroups }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+
+      <h2>{{ i18n "wcag_violations" }}</h2>
+      {{ $JSON := $.Site.Data.wcag }}
+      {{ $included := .Params.wcag }}
+      <ul class="wcag">
+        {{ range $JSON }}
+        {{ if in $included .ref_id }}
+        <li>
+          <strong><a href="{{ .url }}">
+            <svg class="wcag-icon" viewBox="0 0 127.09899 67.763" aria-hidden="true" focusable="false">
+              <use xlink:href="#w3c"></use>
+            </svg>
+            {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
+          </strong>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+    <h2>{{ i18n "low_priority" }}</h2>
+    {{ range $.Site.Home.Sections }}
+    {{ range .Pages.ByWeight }}
+    {{ if and (eq .Weight 4) (ne .Params.draft true) }}
+    <div class="pattern-section">
+      <h1 id="{{ .Title | urlize }}" tabindex="-1">
+        <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+          <use xlink:href="#bookmark"></use>
+        </svg>
+        {{ .Title }}
+      </h1>
+      <h2>{{ i18n "problem_description" }}</h2>
+      <div class="text-container">{{ .Params.problemDescription | markdownify }}</div>
+
+      <h2>{{ i18n "suggested_solution" }}</h2>
+      <div class="text-container">
+        {{ .Params.suggestedSolution | markdownify }}
+      </div>
+
+      <h2>{{ i18n "priority" }}</h2>
+      {{ if eq .Params.weight 1 }} <p>{{ i18n "critical_priority" }} ({{ .Params.weight }})</p>{{ end }}
+      {{ if eq .Params.weight 2 }} <p>{{ i18n "high_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+      {{ if eq .Params.weight 3 }} <p>{{ i18n "medium_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+      {{ if eq .Params.weight 4 }} <p>{{ i18n "low_priority" }} ({{ .Params.weight }}) </p>{{ end }}
+
+      <h2>{{ i18n "affected_user_groups" }}</h2>
+      <ul class="usergroups">
+        {{ range .Params.usergroups }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+
+      <h2>{{ i18n "wcag_violations" }}</h2>
+      {{ $JSON := $.Site.Data.wcag }}
+      {{ $included := .Params.wcag }}
+      <ul class="wcag">
+        {{ range $JSON }}
+        {{ if in $included .ref_id }}
+        <li>
+          <strong><a href="{{ .url }}">
+            <svg class="wcag-icon" viewBox="0 0 127.09899 67.763" aria-hidden="true" focusable="false">
+              <use xlink:href="#w3c"></use>
+            </svg>
+            {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
+          </strong>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ end }}
     {{ end }}
   </main>
 {{ end }}

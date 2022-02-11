@@ -91,5 +91,25 @@
     "phone": "+46 76 028 72 33",
     "email": "melad@useit.se",
     "img": "melad.png"
+  },
+  {
+    "id": "Elsa",
+    "name": "Elsa Kristensen",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
+    "certification": "",
+    "phone": "+47 402 45 002",
+    "email": "elsa@useitconsulting.no",
+    "img": ""
+  },
+  {
+    "id": "Thana",
+    "name": "Thana Pathawanich",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
+    "certification": "",
+    "phone": "+47 970 00 142",
+    "email": "thana@useitconsulting.no",
+    "img": ""
   }
 ]

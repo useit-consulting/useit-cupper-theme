@@ -21,14 +21,17 @@
         <p><a href="tel:{{ .phone }}">{{ .phone }}</a></p>
         <div class="certification_logo">
 
-          {{ if eq .certification "CPWA" }}
+          {{ if in .certification "CPWA" }}
           <img alt="Certified Professional in Web Accessibility by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPWA.jpg" | relURL }}'>
           {{ end }}
-          {{ if eq .certification "CPACC" }}
+          {{ if in .certification "CPACC" }}
           <img alt="Certified Professional in Accessibility Core Competencies by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_CPACC.jpg" | relURL }}'>
           {{ end }}
-          {{ if eq .certification "WAS" }}
+          {{ if in .certification "WAS" }}
           <img alt="Certified Web Accessibility Specialist by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_WAS.jpg" | relURL }}'>
+          {{ end }}
+          {{ if in .certification "ADS" }}
+          <img alt="Certified Accessible Documents Specialist by International Association of Accessibility Professionals (IAAP)" src='{{ "images/IAAP_ADS.jpeg" | relURL }}'>
           {{ end }}
         </div>
       </div>

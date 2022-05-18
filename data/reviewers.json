@@ -5,7 +5,7 @@
     "name": "Tommy Feldt",
     "titleEn": "UX designer and accessibility specialist",
     "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": "CPWA",
+    "certification": ["CPWA"],
     "phone": "+46 79 313 86 96",
     "email": "tommy@useit.se",
     "img": "tommy2.jpg"
@@ -15,7 +15,7 @@
     "name": "Sandra Eriksson",
     "titleEn": "Accessibility specialist",
     "titleSv": "Tillgänglighetsexpert",
-    "certification": "CPWA",
+    "certification": ["CPWA"],
     "phone": "+46 76 94 42 70",
     "email": "sandra@useit.se",
     "img": "sandra2.png"
@@ -25,7 +25,7 @@
     "name": "Frida Fredblad",
     "titleEn": "UX designer and accessibility specialist",
     "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": "CPACC",
+    "certification": ["CPACC"],
     "phone": "+46 76 94 42 70",
     "email": "frida@useit.se",
     "img": "frida.jpg"
@@ -37,7 +37,7 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "altSv": "Svartvitt porträtt av Saja som ler mot kameran. Hon är cirka 30 år och har kortklippt blont hår.",
     "altEn": "Black and white portrait of Saja who is smiling towards the camera. She is about 30 years old with short blonde hair.",
-    "certification": "CPACC",
+    "certification": ["CPACC", "ADS"],
     "phone": "+47 41 307 694",
     "email": "saja@useitconsulting.no",
     "img": "saja.jpg"
@@ -47,7 +47,7 @@
     "name": "Danne Borell",
     "titleEn": "Accessibility specialist and educator",
     "titleSv": "Tillgänglighetsexpert och utbildare",
-    "certification": "CPWA",
+    "certification": ["CPWA", "ADS"],
     "phone": "+46 73 643 647 6",
     "email": "danne@useit.se",
     "img": "danne.jpg"
@@ -57,7 +57,7 @@
     "name": "Raouf Sormunen",
     "titleEn": "Accessibility specialist",
     "titleSv": "Tillgänglighetsexpert",
-    "certification": "CPWA",
+    "certification": ["CPWA", "ADS"],
     "phone": "+46 760 24 25 73",
     "email": "raouf@useit.se",
     "img": "raouf.jpg"
@@ -77,7 +77,7 @@
     "name": "Andreas Cederbom",
     "titleEn": "Accessibility guru",
     "titleSv": "Tillgänglighetsguru",
-    "certification": "WAS",
+    "certification": ["WAS"],
     "phone": "+46 79 339 77 11",
     "email": "andreas@useit.se",
     "img": "andreas.jpg"

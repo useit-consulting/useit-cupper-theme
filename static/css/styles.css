@@ -61,6 +61,11 @@ img {
 img.no-border {
     border: none;
 }
+
+img + img {
+    margin-top: 1rem;
+}
+
 p img {
     margin: 0.75rem 0;
 }

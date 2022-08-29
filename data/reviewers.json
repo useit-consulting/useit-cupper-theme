@@ -111,5 +111,15 @@
     "phone": "+47 970 00 142",
     "email": "thana@useitconsulting.no",
     "img": "thana.jpg"
+  },
+  {
+    "id": "Hanna",
+    "name": "Hanna Fredholm",
+    "titleEn": "Accessibility and documents specialist",
+    "titleSv": "Tillgänglighets- och dokumentexpert ",
+    "certification": ["ADS", "CPACC"],
+    "phone": "",
+    "email": "hanna.fredholm@useit.se",
+    "img": "hanna.jpg"
   }
 ]

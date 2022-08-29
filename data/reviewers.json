@@ -7,7 +7,7 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": ["CPWA"],
     "phone": "+46 79 313 86 96",
-    "email": "tommy@useit.se",
+    "email": "tommy.feldt@useit.se",
     "img": "tommy2.jpg"
   },
   {
@@ -17,7 +17,7 @@
     "titleSv": "Tillgänglighetsexpert",
     "certification": ["CPWA"],
     "phone": "+46 76 94 42 70",
-    "email": "sandra@useit.se",
+    "email": "sandra.eriksson@useit.se",
     "img": "sandra2.png"
   },
   {
@@ -27,7 +27,7 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": ["CPACC"],
     "phone": "+46 76 94 42 70",
-    "email": "frida@useit.se",
+    "email": "frida.fredblad@useit.se",
     "img": "frida.jpg"
   },
   {
@@ -49,7 +49,7 @@
     "titleSv": "Tillgänglighetsexpert och utbildare",
     "certification": ["CPWA", "ADS"],
     "phone": "+46 73 643 647 6",
-    "email": "danne@useit.se",
+    "email": "danne.borell@useit.se",
     "img": "danne.jpg"
   },
   {
@@ -59,7 +59,7 @@
     "titleSv": "Tillgänglighetsexpert",
     "certification": ["CPWA", "ADS"],
     "phone": "+46 760 24 25 73",
-    "email": "raouf@useit.se",
+    "email": "raouf.sormunen@useit.se",
     "img": "raouf.jpg"
   },
   {
@@ -69,7 +69,7 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": "",
     "phone": "+46 70 597 46 30",
-    "email": "moa@useit.se",
+    "email": "moa.glantz@useit.se",
     "img": "Moa.jpg"
   },
   {
@@ -79,7 +79,7 @@
     "titleSv": "Tillgänglighetsguru",
     "certification": ["WAS"],
     "phone": "+46 79 339 77 11",
-    "email": "andreas@useit.se",
+    "email": "andreas.cederbom@useit.se",
     "img": "andreas.jpg"
   },
   {
@@ -89,7 +89,7 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": ["CPACC"],
     "phone": "+46 76 028 72 33",
-    "email": "melad@useit.se",
+    "email": "melad.munther@useit.se",
     "img": "melad.png"
   },
   {
@@ -121,5 +121,15 @@
     "phone": "",
     "email": "hanna.fredholm@useit.se",
     "img": "hanna.jpg"
+  },
+  {
+    "id": "Anna",
+    "name": "Anna Carlén",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
+    "certification": "",
+    "phone": "",
+    "email": "anna.carlen@useit.se",
+    "img": "ana.jpg"
   }
 ]

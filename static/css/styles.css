@@ -23,7 +23,7 @@
     --border-color: #999;
     --blue-color: var(--blue);
     --light-blue: var(--light-blue);
-    --focus-color: #999;
+    --focus-color: var(--darkerblue);
 }
 
 :root.dark {
@@ -116,7 +116,8 @@ figure p img {
 [data-expands]:focus svg.expandable-icon,
 .patterns a:focus .text,
 [for="themer"] :focus + [aria-hidden] {
-    outline: 4px solid var(--focus-color);
+    outline: 8px solid var(--focus-color);
+    outline-offset: 4px;
 }
 a {
   outline-offset: 2px;
@@ -168,15 +169,18 @@ h2{
 }
 h3{
     font-size: 1.25rem;
+    font-weight: 500;
     font-family: 'Poppins', sans-serif;
 }
 h4,
 h5 {
     font-size: 1rem;
-    font-family: PT Sans, sans-serif;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
 }
 h5 {
     font-size: 0.85rem;
+    font-weight: 500;
     text-transform: uppercase;
 }
 kbd {
@@ -283,6 +287,10 @@ label {
   color: var(--bg-color);
   padding: 0.25em 0.75em;
   margin: 0.5rem;
+    font-weight: normal;
+}
+[for="themer"] span::before {
+    font-weight: bold;
 }
 
 [for="themer"] [aria-hidden]::before {
@@ -405,8 +413,9 @@ html.dark .logo img {
 .main-and-footer > div {
     max-width: 35rem;
     margin: 0 auto;
-    padding: 2.25rem;
+    padding: 2.25rem 1.25rem;
 }
+
 [role="contentinfo"] {
     font-size: 0.85rem;
     margin-top: 1rem;
@@ -470,7 +479,7 @@ html.dark .logo img {
 }
 #menu-button:focus {
     outline: none;
-    box-shadow: inset 0 0 0 0.25rem var(--border-color);
+    box-shadow: inset 0 0 0 8px var(--focus-color);
 }
 /* Tables of contents */
 
@@ -507,7 +516,7 @@ html.dark .logo img {
 /* Tags */
 
 .tags {
-    margin-top: 0;
+    margin-top: 1rem;
     font-size: 0.85rem;
 }
 .tags * {
@@ -690,13 +699,6 @@ pre[class*=language-] code * {
 /* Expandable sections */
 .expandable-section {
     margin-bottom: 1rem;
-}
-[id^="js-expandable-"] {
-    margin: 0;
-    padding: 1rem 0 0.75rem;
-}
-
-.expandable-section button {
     padding: 1rem;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -704,8 +706,16 @@ pre[class*=language-] code * {
     border-bottom-right-radius: 0;
     background-color: var(--accent-color);
 }
-.expandable-section button:hover {
-    filter: brightness(0.95);
+[id^="js-expandable-"] {
+    margin: 0;
+    padding: 1rem 0 0.75rem;
+}
+
+.expandable-section h2 {
+
+}
+.expandable-section button {
+    font-weight: 500;
 }
 
 @media screen {
@@ -819,7 +829,7 @@ html.dark .icon-background {
 .link-icon {
   width: 0.75em;
   height: 0.75em;
-  color: #959595;
+    opacity: 0.54;
     transition: color 100ms ease-in;
 }
 .link-icon:hover, .link-icon:focus {
@@ -880,14 +890,20 @@ html.dark .icon-background {
 .h2-container {
     position: relative;
     font-size: 1.66rem;
+    align-items: center;
+    display: inline-flex;
 }
+
+.h2-container h2 {
+    display: inline-flex;
+}
+
 .h2-container a {
-    position: absolute;
     margin-top: 0;
-    top: 0;
     line-height: 1;
-    left: -1em;
     border: 0;
+    display: inline-flex;
+    margin-left: 0.5em;
 }
 
 .h2-container a:focus svg {
@@ -1073,6 +1089,7 @@ html.dark .icon-background {
     }
     [id^="js-expandable-"] {
         display: block;
+
     }
     [data-expands] svg {
         display: none;
@@ -1177,15 +1194,20 @@ html.dark .icon-background {
 }
 
 .copy-buttons {
+    display:flex;
+    gap: 1rem;
     text-align: center;
     margin-bottom: 6rem;
+    justify-content: center;
 }
 
 .copy-buttons button {
-    font-size: 0.75rem;
     background-color: var(--button-color);
     color: white;
     cursor: pointer;
+    margin-top: 0;
+    padding: 1em 2.5em;
+    font-size: 0.85rem;
 }
 
 .copy-buttons button:hover {
@@ -1249,6 +1271,7 @@ html.dark .priority-text {
     padding: 0.5rem;
     font-size: 0.8rem;
     max-height: 2rem;
+    cursor: pointer;
 }
 
 .priority-text + ul {

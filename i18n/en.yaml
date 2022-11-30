@@ -110,4 +110,6 @@
   translation: "Close"
 - id: affected_pages
   translation: "Affected pages"
+- id: menu
+  translation: "Menu"
 

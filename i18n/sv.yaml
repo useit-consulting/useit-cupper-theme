@@ -116,3 +116,5 @@
   translation: "Stäng"
 - id: affected_pages
   translation: "Sidor som påverkas"
+- id: menu
+  translation: "Meny"

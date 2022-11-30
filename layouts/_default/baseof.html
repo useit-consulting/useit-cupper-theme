@@ -36,9 +36,9 @@
         {{ .Title }} | {{ .Site.Title }}
       {{ end }}
     </title>
-    {{ if .IsHome }}
-      <link rel="manifest" href="manifest.json">
-    {{ end }}
+<!--    {{ if .IsHome }}-->
+<!--      <link rel="manifest" href="manifest.json">-->
+<!--    {{ end }}-->
   </head>
   <body>
     {{ if ne .Type "print-version" }}
@@ -50,7 +50,7 @@
           <div>
             <div class="intro">
               <a class="logo" href="{{ .Site.Home.RelPermalink }}" aria-label='{{ .Site.Title }} {{ i18n "start_page" }}'>
-                <img id="useit-logo" class="no-border" src="{{ "images/useit-logo.png" | relURL }}" alt="">
+                <img id="useit-logo" class="no-border" src="{{ "images/useit.svg" | relURL }}" alt="">
               </a>
               <p class="library-desc">
                 {{ .Site.Params.Description | markdownify }}
@@ -130,18 +130,19 @@
         }
 
         function darkTheme(media) {
-          inverter.setAttribute('media', media);
-          inverter.textContent = inverter.textContent.trim();
+          if (media === "screen")
+            document.documentElement.classList.add('dark');
+          else document.documentElement.classList.remove('dark');
+          // inverter.setAttribute('media', media);
+          // inverter.textContent = inverter.textContent.trim();
           localStorage.setItem('darkTheme', media);
           //Set image url
           const depth = window.location.pathname.split("/").length - 1;
           const imgUrlStart = '{{ .Site.BaseURL }}images';
-          console.log(imgUrlStart);
-          const logo = (media === 'screen' ? imgUrlStart+'/useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
-          const aceit = (media === 'screen' ? imgUrlStart+'/Aceit2--dark.png' : imgUrlStart+'/Aceit2.png');
-          console.log(logo);
-          image.setAttribute('src', logo);
-          fistbump.setAttribute('src', aceit);
+          // const logo = (media === 'screen' ? imgUrlStart+'/useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
+          // const aceit = (media === 'screen' ? imgUrlStart+'/Aceit2--dark.png' : imgUrlStart+'/Aceit2.png');
+          // image.setAttribute('src', logo);
+          //fistbump.setAttribute('src', aceit);
         }
 
         checkbox.addEventListener('change', function () {

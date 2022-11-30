@@ -139,9 +139,9 @@
           //Set image url
           const depth = window.location.pathname.split("/").length - 1;
           const imgUrlStart = '{{ .Site.BaseURL }}images';
-          // const logo = (media === 'screen' ? imgUrlStart+'/useit_logo--black.png' : imgUrlStart+'/useit-logo.png');
+          const logo = (media === 'screen' ? imgUrlStart+'/useit-dark.svg' : imgUrlStart+'/useit.svg');
           // const aceit = (media === 'screen' ? imgUrlStart+'/Aceit2--dark.png' : imgUrlStart+'/Aceit2.png');
-          // image.setAttribute('src', logo);
+          image.setAttribute('src', logo);
           //fistbump.setAttribute('src', aceit);
         }
 

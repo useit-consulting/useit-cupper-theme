@@ -390,7 +390,7 @@ html:not(.dark) .intro-and-nav {
     max-width: 12rem;
 }
 html.dark .logo img {
-    filter: invert(1);
+    /*filter: invert(1);*/
 }
 
 .library-desc {

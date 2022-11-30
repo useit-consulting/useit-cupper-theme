@@ -112,4 +112,6 @@
   translation: "Affected pages"
 - id: menu
   translation: "Menu"
+- id: go_back_to_start
+  translation: "Back to start"
 

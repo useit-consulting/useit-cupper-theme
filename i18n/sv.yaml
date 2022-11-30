@@ -118,3 +118,5 @@
   translation: "Sidor som påverkas"
 - id: menu
   translation: "Meny"
+- id: go_back_to_start
+  translation: "Tillbaka till startsidan"

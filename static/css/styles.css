@@ -112,10 +112,10 @@ p img {
 figure p img {
     margin: 0;
 }
-:focus:not([tabindex="-1"]),
-[data-expands]:focus svg.expandable-icon,
-.patterns a:focus .text,
-[for="themer"] :focus + [aria-hidden] {
+:focus-visible:not([tabindex="-1"]),
+[data-expands]:focus-visible svg.expandable-icon,
+.patterns a:focus-visible .text,
+[for="themer"] :focus-visible + [aria-hidden] {
     outline: 8px solid var(--focus-color);
     outline-offset: 4px;
 }
@@ -124,8 +124,8 @@ a {
 }
 /* fix for IE :( */
 
-[tabindex="-1"]:focus,
-div:not([tabindex]):focus {
+[tabindex="-1"]:focus-visible,
+div:not([tabindex]):focus-visible {
     outline: none;
 }
 [hidden] {
@@ -432,6 +432,7 @@ html.dark .logo img {
 }
 .patterns h3 {
     font-size: 1rem;
+    font-weight: 600;
 }
 .patterns h3 + ul {
     margin: 0.75rem 0 1.5rem 0;
@@ -453,10 +454,14 @@ html.dark .logo img {
     align-items: baseline;
     font-weight: normal;
     padding: 0 1rem;
-    text-decoration: underline;
-    text-underline-offset: 0.12em;
     line-height: 1.5;
 }
+
+.pattern a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
 .pattern a:focus {
     outline: none;
 }
@@ -504,6 +509,10 @@ html.dark .logo img {
     list-style: none;
     margin-left: 0;
 }
+.wcag-patterns h2, .wcag-patterns h3 {
+    font-weight: 500;
+}
+
 .patterns-list h2, .patterns-list h3 {
     font-size: 1rem;
 }
@@ -1244,7 +1253,7 @@ html.dark .icon-background {
     justify-content: space-between;
 }
 .number-issues {
-    color: #767676;
+    opacity: 0.54;
     margin-top: initial;
     font-weight: normal;
 }
@@ -1295,6 +1304,8 @@ html.dark .priority-text {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
 }
 .results-container a[href]::before {
     content: '';

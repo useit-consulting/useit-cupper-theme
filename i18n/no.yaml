@@ -116,3 +116,5 @@
   translation: "Lukk"
 - id: affected_pages
   translation: "Sider som påvirkes"
+- id: go_back_to_start
+  translation: "Tillbak til hovedsiden"

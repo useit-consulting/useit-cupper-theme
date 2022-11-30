@@ -689,17 +689,25 @@ pre[class*=language-] code * {
 }
 /* Expandable sections */
 .expandable-section {
-    padding: 1rem;
-    background-color: var(--accent-color);
     margin-bottom: 1rem;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
 }
 [id^="js-expandable-"] {
     margin: 0;
     padding: 1rem 0 0.75rem;
 }
+
+.expandable-section button {
+    padding: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 0;
+    background-color: var(--accent-color);
+}
+.expandable-section button:hover {
+    filter: brightness(0.95);
+}
+
 @media screen {
     .expandable-section + .expandable-section {
         margin-top: 0;
@@ -815,7 +823,7 @@ html.dark .icon-background {
     transition: color 100ms ease-in;
 }
 .link-icon:hover, .link-icon:focus {
-    color: #000;
+    filter: brightness(0.95);
 }
 
 .tags svg, .link-icon {
@@ -883,7 +891,7 @@ html.dark .icon-background {
 }
 
 .h2-container a:focus svg {
-    color: #000
+    filter: brightness(0.95);
 }
 /* Single page layout */
 
@@ -1096,6 +1104,7 @@ html.dark .icon-background {
 .staff {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .staff_image img {
     width:200px;
@@ -1107,12 +1116,12 @@ html.dark .icon-background {
     min-width: 200px;
     height: 200px;
     display: flex;
+    margin: 2rem;
 }
 
 .staff_text{
-    flex-grow: 1;
+    flex: 1;
     margin-top: 0rem;
-    margin-left: 2rem;
 }
 
 .staff_text h3 {
@@ -1230,6 +1239,7 @@ html.dark .icon-background {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 1rem;
 }
 html.dark .priority-text {
     background-color: var(--accent-color);
@@ -1246,11 +1256,31 @@ html.dark .priority-text {
 }
 
 .results-container {
-    padding: 1rem;
+    position: relative;
+}
+.results-container a[href] {
     background-color: var(--accent-color);
+    display: flex;
+    width:100%;
+    height: 100%;
+    padding: 1rem;
+    border: 0;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    border-bottom-right-radius: 0;
+}
+.results-container a[href]::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+.results-container a[href]:hover {
+    filter: brightness(0.95);
 }
 
 .none-found {

@@ -118,3 +118,5 @@
   translation: "Sider som påvirkes"
 - id: go_back_to_start
   translation: "Tillbak til hovedsiden"
+- id: about_our_priority
+  translation: "Om våre prioriteringer"

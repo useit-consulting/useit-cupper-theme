@@ -114,4 +114,6 @@
   translation: "Menu"
 - id: go_back_to_start
   translation: "Back to start"
+- id: about_our_priority
+  translation: "About our priority levels"
 

@@ -120,3 +120,5 @@
   translation: "Meny"
 - id: go_back_to_start
   translation: "Tillbaka till startsidan"
+- id: about_our_priority
+  translation: "Om vår prioritering"

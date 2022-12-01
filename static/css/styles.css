@@ -729,6 +729,10 @@ pre[class*=language-] code * {
     font-weight: 500;
 }
 
+.expandable-section.expandable-priority button {
+    font-size: 1rem;
+}
+
 @media screen {
     .expandable-section + .expandable-section {
         margin-top: 0;
@@ -1267,7 +1271,7 @@ html.dark .icon-background {
 
 .priority-text {
     padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 4rem;
     margin-bottom: 1rem;
     background-color: var(--bg-grey);
     display: flex;
@@ -1289,35 +1293,18 @@ html.dark .priority-text {
 .priority-text + ul {
     margin: 1.5rem 0 2.5rem 0;
 }
+.priority-text p {
+    margin-top: 1rem;
+}
 
 .results-container {
     position: relative;
+    margin-top: 1rem;
 }
 .results-container a[href] {
-    background-color: var(--accent-color);
-    display: flex;
-    width:100%;
-    height: 100%;
-    padding: 1rem;
     border: 0;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 0;
     text-decoration: underline;
     text-underline-offset: 0.12em;
-}
-.results-container a[href]::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-}
-.results-container a[href]:hover {
-    filter: brightness(0.95);
 }
 
 .none-found {

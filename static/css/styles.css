@@ -710,6 +710,22 @@ pre[class*=language-] code * {
 /* Expandable sections */
 .expandable-section {
     margin-bottom: 1rem;
+}
+[id^="js-expandable-"] {
+    margin: 0;
+    padding: 1rem;
+    background-color: var(--accent-color);
+    border-bottom-left-radius: 1rem;
+}
+
+.dark .expandable-section button:hover {
+    filter: brightness(1.15);
+}
+html:not(.dark) .expandable-section button:hover {
+    filter: brightness(0.98);
+}
+.expandable-section button {
+    font-weight: 500;
     padding: 1rem;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -717,16 +733,8 @@ pre[class*=language-] code * {
     border-bottom-right-radius: 0;
     background-color: var(--accent-color);
 }
-[id^="js-expandable-"] {
-    margin: 0;
-    padding: 1rem 0 0.75rem;
-}
-
-.expandable-section h2 {
-
-}
-.expandable-section button {
-    font-weight: 500;
+.expandable-section button[aria-expanded="true"] {
+    border-bottom-left-radius: 0;
 }
 
 .expandable-section.expandable-priority button {

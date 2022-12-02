@@ -42,6 +42,17 @@
         {{ .Title }} | {{ .Site.Title }}
       {{ end }}
     </title>
+    <script>
+      function darkTheme(media) {
+        if (media === "screen")
+          document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkTheme', media);
+      }
+      // Render blocking JS:
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')
+        darkTheme("screen");
+    </script>
 <!--    {{ if .IsHome }}-->
 <!--      <link rel="manifest" href="manifest.json">-->
 <!--    {{ end }}-->
@@ -56,7 +67,8 @@
           <div>
             <div class="intro">
               <a class="logo" href="{{ .Site.Home.RelPermalink }}" aria-label='{{ .Site.Title }} {{ i18n "start_page" }}'>
-                <img id="useit-logo" class="no-border" src="{{ "images/useit.svg" | relURL }}" alt="">
+                <img class="useit-logo no-border" src="{{ "images/useit.svg" | relURL }}" alt="">
+                <img class="useit-logo-dark no-border" src="{{ "images/useit-dark.svg" | relURL }}" alt="">
               </a>
               <p class="library-desc">
                 {{ .Site.Params.Description | markdownify }}
@@ -125,31 +137,6 @@
         }
 
         var checkbox = document.getElementById('themer');
-        var inverter = document.getElementById('inverter');
-        var image = document.getElementById('useit-logo');
-        var fistbump = document.getElementById('fistbump');
-
-
-        if (!CSSSupported('filter', 'invert(100%)')) {
-          checkbox.parentNode.hidden = true;
-          return;
-        }
-
-        function darkTheme(media) {
-          if (media === "screen")
-            document.documentElement.classList.add('dark');
-          else document.documentElement.classList.remove('dark');
-          // inverter.setAttribute('media', media);
-          // inverter.textContent = inverter.textContent.trim();
-          localStorage.setItem('darkTheme', media);
-          //Set image url
-          const depth = window.location.pathname.split("/").length - 1;
-          const imgUrlStart = '{{ .Site.BaseURL }}images';
-          const logo = (media === 'screen' ? imgUrlStart+'/useit-dark.svg' : imgUrlStart+'/useit.svg');
-          // const aceit = (media === 'screen' ? imgUrlStart+'/Aceit2--dark.png' : imgUrlStart+'/Aceit2.png');
-          image.setAttribute('src', logo);
-          //fistbump.setAttribute('src', aceit);
-        }
 
         checkbox.addEventListener('change', function () {
           darkTheme(this.checked ? 'screen' : 'none');
@@ -157,13 +144,12 @@
         });
 
         window.addEventListener('DOMContentLoaded', function () {
-          if ('filter' in document.body.style) {
+
             if (window.matchMedia('(prefers-color-scheme: dark)').matches)
               console.log("Dark mode detected!");
             if (localStorage.getItem('darkTheme') === 'screen' || (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
               checkbox.click();
             }
-          }
         });
       }());
     </script>

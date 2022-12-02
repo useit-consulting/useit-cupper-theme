@@ -396,9 +396,19 @@ html:not(.dark) .intro-and-nav {
 .logo img {
     width: 100%;
     max-width: 12rem;
+    margin: 0;
 }
-html.dark .logo img {
-    /*filter: invert(1);*/
+html:not(.dark) .useit-logo-dark {
+    display: none;
+}
+html.dark .useit-logo-dark {
+    display: block;
+}
+html:not(.dark) .useit-logo {
+    display: block;
+}
+html.dark .useit-logo {
+    display: none;
 }
 
 .library-desc {

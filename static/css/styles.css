@@ -392,11 +392,12 @@ html:not(.dark) .intro-and-nav {
 }
 .logo {
     border: 0;
+    display: flex;
+    justify-content: center;
 }
 .logo img {
     width: 100%;
     max-width: 12rem;
-    margin: 0;
 }
 html:not(.dark) .useit-logo-dark {
     display: none;

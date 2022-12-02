@@ -30,7 +30,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ "images/ms-icon-144x144.png" | absURL }}">
     <meta name="theme-color" content="#ffffff">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato|Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ "css/a11y-light.css" | absURL }}" media="none" onload="this.media='all';">
     <link rel="stylesheet" type="text/css" href="{{ "css/styles.css" | absURL }}">
@@ -156,6 +155,7 @@
       }());
     </script>
     <script src="{{ "js/J2M.js" | absURL }}"></script>
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <!--{{ if .Page.IsHome }}
       <script src="{{ "js/service-worker-registration.js" | absURL }}"></script>
     {{ end }}-->

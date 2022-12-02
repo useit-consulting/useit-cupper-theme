@@ -95,7 +95,8 @@ abbr {
 img {
     max-width: 100%;
     max-height: 50vh;
-    border: 2px solid var(--border-color)
+    border: 2px solid var(--border-color);
+    object-fit: contain;
 }
 
 img.no-border {

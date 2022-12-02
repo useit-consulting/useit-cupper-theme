@@ -399,6 +399,7 @@ html:not(.dark) .intro-and-nav {
 .logo img {
     width: 100%;
     max-width: 12rem;
+    margin-top: 0;
 }
 html:not(.dark) .useit-logo-dark {
     display: none;

@@ -8,7 +8,7 @@
     "certification": ["CPWA"],
     "phone": "+46 79 313 86 96",
     "email": "tommy.feldt@useit.se",
-    "img": "tommy4.png"
+    "img": "staff/tommy-f-photo2.png"
   },
   {
     "id": "Sandra",
@@ -18,7 +18,7 @@
     "certification": ["CPWA"],
     "phone": "+46 76 94 42 70",
     "email": "sandra.eriksson@useit.se",
-    "img": "sandra2.png"
+    "img": "staff/sandra-photo.png"
   },
   {
     "id": "Frida",
@@ -28,7 +28,7 @@
     "certification": ["CPACC"],
     "phone": "+46 76 94 42 70",
     "email": "frida.fredblad@useit.se",
-    "img": "frida.jpg"
+    "img": "staff/frida-f-photo.png"
   },
   {
     "id": "Saja",
@@ -40,7 +40,7 @@
     "certification": ["CPACC", "ADS"],
     "phone": "+47 41 307 694",
     "email": "saja@useitconsulting.no",
-    "img": "saja.jpg"
+    "img": "staff/saja-photo.png"
   },
   {
     "id": "Danne",
@@ -50,7 +50,7 @@
     "certification": ["CPWA", "ADS"],
     "phone": "+46 73 643 647 6",
     "email": "danne.borell@useit.se",
-    "img": "danne.jpg"
+    "img": "staff/danne-photo.png"
   },
   {
     "id": "Raouf",
@@ -60,7 +60,7 @@
     "certification": ["CPWA", "ADS"],
     "phone": "+46 760 24 25 73",
     "email": "raouf.sormunen@useit.se",
-    "img": "raouf.jpg"
+    "img": "staff/raouf-photo.png"
   },
   {
     "id": "Moa",
@@ -70,7 +70,7 @@
     "certification": "",
     "phone": "+46 70 597 46 30",
     "email": "moa.glantz@useit.se",
-    "img": "Moa.jpg"
+    "img": "staff/moa-photo.png"
   },
   {
     "id": "Andreas",
@@ -80,7 +80,7 @@
     "certification": ["WAS"],
     "phone": "+46 79 339 77 11",
     "email": "andreas.cederbom@useit.se",
-    "img": "andreas.jpg"
+    "img": "staff/andreas-photo.png"
   },
   {
     "id": "Melad",
@@ -90,7 +90,7 @@
     "certification": ["CPACC"],
     "phone": "+46 76 028 72 33",
     "email": "melad.munther@useit.se",
-    "img": "melad3.png"
+    "img": "staff/melad-photo.png"
   },
   {
     "id": "Elsa",
@@ -100,7 +100,7 @@
     "certification": "",
     "phone": "+47 402 45 002",
     "email": "elsa@useitconsulting.no",
-    "img": "elsa.jpeg"
+    "img": "staff/elsa-photo.png"
   },
   {
     "id": "Thana",
@@ -110,7 +110,7 @@
     "certification": "",
     "phone": "+47 970 00 142",
     "email": "thana@useitconsulting.no",
-    "img": "thana.jpg"
+    "img": "staff/thana-photo2.png"
   },
   {
     "id": "Hanna",
@@ -120,7 +120,7 @@
     "certification": ["ADS", "CPACC"],
     "phone": "",
     "email": "hanna.fredholm@useit.se",
-    "img": "hanna.jpg"
+    "img": "staff/hanna-photo.png"
   },
   {
     "id": "Anna",
@@ -130,6 +130,6 @@
     "certification": "",
     "phone": "",
     "email": "anna.carlen@useit.se",
-    "img": "ana.jpg"
+    "img": "staff/anna-photo2.png"
   }
 ]

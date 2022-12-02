@@ -1167,12 +1167,12 @@ html.dark .icon-background {
     min-width: 200px;
     height: 200px;
     display: flex;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .staff_text{
     flex: 1;
-    margin-top: 0rem;
+    margin: 1rem;
 }
 
 .staff_text h3 {

@@ -7,12 +7,12 @@
     <meta name="robots" content="noindex">
     <link rel="preload" as="image" href="{{ "images/useit.svg" | relURL }}">
     <link rel="preload" as="image" href="{{ "images/useit-dark.svg" | relURL }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin >
     <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
             rel="stylesheet"
-    />
+    >
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ "images/apple-touch-icon-57x57.png" | absURL }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ "images/apple-touch-icon-60x60.png" | absURL }}">
@@ -30,14 +30,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ "images/ms-icon-144x144.png" | absURL }}">
     <meta name="theme-color" content="#ffffff">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ "css/a11y-light.css" | absURL }}" media="none" onload="this.media='all';">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ "css/a11y-light.css" | absURL }}" media="all";">
     <link rel="stylesheet" type="text/css" href="{{ "css/styles.css" | absURL }}">
-    <style id="inverter" media="none">
-      html { filter: invert(100%) }
-      * { background-color: inherit }
-      img:not([src*=".svg"]), .colors, iframe, .demo-container { filter: invert(100%) }
-    </style>
     <title>
       {{ block "title" . }}
         {{ .Title }} | {{ .Site.Title }}
@@ -73,7 +68,7 @@
     {{ end }}
     {{ partial "svg.html" . }}
     <div class="wrapper {{ if eq .Type "print-version" }}print-version{{ end }}">
-        <header class="intro-and-nav" role="banner">
+        <header class="intro-and-nav">
           <div>
             <div class="intro">
               <a class="logo" href="{{ .Site.Home.RelPermalink }}" aria-label='{{ .Site.Title }} {{ i18n "start_page" }}'>
@@ -99,7 +94,7 @@
               {{ end }}
             </div>
             {{ block "nav" . }}
-              <nav id="main-nav" class="patterns" role="navigation">
+              <nav id="main-nav" class="patterns">
                 <h2 class="vh">{{ i18n "main_navigation" }}</h2>
                 <button id="menu-button" aria-expanded="false">
                   <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
@@ -120,7 +115,7 @@
         <div>
           {{ block "main" . }}
           {{ end }}
-          <footer role="contentinfo">
+          <footer>
             <div>
               <label for="themer">
                 {{ i18n "dark_theme" }}: <input type="checkbox" id="themer" class="vh">

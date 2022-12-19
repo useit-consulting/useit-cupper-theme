@@ -14,9 +14,9 @@
       {{ $current := . }}
       {{ range $.Site.Home.Sections }}
         {{ $current := . }}
-      <ul id="patterns-list">
+      <div id="patterns-list">
           {{ partial "problems-list-print.html" . }}
-      </ul>
+      </div>
       {{ end }}
     </nav>
     {{ $current := . }}

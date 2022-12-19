@@ -246,6 +246,10 @@ dd ul {
 dd li + li {
   margin: 0;
 }
+
+footer {
+    text-align: center;
+}
 /* Blockquotes */
 
 blockquote {

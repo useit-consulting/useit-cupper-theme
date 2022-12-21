@@ -433,7 +433,7 @@ html.dark .useit-logo {
     padding: 2.25rem 1.25rem;
 }
 
-[role="contentinfo"] {
+footer {
     font-size: 0.85rem;
     margin-top: 1rem;
     text-align: center;
@@ -1032,7 +1032,7 @@ html.dark .icon-background {
       hyphens: auto;
     }
 
-    [role="banner"] {
+    header.intro-and-nav {
         position: static;
         width: auto;
         height: auto;
@@ -1103,7 +1103,7 @@ html.dark .icon-background {
 }
 @media print {
     .wrapper:not(.print-version) .intro-and-nav,
-    .wrapper:not(.print-version) [role="contentinfo"] {
+    .wrapper:not(.print-version) footer {
         display: none;
     }
     .main-and-footer {

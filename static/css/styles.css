@@ -659,11 +659,11 @@ pre[class*=language-] code * {
     white-space: pre;
     counter-reset: annotation;
 }
-.highlight {
+/*.highlight {
     background: #ddd;
     padding: 0.0625rem 0.33rem;
     border-radius: 0.5rem;
-}
+}*/
 .numbered .highlight::after,
 .code-annotated.numbered + ol li::before  {
     counter-increment: annotation;

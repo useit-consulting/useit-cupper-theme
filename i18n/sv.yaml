@@ -122,3 +122,7 @@
   translation: "Tillbaka till startsidan"
 - id: about_our_priority
   translation: "Om vår prioritering"
+- id: useit_reports_link
+  translation: "Länk till Useit Reports"
+- id: copy_buttons_help
+  translation: "Jag behöver hjälp att kopiera"

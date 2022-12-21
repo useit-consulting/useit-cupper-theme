@@ -116,4 +116,10 @@
   translation: "Back to start"
 - id: about_our_priority
   translation: "About our priority levels"
+- id: useit_reports_link
+  translation: "Link to the report"
+- id: copy_buttons_help
+  translation: "Do you need help copying?"
+- id: copied
+  translation: "Copied!"
 

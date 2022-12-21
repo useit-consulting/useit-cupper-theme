@@ -287,11 +287,13 @@ label {
 }
 
 [for="themer"] {
+    margin-top: 6rem;
   background: var(--text-color);
   border-radius: 0.33em;
   color: var(--bg-color);
   padding: 0.25em 0.75em;
-  margin: 0.5rem;
+  margin-left: 0.5rem;
+    margin-right: 0.5rem;
     font-weight: normal;
 }
 [for="themer"] span::before {
@@ -790,7 +792,7 @@ html:not(.dark) .expandable-section button:hover {
 [data-expands][aria-expanded="true"] svg .up-strut {
     display: none;
 }
-[data-expands]:focus {
+[data-expands]:not(#copy-help):focus {
     outline: none;
 }
 p:empty {
@@ -1243,8 +1245,8 @@ html.dark .icon-background {
     display:flex;
     gap: 1rem;
     text-align: center;
-    margin-bottom: 6rem;
     justify-content: center;
+    position: relative;
 }
 
 .copy-buttons button {
@@ -1258,6 +1260,63 @@ html.dark .icon-background {
 
 .copy-buttons button:hover {
     filter: brightness(0.95);
+}
+
+#copy-help {
+    background-color: initial;
+    font-size: 0.85rem;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    display: flex;
+    color: var(--text-color);
+    cursor: pointer;
+    justify-content: center;
+    width: fit-content;
+}
+
+#copy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color)
+}
+
+#js-expandable-copyhelp {
+    width: fit-content;
+    padding: 1rem;
+    flex-direction: column;
+    font-size: 0.85rem;
+    background-color: var(--accent-color);
+    margin-top: 2rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 0;
+}
+#js-expandable-copyhelp h2 {
+    font-size: 1rem;
+}
+#js-expandable-copyhelp ol {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+#copy-feedback {
+    position: absolute;
+    top: 1.5rem;
+    left: 20%;
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+    padding: 0.25em 0.75em;
+    width: fit-content;
+}
+
+#jira {
+    position: relative;
 }
 
 .wcag-text {

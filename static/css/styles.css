@@ -627,12 +627,17 @@ figcaption::before {
 /* Code blocks */
 
 pre[class*=language-] {
-    background: none;
     margin-top: 2.25rem;
     margin-bottom: 0;
     overflow-y: hidden;
     overflow-x: auto;
 }
+
+.dark pre[class*=language-] {
+    background: #0e1220;
+    border-color: #171f2e;
+}
+
 code[class*="language-"], pre[class*="language-"] {
   text-shadow: none;
 }

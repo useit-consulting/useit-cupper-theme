@@ -1308,8 +1308,8 @@ html.dark .icon-background {
     position: absolute;
     top: 1.5rem;
     left: 20%;
-    color: white;
-    background-color: black;
+    color: var(--text-color);
+    background-color: var(--accent-color);
     border-radius: 4px;
     padding: 0.25em 0.75em;
     width: fit-content;

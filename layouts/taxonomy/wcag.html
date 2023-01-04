@@ -12,7 +12,7 @@
       {{ $this = . }}
 
 <main id="main">
-  <nav aria-label='{{ i18n "quick_navigation" }}'><a href='{{ ref $.Page "wcag" }}'>{{ i18n "show_all_wcag_criteria" }}</a></nav>
+  <nav aria-label='{{ i18n "quick_navigation" }}'><a href='{{ "/wcag/" | relLangURL }}'>{{ i18n "show_all_wcag_criteria" }}</a></nav>
   <h1>
     <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
       <use xlink:href="#tag"></use>

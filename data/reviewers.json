@@ -18,7 +18,7 @@
     "certification": ["CPWA"],
     "phone": "+46 76 94 42 70",
     "email": "sandra.eriksson@useit.se",
-    "img": "staff/sandra-photo.png"
+    "img": "staff/Sandra.svg"
   },
   {
     "id": "Frida",
@@ -120,7 +120,7 @@
     "certification": ["ADS", "CPACC"],
     "phone": "+46 76 035 43 62",
     "email": "hanna.fredholm@useit.se",
-    "img": "staff/hanna-photo.png"
+    "img": "staff/Hanna.svg"
   },
   {
     "id": "Anna",

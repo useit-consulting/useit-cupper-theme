@@ -43,7 +43,7 @@
 - id: copy_as_markdown
   translation: "Kopiera som Markdown"
 - id: copy_as_jira
-  translation: "Kopiera som JIRA"
+  translation: "Kopiera som JIRA (gammal)"
 - id: start_page
   translation: "Startsida"
 - id: table_of_contents

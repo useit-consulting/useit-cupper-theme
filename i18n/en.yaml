@@ -119,7 +119,7 @@
 - id: useit_reports_link
   translation: "Link to the report"
 - id: copy_buttons_help
-  translation: "Do you need help copying?"
+  translation: "Instructions for copying to JIRA"
 - id: copied
   translation: "Copied!"
 

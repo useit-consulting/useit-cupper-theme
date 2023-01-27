@@ -203,26 +203,47 @@
         </div>
       </div>
     <div class="copy-buttons">
-      <div id="jira">
-        <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
-        <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
-          {{ i18n "copied" }}
-        </div>
-      </div>
       <div id="markdown">
         <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown" }}</button>
         <div id="feedback-markdown" aria-live="polite" hidden aria-atomic="true">
           {{ i18n "copied" }}
         </div>
       </div>
-
-
+      <div id="jira">
+        <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
+        <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
+          {{ i18n "copied" }}
+        </div>
+      </div>
     </div>
 
     <div id="copy-container">
       <button id="copy-help" aria-expanded="false" data-expands="js-expandable-copyhelp">{{ i18n "copy_buttons_help" }}</button>
-      <div id="js-expandable-copyhelp" hidden="hidden">
-        <h2>Copy as JIRA markup</h2>
+      <div id="js-expandable-copyhelp" hidden="hidden" lang="en">
+          <h2>Copy as Markdown</h2>
+        <p><strong>Note: </strong>Use this option for JIRA Cloud installations, since JIRA Cloud no longer accepts the old JIRA markup.</p>
+          <ol>
+              <li>
+                  Click on the "Copy as Markdown" button.
+              </li>
+              <li>
+                  Paste (CTRL/CMD + V) into a text/code editor on your computer, e.g. Windows Notepad or Sublime Text.
+                <strong>This workaround is needed due to a bug in JIRA Cloud.</strong>
+              </li>
+              <li>
+                  Copy the pasted the content from the text editor.
+              </li>
+            <li>
+              Go to your organization's JIRA and click "Create new issue".
+            </li>
+              <li>
+                  Paste into the editor (CTRL / CMD + V).
+              </li>
+              <li>
+                  Save the issue.
+              </li>
+          </ol>
+        <h2>Copy as JIRA markup (legacy)</h2>
         <p><strong>Note: </strong>This only works for old non-cloud JIRA installations.</p>
         <ol>
           <li>
@@ -241,29 +262,6 @@
             Save the issue
           </li>
         </ol>
-          <h2>Copy as Markdown</h2>
-        <p><strong>Note: </strong>Use this option for JIRA Cloud installations.</p>
-          <ol>
-              <li>
-                  Click on the "Copy as Markdown" button.
-              </li>
-              <li>
-                  Paste (CTRL/CMD + V) into a code editor on your computer, e.g. Sublime Text.
-                <strong>This workaround is needed due to a bug in JIRA Cloud.</strong>
-              </li>
-              <li>
-                  Copy the pasted the content from the code editor.
-              </li>
-            <li>
-              Go to your organization's JIRA and click "Create new issue".
-            </li>
-              <li>
-                  Paste into the editor (CTRL / CMD + V).
-              </li>
-              <li>
-                  Save the issue.
-              </li>
-          </ol>
       </div>
     </div>
 

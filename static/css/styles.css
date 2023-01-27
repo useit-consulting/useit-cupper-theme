@@ -1317,6 +1317,7 @@ html.dark .icon-background {
 
 #jira {
     position: relative;
+    margin: 0;
 }
 #markdown {
     position: relative;

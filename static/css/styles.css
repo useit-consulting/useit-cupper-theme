@@ -1304,7 +1304,7 @@ html.dark .icon-background {
     margin-left: 1rem;
 }
 
-#copy-feedback {
+#feedback-jira, #feedback-markdown {
     position: absolute;
     top: 1.5rem;
     left: 20%;
@@ -1317,6 +1317,10 @@ html.dark .icon-background {
 
 #jira {
     position: relative;
+}
+#markdown {
+    position: relative;
+    margin: 0;
 }
 
 .wcag-text {

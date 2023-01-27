@@ -136,16 +136,17 @@ function WidthChange(mq) {
   });
 }());
 
-function toggleFeedback () {
-  const feedback = document.getElementById("copy-feedback")
+function toggleFeedback (feedbackID) {
+  const feedback = document.getElementById(feedbackID)
 
-  if (feedback.hidden) {
-    feedback.removeAttribute("hidden")
-    setTimeout(()=> {
-      feedback.setAttribute("hidden", "hidden")
-    }, 4000)
+  if (feedback) {
+    if (feedback.hidden) {
+      feedback.removeAttribute("hidden")
+      setTimeout(()=> {
+        feedback.setAttribute("hidden", "hidden")
+      }, 4000)
+    }else feedback.setAttribute("hidden", "hidden")
   }
-  else feedback.setAttribute("hidden", "hidden")
 }
 function copyRichText(text) {
   const listener = function(ev) {

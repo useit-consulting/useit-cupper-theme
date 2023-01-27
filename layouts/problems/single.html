@@ -205,18 +205,25 @@
     <div class="copy-buttons">
       <div id="jira">
         <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
-        <div id="copy-feedback" aria-live="polite" hidden aria-atomic="true">
+        <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
           {{ i18n "copied" }}
         </div>
       </div>
-      <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown" }}</button>
+      <div id="markdown">
+        <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown" }}</button>
+        <div id="feedback-markdown" aria-live="polite" hidden aria-atomic="true">
+          {{ i18n "copied" }}
+        </div>
+      </div>
+
 
     </div>
 
     <div id="copy-container">
       <button id="copy-help" aria-expanded="false" data-expands="js-expandable-copyhelp">{{ i18n "copy_buttons_help" }}</button>
       <div id="js-expandable-copyhelp" hidden="hidden">
-        <h2>Copy to JIRA</h2>
+        <h2>Copy as JIRA markup</h2>
+        <p><strong>Note: </strong>This only works for old non-cloud JIRA installations.</p>
         <ol>
           <li>
             Click on the "Copy as JIRA" button
@@ -234,6 +241,29 @@
             Save the issue
           </li>
         </ol>
+          <h2>Copy as Markdown</h2>
+        <p><strong>Note: </strong>Use this option for JIRA Cloud installations.</p>
+          <ol>
+              <li>
+                  Click on the "Copy as Markdown" button.
+              </li>
+              <li>
+                  Paste (CTRL/CMD + V) into a code editor on your computer, e.g. Sublime Text.
+                <strong>This workaround is needed due to a bug in JIRA Cloud.</strong>
+              </li>
+              <li>
+                  Copy the pasted the content from the code editor.
+              </li>
+            <li>
+              Go to your organization's JIRA and click "Create new issue".
+            </li>
+              <li>
+                  Paste into the editor (CTRL / CMD + V).
+              </li>
+              <li>
+                  Save the issue.
+              </li>
+          </ol>
       </div>
     </div>
 
@@ -243,12 +273,18 @@
   const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
   const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
 
+
   function generateJiraDescription() {
-    toggleFeedback()
-    return copyRichText(`${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`)
+    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
+    toggleFeedback("feedback-jira")
+    return copyRichText(jiraBase)
   }
   function generateMarkdownDescription() {
-    return copyRichText(`# {{ .Title }}\n\n{{ if isset .Params "pages" }}## {{ i18n "affected_pages" }}\n\n{{ range .Params.pages }}- {{ . }}\n\n {{ end }}{{ end }}\n\n## {{ i18n "problem_description" }}\n\n${problemDescriptionWithImage}\n\n{{ i18n "suggested_solution" }}\n\n${suggestedSolutionsWithImage}\n\n## {{ i18n "priority" }}\n\n{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n\n{{ i18n "affected_user_groups" }}\n\n{{ range .Params.usergroups }}- {{ . }}\ {{ end }}\n\n## {{ i18n "wcag_violations" }}\n\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}`)
+    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
+    console.log(document.getElementById("feedback-markdown"))
+    toggleFeedback("feedback-markdown")
+
+    return copyRichText(J2M.toM(jiraBase))
   }
 </script>
 {{ end }}

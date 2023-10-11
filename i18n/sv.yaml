@@ -105,9 +105,9 @@
 - id: outside_wcag
   translation: "Problem utanför WCAG 2.1 (AA)"
 - id: outside_wcag_explanation
-  translation: "Todo: Översättning här"
+  translation: "Vissa av problemen vi hittade täcks inte av WCAG 2.1 (AA). Detta gäller ofta kognitiva tillgänglighetsproblem och designrelaterade problem. Vi rekommenderar att ni ändå tar hänsyn till dessa problem för att skapa bästa möjliga användarupplevelse."
 - id: no_non_wcag_issues_found
-  translation: "Todo: Översättning här"
+  translation: "Inga problem utanför WCAG 2.1 (AA) har identifierats"
 - id: nope
   translation: "Nej"
 - id: faces_alt_text

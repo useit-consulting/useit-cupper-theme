@@ -39,7 +39,7 @@
 - id: affected_user_groups
   translation: "Användare som påverkas"
 - id: wcag_violations
-  translation: "WCAG 2.1 (AA)"
+  translation: "WCAG 2.2 (AA)"
 - id: copy_as_markdown
   translation: "Kopiera som Markdown"
 - id: copy_as_jira
@@ -53,7 +53,7 @@
 - id: fist_bump_alt
   translation: "En användare gör en fist bump genom datorskärmen, illustration"
 - id: wcag_summary
-  translation: "Sammanfattning WCAG 2.1 (AA)"
+  translation: "Sammanfattning WCAG 2.2 (AA)"
 - id: passed_or_not_applicable
   translation: "Godkända eller ej bedömda krav"
 - id: failed_criteria
@@ -97,17 +97,17 @@
 - id: main_navigation
   translation: "Huvudnavigation"
 - id: wcag_results
-  translation: "Översikt över WCAG 2.1 (AA)"
+  translation: "Översikt över WCAG 2.2 (AA)"
 - id: issues_results
   translation: "Identifierade problem"
 - id: show_wcag_results
-  translation: "Visa underkända och godkända krav i WCAG 2.1 (AA)"
+  translation: "Visa underkända och godkända krav i WCAG 2.2 (AA)"
 - id: outside_wcag
-  translation: "Problem utanför WCAG 2.1 (AA)"
+  translation: "Problem utanför WCAG 2.2 (AA)"
 - id: outside_wcag_explanation
-  translation: "Vissa av problemen vi hittade täcks inte av WCAG 2.1 (AA). Detta gäller ofta kognitiva tillgänglighetsproblem och designrelaterade problem. Vi rekommenderar att ni ändå tar hänsyn till dessa problem för att skapa bästa möjliga användarupplevelse."
+  translation: "Vissa av problemen vi hittade täcks inte av WCAG 2.2 (AA). Detta gäller ofta kognitiva tillgänglighetsproblem och designrelaterade problem. Vi rekommenderar att ni ändå tar hänsyn till dessa problem för att skapa bästa möjliga användarupplevelse."
 - id: no_non_wcag_issues_found
-  translation: "Inga problem utanför WCAG 2.1 (AA) har identifierats"
+  translation: "Inga problem utanför WCAG 2.2 (AA) har identifierats"
 - id: nope
   translation: "Nej"
 - id: faces_alt_text

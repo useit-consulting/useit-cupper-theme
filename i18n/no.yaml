@@ -39,7 +39,7 @@
 - id: affected_user_groups
   translation: "Brukere som påvirkes"
 - id: wcag_violations
-  translation: "WCAG 2.1 (AA)"
+  translation: "WCAG 2.2 (AA)"
 - id: copy_as_markdown
   translation: "Kopier som Markdown"
 - id: copy_as_jira
@@ -53,7 +53,7 @@
 - id: fist_bump_alt
   translation: "En bruker slenger ut en fist bump gjennom PC-skjermen, illustrasjon"
 - id: wcag_summary
-  translation: "Sammendrag WCAG 2.1 (AA)"
+  translation: "Sammendrag WCAG 2.2 (AA)"
 - id: passed_or_not_applicable
   translation: "Godkjente eller ikke bedømte krav"
 - id: failed_criteria
@@ -97,13 +97,13 @@
 - id: main_navigation
   translation: "Hovednavigasjon"
 - id: wcag_results
-  translation: "Oversikt over WCAG 2.1 (AA)"
+  translation: "Oversikt over WCAG 2.2 (AA)"
 - id: issues_results
   translation: "Identifiserte problem"
 - id: show_wcag_results
-  translation: "Vis ikke-godkjente og godkjente krav i WCAG 2.1 (AA)"
+  translation: "Vis ikke-godkjente og godkjente krav i WCAG 2.2 (AA)"
 - id: outside_wcag
-  translation: "Problem utenfor WCAG 2.1 (AA)"
+  translation: "Problem utenfor WCAG 2.2 (AA)"
 - id: outside_wcag_explanation
   translation: "Utenfor WCAG"
 - id: no_non_wcag_issues_found

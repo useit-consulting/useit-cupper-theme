@@ -39,7 +39,7 @@
 - id: affected_user_groups
   translation: "Affected user groups"
 - id: wcag_violations
-  translation: "WCAG 2.1 (AA) violations"
+  translation: "WCAG 2.2 (AA) violations"
 - id: copy_as_markdown
   translation: "Copy as Markdown"
 - id: copy_as_jira
@@ -53,7 +53,7 @@
 - id: fist_bump_alt
   translation: "Fist bump through computer screen, illustration"
 - id: wcag_summary
-  translation: "WCAG 2.1 (AA) status"
+  translation: "WCAG 2.2 (AA) status"
 - id: passed_or_not_applicable
   translation: "Passed or not applicable criteria"
 - id: failed_criteria
@@ -85,7 +85,7 @@
 - id: main_navigation
   translation: "Main navigation"
 - id: show_wcag_results
-  translation: "Show failed and passed WCAG 2.1 (AA) criteria"
+  translation: "Show failed and passed WCAG 2.2 (AA) criteria"
 - id: critical_explanation
   translation: "Critical priority issues have a severe impact on users' ability to perceive, understand or make use of important parts of the interface."
 - id: critical_highlighted
@@ -97,9 +97,9 @@
 - id: low_explanation
   translation: "Low priority issues are problems that are not critical but should be fixed to improve the user experience of the interface. They can still include WCAG violations."
 - id: outside_wcag
-  translation: "Issues outside WCAG 2.1 (AA)"
+  translation: "Issues outside WCAG 2.2 (AA)"
 - id: outside_wcag_explanation
-  translation: "Some of the accessibility issues we found are not covered by WCAG 2.1 (AA). This is often true for cognitive accessibility problems and design-related problems. We strongly recommend that you take these issues into account regardless to create the best possible user experience."
+  translation: "Some of the accessibility issues we found are not covered by WCAG 2.2 (AA). This is often true for cognitive accessibility problems and design-related problems. We strongly recommend that you take these issues into account regardless to create the best possible user experience."
 - id: no_non_wcag_issues_found
   translation: "No non-WCAG issues were found"
 - id: nope

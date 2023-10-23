@@ -39,7 +39,7 @@
     "altEn": "Black and white portrait of Saja who is smiling towards the camera. She is about 30 years old with short blonde hair.",
     "certification": ["CPACC", "ADS"],
     "phone": "+47 41 307 694",
-    "email": "saja@useitconsulting.no",
+    "email": "saja@useit.no",
     "img": "staff/Saja.svg"
   },
   {
@@ -99,18 +99,8 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "certification": "",
     "phone": "+47 402 45 002",
-    "email": "elsa@useitconsulting.no",
+    "email": "elsa@useit.no",
     "img": "staff/Elsa.svg"
-  },
-  {
-    "id": "Thana",
-    "name": "Thana Pathawanich",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": "",
-    "phone": "+47 970 00 142",
-    "email": "thana@useitconsulting.no",
-    "img": "staff/Thana.svg"
   },
   {
     "id": "Hanna",

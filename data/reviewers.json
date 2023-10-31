@@ -37,7 +37,7 @@
     "titleSv": "UX-designer och tillgänglighetsexpert",
     "altSv": "Svartvitt porträtt av Saja som ler mot kameran. Hon är cirka 30 år och har kortklippt blont hår.",
     "altEn": "Black and white portrait of Saja who is smiling towards the camera. She is about 30 years old with short blonde hair.",
-    "certification": ["CPACC", "ADS"],
+    "certification": ["CPWA", "ADS"],
     "phone": "+47 41 307 694",
     "email": "saja@useit.no",
     "img": "staff/Saja.svg"
@@ -97,7 +97,7 @@
     "name": "Elsa Kristensen",
     "titleEn": "UX designer and accessibility specialist",
     "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": "",
+    "certification": ["CPACC"],
     "phone": "+47 402 45 002",
     "email": "elsa@useit.no",
     "img": "staff/Elsa.svg"

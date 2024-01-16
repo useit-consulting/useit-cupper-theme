@@ -1,3 +1,4 @@
+
 {{ define "title" }}
   {{ .Site.Title }}
 {{ end }}
@@ -7,6 +8,31 @@
 {{ end }}
 
 {{ define "main" }}
+{{ $hasCritical := false }}
+{{ $hasHigh := false }}
+{{ $hasMedium := false }}
+{{ $hasLow := false }}
+
+{{ range $.Site.Home.Sections }}
+    {{ range .Pages.ByWeight }}
+        {{ if eq .Weight 1 }}
+            {{ $hasCritical = true }}
+        {{ end }}
+
+        {{ if eq .Weight 2 }}
+            {{ $hasHigh = true }}
+        {{ end }}
+
+        {{ if eq .Weight 3 }}
+            {{ $hasMedium = true }}
+        {{ end }}
+
+        {{ if eq .Weight 4 }}
+            {{ $hasLow = true }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
   <main id="main">
     <h1>{{ .Site.Title }}</h1>
     <nav id="toc" class="toc patterns" aria-labelledby="toc-heading">
@@ -65,7 +91,16 @@
     <div class="expandable-section">
       <h2>
         <button aria-expanded="true" data-expands="js-expandable-materials">
-          <span class="expandable-label">{{ i18n "materials" }}</span>
+          <span>
+            <span class="icon-background">
+              <svg class="materials-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                <use xlink:href="#materials"></use>
+              </svg>
+            </span>
+            <span class="expandable-label">{{ i18n "materials" }}</span>
+
+          </span>
+          
         </button>
       </h2>
       <div id="js-expandable-materials">
@@ -83,7 +118,16 @@
       <div class="expandable-section">
         <h2>
           <button aria-expanded="true" data-expands="js-expandable-tools">
-            <span class="expandable-label">{{ i18n "equipment" }}</span>
+            <span>
+              <span class="icon-background">
+                <svg class="devices-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <use xlink:href="#devices"></use>
+                </svg>
+              </span>
+              <span class="expandable-label">{{ i18n "equipment" }}</span>
+
+
+            </span>
           </button>
         </h2>
         <div id="js-expandable-tools">
@@ -97,12 +141,16 @@
         {{ end }}
 
   {{ with .Params.summary}}
-  <div class="h2-container">
-    <h2 id="summary" tabindex="-1">{{ i18n "summary" }}</h2><a href="#summary" aria-label='{{ i18n "this_section" }} ({{ i18n "summary" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
-  </div>
-    <div class="text-container">
-      {{ . | markdownify}}
+  <div class="summary-container">
+    <div class="h2-container">
+      <h2 id="summary" tabindex="-1">{{ i18n "summary" }}</h2><a href="#summary" aria-label='{{ i18n "this_section" }} ({{ i18n "summary" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
     </div>
+      <div class="text-container">
+        {{ . | markdownify}}
+      </div>
+
+  </div>
+  
   {{ end }}
   {{ end }}
 {{ end }}
@@ -111,8 +159,9 @@
     <div class="h2-container">
       <h2 id="results" tabindex="-1">{{ i18n "results" }}</h2><a href="#results" aria-label='{{ i18n "this_section" }} ({{ i18n "results" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
     </div>
-
+    {{ if eq $hasCritical true }}
     <h2>{{ i18n "critical_priority" }}</h2>
+{{ end }}
     {{ range $.Site.Home.Sections }}
       {{ range .Pages.ByWeight }}
       {{ if and (eq .Weight 1) (ne .Params.draft true) }}
@@ -165,7 +214,9 @@
       {{ end }}
     {{ end }}
     {{ end }}
+    {{ if eq $hasHigh true }}
     <h2>{{ i18n "high_priority" }}</h2>
+{{ end }}
     {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}
     {{ if and (eq .Weight 2) (ne .Params.draft true) }}
@@ -218,7 +269,9 @@
     {{ end }}
     {{ end }}
     {{ end }}
+    {{ if eq $hasMedium true }}
     <h2>{{ i18n "medium_priority" }}</h2>
+{{ end }}
     {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}
     {{ if and (eq .Weight 3) (ne .Params.draft true) }}
@@ -271,7 +324,9 @@
     {{ end }}
     {{ end }}
     {{ end }}
+    {{ if eq $hasLow true }}
     <h2>{{ i18n "low_priority" }}</h2>
+{{ end }}
     {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}
     {{ if and (eq .Weight 4) (ne .Params.draft true) }}

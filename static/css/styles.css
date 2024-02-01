@@ -17,7 +17,7 @@
 :root:not(.dark) {
   --text-color: #111;
   --bg-color: #fefefe;
-  --accent-color: var(--beige);
+  --accent-color: var(--lightGreen);
   --button-color: #000;
   --bg-alt: var(--light-blue);
   --bg-grey: var(--grey);

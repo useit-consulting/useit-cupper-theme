@@ -284,9 +284,9 @@
         button.onclick = async function() {
           // Add your logic to mark the page as complete
           console.log('Marking as complete...', pageId);
-          await fetch('{{ .Site.BaseURL }}/netlify/functions/updateCompletion', {
+          await fetch('{{ .Site.BaseURL }}netlify/functions/updateCompletion', {
             method: 'POST',
-            body: JSON.stringify({ pageId, draft: false }),
+            body: JSON.stringify({ pageId, completed: true, repo: "sj-androidapp-may2024" }),
             headers: {
               'Content-Type': 'application/json'
             }

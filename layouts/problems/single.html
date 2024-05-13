@@ -265,8 +265,29 @@
       </div>
     </div>
 
+<div id="loginButtonContainer"></div>
 
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = netlifyIdentity.currentUser();
+      const container = document.getElementById('loginButtonContainer');
+    
+      if (user) {
+        const button = document.createElement('button');
+        button.textContent = 'Mark as Complete';
+        button.type = 'button';
+        button.onclick = function() {
+          // Add your logic to mark the page as complete
+          console.log('Marking as complete...');
+        };
+        container.appendChild(button);
+      }
+    });
+    
+    // Initialize Netlify Identity
+    netlifyIdentity.init();
+    </script>
 <script>
   const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
   const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');

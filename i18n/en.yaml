@@ -122,4 +122,8 @@
   translation: "Instructions for copying to JIRA"
 - id: copied
   translation: "Copied!"
+- id: completed
+  translation: "Completed"
+- id: not_completed
+  translation: "Not completed"
 

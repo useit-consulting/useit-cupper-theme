@@ -124,3 +124,8 @@
   translation: "Link til Useit Reports"
 - id: copy_buttons_help
   translation: "Instruksjoner for kopiering til JIRA"
+- id: completed
+  translation: "Ferdig"
+- id: not_completed
+  translation: "Ikke ferdig"
+

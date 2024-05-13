@@ -271,15 +271,26 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const user = netlifyIdentity.currentUser();
+      console.log(user)
       const container = document.getElementById('loginButtonContainer');
     
       if (user) {
         const button = document.createElement('button');
         button.textContent = 'Mark as Complete';
         button.type = 'button';
-        button.onclick = function() {
+        // get page id from current webpage
+        const pageId = window.location.pathname.slice(0, -1) + '.md';
+        console.log(pageId)
+        button.onclick = async function() {
           // Add your logic to mark the page as complete
-          console.log('Marking as complete...');
+          console.log('Marking as complete...', pageId);
+          await fetch('{{ .Site.BaseURL }}/netlify/functions/updateCompletion', {
+            method: 'POST',
+            body: JSON.stringify({ pageId, draft: false }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
         };
         container.appendChild(button);
       }

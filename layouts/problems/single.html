@@ -46,7 +46,9 @@
         </ul>
       </div>
       <div id="updateStatusButtonContainer">
-        <strong aria-hidden="true">Status: </strong>
+        <div id="formContainer">
+          <strong aria-hidden="true">Status: </strong>
+        </div>
       </div>
 
     {{ end }}
@@ -275,7 +277,7 @@
       const user = netlifyIdentity.currentUser();
       const container = document.getElementById('updateStatusButtonContainer');
     
-      
+        const formContainer = document.getElementById('formContainer');
         const form = document.createElement('form');
         form.id = 'statusForm';
 
@@ -285,11 +287,11 @@
 
         const statusTranslations = {
           "no_status": '{{ i18n "no_status" }}',
-          "not_completed": '{{ i18n "not_completed" }}',
           "in_progress": '{{ i18n "in_progress" }}',
           "completed": '{{ i18n "completed" }}',
           "tested_not_ok": '{{ i18n "tested_not_ok" }}',
           "tested_ok": '{{ i18n "tested_ok" }}',
+          "rejected": '{{ i18n "rejected" }}'
         };
         Object.entries(statusTranslations).forEach(([value, text]) => {
           const option = document.createElement('option');
@@ -300,26 +302,30 @@
         select.value = "{{ .Params.status }}" || "no_status"; // Set the current status as the default value
 
         const saveButton = document.createElement('button');
-        saveButton.type = "submit"
-        saveButton.textContent = 'Update status';
+        saveButton.type = user ? "submit" : "button";
+        saveButton.textContent = user ? 'Update status' : 'Log in to update status';
         if (!user) {
           select.disabled = true;
-          saveButton.textContent = 'Log in to update status';
           saveButton.onclick = function() {
             netlifyIdentity?.open();
           };
         }
         if (user) {
           form.appendChild(select);
-        }else {
+        }
+        else {
           const statusParagraph = document.createElement('span');
-          statusParagraph.textContent = '{{ .Params.status }}' || '{{ i18n "no_status" }}';
+          statusParagraph.textContent = '{{ i18n .Params.status }}' || '{{ i18n "no_status" }}';
           form.appendChild(statusParagraph);
         }
         form.appendChild(saveButton);
 
 
-        container.appendChild(form);
+        formContainer.appendChild(form);
+
+        const statusParagraph = document.createElement('p');
+        statusParagraph.role = 'status';
+        statusParagraph.classList.add('status-message');
 
         form.onsubmit = async function(event) {
           event.preventDefault();
@@ -331,7 +337,7 @@
           let data;
 
           try {
-          const response = await fetch('http://localhost:8888/.netlify/functions/update-status', {
+          const response = await fetch('{{ absURL "" }}.netlify/functions/update-status', {
             method: 'POST',
             body: JSON.stringify({ pageId, status, language: "{{ $.Site.Language }}", repo: "sj-androidapp-may2024" }),
             headers: {
@@ -341,7 +347,6 @@
     
           if (response.ok) { // Check if the response status is 200 (OK)
             // append container with  paragraph
-            const statusParagraph = document.createElement('span');
             statusParagraph.innerHTML = 'Rebuilding page, may take 60 seconds... <div class="spinner"></div>'
             container.appendChild(statusParagraph);
             setTimeout(() => {
@@ -352,9 +357,8 @@
           }
         } catch (error) {
           // append container with error paragraph
-          const errorParagraph = document.createElement('span');
-          errorParagraph.innerHTML = 'Update Failed - Retry?';
-          container.appendChild(errorParagraph);
+          statusParagraph.innerHTML = 'Update Failed - Retry?';
+          container.appendChild(statusParagraph);
           console.error('Error updating the page:', error);
           saveButton.innerText = 'Update status';
           saveButton.disabled = false;

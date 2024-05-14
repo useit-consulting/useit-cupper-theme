@@ -138,4 +138,5 @@
   translation: "Test OK"
 - id: no_status
   translation: "Ingen status"
-
+- id: rejected
+  translation: "Avvisad"

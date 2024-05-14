@@ -292,11 +292,25 @@ button {
 
 #updateStatusButtonContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0.5rem;
   margin-top: 1rem;
   font-size: 0.85rem;
-  align-items: center;
+}
+
+button:disabled {
+  background: #555;
+  color: #333;
+  cursor: not-allowed;
+}
+select:disabled {
+  cursor: not-allowed;
+}
+
+#formContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 form#statusForm {
   margin-top: 0;
@@ -304,6 +318,16 @@ form#statusForm {
   flex-direction: row;
   gap: 0.5rem;
 }
+
+.status-message {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--accent-color);
+}
+
 form#statusForm button {
   margin-top: 0;
   font-size: 0.85rem;
@@ -527,6 +551,8 @@ footer {
   font-weight: normal;
   padding: 0 1rem;
   line-height: 1.5;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .pattern a:hover {
@@ -537,8 +563,16 @@ footer {
 .pattern a:focus {
   outline: none;
 }
-.pattern span {
-  margin-left: 0.125rem;
+
+.problem-link-text-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+.pattern a > span:nth-child(2) {
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 /* after */

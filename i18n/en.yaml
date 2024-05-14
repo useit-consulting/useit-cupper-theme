@@ -132,6 +132,6 @@
   translation: "Tested not OK"
 - id: tested_ok
   translation: "Tested OK"
-- id: empty
+- id: no_status
   translation: "No status"
 

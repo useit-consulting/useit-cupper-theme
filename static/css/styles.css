@@ -289,9 +289,53 @@ button {
 }
 
 /* Forms */
-label {
-  display: inline-block;
-  font-weight: bold;
+
+#updateStatusButtonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  align-items: center;
+}
+form#statusForm {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+form#statusForm button {
+  margin-top: 0;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+form#statusForm select {
+  border-radius: 0.25rem;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0rem 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  min-width: 7rem;
+}
+
+.spinner {
+  border: 4px solid rgba(0,0,0,.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 [for="themer"] {
@@ -1425,4 +1469,8 @@ html.dark .priority-text {
 }
 
 .redirect-container {
+}
+
+[data-netlify-identity-button] {
+  margin-top: 0;
 }

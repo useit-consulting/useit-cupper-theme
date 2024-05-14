@@ -1,102 +1,146 @@
-{{ $current := . }}
-
-{{ $hasCritical := false }}
-{{ $hasHigh := false }}
-{{ $hasMedium := false }}
-{{ $hasLow := false }}
-
-{{ range $.Site.Home.Sections }}
-    {{ range .Pages.ByWeight }}
-        {{ if eq .Weight 1 }}
-            {{ $hasCritical = true }}
-        {{ end }}
-
-        {{ if eq .Weight 2 }}
-            {{ $hasHigh = true }}
-        {{ end }}
-
-        {{ if eq .Weight 3 }}
-            {{ $hasMedium = true }}
-        {{ end }}
-
-        {{ if eq .Weight 4 }}
-            {{ $hasLow = true }}
-        {{ end }}
-    {{ end }}
-{{ end }}
-{{ if eq $hasCritical true }}
+{{ $current := . }} {{ $hasCritical := false }} {{ $hasHigh := false }} {{
+$hasMedium := false }} {{ $hasLow := false }} {{ range $.Site.Home.Sections }}
+{{ range .Pages.ByWeight }} {{ if eq .Weight 1 }} {{ $hasCritical = true }} {{
+end }} {{ if eq .Weight 2 }} {{ $hasHigh = true }} {{ end }} {{ if eq .Weight 3
+}} {{ $hasMedium = true }} {{ end }} {{ if eq .Weight 4 }} {{ $hasLow = true }}
+{{ end }} {{ end }} {{ end }} {{ if eq $hasCritical true }}
 <h3>{{ i18n "critical_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "critical_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 1) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
+  {{ range .Pages.ByWeight }} {{ if and (eq .Weight 1) (ne .Params.draft true)
+  }}
+  <li class="pattern">
+    <a
+      href="{{ .RelPermalink }}"
+      {{
+      if
+      eq
+      $current.Permalink
+      .Permalink
+      }}aria-current="page"
+      {{
+      end
+      }}
+    >
+      <svg
+        class="bookmark-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 40 50"
+      >
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      <span class="text">{{ .Title }}</span>
+      {{ if ne .Params.status "no_status" }}
+      <span class="status">{{ .Params.status }}</span>
+      {{ end }}
+    </a>
+  </li>
+  {{ end }} {{ end }}
 </ul>
-{{ end }}
-{{ end }}
-{{ if eq $hasHigh true }}
+{{ end }} {{ end }} {{ if eq $hasHigh true }}
 <h3>{{ i18n "high_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "high_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 2) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
+  {{ range .Pages.ByWeight }} {{ if and (eq .Weight 2) (ne .Params.draft true)
+  }}
+  <li class="pattern">
+    <a
+      href="{{ .RelPermalink }}"
+      {{
+      if
+      eq
+      $current.Permalink
+      .Permalink
+      }}aria-current="page"
+      {{
+      end
+      }}
+    >
+      <svg
+        class="bookmark-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 40 50"
+      >
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      <span class="text">{{ .Title }}</span>
+      {{ if ne .Params.status "no_status" }}
+      <span class="status">{{ .Params.status }}</span>
+      {{ end }}
+    </a>
+  </li>
+  {{ end }} {{ end }}
 </ul>
-{{ end }}
-{{ end }}
-{{ if eq $hasMedium true }}
+{{ end }} {{ end }} {{ if eq $hasMedium true }}
 <h3>{{ i18n "medium_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "medium_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 3) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
+  {{ range .Pages.ByWeight }} {{ if and (eq .Weight 3) (ne .Params.draft true)
+  }}
+  <li class="pattern">
+    <a
+      href="{{ .RelPermalink }}"
+      {{
+      if
+      eq
+      $current.Permalink
+      .Permalink
+      }}aria-current="page"
+      {{
+      end
+      }}
+    >
+      <svg
+        class="bookmark-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 40 50"
+      >
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      <span class="text">{{ .Title }}</span>
+      {{ if ne .Params.status "no_status" }}
+      <span class="status">{{ .Params.status }}</span>
+      {{ end }}
+    </a>
+  </li>
+  {{ end }} {{ end }}
 </ul>
-{{ end }}
-{{ end }}
-{{ if eq $hasLow true }}
+{{ end }} {{ end }} {{ if eq $hasLow true }}
 <h3>{{ i18n "low_priority" }}</h3>
 {{ range $.Site.Home.Sections }}
 <ul aria-label='{{ i18n "low_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 4) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
+  {{ range .Pages.ByWeight }} {{ if and (eq .Weight 4) (ne .Params.draft true)
+  }}
+  <li class="pattern">
+    <a
+      href="{{ .RelPermalink }}"
+      {{
+      if
+      eq
+      $current.Permalink
+      .Permalink
+      }}aria-current="page"
+      {{
+      end
+      }}
+    >
+      <svg
+        class="bookmark-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 40 50"
+      >
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      <span class="text">{{ .Title }}</span>
+      {{ if ne .Params.status "no_status" }}
+      <span class="status">{{ .Params.status }}</span>
+      {{ end }}
+    </a>
+  </li>
+  {{ end }} {{ end }}
 </ul>
-{{ end }}
-{{ end }}
+{{ end }} {{ end }}

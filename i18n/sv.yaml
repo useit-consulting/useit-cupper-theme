@@ -136,6 +136,6 @@
   translation: "Test ej OK"
 - id: tested_ok
   translation: "Test OK"
-- id: empty
+- id: no_status
   translation: "Ingen status"
 

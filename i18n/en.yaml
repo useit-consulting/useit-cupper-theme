@@ -126,4 +126,12 @@
   translation: "Completed"
 - id: not_completed
   translation: "Not completed"
+- id: in_progress
+  translation: "In progress"
+- id: tested_not_ok
+  translation: "Tested not OK"
+- id: tested_ok
+  translation: "Tested OK"
+- id: empty
+  translation: "No status"
 

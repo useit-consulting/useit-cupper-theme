@@ -128,4 +128,12 @@
   translation: "Ferdig"
 - id: not_completed
   translation: "Ikke ferdig"
+- id: in_progress
+  translation: "Ikke ferdig"
+- id: tested_not_ok
+  translation: "Ikke OK"
+- id: tested_ok
+  translation: "OK"
+- id: empty
+  translation: "Ingen status"
 

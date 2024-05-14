@@ -130,4 +130,12 @@
   translation: "Klar"
 - id: not_completed
   translation: "Inte klar"
+- id: in_progress
+  translation: "Pågående"
+- id: tested_not_ok
+  translation: "Test ej OK"
+- id: tested_ok
+  translation: "Test OK"
+- id: empty
+  translation: "Ingen status"
 

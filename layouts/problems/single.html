@@ -329,30 +329,37 @@
           saveButton.disabled = true;
           select.disabled = true;
           let data;
-          data = await fetch('http://localhost:8888/.netlify/functions/update-status', {
+
+          try {
+          const response = await fetch('http://localhost:8888/.netlify/functions/update-status', {
             method: 'POST',
             body: JSON.stringify({ pageId, status, language: "{{ $.Site.Language }}", repo: "sj-androidapp-may2024" }),
             headers: {
               'Content-Type': 'application/json'
             }
-          }).then(() => {
-            console.log(data)
-            if (data && data?.response.ok) { // Check if the response status is 200 (OK)
-              saveButton.innerHTML = 'Rebuilding page, may take 60 seconds... <div class="spinner"></div>';
-              setTimeout(() => {
-                window.location.reload();
-              }, 60000);
-            } else {
-              // Append text paragraph with error information
-              const errorParagraph = document.createElement('p');
-              errorParagraph.textContent = 'Failed to update status';
-              container.appendChild(errorParagraph);
-              saveButton.disabled = false;
-              select.disabled = false;
-              throw new Error('Failed to update status');
-              
-            }
           });
+    
+          if (response.ok) { // Check if the response status is 200 (OK)
+            // append container with  paragraph
+            const statusParagraph = document.createElement('span');
+            statusParagraph.innerHTML = 'Rebuilding page, may take 60 seconds... <div class="spinner"></div>'
+            container.appendChild(statusParagraph);
+            setTimeout(() => {
+              window.location.reload();
+            }, 60000);
+          } else {
+            throw new Error('Failed to update status');
+          }
+        } catch (error) {
+          // append container with error paragraph
+          const errorParagraph = document.createElement('span');
+          errorParagraph.innerHTML = 'Update Failed - Retry?';
+          container.appendChild(errorParagraph);
+          console.error('Error updating the page:', error);
+          saveButton.innerText = 'Update status';
+          saveButton.disabled = false;
+          select.disabled = false;
+        }
         };
     });
   </script>

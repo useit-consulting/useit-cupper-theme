@@ -11,7 +11,7 @@ module.exports = {
     mode: 'production',
     plugins: [
         new webpack.DefinePlugin({
-          'NETLIFY_IDENTITY_URL': (process.env.NETLIFY_IDENTITY_URL ?  JSON.stringify(`https://${process.env.SITE_ID}.netlify.app/.netlify/identity`) : undefined)
+          'NETLIFY_IDENTITY_URL': (process.env.SITE_NAME ?  JSON.stringify(`https://${process.env.SITE_NAME}.netlify.app/.netlify/identity`) : undefined)
         })
       ]
   };

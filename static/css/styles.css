@@ -25,6 +25,7 @@
   --blue-color: var(--blue);
   --light-blue: var(--light-blue);
   --focus-color: var(--darkerblue);
+  accent-color: var(--text-color);
 }
 
 :root.dark {
@@ -38,6 +39,7 @@
   --blue-color: #282828;
   --light-blue: #282828;
   --focus-color: #fff;
+  accent-color: var(--text-color);
 }
 
 *,
@@ -311,6 +313,7 @@ select:disabled {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
+  align-items: center;
 }
 form#statusForm {
   margin-top: 0;
@@ -342,13 +345,14 @@ form#statusForm button {
 }
 form#statusForm select {
   border-radius: 0.25rem;
-  border: 1px solid #6f6f6f;
+  border: 1px solid var(--border-color);
   border-radius: 0.4rem;
   font-size: 0.85rem;
   padding: 0rem 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   min-width: 7rem;
+  background-color: var(--accent-color);
 }
 
 .spinner {
@@ -557,7 +561,7 @@ footer {
   flex-direction: row;
   justify-content: space-between;
 }
-.pattern .status {
+.status {
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   background-color: var(--accent-color);
@@ -587,6 +591,16 @@ fieldset.filter-container {
   width: 100%;     
   display: block; 
   font-weight: bold;
+}
+
+.filter-container input {
+  width: 1rem;
+  height: 1rem;
+}
+.filter-container label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 

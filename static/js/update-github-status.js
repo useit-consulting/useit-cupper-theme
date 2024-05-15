@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         const statusParagraph = document.createElement('span');
         statusParagraph.textContent = hugoParams.status || statusTranslations.new;
+        statusParagraph.classList.add('status');
         form.appendChild(statusParagraph);
       }
       if (user) {

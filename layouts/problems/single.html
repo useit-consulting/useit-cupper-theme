@@ -337,7 +337,7 @@
           let data;
 
           try {
-          const response = await fetch('{{ absURL "" }}.netlify/functions/update-status', {
+          const response = await fetch('https://sj-androidapp-may2024.netlify.app/.netlify/functions/update-status', {
             method: 'POST',
             body: JSON.stringify({ pageId, status, language: "{{ $.Site.Language }}", repo: "sj-androidapp-may2024" }),
             headers: {

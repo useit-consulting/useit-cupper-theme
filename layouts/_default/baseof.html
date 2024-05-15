@@ -144,13 +144,11 @@
             if (localStorage.getItem('darkTheme') === 'screen' || (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
               checkbox.click();
             }
-            console.log(window.netlifyIdentity)
         });
       }());
     </script>
     <script src="{{ "js/J2M.js" | absURL }}"></script>
-    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    
+    <script src="{{ "js/bundle.js" | absURL }}"></script>
     <!--{{ if .Page.IsHome }}
       <script src="{{ "js/service-worker-registration.js" | absURL }}"></script>
     {{ end }}-->

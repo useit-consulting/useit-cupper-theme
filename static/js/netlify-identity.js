@@ -5,8 +5,9 @@ netlifyIdentity.init({
   APIUrl: NETLIFY_IDENTITY_URL ? NETLIFY_IDENTITY_URL : undefined,
 });
 
-console.log(netlifyIdentity)
-console.log("NETLIFY_IDENTITY_URL", NETLIFY_IDENTITY_URL)
+netlifyIdentity.on('login', () => {
+    window.location.reload();
+});
 
 window.netlifyIdentity = netlifyIdentity;
 

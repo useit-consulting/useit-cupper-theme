@@ -64,9 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const status = select.value;
         const pageId = window.location.pathname.slice(0, -1) + '.md';
-        const cleanedPageId = window.location.pathname.includes('/problems') 
-                              ? window.location.pathname.slice(window.location.pathname.indexOf('/problems')) 
-                              : pageId;
         console.log('Saving status...', status, pageId);
         saveButton.disabled = true;
         select.disabled = true;
@@ -74,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         const response = await fetch(hugoParams.absURL + '.netlify/functions/update-status', {
           method: 'POST',
-          body: JSON.stringify({ pageId: cleanedPageId, status, language: hugoParams.siteLanguage, repo: repoName }),
+          body: JSON.stringify({ pageId, status, language: hugoParams.siteLanguage, repo: repoName }),
           headers: {
             'Content-Type': 'application/json'
           }

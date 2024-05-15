@@ -1,4 +1,4 @@
-{{ $statusCounts := dict "new" 0 "completed" 0 "rejected" 0 "tested_ok" 0 "tested_not_ok" 0 }}
+{{ $statusCounts := dict "new" 0 "completed" 0 "rejected" 0 "tested_ok" 0 "tested_not_ok" 0 "in_progress" 0 }}
 
 {{ range $.Site.Home.Sections }}
   {{ range .Pages }}
@@ -22,6 +22,15 @@
         checked
       />
       New ({{ index $statusCounts "new" }})
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        id="in_progress_checkbox"
+        onclick="toggleVisibility('in_progress')"
+        checked
+      />
+      In progress ({{ index $statusCounts "in_progress" }})
     </label>
     <label>
       <input

@@ -318,6 +318,9 @@ form#statusForm {
   flex-direction: row;
   gap: 0.5rem;
 }
+#statusForm span {
+  text-transform: capitalize;
+}
 
 .status-message {
   margin-top: 0;

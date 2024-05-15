@@ -33,7 +33,7 @@ end }} {{ if eq .Weight 2 }} {{ $hasHigh = true }} {{ end }} {{ if eq .Weight 3
         </svg>
         <span class="text">{{ .Title }}</span>
       </span>
-      {{ if ne .Params.status "no_status" }}
+      {{ if ne .Params.status "new" }}
       <span class="status">Status: {{ i18n .Params.status }}</span>
       {{ end }}
     </a>
@@ -70,7 +70,7 @@ end }} {{ if eq .Weight 2 }} {{ $hasHigh = true }} {{ end }} {{ if eq .Weight 3
         </svg>
         <span class="text">{{ .Title }}</span>
       </span>
-      {{ if ne .Params.status "no_status" }}
+      {{ if ne .Params.status "new" }}
       <span class="status">Status: {{ i18n .Params.status }}</span>
       {{ end }}
     </a>
@@ -108,7 +108,7 @@ end }} {{ if eq .Weight 2 }} {{ $hasHigh = true }} {{ end }} {{ if eq .Weight 3
         <span class="text">{{ .Title }}</span>
       </span>
 
-      {{ if ne .Params.status "no_status" }}
+      {{ if ne .Params.status "new" }}
       <span class="status">Status: {{ i18n .Params.status }}</span>
       {{ end }}
     </a>
@@ -145,7 +145,7 @@ end }} {{ if eq .Weight 2 }} {{ $hasHigh = true }} {{ end }} {{ if eq .Weight 3
         </svg>
         <span class="text">{{ .Title }}</span>
       </span>
-      {{ if ne .Params.status "no_status" }}
+      {{ if ne .Params.status "new" }}
       <span class="status">Status: {{ i18n .Params.status }}</span>
       {{ end }}
     </a>

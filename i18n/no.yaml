@@ -134,8 +134,8 @@
   translation: "Ikke OK"
 - id: tested_ok
   translation: "OK"
-- id: no_status
-  translation: "Ingen status"
+- id: new
+  translation: "Ny"
 - id: rejected
   translation: "Avvisad"
 

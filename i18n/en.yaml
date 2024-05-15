@@ -132,8 +132,8 @@
   translation: "Tested not OK"
 - id: tested_ok
   translation: "Tested OK"
-- id: no_status
-  translation: "No status"
+- id: new
+  translation: "New"
 - id: rejected
   translation: "Rejected"
 

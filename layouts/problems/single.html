@@ -283,10 +283,10 @@
 
         const select = document.createElement('select');
         select.id = 'statusSelect';
-        const statuses = ["not_completed", "in_progress", "completed", "tested_not_ok", "tested_ok", "no_status"];
+        const statuses = ["not_completed", "in_progress", "completed", "tested_not_ok", "tested_ok", "new"];
 
         const statusTranslations = {
-          "no_status": '{{ i18n "no_status" }}',
+          "new": '{{ i18n "new" }}',
           "in_progress": '{{ i18n "in_progress" }}',
           "completed": '{{ i18n "completed" }}',
           "tested_not_ok": '{{ i18n "tested_not_ok" }}',
@@ -296,10 +296,10 @@
         Object.entries(statusTranslations).forEach(([value, text]) => {
           const option = document.createElement('option');
           option.value = value;
-          option.text = text || '{{ i18n "no_status" }}'; // Display 'Blank' for the empty string option
+          option.text = text || '{{ i18n "new" }}'; // Display 'Blank' for the empty string option
           select.appendChild(option);
         });
-        select.value = "{{ .Params.status }}" || "no_status"; // Set the current status as the default value
+        select.value = "{{ .Params.status }}" || "new"; // Set the current status as the default value
 
         const saveButton = document.createElement('button');
         saveButton.type = user ? "submit" : "button";
@@ -315,7 +315,7 @@
         }
         else {
           const statusParagraph = document.createElement('span');
-          statusParagraph.textContent = '{{ i18n .Params.status }}' || '{{ i18n "no_status" }}';
+          statusParagraph.textContent = '{{ i18n .Params.status }}' || '{{ i18n "new" }}';
           form.appendChild(statusParagraph);
         }
         form.appendChild(saveButton);

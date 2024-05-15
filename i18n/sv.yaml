@@ -136,7 +136,7 @@
   translation: "Test ej OK"
 - id: tested_ok
   translation: "Test OK"
-- id: no_status
-  translation: "Ingen status"
+- id: new
+  translation: "Ny"
 - id: rejected
   translation: "Avvisad"

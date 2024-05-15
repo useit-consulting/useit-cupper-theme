@@ -19,7 +19,7 @@
   --bg-color: #fefefe;
   --accent-color: var(--lightGreen);
   --button-color: #000;
-  --bg-alt: var(--light-blue);
+  --bg-alt: var(--lightblue);
   --bg-grey: var(--grey);
   --border-color: transparent;
   --blue-color: var(--blue);
@@ -549,11 +549,43 @@ footer {
   flex-wrap: nowrap;
   align-items: baseline;
   font-weight: normal;
-  padding: 0 1rem;
   line-height: 1.5;
-  flex-direction: column;
   gap: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
 }
+.pattern .status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background-color: var(--accent-color);
+  font-size: 0.875rem;
+  text-decoration: none!important;
+}
+
+.filter-wrapper {
+  padding: 0.5rem;
+  background-color: var(--accent-color);
+  margin-bottom: 2rem;
+}
+fieldset.filter-container {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  border: none;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 0; 
+}
+.filter-container legend {
+  padding: 0;     
+  margin: 0;      
+  width: 100%;     
+  display: block; 
+  font-weight: bold;
+}
+
 
 .pattern a:hover {
   text-decoration: underline;

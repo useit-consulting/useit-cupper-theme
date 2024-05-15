@@ -1,384 +1,322 @@
 {{ define "main" }}
-  <main id="main">
-    <nav aria-label='{{ i18n "quick_navigation" }}'><a href="/">{{ i18n "go_back" }}</a></nav>
-    <h1>
-      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-        <use xlink:href="#bookmark"></use>
-      </svg>
-      {{ .Title }}
-    </h1>
-    {{ if or (isset .Params "tags") (isset .Params "areas") (isset .Params "components") }}
-      <div class="tags">
-        <strong aria-hidden="true">{{ i18n "tags" }}: </strong>
-        <ul aria-label="tags">
-          {{ range .Params.tags }}
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-            </li>
-          {{ end }}
-          {{ range .Params.areas }}
-          <li>
-            <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-              <use xlink:href="#tag"></use>
-            </svg>
-            <a href="{{ "/areas/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-          </li>
-          {{ end }}
-          {{ range .Params.components }}
-          <li>
-            <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-              <use xlink:href="#tag"></use>
-            </svg>
-            <a href="{{ "/components/" | relLangURL }}{{ . | urlize }}">{{ . }}-component</a>
-          </li>
-          {{ end }}
-          {{ range .Params.wcag }}
-          <li>
-            <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-              <use xlink:href="#tag"></use>
-            </svg>
-            <a href="{{ "/wcag/" | relLangURL }}{{ . | urlize }}">wcag{{ . }}</a>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
-      <div id="updateStatusButtonContainer">
-        <div id="formContainer">
-          <strong aria-hidden="true">Status: </strong>
-        </div>
-      </div>
-
-    {{ end }}
-    {{ if ne .Params.TOC false }}
-      {{ partial "toc" . }}
-    {{ end }}
-
-    {{ if isset .Params "pages" }}
-      <div class="h2-container">
-        <h2 id="affected_pages" tabindex="-1">{{ i18n "affected_pages" }}</h2><a href="#affected_pages" aria-label='{{ i18n "this_section" }} ({{ i18n "affected_pages" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
-      </div>
-      <div class="text-container">
-        <ul class="pages">
-          {{ range .Params.pages }}
-          <li>{{ . | markdownify }}</li>
-          {{ end }}
-        </ul>
-      </div>
-    {{ end }}
-
-
-    <div class="h2-container">
-      <h2 id="problem_description" tabindex="-1">{{ i18n "problem_description" }}</h2><a href="#problem_description" aria-label='{{ i18n "this_section" }} ({{ i18n "problem_description" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
+<main id="main">
+  <nav aria-label='{{ i18n "quick_navigation" }}'><a href="/">{{ i18n "go_back" }}</a></nav>
+  <h1>
+    <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+      <use xlink:href="#bookmark"></use>
+    </svg>
+    {{ .Title }}
+  </h1>
+  {{ if or (isset .Params "tags") (isset .Params "areas") (isset .Params "components") }}
+  <div class="tags">
+    <strong aria-hidden="true">{{ i18n "tags" }}: </strong>
+    <ul aria-label="tags">
+      {{ range .Params.tags }}
+      <li>
+        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+          <use xlink:href="#tag"></use>
+        </svg>
+        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+      </li>
+      {{ end }}
+      {{ range .Params.areas }}
+      <li>
+        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+          <use xlink:href="#tag"></use>
+        </svg>
+        <a href='{{ "/areas/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+      </li>
+      {{ end }}
+      {{ range .Params.components }}
+      <li>
+        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+          <use xlink:href="#tag"></use>
+        </svg>
+        <a href='{{ "/components/" | relLangURL }}{{ . | urlize }}'>{{ . }}-component</a>
+      </li>
+      {{ end }}
+      {{ range .Params.wcag }}
+      <li>
+        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+          <use xlink:href="#tag"></use>
+        </svg>
+        <a href='{{ "/wcag/" | relLangURL }}{{ . | urlize }}'>wcag{{ . }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  <div id="updateStatusButtonContainer">
+    <div id="formContainer">
+      <strong aria-hidden="true">Status: </strong>
     </div>
-    <div class="text-container">
-      {{ .Params.problemDescription | markdownify }}
-    </div>
+  </div>
 
-    <div class="h2-container">
-      <h2 id="suggested_solution" tabindex="-1">{{ i18n "suggested_solution" }}</h2><a href="#suggested_solution" aria-label='{{ i18n "this_section" }} ({{ i18n "suggested_solution" }})'><svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg></a>
-    </div>
-    <div class="text-container">
-      {{ .Params.suggestedSolution | markdownify }}
-    </div>
+  {{ end }}
+  {{ if ne .Params.TOC false }}
+  {{ partial "toc" . }}
+  {{ end }}
 
-    <div class="expandable-section">
-      <h2>
+  {{ if isset .Params "pages" }}
+  <div class="h2-container">
+    <h2 id="affected_pages" tabindex="-1">{{ i18n "affected_pages" }}</h2><a href="#affected_pages"
+      aria-label='{{ i18n "this_section" }} ({{ i18n "affected_pages" }})'><svg aria-hidden="true" class="link-icon"
+        viewBox="0 0 50 50" focusable="false">
+        <use xlink:href="#link"></use>
+      </svg></a>
+  </div>
+  <div class="text-container">
+    <ul class="pages">
+      {{ range .Params.pages }}
+      <li>{{ . | markdownify }}</li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+
+  <div class="h2-container">
+    <h2 id="problem_description" tabindex="-1">{{ i18n "problem_description" }}</h2><a href="#problem_description"
+      aria-label='{{ i18n "this_section" }} ({{ i18n "problem_description" }})'><svg aria-hidden="true"
+        class="link-icon" viewBox="0 0 50 50" focusable="false">
+        <use xlink:href="#link"></use>
+      </svg></a>
+  </div>
+  <div class="text-container">
+    {{ .Params.problemDescription | markdownify }}
+  </div>
+
+  <div class="h2-container">
+    <h2 id="suggested_solution" tabindex="-1">{{ i18n "suggested_solution" }}</h2><a href="#suggested_solution"
+      aria-label='{{ i18n "this_section" }} ({{ i18n "suggested_solution" }})'><svg aria-hidden="true" class="link-icon"
+        viewBox="0 0 50 50" focusable="false">
+        <use xlink:href="#link"></use>
+      </svg></a>
+  </div>
+  <div class="text-container">
+    {{ .Params.suggestedSolution | markdownify }}
+  </div>
+
+  <div class="expandable-section">
+    <h2>
       <button aria-expanded="true" data-expands="js-expandable-priority">
         <span>
-            <span class="icon-background">
-              <svg class="priority-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-                <use xlink:href="#priority"></use>
-              </svg>
-            </span>
-            <span class="expandable-label">{{ i18n "priority" }}(1-4)</span>
+          <span class="icon-background">
+            <svg class="priority-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+              <use xlink:href="#priority"></use>
+            </svg>
           </span>
-      <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
+          <span class="expandable-label">{{ i18n "priority" }}(1-4)</span>
+        </span>
+        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+          <g transform="translate(0 -981.5)">
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
+              class="up-strut" />
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
+          </g>
+        </svg>
       </button>
-      </h2>
-      <div id="js-expandable-priority">
+    </h2>
+    <div id="js-expandable-priority">
       {{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }}
       {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }}
       {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }}
       {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}
     </div>
-    </div>
+  </div>
 
-    {{ with .Params.components }}
-    <div class="expandable-section">
-      <h2>
-        <button aria-expanded="true" data-expands="js-expandable-components">
-          <span>
-            <span class="icon-background">
-            </span>
-            <span class="expandable-label">Affected SKAPA components</span>
+  {{ with .Params.components }}
+  <div class="expandable-section">
+    <h2>
+      <button aria-expanded="true" data-expands="js-expandable-components">
+        <span>
+          <span class="icon-background">
           </span>
-          <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-            <g transform="translate(0 -981.5)">
-              <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-              <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-            </g>
-          </svg>
-        </button>
-      </h2>
-      <div id="js-expandable-components">
-        <ul class="components">
-          {{ range . }}
-          <li>
-            <a href="{{ "/components/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
+          <span class="expandable-label">Affected SKAPA components</span>
+        </span>
+        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+          <g transform="translate(0 -981.5)">
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
+              class="up-strut" />
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
+          </g>
+        </svg>
+      </button>
+    </h2>
+    <div id="js-expandable-components">
+      <ul class="components">
+        {{ range . }}
+        <li>
+          <a href='{{ "/components/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+        </li>
+        {{ end }}
+      </ul>
     </div>
-    {{ end }}
+  </div>
+  {{ end }}
 
-    <div class="expandable-section">
-      <h2>
-        <button aria-expanded="false" data-expands="js-expandable-usergroups">
-          <span>
-            <span class="icon-background">
+  <div class="expandable-section">
+    <h2>
+      <button aria-expanded="false" data-expands="js-expandable-usergroups">
+        <span>
+          <span class="icon-background">
             <svg class="users-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
               <use xlink:href="#users"></use>
             </svg>
-            </span>
-            <span class="expandable-label">{{ i18n "affected_user_groups" }}</span>
           </span>
-          <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-            <g transform="translate(0 -981.5)">
-              <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-              <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-            </g>
-          </svg>
-        </button>
-      </h2>
-      <div id="js-expandable-usergroups" hidden>
-        <ul class="usergroups">
-          {{ range .Params.usergroups }}
-          <li>{{ . }}</li>
-          {{ end }}
-        </ul>
-      </div>
+          <span class="expandable-label">{{ i18n "affected_user_groups" }}</span>
+        </span>
+        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+          <g transform="translate(0 -981.5)">
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
+              class="up-strut" />
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
+          </g>
+        </svg>
+      </button>
+    </h2>
+    <div id="js-expandable-usergroups" hidden>
+      <ul class="usergroups">
+        {{ range .Params.usergroups }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
     </div>
+  </div>
 
-      <div class="expandable-section">
-        <h2>
-          <button aria-expanded="false" data-expands="js-expandable-wcag">
-            <span><span class="icon-background">
+  <div class="expandable-section">
+    <h2>
+      <button aria-expanded="false" data-expands="js-expandable-wcag">
+        <span><span class="icon-background">
             <svg class="wcag-icon" aria-hidden="true" viewBox="0 0 127.09899 67.763" focusable="false">
               <use xlink:href="#w3c"></use>
             </svg>
-            </span>
-            <span class="expandable-label">{{ i18n "wcag_violations" }}</span>
           </span>
-            <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-              <g transform="translate(0 -981.5)">
-                <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-                <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-              </g>
-            </svg>
-          </button>
-        </h2>
+          <span class="expandable-label">{{ i18n "wcag_violations" }}</span>
+        </span>
+        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+          <g transform="translate(0 -981.5)">
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
+              class="up-strut" />
+            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
+          </g>
+        </svg>
+      </button>
+    </h2>
 
-        <div id="js-expandable-wcag" hidden>
-          {{ $JSON := $.Site.Data.wcag }}
-          {{ $included := .Params.wcag }}
-          {{ $isIncluded := false }}
-          <ul class="wcag">
-            {{ range $JSON }}
-              {{ if in $.Page.Params.wcag .ref_id }}
-                {{ $isIncluded = true }}
-                <li>
-                  <strong><a href="{{ "/wcag/" | relLangURL }}{{ .ref_id | urlize }}">
-                    {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
-                  </strong>
-                </li>
-              {{ end }}
-            {{ end }}
-            {{ if eq $isIncluded false }}
-            <li><p>{{ i18n "nope" }}</p></li>
-            {{ end }}
-          </ul>
-        </div>
-      </div>
-    <div class="copy-buttons">
-      <div id="markdown">
-        <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown" }}</button>
-        <div id="feedback-markdown" aria-live="polite" hidden aria-atomic="true">
-          {{ i18n "copied" }}
-        </div>
-      </div>
-      <div id="jira">
-        <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
-        <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
-          {{ i18n "copied" }}
-        </div>
+    <div id="js-expandable-wcag" hidden>
+      {{ $JSON := $.Site.Data.wcag }}
+      {{ $included := .Params.wcag }}
+      {{ $isIncluded := false }}
+      <ul class="wcag">
+        {{ range $JSON }}
+        {{ if in $.Page.Params.wcag .ref_id }}
+        {{ $isIncluded = true }}
+        <li>
+          <strong><a href='{{ "/wcag/" | relLangURL }}{{ .ref_id | urlize }}'>
+              {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
+          </strong>
+        </li>
+        {{ end }}
+        {{ end }}
+        {{ if eq $isIncluded false }}
+        <li>
+          <p>{{ i18n "nope" }}</p>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+  <div class="copy-buttons">
+    <div id="markdown">
+      <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown"
+        }}</button>
+      <div id="feedback-markdown" aria-live="polite" hidden aria-atomic="true">
+        {{ i18n "copied" }}
       </div>
     </div>
-
-    <div id="copy-container">
-      <button id="copy-help" aria-expanded="false" data-expands="js-expandable-copyhelp">{{ i18n "copy_buttons_help" }}</button>
-      <div id="js-expandable-copyhelp" hidden="hidden" lang="en">
-          <h2>Copy as Markdown</h2>
-        <p><strong>Note: </strong>Use this option for JIRA Cloud installations, since JIRA Cloud no longer accepts the old JIRA markup.</p>
-          <ol>
-              <li>
-                  Click on the "Copy as Markdown" button.
-              </li>
-              <li>
-                  Paste (CTRL/CMD + V) into a text/code editor on your computer, e.g. Windows Notepad or Sublime Text.
-                <strong>This workaround is needed due to a bug in JIRA Cloud.</strong>
-              </li>
-              <li>
-                  Copy the pasted the content from the text editor.
-              </li>
-            <li>
-              Go to your organization's JIRA and click "Create new issue".
-            </li>
-              <li>
-                  Paste into the editor (CTRL / CMD + V).
-              </li>
-              <li>
-                  Save the issue.
-              </li>
-          </ol>
-        <h2>Copy as JIRA markup (legacy)</h2>
-        <p><strong>Note: </strong>This only works for old non-cloud JIRA installations.</p>
-        <ol>
-          <li>
-            Click on the "Copy as JIRA" button
-          </li>
-          <li>
-            Go to your organization's JIRA, click "Create issue"
-          </li>
-          <li>
-            Change text editor mode from "Visual" to "Text"
-          </li>
-          <li>
-            Paste into the editor (CTRL / CMD + V)
-          </li>
-          <li>
-            Save the issue
-          </li>
-        </ol>
+    <div id="jira">
+      <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
+      <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
+        {{ i18n "copied" }}
       </div>
     </div>
+  </div>
 
-  </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const user = netlifyIdentity.currentUser();
-      const container = document.getElementById('updateStatusButtonContainer');
-    
-        const formContainer = document.getElementById('formContainer');
-        const form = document.createElement('form');
-        form.id = 'statusForm';
+  <div id="copy-container">
+    <button id="copy-help" aria-expanded="false" data-expands="js-expandable-copyhelp">{{ i18n "copy_buttons_help"
+      }}</button>
+    <div id="js-expandable-copyhelp" hidden="hidden" lang="en">
+      <h2>Copy as Markdown</h2>
+      <p><strong>Note: </strong>Use this option for JIRA Cloud installations, since JIRA Cloud no longer accepts the old
+        JIRA markup.</p>
+      <ol>
+        <li>
+          Click on the "Copy as Markdown" button.
+        </li>
+        <li>
+          Paste (CTRL/CMD + V) into a text/code editor on your computer, e.g. Windows Notepad or Sublime Text.
+          <strong>This workaround is needed due to a bug in JIRA Cloud.</strong>
+        </li>
+        <li>
+          Copy the pasted the content from the text editor.
+        </li>
+        <li>
+          Go to your organization's JIRA and click "Create new issue".
+        </li>
+        <li>
+          Paste into the editor (CTRL / CMD + V).
+        </li>
+        <li>
+          Save the issue.
+        </li>
+      </ol>
+      <h2>Copy as JIRA markup (legacy)</h2>
+      <p><strong>Note: </strong>This only works for old non-cloud JIRA installations.</p>
+      <ol>
+        <li>
+          Click on the "Copy as JIRA" button
+        </li>
+        <li>
+          Go to your organization's JIRA, click "Create issue"
+        </li>
+        <li>
+          Change text editor mode from "Visual" to "Text"
+        </li>
+        <li>
+          Paste into the editor (CTRL / CMD + V)
+        </li>
+        <li>
+          Save the issue
+        </li>
+      </ol>
+    </div>
+  </div>
 
-        const select = document.createElement('select');
-        select.id = 'statusSelect';
-        const statuses = ["not_completed", "in_progress", "completed", "tested_not_ok", "tested_ok", "new"];
-
-        const statusTranslations = {
-          "new": '{{ i18n "new" }}',
-          "in_progress": '{{ i18n "in_progress" }}',
-          "completed": '{{ i18n "completed" }}',
-          "tested_not_ok": '{{ i18n "tested_not_ok" }}',
-          "tested_ok": '{{ i18n "tested_ok" }}',
-          "rejected": '{{ i18n "rejected" }}'
-        };
-        Object.entries(statusTranslations).forEach(([value, text]) => {
-          const option = document.createElement('option');
-          option.value = value;
-          option.text = text || '{{ i18n "new" }}'; // Display 'Blank' for the empty string option
-          select.appendChild(option);
-        });
-        select.value = "{{ .Params.status }}" || "new"; // Set the current status as the default value
-
-        const saveButton = document.createElement('button');
-        saveButton.type = user ? "submit" : "button";
-        saveButton.textContent = user ? 'Update status' : 'Log in to update status';
-        if (!user) {
-          select.disabled = true;
-          saveButton.onclick = function() {
-            netlifyIdentity?.open();
-          };
-        }
-        if (user) {
-          form.appendChild(select);
-        }
-        else {
-          const statusParagraph = document.createElement('span');
-          statusParagraph.textContent = '{{ i18n .Params.status }}' || '{{ i18n "new" }}';
-          form.appendChild(statusParagraph);
-        }
-        form.appendChild(saveButton);
-
-
-        formContainer.appendChild(form);
-
-        const statusParagraph = document.createElement('p');
-        statusParagraph.role = 'status';
-        statusParagraph.classList.add('status-message');
-
-        form.onsubmit = async function(event) {
-          event.preventDefault();
-          const status = select.value;
-          const pageId = window.location.pathname.slice(0, -1) + '.md';
-          console.log('Saving status...', status, pageId);
-          saveButton.disabled = true;
-          select.disabled = true;
-          let data;
-
-          try {
-          const response = await fetch('https://sj-androidapp-may2024.netlify.app/.netlify/functions/update-status', {
-            method: 'POST',
-            body: JSON.stringify({ pageId, status, language: "{{ $.Site.Language }}", repo: "sj-androidapp-may2024" }),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-    
-          if (response.ok) { // Check if the response status is 200 (OK)
-            // append container with  paragraph
-            statusParagraph.innerHTML = 'Rebuilding page, may take 60 seconds... <div class="spinner"></div>'
-            container.appendChild(statusParagraph);
-            setTimeout(() => {
-              window.location.reload();
-            }, 60000);
-          } else {
-            throw new Error('Failed to update status');
-          }
-        } catch (error) {
-          // append container with error paragraph
-          statusParagraph.innerHTML = 'Update Failed - Retry?';
-          container.appendChild(statusParagraph);
-          console.error('Error updating the page:', error);
-          saveButton.innerText = 'Update status';
-          saveButton.disabled = false;
-          select.disabled = false;
-        }
-        };
-    });
-  </script>
+</main>
+<script>
+  var hugoParams = { status: "{{ .Params.status }}", absURL: '{{ absURL "" }}', siteLanguage: '{{ $.Site.Language }}' }
+  var translations = {
+    new: '{{ i18n "new" }}',
+    in_progress: '{{ i18n "in_progress" }}',
+    completed: '{{ i18n "completed" }}',
+    tested_not_ok: '{{ i18n "tested_not_ok" }}',
+    tested_ok: '{{ i18n "tested_ok" }}',
+    rejected: '{{ i18n "rejected" }}'
+  };
+</script>
+<script src='{{ absURL "js/update-github-status.js" }}'></script>
 <script>
   const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
   const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
 
 
   function generateJiraDescription() {
-    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
+    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage + '\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage + '\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
     toggleFeedback("feedback-jira")
     return copyRichText(jiraBase)
   }
   function generateMarkdownDescription() {
-    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage+'\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage+'\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
+    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage + '\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage + '\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
     console.log(document.getElementById("feedback-markdown"))
     toggleFeedback("feedback-markdown")
 

@@ -368,8 +368,8 @@
     });
   </script>
 <script>
-  const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
-  const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ .Site.BaseURL }}img/');
+  const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
+  const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
 
 
   function generateJiraDescription() {

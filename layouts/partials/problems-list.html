@@ -12,64 +12,102 @@
 {{ end }}
 
 
-<div class="filter-wrapper">
-  <fieldset class="filter-container">
-    <legend>Filter results by status</legend>
-    <label>
-      <input
-        type="checkbox"
-        id="new_checkbox"
-        onclick="toggleVisibility('new')"
-        checked
-      />
-      New ({{ index $statusCounts "new" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="in_progress_checkbox"
-        onclick="toggleVisibility('in_progress')"
-        checked
-      />
-      In progress ({{ index $statusCounts "in_progress" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="completed_checkbox"
-        onclick="toggleVisibility('completed')"
-        checked
-      />
-      Completed ({{ index $statusCounts "completed" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="rejected_checkbox"
-        onclick="toggleVisibility('rejected')"
-        checked
-      />
-      Rejected ({{ index $statusCounts "rejected" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="tested_ok_checkbox"
-        onclick="toggleVisibility('tested_ok')"
-        checked
-      />
-      Tested OK ({{ index $statusCounts "tested_ok" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="tested_not_ok_checkbox"
-        onclick="toggleVisibility('tested_not_ok')"
-        checked
-      />
-      Tested not OK ({{ index $statusCounts "tested_not_ok" }})
-    </label>
-  </fieldset>
+<div class="expandable-section expandable-filters">
+  <h3>
+    <button aria-expanded="false" data-expands="js-expandable-filters">
+      <span>
+        <span class="expandable-label" id="filter-label"
+          >Filter results by status</span
+        >
+      </span>
+      <svg
+        class="expandable-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 70.866142 70.866141"
+      >
+        <g transform="translate(0 -981.5)">
+          <rect
+            style="stroke-width: 0; fill: currentColor"
+            ry="5"
+            height="60"
+            width="9.8985"
+            y="987.36"
+            x="30.051"
+            class="up-strut"
+          />
+          <rect
+            style="stroke-width: 0; fill: currentColor"
+            ry="5"
+            height="10"
+            width="60"
+            y="1012.4"
+            x="5"
+          />
+        </g>
+      </svg>
+    </button>
+  </h3>
+  <div id="js-expandable-filters" hidden>
+    <div class="filter-wrapper">
+      <fieldset class="filter-container" aria-labelledby="filter-label">
+        <label>
+          <input
+            type="checkbox"
+            id="new_checkbox"
+            onclick="toggleVisibility('new')"
+            checked
+          />
+          New ({{ index $statusCounts "new" }})
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            id="in_progress_checkbox"
+            onclick="toggleVisibility('in_progress')"
+            checked
+          />
+          In progress ({{ index $statusCounts "in_progress" }})
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            id="completed_checkbox"
+            onclick="toggleVisibility('completed')"
+            checked
+          />
+          Completed ({{ index $statusCounts "completed" }})
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            id="rejected_checkbox"
+            onclick="toggleVisibility('rejected')"
+            checked
+          />
+          Rejected ({{ index $statusCounts "rejected" }})
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            id="tested_ok_checkbox"
+            onclick="toggleVisibility('tested_ok')"
+            checked
+          />
+          Tested OK ({{ index $statusCounts "tested_ok" }})
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            id="tested_not_ok_checkbox"
+            onclick="toggleVisibility('tested_not_ok')"
+            checked
+          />
+          Tested not OK ({{ index $statusCounts "tested_not_ok" }})
+        </label>
+      </fieldset>
+    </div>
+  </div>
 </div>
 
 {{ $current := . }}

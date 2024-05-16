@@ -86,7 +86,7 @@
       {{ partial "toc" . }}
     {{ end }}
 
-    {{ if isset .Params "pages" }}
+    {{ if and (isset .Params "pages") (gt (len .Params.pages) 0) }}
       <div class="h2-container">
         <h2 id="affected_pages" tabindex="-1">{{ i18n "affected_pages" }}</h2>
         <a

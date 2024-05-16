@@ -24,6 +24,7 @@
   --blue-color: var(--blue);
   --light-blue: var(--light-blue);
   --focus-color: var(--darkerblue);
+  accent-color: var(--text-color);
 }
 
 @media not print {
@@ -290,9 +291,82 @@ button {
 }
 
 /* Forms */
-label {
-  display: inline-block;
-  font-weight: bold;
+
+#updateStatusButtonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+button:disabled {
+  background: #555;
+  color: #333;
+  cursor: not-allowed;
+}
+select:disabled {
+  cursor: not-allowed;
+}
+
+#formContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+form#statusForm {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+#statusForm span {
+  text-transform: capitalize;
+}
+
+.status-message {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--accent-color);
+}
+
+form#statusForm button {
+  margin-top: 0;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+form#statusForm select {
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0rem 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  min-width: 7rem;
+  background-color: var(--accent-color);
+}
+
+.spinner {
+  border: 4px solid rgba(0,0,0,.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 [for="themer"] {
@@ -392,7 +466,7 @@ caption {
   background-color: var(--accent-color);
 }
 html:not(.dark) .intro-and-nav {
-  border-right: 2px solid;
+  border-right: 2px solid transparent;
 }
 
 .intro-and-nav > div {
@@ -482,9 +556,53 @@ footer {
   flex-wrap: nowrap;
   align-items: baseline;
   font-weight: normal;
-  padding: 0 1rem;
   line-height: 1.5;
+  gap: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
 }
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background-color: var(--accent-color);
+  font-size: 0.875rem;
+  text-decoration: none!important;
+}
+
+.filter-wrapper {
+  padding: 0.5rem;
+  background-color: var(--accent-color);
+  margin-bottom: 2rem;
+}
+fieldset.filter-container {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  border: none;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 0; 
+}
+.filter-container legend {
+  padding: 0;     
+  margin: 0;      
+  width: 100%;     
+  display: block; 
+  font-weight: bold;
+}
+
+.filter-container input {
+  width: 1rem;
+  height: 1rem;
+}
+.filter-container label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 
 .pattern a:hover {
   text-decoration: underline;
@@ -494,8 +612,16 @@ footer {
 .pattern a:focus {
   outline: none;
 }
-.pattern span {
-  margin-left: 0.125rem;
+
+.problem-link-text-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+.pattern a > span:nth-child(2) {
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 /* after */
@@ -1306,6 +1432,9 @@ html.dark .icon-background {
   padding: 1em 2.5em;
   font-size: 0.85rem;
 }
+.dark .copy-buttons button {
+  color: #000;
+}
 
 .copy-buttons button:hover {
   filter: brightness(0.95);
@@ -1456,4 +1585,8 @@ html.dark .priority-text {
 }
 
 .redirect-container {
+}
+
+[data-netlify-identity-button] {
+  margin-top: 0;
 }

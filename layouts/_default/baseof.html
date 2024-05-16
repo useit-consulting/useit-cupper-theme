@@ -93,6 +93,7 @@
                   <span aria-hidden="true">&#x2193;</span>
                 </p>
               {{ end }}
+              <div data-netlify-identity-button></div>
             </div>
             {{ block "nav" . }}
               <nav id="main-nav" class="patterns">
@@ -160,7 +161,7 @@
       }());
     </script>
     <script src="{{ "js/J2M.js" | absURL }}"></script>
-    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="{{ "js/bundle.js" | absURL }}"></script>
     <!--{{ if .Page.IsHome }}
       <script src="{{ "js/service-worker-registration.js" | absURL }}"></script>
     {{ end }}-->

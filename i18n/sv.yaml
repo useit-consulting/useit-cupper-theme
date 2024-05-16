@@ -125,4 +125,18 @@
 - id: useit_reports_link
   translation: "Länk till Useit Reports"
 - id: copy_buttons_help
-  translation: "Instruktioner för att kopiera till JIRA"
+  translation: "Instruktioner fr att kopiera till JIRA"
+- id: completed
+  translation: "Klar"
+- id: not_completed
+  translation: "Inte klar"
+- id: in_progress
+  translation: "Pågående"
+- id: tested_not_ok
+  translation: "Test ej OK"
+- id: tested_ok
+  translation: "Test OK"
+- id: new
+  translation: "Ny"
+- id: rejected
+  translation: "Avvisad"

@@ -1,102 +1,134 @@
+{{ $statusCounts := dict "new" 0 "completed" 0 "rejected" 0 "tested_ok" 0 "tested_not_ok" 0 "in_progress" 0 }}
+
+{{ range $.Site.Home.Sections }}
+  {{ range .Pages }}
+    {{ $status := .Params.status }}
+    {{ if isset $statusCounts $status }}
+      {{ $count := add (index $statusCounts $status) 1 }}
+      {{ $statusCounts = merge $statusCounts (dict $status $count) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+
+<div class="filter-wrapper">
+  <fieldset class="filter-container">
+    <legend>Filter results by status</legend>
+    <label>
+      <input
+        type="checkbox"
+        id="new_checkbox"
+        onclick="toggleVisibility('new')"
+        checked
+      />
+      New ({{ index $statusCounts "new" }})
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        id="in_progress_checkbox"
+        onclick="toggleVisibility('in_progress')"
+        checked
+      />
+      In progress ({{ index $statusCounts "in_progress" }})
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        id="completed_checkbox"
+        onclick="toggleVisibility('completed')"
+        checked
+      />
+      Completed ({{ index $statusCounts "completed" }})
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        id="rejected_checkbox"
+        onclick="toggleVisibility('rejected')"
+        checked
+      />
+      Rejected ({{ index $statusCounts "rejected" }})
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        id="tested_ok_checkbox"
+        onclick="toggleVisibility('tested_ok')"
+        checked
+      />
+      Tested OK ({{ index $statusCounts "tested_ok" }})
+    </label>
+    <label>
+      <input
+        type="checkbox"
+        id="tested_not_ok_checkbox"
+        onclick="toggleVisibility('tested_not_ok')"
+        checked
+      />
+      Tested not OK ({{ index $statusCounts "tested_not_ok" }})
+    </label>
+  </fieldset>
+</div>
+
 {{ $current := . }}
+{{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
 
-{{ $hasCritical := false }}
-{{ $hasHigh := false }}
-{{ $hasMedium := false }}
-{{ $hasLow := false }}
-
-{{ range $.Site.Home.Sections }}
+{{ range $priority, $weight := $priorities }}
+  {{ $hasPriority := false }}
+  {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}
-        {{ if eq .Weight 1 }}
-            {{ $hasCritical = true }}
+      {{ if eq .Weight $weight }}
+        {{ $hasPriority = true }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if $hasPriority }}
+    <h3>{{ i18n (printf "%s_priority" $priority) }}</h3>
+    {{ range $.Site.Home.Sections }}
+      <ul aria-label="{{ i18n (printf " %s_priority_issues" $priority) }}">
+        {{ range .Pages.ByWeight }}
+          {{ if and (eq .Weight $weight) (ne .Params.draft true) }}
+            <li class="pattern" data-status="{{ .Params.status }}">
+              <a
+                href="{{ .RelPermalink }}"
+                {{ if eq $current.Permalink .Permalink }}
+                  aria-current="page"
+                {{ end }}
+              >
+                <span class="problem-link-text-container">
+                  <svg
+                    class="bookmark-icon"
+                    aria-hidden="true"
+                    focusable="false"
+                    viewBox="0 0 40 50"
+                  >
+                    <use xlink:href="#bookmark"></use>
+                  </svg>
+                  <span class="text">{{ .Title }}</span>
+                </span>
+                {{ if and .Params.status }}
+                  <span class="status">{{ i18n .Params.status }}</span>
+                {{ end }}
+              </a>
+            </li>
+          {{ end }}
         {{ end }}
+      </ul>
+    {{ end }}
+  {{ end }}
+{{ end }}
 
-        {{ if eq .Weight 2 }}
-            {{ $hasHigh = true }}
-        {{ end }}
 
-        {{ if eq .Weight 3 }}
-            {{ $hasMedium = true }}
-        {{ end }}
-
-        {{ if eq .Weight 4 }}
-            {{ $hasLow = true }}
-        {{ end }}
-    {{ end }}
-{{ end }}
-{{ if eq $hasCritical true }}
-<h3>{{ i18n "critical_priority" }}</h3>
-{{ range $.Site.Home.Sections }}
-<ul aria-label='{{ i18n "critical_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 1) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
-</ul>
-{{ end }}
-{{ end }}
-{{ if eq $hasHigh true }}
-<h3>{{ i18n "high_priority" }}</h3>
-{{ range $.Site.Home.Sections }}
-<ul aria-label='{{ i18n "high_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 2) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
-</ul>
-{{ end }}
-{{ end }}
-{{ if eq $hasMedium true }}
-<h3>{{ i18n "medium_priority" }}</h3>
-{{ range $.Site.Home.Sections }}
-<ul aria-label='{{ i18n "medium_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 3) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
-</ul>
-{{ end }}
-{{ end }}
-{{ if eq $hasLow true }}
-<h3>{{ i18n "low_priority" }}</h3>
-{{ range $.Site.Home.Sections }}
-<ul aria-label='{{ i18n "low_priority_issues" }}'>
-    {{ range .Pages.ByWeight }}
-    {{ if and (eq .Weight 4) (ne .Params.draft true) }}
-    <li class="pattern">
-        <a href="{{ .RelPermalink }}" {{ if eq $current.Permalink .Permalink  }}aria-current="page"{{ end }}>
-            <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
-                <use xlink:href="#bookmark"></use>
-            </svg>
-            <span class="text">{{ .Title }}</span>
-        </a>
-    </li>
-    {{ end }}
-    {{ end }}
-</ul>
-{{ end }}
-{{ end }}
+<script>
+  function toggleVisibility(status) {
+    var checkboxId = status + "_checkbox";
+    var checkbox = document.getElementById(checkboxId);
+    var items = document.querySelectorAll(
+      '.pattern[data-status="' + status + '"]',
+    );
+    items.forEach(function (item) {
+      item.style.display = checkbox.checked ? "" : "none";
+    });
+  }
+</script>

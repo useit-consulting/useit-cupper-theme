@@ -18,12 +18,14 @@
   --bg-color: #fefefe;
   --accent-color: var(--beige);
   --button-color: var(--darkred);
-  --bg-alt: var(--light-blue);
+  --bg-alt: var(--lightblue);
   --bg-grey: var(--grey);
   --border-color: #999;
   --blue-color: var(--blue);
   --light-blue: var(--light-blue);
   --focus-color: var(--darkerblue);
+  --bg-grey-alt: #efefef;
+  --input-bg: #f5f5f5;
   accent-color: var(--text-color);
 }
 
@@ -32,13 +34,15 @@
     --text-color: #fff;
     --bg-color: #0e1220;
     --accent-color: #171f2e;
-    --button-color: #be4350;
+    --button-color: #fff;
     --bg-alt: #171f2e;
     --bg-grey: #efefef;
     --border-color: #666;
     --blue-color: #171f2e;
     --light-blue: #171f2e;
     --focus-color: #fff;
+    --input-bg: #171f2e;
+    --bg-grey-alt: #171f2e;
   }
 }
 
@@ -352,7 +356,10 @@ form#statusForm select {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   min-width: 7rem;
-  background-color: var(--accent-color);
+  background-color: var(--input-bg);
+}
+select:hover {
+  filter: brightness(0.95);
 }
 
 .spinner {
@@ -389,6 +396,9 @@ form#statusForm select {
 
 [for="themer"] :checked + [aria-hidden]::before {
   content: "on";
+}
+.powered-by {
+  margin-top: 1rem;
 }
 /* Tables */
 
@@ -521,7 +531,7 @@ html.dark .useit-logo {
 
 footer {
   font-size: 0.85rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   text-align: center;
 }
 /* Patterns navigation */
@@ -564,9 +574,11 @@ footer {
 .status {
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
-  background-color: var(--accent-color);
+  background-color: var(--bg-grey-alt);
   font-size: 0.875rem;
   text-decoration: none!important;
+  text-align: center;
+  text-wrap: nowrap;
 }
 
 fieldset.filter-container {
@@ -900,6 +912,10 @@ html:not(.dark) .expandable-section button:hover {
   font-size: 1rem;
 }
 
+.expandable-filters {
+  margin-bottom: 2rem;
+}
+
 @media screen {
   .expandable-section + .expandable-section {
     margin-top: 0;
@@ -1215,14 +1231,14 @@ html.dark .icon-background {
     font-size: 1rem;
   }
   .pattern a {
-    padding: 1rem;
+    padding: 0.5rem;
+    align-items: center;
   }
   .pattern [aria-current] {
     clip-path: none;
     padding: 1rem;
   }
   .pattern + .pattern {
-    border-top: 1px solid;
     margin-top: 0;
   }
   #menu-button {
@@ -1499,7 +1515,7 @@ html.dark .icon-background {
 }
 
 .wcag-text {
-  background-color: var(--bg-alt);
+  background-color: var(--bg-grey-alt);
   padding: 1rem;
 }
 

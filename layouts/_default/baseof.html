@@ -118,13 +118,13 @@
           {{ block "main" . }}
           {{ end }}
           <footer>
-            <div>
               <label for="themer">
                 {{ i18n "dark_theme" }}: <input type="checkbox" id="themer" class="vh">
                 <span aria-hidden="true"></span>
               </label>
-            </div>
-            Powered by <a href="https://thepaciellogroup.github.io/cupper/"><strong>Cupper</strong></a><br>
+              <div class="powered-by">
+                Powered by <a href="https://thepaciellogroup.github.io/cupper/"><strong>Cupper</strong></a>
+              </div>
           </footer>
           <div id="toast-notification" role="alert" hidden></div>
         </div>

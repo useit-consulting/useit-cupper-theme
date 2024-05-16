@@ -38,7 +38,7 @@
     --bg-alt: #171f2e;
     --bg-grey: #efefef;
     --border-color: #666;
-    --blue-color: #171f2e;
+    --blue-color: #000000;
     --light-blue: #171f2e;
     --focus-color: #fff;
     --input-bg: #171f2e;
@@ -62,6 +62,7 @@ html {
   line-height: 1.8;
   color: var(--text-color);
   background-color: var(--bg-color);
+  border-color: var(--border-color);
 }
 template {
   display: none !important;
@@ -683,7 +684,7 @@ fieldset.filter-container {
 .patterns-list li + li {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 2px solid;
+  border-top: 1px solid;
 }
 .patterns-list a {
   border: 0;
@@ -1515,8 +1516,9 @@ html.dark .icon-background {
 }
 
 .wcag-text {
-  background-color: var(--bg-grey-alt);
   padding: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
 }
 
 .wcag-text button {
@@ -1554,7 +1556,7 @@ html.dark .icon-background {
 
 .priority-text {
   padding: 1rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   background-color: var(--bg-grey);
   display: flex;

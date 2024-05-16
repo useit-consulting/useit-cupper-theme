@@ -1,12 +1,11 @@
 :root {
-  --beige: #f9f4cf;
-  --blue: #22bce8;
+  --beige: #fbf3df;
+  --blue: #7ca7ba;
   --green: #a9d9b3;
-  --lightGreen: #e8f7e4;
   --darkblue: #276078;
-  --darkerblue: #00819e;
-  --lightblue: #e8f7f6;
-  --yellow: #ffd700;
+  --darkerblue: #0a4b67;
+  --lightblue: #cce4f4;
+  --yellow: #f0c868;
   --red: #f7a7a4;
   --darkred: #be4350;
   --success: #0070f3;
@@ -14,32 +13,33 @@
   --grey: #efefef;
 }
 
-:root:not(.dark) {
+:root {
   --text-color: #111;
   --bg-color: #fefefe;
-  --accent-color: var(--lightGreen);
-  --button-color: #000;
-  --bg-alt: var(--lightblue);
+  --accent-color: var(--beige);
+  --button-color: var(--darkred);
+  --bg-alt: var(--light-blue);
   --bg-grey: var(--grey);
-  --border-color: transparent;
+  --border-color: #999;
   --blue-color: var(--blue);
   --light-blue: var(--light-blue);
   --focus-color: var(--darkerblue);
   accent-color: var(--text-color);
 }
 
-:root.dark {
-  --text-color: #fff;
-  --bg-color: #1e1e1e;
-  --accent-color: #282828;
-  --button-color: #fff;
-  --bg-alt: #171f2e;
-  --bg-grey: #efefef;
-  --border-color: #666;
-  --blue-color: #282828;
-  --light-blue: #282828;
-  --focus-color: #fff;
-  accent-color: var(--text-color);
+@media not print {
+  :root.dark {
+    --text-color: #fff;
+    --bg-color: #0e1220;
+    --accent-color: #171f2e;
+    --button-color: #be4350;
+    --bg-alt: #171f2e;
+    --bg-grey: #efefef;
+    --border-color: #666;
+    --blue-color: #171f2e;
+    --light-blue: #171f2e;
+    --focus-color: #fff;
+  }
 }
 
 *,
@@ -1247,6 +1247,12 @@ html.dark .icon-background {
   }
 }
 @media print {
+  html {
+    font-size: 90%;
+  }
+  footer {
+    display: none;
+  }
   .wrapper:not(.print-version) .intro-and-nav,
   .wrapper:not(.print-version) footer {
     display: none;
@@ -1254,12 +1260,39 @@ html.dark .icon-background {
   .main-and-footer {
     margin-left: 0;
   }
+
+  .main-and-footer > div {
+    max-width: 45rem;
+  }
+
+  .expandable-section button {
+    background: none !important;
+    border: 1px solid var(--border-color);
+    border-bottom: none !important;
+  }
+  [id^="js-expandable-"] {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-top: none;
+  }
+
+  .intro-and-nav {
+    background: none;
+  }
+
+  .summary-container {
+    page-break-inside: avoid;
+  }
   a {
     border: 0;
   }
-  main a::after {
+  main a:not([href^="#"])::after {
     content: " (" attr(href) ")";
     word-break: break-word;
+  }
+
+  a[href^="#"] svg {
+    display: none;
   }
   main nav a::after {
     content: "";
@@ -1282,7 +1315,7 @@ html.dark .icon-background {
     display: block;
   }
   [data-expands] svg {
-    display: none;
+    /* display: none; */
   }
   main *:not(.with-desc) {
     page-break-inside: avoid;

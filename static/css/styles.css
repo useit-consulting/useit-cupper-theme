@@ -1584,4 +1584,5 @@ html.dark .priority-text {
 
 [data-netlify-identity-button] {
   margin-top: 0;
+  min-height: 55px;
 }

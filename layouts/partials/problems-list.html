@@ -73,9 +73,11 @@
 </div>
 
 {{ $current := . }}
-{{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
+{{ $priorities := slice (slice "critical" 1) (slice "high" 2) (slice "medium" 3) (slice "low" 4) }}
 
-{{ range $priority, $weight := $priorities }}
+{{ range $priorityPair := $priorities }}
+  {{ $priority := index $priorityPair 0 }}
+  {{ $weight := index $priorityPair 1 }}
   {{ $hasPriority := false }}
   {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}
@@ -87,7 +89,7 @@
   {{ if $hasPriority }}
     <h3>{{ i18n (printf "%s_priority" $priority) }}</h3>
     {{ range $.Site.Home.Sections }}
-      <ul aria-label="{{ i18n (printf " %s_priority_issues" $priority) }}">
+      <ul aria-label="{{ i18n (printf "%s_priority_issues" $priority) }}">
         {{ range .Pages.ByWeight }}
           {{ if and (eq .Weight $weight) (ne .Params.draft true) }}
             <li class="pattern" data-status="{{ .Params.status }}">
@@ -108,7 +110,7 @@
                   </svg>
                   <span class="text">{{ .Title }}</span>
                 </span>
-                {{ if and .Params.status }}
+                {{ if .Params.status }}
                   <span class="status">{{ i18n .Params.status }}</span>
                 {{ end }}
               </a>

@@ -1,0 +1,306 @@
+[
+    {
+        "Number": "5.1.2.1",
+        "Name": "Closed functionality"
+    },
+    {
+        "Number": "5.1.2.2",
+        "Name": "Assistive technology"
+    },
+    {
+        "Number": "5.1.3.1",
+        "Name": "General (belongs to 5.1.3 Non-visual access)"
+    },
+    {
+        "Number": "5.1.3.2",
+        "Name": "Auditory output delivery including speech"
+    },
+    {
+        "Number": "5.1.3.3",
+        "Name": "Auditory output correlation"
+    },
+    {
+        "Number": "5.1.3.4",
+        "Name": "Speech output user control"
+    },
+    {
+        "Number": "5.1.3.5",
+        "Name": "Speech output automatic interruption"
+    },
+    {
+        "Number": "5.1.3.6",
+        "Name": "Speech output for non-text content"
+    },
+    {
+        "Number": "5.1.3.7",
+        "Name": "Speech output for video information"
+    },
+    {
+        "Number": "5.1.3.8",
+        "Name": "Masked entry"
+    },
+    {
+        "Number": "5.1.3.9",
+        "Name": "Private access to personal data"
+    },
+    {
+        "Number": "5.1.3.10",
+        "Name": "Non-interfering audio output"
+    },
+    {
+        "Number": "5.1.3.11",
+        "Name": "Private listening volume"
+    },
+    {
+        "Number": "5.1.3.12",
+        "Name": "Speaker volume"
+    },
+    {
+        "Number": "5.1.3.13",
+        "Name": "Volume reset"
+    },
+    {
+        "Number": "5.1.3.14",
+        "Name": "Spoken languages"
+    },
+    {
+        "Number": "5.1.3.15",
+        "Name": "Non-visual error identification"
+    },
+    {
+        "Number": "5.1.3.16",
+        "Name": "Receipts"
+    },
+    {
+        "Number": "5.1.4",
+        "Name": "Functionality closed to text enlargement"
+    },
+    {
+        "Number": "5.1.5",
+        "Name": "Visual output for auditory information"
+    },
+    {
+        "Number": "5.1.6.1",
+        "Name": "Operation without keyboard interface (closed functionality)"
+    },
+    {
+        "Number": "5.1.6.2",
+        "Name": "Operation without keyboard interface (Input focus)"
+    },
+    {
+        "Number": "5.1.7",
+        "Name": "Access without speech"
+    },
+    {
+        "Number": "5.2",
+        "Name": "Activation of accessibility features"
+    },
+    {
+        "Number": "5.3",
+        "Name": "Biometrics"
+    },
+    {
+        "Number": "5.4",
+        "Name": "Preservation of accessibility information during conversion"
+    },
+    {
+        "Number": "5.5.1",
+        "Name": "Means of operation"
+    },
+    {
+        "Number": "5.5.2",
+        "Name": "Operable part discernibility"
+    },
+    {
+        "Number": "5.6.1",
+        "Name": "Tactile or auditory status"
+    },
+    {
+        "Number": "5.6.2",
+        "Name": "Visualstatus"
+    },
+    {
+        "Number": "5.7",
+        "Name": "Key repeat"
+    },
+    {
+        "Number": "5.8",
+        "Name": "Double-strike key acceptance"
+    },
+    {
+        "Number": "5.9",
+        "Name": "Simultaneous user actions"
+    },
+    {
+        "Number": "7.1.1",
+        "Name": "Captioning playback"
+    },
+    {
+        "Number": "7.1.2",
+        "Name": "Captioning synchronization"
+    },
+    {
+        "Number": "7.1.3",
+        "Name": "Preservation of captioning"
+    },
+    {
+        "Number": "7.1.4",
+        "Name": "Captions characteristics"
+    },
+    {
+        "Number": "7.1.5",
+        "Name": "Spoken subtitles"
+    },
+    {
+        "Number": "7.2.1",
+        "Name": "Audio description playback"
+    },
+    {
+        "Number": "7.2.2",
+        "Name": "Audio description synchronization"
+    },
+    {
+        "Number": "7.2.3",
+        "Name": "Preservation of audio description"
+    },
+    {
+        "Number": "7.3",
+        "Name": "User controls for captions and audio description"
+    },
+    {
+        "Number": "9.6",
+        "Name": "WCAG Conformance requirements"
+    },
+    {
+        "Number": "10.5",
+        "Name": "Caption positioning"
+    },
+    {
+        "Number": "10.6",
+        "Name": "Audio description timing"
+    },
+    {
+        "Number": "11.5.1",
+        "Name": "Closed functionality"
+    },
+    {
+        "Number": "11.5.2.1",
+        "Name": "Platform accessibility service support for software that provides a user interface"
+    },
+    {
+        "Number": "11.5.2.2",
+        "Name": "Platform accessibility service support for assistive technologies"
+    },
+    {
+        "Number": "11.5.2.3",
+        "Name": "Use of accessibility services"
+    },
+    {
+        "Number": "11.5.2.4",
+        "Name": "Assistive technology"
+    },
+    {
+        "Number": "11.5.2.5",
+        "Name": "Object information"
+    },
+    {
+        "Number": "11.5.2.6",
+        "Name": "Row"
+    },
+    {
+        "Number": "11.5.2.7",
+        "Name": "Values"
+    },
+    {
+        "Number": "11.5.2.8",
+        "Name": "Label relationships"
+    },
+    {
+        "Number": "11.5.2.9",
+        "Name": "Parent-child relationships"
+    },
+    {
+        "Number": "11.5.2.10",
+        "Name": "Text"
+    },
+    {
+        "Number": "11.5.2.11",
+        "Name": "List of available actions"
+    },
+    {
+        "Number": "11.5.2.12",
+        "Name": "Execution of available actions"
+    },
+    {
+        "Number": "11.5.2.13",
+        "Name": "Tracking of focus and selection attributes"
+    },
+    {
+        "Number": "11.5.2.14",
+        "Name": "Modification of focus and selection attributes"
+    },
+    {
+        "Number": "11.5.2.15",
+        "Name": "Change notification"
+    },
+    {
+        "Number": "11.5.2.16",
+        "Name": "Modifications of states and properties"
+    },
+    {
+        "Number": "11.5.2.17",
+        "Name": "Modifications of values and text"
+    },
+    {
+        "Number": "11.6.1",
+        "Name": "User control of accessibility features"
+    },
+    {
+        "Number": "11.6.2",
+        "Name": "No disruption of accessibility features"
+    },
+    {
+        "Number": "11.7",
+        "Name": "User preferences"
+    },
+    {
+        "Number": "11.8.1",
+        "Name": "Content technology"
+    },
+    {
+        "Number": "11.8.2",
+        "Name": "Accessible content creation"
+    },
+    {
+        "Number": "11.8.3",
+        "Name": "Preservation of accessibility information in transformations"
+    },
+    {
+        "Number": "11.8.4",
+        "Name": "Repair assistance"
+    },
+    {
+        "Number": "11.8.5",
+        "Name": "Templates"
+    },
+    {
+        "Number": "12.1.1",
+        "Name": "Accessibility and compatibility features"
+    },
+    {
+        "Number": "12.1.2",
+        "Name": "Accessible documentation"
+    },
+    {
+        "Number": "12.2.2",
+        "Name": "Information on accessibility and compatibility features"
+    },
+    {
+        "Number": "12.2.3",
+        "Name": "Effective communication"
+    },
+    {
+        "Number": "12.2.4",
+        "Name": "Accessible documentation"
+    }
+]

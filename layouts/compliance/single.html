@@ -1,0 +1,210 @@
+{{ define "main" }}
+  {{ $WCAG := $.Site.Data.wcag }}
+  {{ $EN301549 := $.Site.Data.en301549 }}
+  {{ $this := "" }}
+  <main>
+    <nav aria-label="{{ i18n "quick_navigation" }}">
+      <a href="../summary/">{{ i18n "go_back_to_start" }}</a>
+    </nav>
+    <h1>{{ .Title }}</h1>
+    <div class="h2-container">
+      <h2 id="failed_wcag_criteria" tabindex="-1">
+        Failed WCAG 2.2 (AA) criteria
+      </h2>
+      <a
+        href="#failed_wcag_criteria"
+        aria-label="{{ i18n "this_section" }} ({{ i18n "failed_criteria" }})"
+        ><svg
+          aria-hidden="true"
+          class="link-icon"
+          viewBox="0 0 50 50"
+          focusable="false"
+        >
+          <use xlink:href="#link"></use>
+        </svg>
+      </a>
+    </div>
+    <ul class="patterns-list wcag-patterns">
+      {{ $wcag := .Site.Taxonomies.wcag }}
+      {{ range $wcag }}
+        {{ .Page.Render "li" }}
+      {{ end }}
+    </ul>
+
+    <div class="h2-container">
+      <h2 id="failed_en301549_criteria" tabindex="-1">
+        Failed EN 301 549 criteria
+      </h2>
+      <a
+        href="#failed_en301549_criteria"
+        aria-label="{{ i18n "this_section" }} ({{ i18n "failed_criteria" }})"
+        ><svg
+          aria-hidden="true"
+          class="link-icon"
+          viewBox="0 0 50 50"
+          focusable="false"
+        >
+          <use xlink:href="#link"></use>
+        </svg>
+      </a>
+    </div>
+    <ul class="patterns-list wcag-patterns">
+      {{ $en301549 := .Site.Taxonomies.en301549 }}
+      {{ range $en301549 }}
+        {{ .Page.Render "li" }}
+      {{ end }}
+    </ul>
+    <div class="expandable-section margin-top">
+      <h2>
+        <button
+          aria-expanded="false"
+          data-expands="js-expandable-passedwcagcriteria"
+        >
+          <span class="expandable-label"
+            >Passed or not applicable WCAG criteria</span
+          >
+          <svg
+            class="expandable-icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 70.866142 70.866141"
+          >
+            <g transform="translate(0 -981.5)">
+              <rect
+                style="stroke-width:0;fill:currentColor"
+                ry="5"
+                height="60"
+                width="9.8985"
+                y="987.36"
+                x="30.051"
+                class="up-strut"
+              />
+              <rect
+                style="stroke-width:0;fill:currentColor"
+                ry="5"
+                height="10"
+                width="60"
+                y="1012.4"
+                x="5"
+              />
+            </g>
+          </svg>
+        </button>
+      </h2>
+      <div id="js-expandable-passedwcagcriteria" hidden>
+        <ul>
+          {{ range $WCAG }}
+            {{ $this = . }}
+            {{ $hasIssues := false }}
+            {{ range $.Data.Pages }}
+              {{ if eq .Title $this.ref_id }}
+                {{ $hasIssues = true }}
+              {{ end }}
+            {{ end }}
+            {{ if eq $hasIssues false }}
+              {{ if ne $this.level "AAA" }}
+                <li>
+                  {{ $this.ref_id }} {{ $this.title }} ({{ $this.level }})
+                </li>
+              {{ end }}
+            {{ end }}
+
+          {{ end }}
+
+        </ul>
+      </div>
+    </div>
+    <div class="expandable-section margin-top">
+      <h2>
+        <button
+          aria-expanded="false"
+          data-expands="js-expandable-passeden301549criteria"
+        >
+          <span class="expandable-label"
+            >Passed or not applicable EN 301 549 criteria</span
+          >
+          <svg
+            class="expandable-icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 70.866142 70.866141"
+          >
+            <g transform="translate(0 -981.5)">
+              <rect
+                style="stroke-width:0;fill:currentColor"
+                ry="5"
+                height="60"
+                width="9.8985"
+                y="987.36"
+                x="30.051"
+                class="up-strut"
+              />
+              <rect
+                style="stroke-width:0;fill:currentColor"
+                ry="5"
+                height="10"
+                width="60"
+                y="1012.4"
+                x="5"
+              />
+            </g>
+          </svg>
+        </button>
+      </h2>
+      <div id="js-expandable-passeden301549criteria" hidden>
+        <ul>
+          {{ range $EN301549 }}
+            {{ $this := . }}
+            {{ $hasIssues := false }}
+            {{ range $.Data.Pages }}
+              {{ if eq .Title $this.Number }}
+                {{ $hasIssues = true }}
+              {{ end }}
+            {{ end }}
+            {{ if eq $hasIssues false }}
+              <li>{{ $this.Number }} {{ $this.Name }}</li>
+            {{ end }}
+
+          {{ end }}
+
+        </ul>
+      </div>
+    </div>
+    {{ $hasNonWcagIssues := false }}
+    {{ range where $.Site.Pages "Section" "problems" }}
+      {{ if (not (isset .Params "wcag")) | or (eq .Params.wcag nil) }}
+        {{ if isset .Params "weight" }}
+          {{ $hasNonWcagIssues = true }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if eq $hasNonWcagIssues true }}
+      <div class="h2-container margin-top">
+        <h2 id="non_wcag" tabindex="-1">
+          Issues outside of legal requirements
+        </h2>
+        <a
+          href="#non_wcag"
+          aria-label="{{ i18n "this_section" }} ({{ i18n "outside_wcag" }})"
+          ><svg
+            aria-hidden="true"
+            class="link-icon"
+            viewBox="0 0 50 50"
+            focusable="false"
+          >
+            <use xlink:href="#link"></use></svg
+        ></a>
+      </div>
+      <div class="priority-text">{{ i18n "outside_wcag_explanation" }}</div>
+      <ul class="patterns-list margin-top-small">
+        {{ range where $.Site.Pages "Section" "problems" }}
+          {{ if (not (isset .Params "wcag")) | or (eq .Params.wcag nil) }}
+            {{ if isset .Params "weight" }}
+              {{ .Render "li" }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </ul>
+    {{ end }}
+  </main>
+{{ end }}

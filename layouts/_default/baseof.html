@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex">
     <script>
+      function darkTheme(media) {
+        if (media === "screen")
+          document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkTheme', media);
+      }
       // Immediately invoked function to set dark theme if needed
       (function() {
-        function applyDarkTheme() {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('darkTheme', 'screen');
-        }
 
         // Check local storage or system preference for dark mode
         if (localStorage.getItem('darkTheme') === 'screen' || 
             (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
-          applyDarkTheme();
+          darkTheme('screen');
         }
       })();
     </script>

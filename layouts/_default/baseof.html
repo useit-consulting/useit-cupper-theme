@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex">
+    <script>
+      // Immediately invoked function to set dark theme if needed
+      (function() {
+        function applyDarkTheme() {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('darkTheme', 'screen');
+        }
+
+        // Check local storage or system preference for dark mode
+        if (localStorage.getItem('darkTheme') === 'screen' || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
+          applyDarkTheme();
+        }
+      })();
+    </script>
     <link rel="preload" as="image" href="{{ "images/useit.svg" | relURL }}">
     <link rel="preload" as="image" href="{{ "images/useit-dark.svg" | relURL }}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,17 +62,6 @@
       gtag('js', new Date());
 
       gtag('config', 'G-QDNQYNPZPF');
-    </script>
-    <script>
-      function darkTheme(media) {
-        if (media === "screen")
-          document.documentElement.classList.add('dark');
-        else document.documentElement.classList.remove('dark');
-        localStorage.setItem('darkTheme', media);
-      }
-      // Render blocking JS:
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')
-        darkTheme("screen");
     </script>
 <!--    {{ if .IsHome }}-->
 <!--      <link rel="manifest" href="manifest.json">-->

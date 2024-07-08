@@ -151,315 +151,62 @@
       {{ .Params.suggestedSolution | markdownify }}
     </div>
 
-    <div class="expandable-section">
-      <h2>
-        <button aria-expanded="true" data-expands="js-expandable-priority">
-          <span>
-            <span class="icon-background">
-              <svg
-                class="priority-icon"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                focusable="false"
-              >
-                <use xlink:href="#priority"></use>
-              </svg>
-            </span>
-            <span class="expandable-label">{{ i18n "priority" }}(1-4)</span>
-          </span>
-          <svg
-            class="expandable-icon"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 70.866142 70.866141"
-          >
-            <g transform="translate(0 -981.5)">
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="60"
-                width="9.8985"
-                y="987.36"
-                x="30.051"
-                class="up-strut"
-              />
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="10"
-                width="60"
-                y="1012.4"
-                x="5"
-              />
-            </g>
-          </svg>
-        </button>
-      </h2>
-      <div id="js-expandable-priority">
-        {{ if eq $.Page.Params.weight 1 }}
-          {{ i18n "critical_priority" }} ({{ .Params.weight }})
-        {{ end }}
-        {{ if eq $.Page.Params.weight 2 }}
-          {{ i18n "high_priority" }} ({{ .Params.weight }})
-        {{ end }}
-        {{ if eq $.Page.Params.weight 3 }}
-          {{ i18n "medium_priority" }} ({{ .Params.weight }})
-        {{ end }}
-        {{ if eq $.Page.Params.weight 4 }}
-          {{ i18n "low_priority" }} ({{ .Params.weight }})
-        {{ end }}
-      </div>
-    </div>
+    {{ $priorityContent := "" }}
+    {{ if eq $.Page.Params.weight 1 }}
+      {{ $priorityContent = print $priorityContent (i18n "critical_priority") " (" .Params.weight ")" }}
+    {{ else if eq $.Page.Params.weight 2 }}
+      {{ $priorityContent = print $priorityContent (i18n "high_priority") " (" .Params.weight ")" }}
+    {{ else if eq $.Page.Params.weight 3 }}
+      {{ $priorityContent = print $priorityContent (i18n "medium_priority") " (" .Params.weight ")" }}
+    {{ else if eq $.Page.Params.weight 4 }}
+      {{ $priorityContent = print $priorityContent (i18n "low_priority") " (" .Params.weight ")" }}
+    {{ end }}
+    {{ partial "disclosure.html" (dict "iconClass" "priority-icon" "iconHref" "#priority" "label" (i18n "priority") "contentId" "js-expandable-priority" "content" $priorityContent "isOpen" true) }}
 
     {{ with .Params.components }}
-      <div class="expandable-section">
-        <h2>
-          <button aria-expanded="true" data-expands="js-expandable-components">
-            <span>
-              <span class="icon-background"> </span>
-              <span class="expandable-label">Affected SKAPA components</span>
-            </span>
-            <svg
-              class="expandable-icon"
-              aria-hidden="true"
-              focusable="false"
-              viewBox="0 0 70.866142 70.866141"
-            >
-              <g transform="translate(0 -981.5)">
-                <rect
-                  style="stroke-width:0;fill:currentColor"
-                  ry="5"
-                  height="60"
-                  width="9.8985"
-                  y="987.36"
-                  x="30.051"
-                  class="up-strut"
-                />
-                <rect
-                  style="stroke-width:0;fill:currentColor"
-                  ry="5"
-                  height="10"
-                  width="60"
-                  y="1012.4"
-                  x="5"
-                />
-              </g>
-            </svg>
-          </button>
-        </h2>
-        <div id="js-expandable-components">
-          <ul class="components">
-            {{ range . }}
-              <li>
-                <a href="{{ "/components/" | relLangURL }}{{ . | urlize }}"
-                  >{{ . }}</a
-                >
-              </li>
-            {{ end }}
-          </ul>
-        </div>
-      </div>
+      {{ $componentsContent := "<ul class='components'>" }}
+      {{ range .Params.components }}
+        {{ $componentsContent = print $componentsContent "<li><a href='" (relLangURL "/components/") (. | urlize) "'>" . "</a></li>" }}
+      {{ end }}
+      {{ $componentsContent = print $componentsContent "</ul>" }}
+      {{ partial "disclosure.html" (dict "iconClass" "components-icon" "iconHref" "#components" "label" "Affected SKAPA components" "contentId" "js-expandable-components" "content" $componentsContent) }}
     {{ end }}
 
+    {{ $userGroupsContent := "<ul class='usergroups'>" }}
+    {{ range .Params.usergroups }}
+      {{ $userGroupsContent = print $userGroupsContent "<li>" . "</li>" }}
+    {{ end }}
+    {{ $userGroupsContent = print $userGroupsContent "</ul>" }}
+    {{ partial "disclosure.html" (dict "iconClass" "users-icon" "iconHref" "#users" "label" (i18n "affected_user_groups") "contentId" "js-expandable-usergroups" "content" $userGroupsContent) }}
 
-    <div class="expandable-section">
-      <h2>
-        <button aria-expanded="false" data-expands="js-expandable-usergroups">
-          <span>
-            <span class="icon-background">
-              <svg
-                class="users-icon"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                focusable="false"
-              >
-                <use xlink:href="#users"></use>
-              </svg>
-            </span>
-            <span class="expandable-label"
-              >{{ i18n "affected_user_groups" }}</span
-            >
-          </span>
-          <svg
-            class="expandable-icon"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 70.866142 70.866141"
-          >
-            <g transform="translate(0 -981.5)">
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="60"
-                width="9.8985"
-                y="987.36"
-                x="30.051"
-                class="up-strut"
-              />
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="10"
-                width="60"
-                y="1012.4"
-                x="5"
-              />
-            </g>
-          </svg>
-        </button>
-      </h2>
-      <div id="js-expandable-usergroups" hidden>
-        <ul class="usergroups">
-          {{ range .Params.usergroups }}
-            <li>{{ . }}</li>
-          {{ end }}
-        </ul>
-      </div>
-    </div>
+    {{ $wcagContent := "<ul class='wcag'>" }}
+    {{ $isIncluded := false }}
+    {{ range $.Site.Data.wcag }}
+      {{ if in $.Page.Params.wcag .ref_id }}
+        {{ $isIncluded = true }}
+        {{ $wcagContent = print $wcagContent "<li><strong><a href='" (relLangURL "/wcag/") (.ref_id | urlize) "'>" .ref_id " " .title "</a> (level " .level ")</strong></li>" }}
+      {{ end }}
+    {{ end }}
+    {{ if not $isIncluded }}
+      {{ $wcagContent = print $wcagContent "<li><p>" (i18n "nope") "</p></li>" }}
+    {{ end }}
+    {{ $wcagContent = print $wcagContent "</ul>" }}
+    {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#w3c" "label" (i18n "wcag_violations") "contentId" "js-expandable-wcag" "content" $wcagContent) }}
+    {{ $en301Content := "<ul class='wcag'>" }}
+    {{ $isIncluded := false }}
+    {{ range $.Site.Data.en301549 }}
+      {{ if in $.Page.Params.en301549 .Number }}
+        {{ $isIncluded = true }}
+        {{ $en301Content = print $en301Content "<li><strong><a href='" (relLangURL "/en301549/") (.Number | urlize) "'>" .Number " " .Name "</a></strong></li>" }}
+      {{ end }}
+    {{ end }}
+    {{ if not $isIncluded }}
+      {{ $en301Content = print $en301Content "<li><p>" (i18n "nope") "</p></li>" }}
+    {{ end }}
+    {{ $en301Content = print $en301Content "</ul>" }}
+    {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#w3c" "label" "EN 301 549 violations" "contentId" "js-expandable-en301" "content" $en301Content) }}
 
-    <div class="expandable-section">
-      <h2>
-        <button aria-expanded="false" data-expands="js-expandable-wcag">
-          <span
-            ><span class="icon-background">
-              <svg
-                class="wcag-icon"
-                aria-hidden="true"
-                viewBox="0 0 127.09899 67.763"
-                focusable="false"
-              >
-                <use xlink:href="#w3c"></use>
-              </svg>
-            </span>
-            <span class="expandable-label">{{ i18n "wcag_violations" }}</span>
-          </span>
-          <svg
-            class="expandable-icon"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 70.866142 70.866141"
-          >
-            <g transform="translate(0 -981.5)">
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="60"
-                width="9.8985"
-                y="987.36"
-                x="30.051"
-                class="up-strut"
-              />
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="10"
-                width="60"
-                y="1012.4"
-                x="5"
-              />
-            </g>
-          </svg>
-        </button>
-      </h2>
 
-      <div id="js-expandable-wcag" hidden>
-        {{ $JSON := $.Site.Data.wcag }}
-        {{ $included := .Params.wcag }}
-        {{ $isIncluded := false }}
-        <ul class="wcag">
-          {{ range $JSON }}
-            {{ if in $.Page.Params.wcag .ref_id }}
-              {{ $isIncluded = true }}
-              <li>
-                <strong
-                  ><a href="{{ "/wcag/" | relLangURL }}{{ .ref_id | urlize }}">
-                    {{ .ref_id }} {{ .title }}</a
-                  >
-                  (level {{ .level }})
-                </strong>
-              </li>
-            {{ end }}
-          {{ end }}
-          {{ if eq $isIncluded false }}
-            <li>
-              <p>{{ i18n "nope" }}</p>
-            </li>
-          {{ end }}
-        </ul>
-      </div>
-    </div>
-    <div class="expandable-section">
-      <h2>
-        <button aria-expanded="false" data-expands="js-expandable-en301">
-          <span
-            ><span class="icon-background">
-              <svg
-                class="wcag-icon"
-                aria-hidden="true"
-                viewBox="0 0 127.09899 67.763"
-                focusable="false"
-              >
-                <use xlink:href="#w3c"></use>
-              </svg>
-            </span>
-            <span class="expandable-label">EN 301 549 violations</span>
-          </span>
-          <svg
-            class="expandable-icon"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 70.866142 70.866141"
-          >
-            <g transform="translate(0 -981.5)">
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="60"
-                width="9.8985"
-                y="987.36"
-                x="30.051"
-                class="up-strut"
-              />
-              <rect
-                style="stroke-width:0;fill:currentColor"
-                ry="5"
-                height="10"
-                width="60"
-                y="1012.4"
-                x="5"
-              />
-            </g>
-          </svg>
-        </button>
-      </h2>
-
-      <div id="js-expandable-en301" hidden>
-        {{ $JSON := $.Site.Data.en301549 }}
-        {{ $included := .Params.en301549 }}
-        {{ $isIncluded := false }}
-        <ul class="wcag">
-          {{ range $JSON }}
-            {{ if in $.Page.Params.en301549 .Number }}
-              {{ $isIncluded = true }}
-              <li>
-                <strong
-                  ><a
-                    href="{{ "/en301549/" | relLangURL }}{{ .Number | urlize }}"
-                  >
-                    {{ .Number }} {{ .Name }}</a
-                  >
-                </strong>
-              </li>
-            {{ end }}
-          {{ end }}
-          {{ if eq $isIncluded false }}
-            <li>
-              <p>{{ i18n "nope" }}</p>
-            </li>
-          {{ end }}
-        </ul>
-      </div>
-    </div>
     <div class="copy-buttons">
       <div id="markdown">
         <button

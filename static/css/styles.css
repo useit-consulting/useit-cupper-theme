@@ -197,6 +197,45 @@ h5 {
   font-weight: 500;
   text-transform: uppercase;
 }
+
+details + details {
+  margin-top: 1rem;
+}
+details {
+  background-color: var(--beige);
+  border-radius: 1rem 1rem 0 1rem;
+}
+summary {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--beige);
+  justify-content: space-between;
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: 1rem 1rem 0 1rem;
+  
+}
+details[open] summary {
+  border-radius: 1rem 1rem 0 0rem;
+}
+summary:hover {
+  filter: brightness(0.98);
+}
+summary > .summary-inner {
+  align-items: center;
+  display: flex;
+}
+summary svg {
+  width: 1em;
+  height: 1em;
+  margin:0
+}
+.disclosure-content {
+  margin-top: 0;
+  padding: 1rem;
+}
+
 kbd {
   line-height: 1;
   font-size: 0.66rem;
@@ -942,6 +981,9 @@ html:not(.dark) .expandable-section button:hover {
   height: 1em;
 }
 [data-expands][aria-expanded="true"] svg .up-strut {
+  display: none;
+}
+details[open] svg .up-strut {
   display: none;
 }
 [data-expands]:not(#copy-help):focus {

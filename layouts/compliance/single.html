@@ -31,23 +31,27 @@
       {{ end }}
     </ul>
 
-    <div class="h2-container">
-      <h2 id="failed_en301549_criteria" tabindex="-1">
-        {{ i18n "failed_en301549_criteria" }}
-      </h2>
-      <a
-        href="#failed_en301549_criteria"
-        aria-label="{{ i18n "this_section" }} ({{ i18n "failed_criteria" }})"
-        ><svg
-          aria-hidden="true"
-          class="link-icon"
-          viewBox="0 0 50 50"
-          focusable="false"
-        >
-          <use xlink:href="#link"></use>
-        </svg>
-      </a>
-    </div>
+    {{ if .Site.Taxonomies.en301549 }}
+      <div class="h2-container">
+        <h2 id="failed_en301549_criteria" tabindex="-1">
+          {{ i18n "failed_en301549_criteria" }}
+        </h2>
+        <a
+          href="#failed_en301549_criteria"
+          aria-label="{{ i18n "this_section" }} ({{ i18n "failed_criteria" }})"
+          ><svg
+            aria-hidden="true"
+            class="link-icon"
+            viewBox="0 0 50 50"
+            focusable="false"
+          >
+            <use xlink:href="#link"></use>
+          </svg>
+        </a>
+      </div>
+    {{ end }}
+
+
     <ul class="patterns-list wcag-patterns">
       {{ $en301549 := .Site.Taxonomies.en301549 }}
       {{ range $en301549 }}

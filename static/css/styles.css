@@ -225,6 +225,9 @@ details[open] summary {
 summary:hover {
   filter: brightness(0.98);
 }
+:root.dark summary:hover {
+  filter: brightness(1.1);
+}
 summary > .summary-inner {
   align-items: center;
   display: flex;

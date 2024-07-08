@@ -65,53 +65,13 @@
     <div id="summary-results-nav" class="patterns">
       {{ partial "problems-list.html" . }}
     </div>
-    <div class="expandable-section expandable-priority">
-      <h3>
-        <button aria-expanded="false" data-expands="js-expandable-priority">
-          <span>
-            <span class="expandable-label"
-              >{{ i18n "about_our_priority" }}</span
-            >
-          </span>
-          <svg
-            class="expandable-icon"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 70.866142 70.866141"
-          >
-            <g transform="translate(0 -981.5)">
-              <rect
-                style="stroke-width: 0; fill: currentColor"
-                ry="5"
-                height="60"
-                width="9.8985"
-                y="987.36"
-                x="30.051"
-                class="up-strut"
-              />
-              <rect
-                style="stroke-width: 0; fill: currentColor"
-                ry="5"
-                height="10"
-                width="60"
-                y="1012.4"
-                x="5"
-              />
-            </g>
-          </svg>
-        </button>
-      </h3>
-      <div id="js-expandable-priority" hidden>
-        <h4>{{ i18n "critical_priority" }}</h4>
-        <p>{{ i18n "critical_explanation" }}</p>
-        <h4>{{ i18n "high_priority" }}</h4>
-        <p>{{ i18n "high_explanation" }}</p>
-        <h4>{{ i18n "medium_priority" }}</h4>
-        <p>{{ i18n "medium_explanation" }}</p>
-        <h4>{{ i18n "low_priority" }}</h4>
-        <p>{{ i18n "low_explanation" }}</p>
-      </div>
-    </div>
+    {{ $priorityContent := "<h4>" | safeHTML }}
+    {{ $priorityContent = print $priorityContent (i18n "critical_priority") "</h4><p>" (i18n "critical_explanation") "</p>" | safeHTML }}
+    {{ $priorityContent = print $priorityContent "<h4>" (i18n "high_priority") "</h4><p>" (i18n "high_explanation") "</p>" | safeHTML }}
+    {{ $priorityContent = print $priorityContent "<h4>" (i18n "medium_priority") "</h4><p>" (i18n "medium_explanation") "</p>" | safeHTML }}
+    {{ $priorityContent = print $priorityContent "<h4>" (i18n "low_priority") "</h4><p>" (i18n "low_explanation") "</p>" | safeHTML }}
+
+    {{ partial "disclosure.html" (dict "iconClass" "priority-icon" "iconHref" "#priority" "label" (i18n "about_our_priority") "contentId" "js-expandable-priority" "content" $priorityContent) }}
 
     {{ .Content }}
   </main>

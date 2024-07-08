@@ -202,20 +202,23 @@ details + details {
   margin-top: 1rem;
 }
 details {
-  background-color: var(--beige);
+  background-color: var(--accent-color);
   border-radius: 1rem 1rem 0 1rem;
 }
 summary {
   display: flex;
   align-items: center;
   padding: 1rem;
-  background-color: var(--beige);
+  background-color: var(--accent-color);
   justify-content: space-between;
   font-size: 1.25rem;
   cursor: pointer;
   border-radius: 1rem 1rem 0 1rem;
-  
+  list-style: none;
 }
+summary::-webkit-details-marker {
+  display: none;
+ }
 details[open] summary {
   border-radius: 1rem 1rem 0 0rem;
 }

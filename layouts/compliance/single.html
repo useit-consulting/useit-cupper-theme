@@ -9,7 +9,7 @@
     <h1>{{ .Title }}</h1>
     <div class="h2-container">
       <h2 id="failed_wcag_criteria" tabindex="-1">
-        Failed WCAG 2.2 (AA) criteria
+        {{ i18n "failed_wcag_criteria" }}
       </h2>
       <a
         href="#failed_wcag_criteria"
@@ -33,7 +33,7 @@
 
     <div class="h2-container">
       <h2 id="failed_en301549_criteria" tabindex="-1">
-        Failed EN 301 549 criteria
+        {{ i18n "failed_en301549_criteria" }}
       </h2>
       <a
         href="#failed_en301549_criteria"
@@ -61,7 +61,7 @@
           data-expands="js-expandable-passedwcagcriteria"
         >
           <span class="expandable-label"
-            >Passed or not applicable WCAG criteria</span
+            >{{ i18n "passed_or_not_applicable_wcag_criteria" }}</span
           >
           <svg
             class="expandable-icon"
@@ -121,7 +121,7 @@
           data-expands="js-expandable-passeden301549criteria"
         >
           <span class="expandable-label"
-            >Passed or not applicable EN 301 549 criteria</span
+            >{{ i18n "passed_or_not_applicable_en301549_criteria" }}</span
           >
           <svg
             class="expandable-icon"
@@ -181,7 +181,7 @@
     {{ if eq $hasNonWcagIssues true }}
       <div class="h2-container margin-top">
         <h2 id="non_wcag" tabindex="-1">
-          Issues outside of legal requirements
+          {{ i18n "issues_outside_of_legal_requirements" }}
         </h2>
         <a
           href="#non_wcag"

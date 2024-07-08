@@ -142,4 +142,16 @@
   translation: "New"
 - id: rejected
   translation: "Rejected"
+- id: show_summary_of_legal_compliance
+  translation: "Show passed and failed legal requirements"
+- id: passed_or_not_applicable_wcag_criteria
+  translation: "Passed or not applicable WCAG criteria"
+- id: passed_or_not_applicable_en301549_criteria
+  translation: "Passed or not applicable EN 301 549 criteria"
+- id: failed_wcag_criteria
+  translation: "Failed WCAG criteria"
+- id: failed_en301549_criteria
+  translation: "Failed EN 301 549 criteria"
+- id: issues_outside_of_legal_requirements
+  translation: "Issues outside of legal requirements"
 

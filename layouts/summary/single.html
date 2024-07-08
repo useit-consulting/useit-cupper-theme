@@ -32,8 +32,7 @@
             viewBox="0 0 50 50"
             focusable="false"
           >
-            <use xlink:href="#link"></use></svg
-        ></a>
+            <use xlink:href="#link"></use></svg></a>
       </div>
       <div class="text-container">
         {{ $.Page.Params.summary | markdownify }}
@@ -52,13 +51,12 @@
           viewBox="0 0 50 50"
           focusable="false"
         >
-          <use xlink:href="#link"></use></svg
-      ></a>
+          <use xlink:href="#link"></use></svg></a>
     </div>
 
     <div class="results-container">
-      <a href="{{ "compliance/" | relURL }}"
-        >Show summary of legal compliance</a
+      <a href='{{ "compliance/" | relURL }}'
+        >{{ i18n "show_summary_of_legal_compliance" }}</a
       >
     </div>
 

@@ -1043,6 +1043,7 @@ h3 svg {
   width: 0.85em;
   height: 0.85em;
 }
+
 .expandable-section button > span:first-child {
   display: inline-flex;
   align-items: center;
@@ -1072,6 +1073,9 @@ html.dark .icon-background {
 .wcag-icon {
   width: 1.25em;
   color: #000;
+}
+:root.dark .wcag-icon {
+  color: #fff;
 }
 .bookmark-icon {
   vertical-align: middle;

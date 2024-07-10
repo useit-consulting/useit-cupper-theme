@@ -1074,7 +1074,7 @@ html.dark .icon-background {
   width: 1.25em;
   color: #000;
 }
-:root.dark .wcag-icon {
+:root.dark .wcag-icon:not(.icon-background .wcag-icon) {
   color: #fff;
 }
 .bookmark-icon {

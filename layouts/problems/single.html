@@ -204,7 +204,7 @@
       {{ $en301Content = print $en301Content "<li><p>" (i18n "nope") "</p></li>" }}
     {{ end }}
     {{ $en301Content = print $en301Content "</ul>" }}
-    {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#w3c" "label" "EN 301 549 violations" "contentId" "js-expandable-en301" "content" $en301Content) }}
+    {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#en301" "label" "EN 301 549 violations" "contentId" "js-expandable-en301" "content" $en301Content) }}
 
 
     <div class="copy-buttons">

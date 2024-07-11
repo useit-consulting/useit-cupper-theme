@@ -142,4 +142,6 @@
   translation: "Ny"
 - id: rejected
   translation: "Avvisad"
+- id: testing_methodology
+  translation: "Testmetodikk"
 

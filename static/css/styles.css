@@ -1080,6 +1080,9 @@ html.dark .icon-background {
 .bookmark-icon {
   vertical-align: middle;
 }
+.icon-background .info-icon {
+  color: #000;
+}
 .link-icon {
   width: 0.75em;
   height: 0.75em;

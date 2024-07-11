@@ -20,6 +20,11 @@
       {{ end }}
       {{ partial "disclosure.html" (dict "iconClass" "devices-icon" "iconHref" "#devices" "label" (i18n "equipment") "contentId" "js-expandable-tools" "content" $equipmentContent) }}
     {{ end }}
+    {{ with .Params.methodology }}
+      {{ $methodologyContent := "" }}
+      {{ $methodologyContent = print $.Page.Params.methodology | markdownify }}
+      {{ partial "disclosure.html" (dict "iconClass" "info-icon" "iconHref" "#info" "label" (i18n "methodology") "content" $methodologyContent) }}
+    {{ end }}
     {{ with .Params.summary }}
       <div class="h2-container">
         <h2 id="summary" tabindex="-1">{{ i18n "summary" }}</h2>
@@ -32,7 +37,8 @@
             viewBox="0 0 50 50"
             focusable="false"
           >
-            <use xlink:href="#link"></use></svg></a>
+            <use xlink:href="#link"></use></svg
+        ></a>
       </div>
       <div class="text-container">
         {{ $.Page.Params.summary | markdownify }}
@@ -51,11 +57,12 @@
           viewBox="0 0 50 50"
           focusable="false"
         >
-          <use xlink:href="#link"></use></svg></a>
+          <use xlink:href="#link"></use></svg
+      ></a>
     </div>
 
     <div class="results-container">
-      <a href='{{ "compliance/" | relURL }}'
+      <a href="{{ "compliance/" | relURL }}"
         >{{ i18n "show_summary_of_legal_compliance" }}</a
       >
     </div>

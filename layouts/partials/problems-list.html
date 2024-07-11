@@ -3,7 +3,6 @@
 {{ range $.Site.Home.Sections }}
   {{ range .Pages }}
     {{ $status := .Params.status }}
-    {{ $status := .Params.status }}
     {{ if and $status (isset $statusCounts $status) }}
       {{ $count := add (index $statusCounts $status) 1 }}
       {{ $statusCounts = merge $statusCounts (dict $status $count) }}
@@ -23,8 +22,15 @@
 
 {{ $current := . }}
 {{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
+{{ $priorityOrder := slice "critical" "high" "medium" "low" }}
+<!-- Define the order of priorities -->
 
-{{ range $priority, $weight := $priorities }}
+<pre>{{ printf "%#v" $priorities }}</pre>
+
+{{ range $index, $priority := $priorityOrder }}
+  <!-- Range over the ordered slice -->
+  {{ $weight := index $priorities $priority }}
+  <!-- Get the weight for each priority -->
   {{ $hasPriority := false }}
   {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}

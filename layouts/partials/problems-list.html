@@ -23,9 +23,6 @@
 {{ $current := . }}
 {{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
 {{ $priorityOrder := slice "critical" "high" "medium" "low" }}
-<!-- Define the order of priorities -->
-
-<pre>{{ printf "%#v" $priorities }}</pre>
 
 {{ range $index, $priority := $priorityOrder }}
   <!-- Range over the ordered slice -->

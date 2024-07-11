@@ -177,8 +177,10 @@
     {{ $hasNonWcagIssues := false }}
     {{ range where $.Site.Pages "Section" "problems" }}
       {{ if (not (isset .Params "wcag")) | or (eq .Params.wcag nil) }}
-        {{ if isset .Params "weight" }}
-          {{ $hasNonWcagIssues = true }}
+        {{ if (not (isset .Params "en301549")) | or (eq .Params.en301549 nil) }}
+          {{ if isset .Params "weight" }}
+            {{ $hasNonWcagIssues = true }}
+          {{ end }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -203,8 +205,10 @@
       <ul class="patterns-list margin-top-small">
         {{ range where $.Site.Pages "Section" "problems" }}
           {{ if (not (isset .Params "wcag")) | or (eq .Params.wcag nil) }}
-            {{ if isset .Params "weight" }}
-              {{ .Render "li" }}
+            {{ if (not (isset .Params "en301549")) | or (eq .Params.en301549 nil) }}
+              {{ if isset .Params "weight" }}
+                {{ .Render "li" }}
+              {{ end }}
             {{ end }}
           {{ end }}
         {{ end }}

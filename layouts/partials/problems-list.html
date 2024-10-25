@@ -3,7 +3,7 @@
 {{ range $.Site.Home.Sections }}
   {{ range .Pages }}
     {{ $status := .Params.status }}
-    {{ if and $status (isset $statusCounts $status) }}
+    {{ if and $status (ne $status "") (isset $statusCounts $status) }}
       {{ $count := add (index $statusCounts $status) 1 }}
       {{ $statusCounts = merge $statusCounts (dict $status $count) }}
     {{ end }}

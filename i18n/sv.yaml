@@ -162,3 +162,5 @@
   translation: "Problem utanför lagkraven"
 - id: methodology
   translation: "Metodik"
+- id: filter_results_by_status
+  translation: "Filtrera resultat efter status"

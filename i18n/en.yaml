@@ -156,4 +156,6 @@
   translation: "Issues outside of legal requirements"
 - id: methodology
   translation: "Test methodology"
+- id: filter_results_by_status
+  translation: "Filter results by status"
 

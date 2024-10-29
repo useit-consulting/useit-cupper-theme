@@ -40,6 +40,8 @@
   translation: "Brukere som påvirkes"
 - id: wcag_violations
   translation: "WCAG 2.2 (AA)"
+- id: en301549_violations
+  translation: "EN 301 549"
 - id: copy_as_markdown
   translation: "Kopier som Markdown"
 - id: copy_as_jira
@@ -54,8 +56,10 @@
   translation: "En bruker slenger ut en fist bump gjennom PC-skjermen, illustrasjon"
 - id: wcag_summary
   translation: "Sammendrag WCAG 2.2 (AA)"
+- id: en301549_summary
+  translation: "EN 301 549 status"
 - id: passed_or_not_applicable
-  translation: "Godkjente eller ikke bedømte krav"
+  translation: "Godkjente eller ikke bedmte krav"
 - id: failed_criteria
   translation: "Ikke godkjente krav"
 - id: show_all_wcag_criteria
@@ -138,4 +142,6 @@
   translation: "Ny"
 - id: rejected
   translation: "Avvisad"
+- id: testing_methodology
+  translation: "Testmetodikk"
 

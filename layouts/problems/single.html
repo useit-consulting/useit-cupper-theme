@@ -1,298 +1,285 @@
 {{ define "main" }}
-<main id="main">
-  <nav aria-label='{{ i18n "quick_navigation" }}'><a href="/">{{ i18n "go_back" }}</a></nav>
-  <h1>
-    <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-      <use xlink:href="#bookmark"></use>
-    </svg>
-    {{ .Title }}
-  </h1>
-  {{ if or (isset .Params "tags") (isset .Params "areas") (isset .Params "components") }}
-  <div class="tags">
-    <strong aria-hidden="true">{{ i18n "tags" }}: </strong>
-    <ul aria-label="tags">
-      {{ range .Params.tags }}
-      <li>
-        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-          <use xlink:href="#tag"></use>
-        </svg>
-        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
-      </li>
-      {{ end }}
-      {{ range .Params.areas }}
-      <li>
-        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-          <use xlink:href="#tag"></use>
-        </svg>
-        <a href='{{ "/areas/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
-      </li>
-      {{ end }}
+  <main id="main">
+    <nav aria-label="{{ i18n "quick_navigation" }}">
+      <a href="/">{{ i18n "go_back" }}</a>
+    </nav>
+    <h1>
+      <svg
+        class="bookmark-icon"
+        aria-hidden="true"
+        viewBox="0 0 40 50"
+        focusable="false"
+      >
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      {{ .Title }}
+    </h1>
+    {{ if or (isset .Params "tags") (isset .Params "areas") (isset .Params "components") }}
+      <div class="tags">
+        <strong aria-hidden="true">{{ i18n "tags" }}: </strong>
+        <ul aria-label="tags">
+          {{ range .Params.tags }}
+            <li>
+              <svg
+                class="tag-icon"
+                aria-hidden="true"
+                viewBox="0 0 177.16535 177.16535"
+                focusable="false"
+              >
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            </li>
+          {{ end }}
+          {{ range .Params.areas }}
+            <li>
+              <svg
+                class="tag-icon"
+                aria-hidden="true"
+                viewBox="0 0 177.16535 177.16535"
+                focusable="false"
+              >
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="{{ "/areas/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            </li>
+          {{ end }}
+          {{ range .Params.components }}
+            <li>
+              <svg
+                class="tag-icon"
+                aria-hidden="true"
+                viewBox="0 0 177.16535 177.16535"
+                focusable="false"
+              >
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="{{ "/components/" | relLangURL }}{{ . | urlize }}"
+                >{{ . }}-component</a
+              >
+            </li>
+          {{ end }}
+          {{ range .Params.wcag }}
+            <li>
+              <svg
+                class="tag-icon"
+                aria-hidden="true"
+                viewBox="0 0 177.16535 177.16535"
+                focusable="false"
+              >
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="{{ "/wcag/" | relLangURL }}{{ . | urlize }}"
+                >wcag{{ . }}</a
+              >
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div id="updateStatusButtonContainer">
+        <div id="formContainer">
+          <strong aria-hidden="true">Status: </strong>
+        </div>
+      </div>
+    {{ end }}
+    {{ if ne .Params.TOC false }}
+      {{ partial "toc" . }}
+    {{ end }}
+
+    {{ if isset .Params "pages" }}
+      <div class="h2-container">
+        <h2 id="affected_pages" tabindex="-1">{{ i18n "affected_pages" }}</h2>
+        <a
+          href="#affected_pages"
+          aria-label="{{ i18n "this_section" }} ({{ i18n "affected_pages" }})"
+          ><svg
+            aria-hidden="true"
+            class="link-icon"
+            viewBox="0 0 50 50"
+            focusable="false"
+          >
+            <use xlink:href="#link"></use></svg
+        ></a>
+      </div>
+      <div class="text-container">
+        <ul class="pages">
+          {{ range .Params.pages }}
+            <li>{{ . | markdownify }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+
+    <div class="h2-container">
+      <h2 id="problem_description" tabindex="-1">
+        {{ i18n "problem_description" }}
+      </h2>
+      <a
+        href="#problem_description"
+        aria-label="{{ i18n "this_section" }} ({{ i18n "problem_description" }})"
+        ><svg
+          aria-hidden="true"
+          class="link-icon"
+          viewBox="0 0 50 50"
+          focusable="false"
+        >
+          <use xlink:href="#link"></use></svg
+      ></a>
+    </div>
+    <div class="text-container">
+      {{ .Params.problemDescription | markdownify }}
+    </div>
+
+    <div class="h2-container">
+      <h2 id="suggested_solution" tabindex="-1">
+        {{ i18n "suggested_solution" }}
+      </h2>
+      <a
+        href="#suggested_solution"
+        aria-label="{{ i18n "this_section" }} ({{ i18n "suggested_solution" }})"
+        ><svg
+          aria-hidden="true"
+          class="link-icon"
+          viewBox="0 0 50 50"
+          focusable="false"
+        >
+          <use xlink:href="#link"></use></svg
+      ></a>
+    </div>
+    <div class="text-container">
+      {{ .Params.suggestedSolution | markdownify }}
+    </div>
+
+    {{ $priorityContent := "" }}
+    {{ if eq $.Page.Params.weight 1 }}
+      {{ $priorityContent = print $priorityContent (i18n "critical_priority") " (" .Params.weight ")" }}
+    {{ else if eq $.Page.Params.weight 2 }}
+      {{ $priorityContent = print $priorityContent (i18n "high_priority") " (" .Params.weight ")" }}
+    {{ else if eq $.Page.Params.weight 3 }}
+      {{ $priorityContent = print $priorityContent (i18n "medium_priority") " (" .Params.weight ")" }}
+    {{ else if eq $.Page.Params.weight 4 }}
+      {{ $priorityContent = print $priorityContent (i18n "low_priority") " (" .Params.weight ")" }}
+    {{ end }}
+    {{ partial "disclosure.html" (dict "iconClass" "priority-icon" "iconHref" "#priority" "label" (i18n "priority") "contentId" "js-expandable-priority" "content" $priorityContent "isOpen" true) }}
+
+    {{ with .Params.components }}
+      {{ $componentsContent := "<ul class='components'>" }}
       {{ range .Params.components }}
-      <li>
-        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-          <use xlink:href="#tag"></use>
-        </svg>
-        <a href='{{ "/components/" | relLangURL }}{{ . | urlize }}'>{{ . }}-component</a>
-      </li>
+        {{ $componentsContent = print $componentsContent "<li><a href='" (relLangURL "/components/") (. | urlize) "'>" . "</a></li>" }}
       {{ end }}
-      {{ range .Params.wcag }}
-      <li>
-        <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-          <use xlink:href="#tag"></use>
-        </svg>
-        <a href='{{ "/wcag/" | relLangURL }}{{ . | urlize }}'>wcag{{ . }}</a>
-      </li>
-      {{ end }}
-    </ul>
-  </div>
-  <div id="updateStatusButtonContainer">
-    <div id="formContainer">
-      <strong aria-hidden="true">Status: </strong>
-    </div>
-  </div>
+      {{ $componentsContent = print $componentsContent "</ul>" }}
+      {{ partial "disclosure.html" (dict "iconClass" "components-icon" "iconHref" "#components" "label" "Affected SKAPA components" "contentId" "js-expandable-components" "content" $componentsContent) }}
+    {{ end }}
 
-  {{ end }}
-  {{ if ne .Params.TOC false }}
-  {{ partial "toc" . }}
-  {{ end }}
+    {{ $userGroupsContent := "<ul class='usergroups'>" }}
+    {{ range .Params.usergroups }}
+      {{ $userGroupsContent = print $userGroupsContent "<li>" . "</li>" }}
+    {{ end }}
+    {{ $userGroupsContent = print $userGroupsContent "</ul>" }}
+    {{ partial "disclosure.html" (dict "iconClass" "users-icon" "iconHref" "#users" "label" (i18n "affected_user_groups") "contentId" "js-expandable-usergroups" "content" $userGroupsContent) }}
 
-  {{ if isset .Params "pages" }}
-  <div class="h2-container">
-    <h2 id="affected_pages" tabindex="-1">{{ i18n "affected_pages" }}</h2><a href="#affected_pages"
-      aria-label='{{ i18n "this_section" }} ({{ i18n "affected_pages" }})'><svg aria-hidden="true" class="link-icon"
-        viewBox="0 0 50 50" focusable="false">
-        <use xlink:href="#link"></use>
-      </svg></a>
-  </div>
-  <div class="text-container">
-    <ul class="pages">
-      {{ range .Params.pages }}
-      <li>{{ . | markdownify }}</li>
-      {{ end }}
-    </ul>
-  </div>
-  {{ end }}
-
-
-  <div class="h2-container">
-    <h2 id="problem_description" tabindex="-1">{{ i18n "problem_description" }}</h2><a href="#problem_description"
-      aria-label='{{ i18n "this_section" }} ({{ i18n "problem_description" }})'><svg aria-hidden="true"
-        class="link-icon" viewBox="0 0 50 50" focusable="false">
-        <use xlink:href="#link"></use>
-      </svg></a>
-  </div>
-  <div class="text-container">
-    {{ .Params.problemDescription | markdownify }}
-  </div>
-
-  <div class="h2-container">
-    <h2 id="suggested_solution" tabindex="-1">{{ i18n "suggested_solution" }}</h2><a href="#suggested_solution"
-      aria-label='{{ i18n "this_section" }} ({{ i18n "suggested_solution" }})'><svg aria-hidden="true" class="link-icon"
-        viewBox="0 0 50 50" focusable="false">
-        <use xlink:href="#link"></use>
-      </svg></a>
-  </div>
-  <div class="text-container">
-    {{ .Params.suggestedSolution | markdownify }}
-  </div>
-
-  <div class="expandable-section">
-    <h2>
-      <button aria-expanded="true" data-expands="js-expandable-priority">
-        <span>
-          <span class="icon-background">
-            <svg class="priority-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-              <use xlink:href="#priority"></use>
-            </svg>
-          </span>
-          <span class="expandable-label">{{ i18n "priority" }}(1-4)</span>
-        </span>
-        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-          <g transform="translate(0 -981.5)">
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
-              class="up-strut" />
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
-          </g>
-        </svg>
-      </button>
-    </h2>
-    <div id="js-expandable-priority">
-      {{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }}
-      {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }}
-      {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }}
-      {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}
-    </div>
-  </div>
-
-  {{ with .Params.components }}
-  <div class="expandable-section">
-    <h2>
-      <button aria-expanded="true" data-expands="js-expandable-components">
-        <span>
-          <span class="icon-background">
-          </span>
-          <span class="expandable-label">Affected SKAPA components</span>
-        </span>
-        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-          <g transform="translate(0 -981.5)">
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
-              class="up-strut" />
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
-          </g>
-        </svg>
-      </button>
-    </h2>
-    <div id="js-expandable-components">
-      <ul class="components">
-        {{ range . }}
-        <li>
-          <a href='{{ "/components/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-  </div>
-  {{ end }}
-
-  <div class="expandable-section">
-    <h2>
-      <button aria-expanded="false" data-expands="js-expandable-usergroups">
-        <span>
-          <span class="icon-background">
-            <svg class="users-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-              <use xlink:href="#users"></use>
-            </svg>
-          </span>
-          <span class="expandable-label">{{ i18n "affected_user_groups" }}</span>
-        </span>
-        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-          <g transform="translate(0 -981.5)">
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
-              class="up-strut" />
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
-          </g>
-        </svg>
-      </button>
-    </h2>
-    <div id="js-expandable-usergroups" hidden>
-      <ul class="usergroups">
-        {{ range .Params.usergroups }}
-        <li>{{ . }}</li>
-        {{ end }}
-      </ul>
-    </div>
-  </div>
-
-  <div class="expandable-section">
-    <h2>
-      <button aria-expanded="false" data-expands="js-expandable-wcag">
-        <span><span class="icon-background">
-            <svg class="wcag-icon" aria-hidden="true" viewBox="0 0 127.09899 67.763" focusable="false">
-              <use xlink:href="#w3c"></use>
-            </svg>
-          </span>
-          <span class="expandable-label">{{ i18n "wcag_violations" }}</span>
-        </span>
-        <svg class="expandable-icon" aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-          <g transform="translate(0 -981.5)">
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051"
-              class="up-strut" />
-            <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5" />
-          </g>
-        </svg>
-      </button>
-    </h2>
-
-    <div id="js-expandable-wcag" hidden>
-      {{ $JSON := $.Site.Data.wcag }}
-      {{ $included := .Params.wcag }}
-      {{ $isIncluded := false }}
-      <ul class="wcag">
-        {{ range $JSON }}
-        {{ if in $.Page.Params.wcag .ref_id }}
+    {{ $wcagContent := "<ul class='wcag'>" }}
+    {{ $isIncluded := false }}
+    {{ range $.Site.Data.wcag }}
+      {{ if in $.Page.Params.wcag .ref_id }}
         {{ $isIncluded = true }}
-        <li>
-          <strong><a href='{{ "/wcag/" | relLangURL }}{{ .ref_id | urlize }}'>
-              {{ .ref_id }} {{ .title }}</a> (level {{ .level }})
-          </strong>
-        </li>
-        {{ end }}
-        {{ end }}
-        {{ if eq $isIncluded false }}
-        <li>
-          <p>{{ i18n "nope" }}</p>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-  </div>
-  <div class="copy-buttons">
-    <div id="markdown">
-      <button type="button" class="copyBtn" onclick="generateMarkdownDescription()">{{ i18n "copy_as_markdown"
-        }}</button>
-      <div id="feedback-markdown" aria-live="polite" hidden aria-atomic="true">
-        {{ i18n "copied" }}
+        {{ $wcagContent = print $wcagContent "<li><strong><a href='" (relLangURL "/wcag/") (.ref_id | urlize) "'>" .ref_id " " .title "</a> (level " .level ")</strong></li>" }}
+      {{ end }}
+    {{ end }}
+    {{ if not $isIncluded }}
+      {{ $wcagContent = print $wcagContent "<li><p>" (i18n "nope") "</p></li>" }}
+    {{ end }}
+    {{ $wcagContent = print $wcagContent "</ul>" }}
+    {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#w3c" "label" (i18n "wcag_violations") "contentId" "js-expandable-wcag" "content" $wcagContent) }}
+    {{ $en301Content := "<ul class='wcag'>" }}
+    {{ $isIncluded := false }}
+    {{ range $.Site.Data.en301549 }}
+      {{ if in $.Page.Params.en301549 .Number }}
+        {{ $isIncluded = true }}
+        {{ $en301Content = print $en301Content "<li><strong><a href='" (relLangURL "/en301549/") (.Number | urlize) "'>" .Number " " .Name "</a></strong></li>" }}
+      {{ end }}
+    {{ end }}
+    {{ if not $isIncluded }}
+      {{ $en301Content = print $en301Content "<li><p>" (i18n "nope") "</p></li>" }}
+    {{ end }}
+    {{ $en301Content = print $en301Content "</ul>" }}
+    {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#en301" "label" "EN 301 549 violations" "contentId" "js-expandable-en301" "content" $en301Content) }}
+
+
+    <div class="copy-buttons">
+      <div id="markdown">
+        <button
+          type="button"
+          class="copyBtn"
+          onclick="generateMarkdownDescription()"
+        >
+          {{ i18n "copy_as_markdown" }}
+        </button>
+        <div
+          id="feedback-markdown"
+          aria-live="polite"
+          hidden
+          aria-atomic="true"
+        >
+          {{ i18n "copied" }}
+        </div>
+      </div>
+      <div id="jira">
+        <button
+          type="button"
+          class="copyBtn"
+          onclick="generateJiraDescription()"
+        >
+          {{ i18n "copy_as_jira" }}
+        </button>
+        <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
+          {{ i18n "copied" }}
+        </div>
       </div>
     </div>
-    <div id="jira">
-      <button type="button" class="copyBtn" onclick="generateJiraDescription()">{{ i18n "copy_as_jira" }}</button>
-      <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
-        {{ i18n "copied" }}
+
+    <div id="copy-container">
+      <button
+        id="copy-help"
+        aria-expanded="false"
+        data-expands="js-expandable-copyhelp"
+      >
+        {{ i18n "copy_buttons_help" }}
+      </button>
+      <div id="js-expandable-copyhelp" hidden="hidden" lang="en">
+        <h2>Copy as Markdown</h2>
+        <p>
+          <strong>Note: </strong>Use this option for JIRA Cloud installations,
+          since JIRA Cloud no longer accepts the old JIRA markup.
+        </p>
+        <ol>
+          <li>Click on the "Copy as Markdown" button.</li>
+          <li>Go to your organization's JIRA and click "Create new issue".</li>
+          <li>
+            Paste into the editor (<kbd>CTRL</kbd> / <kbd>CMD</kbd> +
+            <kbd>V</kbd>).
+          </li>
+          <li>Save the issue.</li>
+        </ol>
+        <h2>Copy as JIRA markup (legacy)</h2>
+        <p>
+          <strong>Note: </strong>This only works for old non-cloud JIRA
+          installations.
+        </p>
+        <ol>
+          <li>Click on the "Copy as JIRA" button</li>
+          <li>Go to your organization's JIRA, click "Create issue"</li>
+          <li>Change text editor mode from "Visual" to "Text"</li>
+          <li>
+            Paste into the editor (<kbd>CTRL</kbd> / <kbd>CMD</kbd> +
+            <kbd>V</kbd>)
+          </li>
+          <li>Save the issue</li>
+        </ol>
       </div>
     </div>
-  </div>
-
-  <div id="copy-container">
-    <button id="copy-help" aria-expanded="false" data-expands="js-expandable-copyhelp">{{ i18n "copy_buttons_help"
-      }}</button>
-    <div id="js-expandable-copyhelp" hidden="hidden" lang="en">
-      <h2>Copy as Markdown</h2>
-      <p><strong>Note: </strong>Use this option for JIRA Cloud installations, since JIRA Cloud no longer accepts the old
-        JIRA markup.</p>
-      <ol>
-        <li>
-          Click on the "Copy as Markdown" button.
-        </li>
-        <li>
-          Paste (CTRL/CMD + V) into a text/code editor on your computer, e.g. Windows Notepad or Sublime Text.
-          <strong>This workaround is needed due to a bug in JIRA Cloud.</strong>
-        </li>
-        <li>
-          Copy the pasted the content from the text editor.
-        </li>
-        <li>
-          Go to your organization's JIRA and click "Create new issue".
-        </li>
-        <li>
-          Paste into the editor (CTRL / CMD + V).
-        </li>
-        <li>
-          Save the issue.
-        </li>
-      </ol>
-      <h2>Copy as JIRA markup (legacy)</h2>
-      <p><strong>Note: </strong>This only works for old non-cloud JIRA installations.</p>
-      <ol>
-        <li>
-          Click on the "Copy as JIRA" button
-        </li>
-        <li>
-          Go to your organization's JIRA, click "Create issue"
-        </li>
-        <li>
-          Change text editor mode from "Visual" to "Text"
-        </li>
-        <li>
-          Paste into the editor (CTRL / CMD + V)
-        </li>
-        <li>
-          Save the issue
-        </li>
-      </ol>
-    </div>
-  </div>
-
-</main>
+  </main>
 <script>
   var hugoParams = { status: "{{ .Params.status }}", absURL: '{{ absURL "" }}', siteLanguage: '{{ $.Site.Language }}' }
   var translations = {
@@ -304,23 +291,32 @@
     rejected: '{{ i18n "rejected" }}'
   };
 </script>
-<script src='{{ absURL "js/update-github-status.js" }}'></script>
-<script>
-  const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
-  const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
+  <script src="{{ absURL "js/update-github-status.js" }}"></script>
+  <script>
+    const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
+    const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
 
+    function extractAndReplaceYoutubeUrls(description) {
+      const regex = /<iframe[^>]*src="(https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11})"[^>]*><\/iframe>/g;
+      return description.replace(regex, (match, url) => `[${url}](${url})`); // Replace iframe with markdown link
+    }
 
-  function generateJiraDescription() {
-    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage + '\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage + '\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
-    toggleFeedback("feedback-jira")
-    return copyRichText(jiraBase)
-  }
-  function generateMarkdownDescription() {
-    const jiraBase = `${J2M.toJ('# {{ .Title }}\n')}${J2M.toJ('## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n')}${J2M.toJ('## {{ i18n "affected_pages" }}\n')}${J2M.toJ('{{ range .Params.pages }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "problem_description" }}\n')}${J2M.toJ(problemDescriptionWithImage + '\n')}${J2M.toJ('## {{ i18n "suggested_solution" }}\n')}${J2M.toJ(suggestedSolutionsWithImage + '\n')}${J2M.toJ('## {{ i18n "priority" }}\n')}${J2M.toJ('{{ if eq $.Page.Params.weight 1 }} {{ i18n "critical_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 2 }} {{ i18n "high_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 3 }} {{ i18n "medium_priority" }} ({{ .Params.weight }}) {{ end }} {{ if eq $.Page.Params.weight 4 }} {{ i18n "low_priority" }} ({{ .Params.weight }}) {{ end }}\n')}${J2M.toJ('## {{ i18n "affected_user_groups" }}\n')}${J2M.toJ('{{ range .Params.usergroups }}- {{ . }}\n {{ end }}\n')}${J2M.toJ('## {{ i18n "wcag_violations" }}\n')}${J2M.toJ('{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}')}`
-    console.log(document.getElementById("feedback-markdown"))
-    toggleFeedback("feedback-markdown")
+    function generateMarkdownDescription() {
+      const cleanDescription = extractAndReplaceYoutubeUrls(problemDescriptionWithImage);
 
-    return copyRichText(J2M.toM(jiraBase))
-  }
-</script>
+      const markdownBase = `# {{ .Title }}\n## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n## {{ i18n "affected_pages" }}\n{{ range .Params.pages }}- {{ . }}\n{{ end }}\n## {{ i18n "problem_description" }}\n${cleanDescription}\n## {{ i18n "suggested_solution" }}\n${suggestedSolutionsWithImage}\n## {{ i18n "priority" }}\n{{ if eq $.Page.Params.weight 1 }}{{ i18n "critical_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 2 }}{{ i18n "high_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 3 }}{{ i18n "medium_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 4 }}{{ i18n "low_priority" }} ({{ .Params.weight }}){{ end }}\n## {{ i18n "affected_user_groups" }}\n{{ range .Params.usergroups }}- {{ . }}\n{{ end }}\n## {{ i18n "wcag_violations" }}\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}`;
+      toggleFeedback("feedback-markdown");
+
+      return copyRichText(markdownBase);
+    }
+
+    function generateJiraDescription() {
+      const cleanDescription = extractAndReplaceYoutubeUrls(problemDescriptionWithImage).replace(/\[([^\]]+)\]\(([^)]+)\)/g, '* [$$2]'); // Convert markdown links to JIRA links
+
+      const jiraBase = `# {{ .Title }}\n## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n## {{ i18n "affected_pages" }}\n{{ range .Params.pages }}- {{ . }}\n{{ end }}\n## {{ i18n "problem_description" }}\n${cleanDescription}\n## {{ i18n "suggested_solution" }}\n${suggestedSolutionsWithImage}\n## {{ i18n "priority" }}\n{{ if eq $.Page.Params.weight 1 }}{{ i18n "critical_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 2 }}{{ i18n "high_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 3 }}{{ i18n "medium_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 4 }}{{ i18n "low_priority" }} ({{ .Params.weight }}){{ end }}\n## {{ i18n "affected_user_groups" }}\n{{ range .Params.usergroups }}- {{ . }}\n{{ end }}\n## {{ i18n "wcag_violations" }}\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}`;
+      toggleFeedback("feedback-jira");
+
+      return copyRichText(jiraBase);
+    }
+  </script>
 {{ end }}

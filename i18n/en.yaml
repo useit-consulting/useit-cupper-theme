@@ -40,6 +40,8 @@
   translation: "Affected user groups"
 - id: wcag_violations
   translation: "WCAG 2.2 (AA) violations"
+- id: en301549_violations
+  translation: "EN 301 549 violations"
 - id: copy_as_markdown
   translation: "Copy as Markdown"
 - id: copy_as_jira
@@ -54,12 +56,16 @@
   translation: "Fist bump through computer screen, illustration"
 - id: wcag_summary
   translation: "WCAG 2.2 (AA) status"
+- id: en301549_summary
+  translation: "Passed and failed EN 301 549 criteria"
 - id: passed_or_not_applicable
   translation: "Passed or not applicable criteria"
 - id: failed_criteria
   translation: "Failed criteria"
 - id: show_all_wcag_criteria
   translation: "Show all WCAG criteria"
+- id: show_all_en301549
+  translation: "Show all EN 301 549 criteria"
 - id: quick_navigation
   translation: "Quick navigation"
 - id: what_does_the_criteria_say
@@ -136,4 +142,20 @@
   translation: "New"
 - id: rejected
   translation: "Rejected"
+- id: show_summary_of_legal_compliance
+  translation: "Show passed and failed legal requirements"
+- id: passed_or_not_applicable_wcag_criteria
+  translation: "Passed or not applicable WCAG criteria"
+- id: passed_or_not_applicable_en301549_criteria
+  translation: "Passed or not applicable EN 301 549 criteria"
+- id: failed_wcag_criteria
+  translation: "Failed WCAG criteria"
+- id: failed_en301549_criteria
+  translation: "Failed EN 301 549 criteria"
+- id: issues_outside_of_legal_requirements
+  translation: "Issues outside of legal requirements"
+- id: methodology
+  translation: "Test methodology"
+- id: filter_results_by_status
+  translation: "Filter results by status"
 

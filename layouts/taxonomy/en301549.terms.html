@@ -1,0 +1,149 @@
+{{ define "title" }}
+  {{ i18n "en301549_summary" }} |
+  {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+  {{ $JSON := $.Site.Data.en301549 }}
+  {{ $this := "" }}
+
+
+  <main id="main">
+    <nav aria-label="{{ i18n "quick_navigation" }}">
+      <a href="../summary/">{{ i18n "go_back_to_start" }}</a>
+    </nav>
+    <h1>
+      {{ i18n "en301549_summary" }}
+    </h1>
+    <blockquote class="wcag-text" lang="en">
+      <p>
+        EN 301 549 is the European standard for digital accessibility. It is
+        used in accessibility legislation in the EU and beyond, including the
+        Web Accessibility Directive (2016) and the European Accessibility Act
+        (2019).
+      </p>
+      <p>
+        Chapters 9 (web) and 10 (non-web documents) in EN 301 549 point directly
+        to the Web Content Accessibility Guidelines (WCAG) levels A and AA. To
+        see passed and failed criteria from chapters 9 or 10, see
+        <a href="{{ $.Site.BaseURL }}/en301549/summary/"
+          >our separate summary of WCAG status</a
+        >.
+      </p>
+    </blockquote>
+    <div class="h2-container">
+      <h2 id="failed_criteria" tabindex="-1">{{ i18n "failed_criteria" }}</h2>
+      <a
+        href="#failed_criteria"
+        aria-label="{{ i18n "this_section" }} ({{ i18n "failed_criteria" }})"
+        ><svg
+          aria-hidden="true"
+          class="link-icon"
+          viewBox="0 0 50 50"
+          focusable="false"
+        >
+          <use xlink:href="#link"></use>
+        </svg>
+      </a>
+    </div>
+    <ul class="patterns-list wcag-patterns">
+      {{ range .Data.Pages }}
+        {{ .Render "li" }}
+      {{ end }}
+    </ul>
+
+    <div class="expandable-section margin-top">
+      <h2>
+        <button
+          aria-expanded="false"
+          data-expands="js-expandable-passed-criteria"
+        >
+          <span class="expandable-label"
+            >{{ i18n "passed_or_not_applicable" }}</span
+          >
+          <svg
+            class="expandable-icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 70.866142 70.866141"
+          >
+            <g transform="translate(0 -981.5)">
+              <rect
+                style="stroke-width:0;fill:currentColor"
+                ry="5"
+                height="60"
+                width="9.8985"
+                y="987.36"
+                x="30.051"
+                class="up-strut"
+              />
+              <rect
+                style="stroke-width:0;fill:currentColor"
+                ry="5"
+                height="10"
+                width="60"
+                y="1012.4"
+                x="5"
+              />
+            </g>
+          </svg>
+        </button>
+      </h2>
+      <div id="js-expandable-passed-criteria" hidden>
+        <ul>
+          {{ range $JSON }}
+            {{ $this := . }}
+            {{ $hasIssues := false }}
+            {{ range $.Data.Pages }}
+              {{ if eq .Title $this.Number }}
+                {{ $hasIssues = true }}
+              {{ end }}
+            {{ end }}
+            {{ if eq $hasIssues false }}
+              <li>{{ $this.Number }} {{ $this.Name }}</li>
+            {{ end }}
+
+          {{ end }}
+
+        </ul>
+      </div>
+    </div>
+
+    {{ $hasNonWcagIssues := false }}
+    {{ range where $.Site.Pages "Section" "problems" }}
+      {{ if (not (isset .Params "wcag")) | or (eq .Params.wcag nil) }}
+        {{ if isset .Params "weight" }}
+          {{ $hasNonWcagIssues = true }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if eq $hasNonWcagIssues true }}
+      <div class="h2-container margin-top">
+        <h2 id="non_wcag" tabindex="-1">{{ i18n "outside_wcag" }}</h2>
+        <a
+          href="#failed_criteria"
+          aria-label="{{ i18n "this_section" }} ({{ i18n "outside_wcag" }})"
+          ><svg
+            aria-hidden="true"
+            class="link-icon"
+            viewBox="0 0 50 50"
+            focusable="false"
+          >
+            <use xlink:href="#link"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="priority-text">{{ i18n "outside_wcag_explanation" }}</div>
+      <ul class="patterns-list margin-top-small">
+        {{ range where $.Site.Pages "Section" "problems" }}
+          {{ if (not (isset .Params "wcag")) | or (eq .Params.wcag nil) }}
+            {{ if isset .Params "weight" }}
+              {{ .Render "li" }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </ul>
+    {{ end }}
+
+  </main>
+{{ end }}

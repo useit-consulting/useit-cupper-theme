@@ -40,6 +40,8 @@
   translation: "Användare som påverkas"
 - id: wcag_violations
   translation: "WCAG 2.2 (AA)"
+- id: en301549_violations
+  translation: "EN 301 549"
 - id: copy_as_markdown
   translation: "Kopiera som Markdown"
 - id: copy_as_jira
@@ -54,8 +56,10 @@
   translation: "En användare gör en fist bump genom datorskärmen, illustration"
 - id: wcag_summary
   translation: "Sammanfattning WCAG 2.2 (AA)"
+- id: en301549_summary
+  translation: "Sammanfattning EN 301 549"
 - id: passed_or_not_applicable
-  translation: "Godkända eller ej bedömda krav"
+  translation: "Godkända eller ej bedmda krav"
 - id: failed_criteria
   translation: "Underkända krav"
 - id: show_all_wcag_criteria
@@ -140,3 +144,23 @@
   translation: "Ny"
 - id: rejected
   translation: "Avvisad"
+- id: testing_methodology
+  translation: "Testmetod"
+- id: show_all_en301549
+  translation: "Visa alla EN 301 549-krav"
+- id: show_summary_of_legal_compliance
+  translation: "Visa sammanfattning av kravefterlevnad"
+- id: passed_or_not_applicable_wcag_criteria
+  translation: "Godkända eller ej bedömda WCAG-krav"
+- id: passed_or_not_applicable_en301549_criteria
+  translation: "Godkända eller ej bedömda EN 301 549 krav"
+- id: failed_wcag_criteria
+  translation: "Underkända WCAG-krav"
+- id: failed_en301549_criteria
+  translation: "Underkända EN 301 549 krav"
+- id: issues_outside_of_legal_requirements
+  translation: "Problem utanför lagkraven"
+- id: methodology
+  translation: "Metodik"
+- id: filter_results_by_status
+  translation: "Filtrera resultat efter status"

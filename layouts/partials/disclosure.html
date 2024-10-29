@@ -1,0 +1,49 @@
+<details {{ if .isOpen }}open{{ end }}>
+  <summary>
+    <div class="summary-inner">
+      {{ if .iconHref }}
+        <!-- Check if iconHref is provided -->
+        <span class="icon-background">
+          <svg
+            class="{{ .iconClass }}"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            focusable="false"
+          >
+            <use xlink:href="{{ .iconHref }}"></use>
+          </svg>
+        </span>
+      {{ end }}
+      <span class="expandable-label">{{ .label }}</span>
+    </div>
+    <svg
+      class="expandable-icon"
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 70.866142 70.866141"
+    >
+      <g transform="translate(0 -981.5)">
+        <rect
+          style="stroke-width: 0; fill: currentColor"
+          ry="5"
+          height="60"
+          width="9.8985"
+          y="987.36"
+          x="30.051"
+          class="up-strut"
+        />
+        <rect
+          style="stroke-width: 0; fill: currentColor"
+          ry="5"
+          height="10"
+          width="60"
+          y="1012.4"
+          x="5"
+        />
+      </g>
+    </svg>
+  </summary>
+  <div class="disclosure-content">
+    {{ .content | safeHTML }}
+  </div>
+</details>

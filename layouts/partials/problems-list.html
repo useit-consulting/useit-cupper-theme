@@ -3,81 +3,31 @@
 {{ range $.Site.Home.Sections }}
   {{ range .Pages }}
     {{ $status := .Params.status }}
-    {{ $status := .Params.status }}
-    {{ if and $status (isset $statusCounts $status) }}
+    {{ if and $status (ne $status "") (isset $statusCounts $status) }}
       {{ $count := add (index $statusCounts $status) 1 }}
       {{ $statusCounts = merge $statusCounts (dict $status $count) }}
     {{ end }}
   {{ end }}
 {{ end }}
 
+{{ $filtersContent := "<fieldset class='filter-container' aria-labelledby='filter-label'>" }}
+{{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='new_checkbox' onclick='toggleVisibility(\"new\")' checked>%s (%d)</label>" (i18n "new") (index $statusCounts "new")) }}
+{{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='in_progress_checkbox' onclick='toggleVisibility(\"in_progress\")' checked>%s (%d)</label>" (i18n "in_progress") (index $statusCounts "in_progress")) }}
+{{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='completed_checkbox' onclick='toggleVisibility(\"completed\")' checked>%s (%d)</label>" (i18n "completed") (index $statusCounts "completed")) }}
+{{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='rejected_checkbox' onclick='toggleVisibility(\"rejected\")' checked>%s (%d)</label>" (i18n "rejected") (index $statusCounts "rejected")) }}
+{{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='tested_ok_checkbox' onclick='toggleVisibility(\"tested_ok\")' checked>%s (%d)</label>" (i18n "tested_ok") (index $statusCounts "tested_ok")) }}
+{{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='tested_not_ok_checkbox' onclick='toggleVisibility(\"tested_not_ok\")' checked>%s (%d)</label>" (i18n "tested_not_ok") (index $statusCounts "tested_not_ok")) }}</fieldset>
 
-<div class="filter-wrapper">
-  <fieldset class="filter-container">
-    <legend>Filter results by status</legend>
-    <label>
-      <input
-        type="checkbox"
-        id="new_checkbox"
-        onclick="toggleVisibility('new')"
-        checked
-      />
-      New ({{ index $statusCounts "new" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="in_progress_checkbox"
-        onclick="toggleVisibility('in_progress')"
-        checked
-      />
-      In progress ({{ index $statusCounts "in_progress" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="completed_checkbox"
-        onclick="toggleVisibility('completed')"
-        checked
-      />
-      Completed ({{ index $statusCounts "completed" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="rejected_checkbox"
-        onclick="toggleVisibility('rejected')"
-        checked
-      />
-      Rejected ({{ index $statusCounts "rejected" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="tested_ok_checkbox"
-        onclick="toggleVisibility('tested_ok')"
-        checked
-      />
-      Tested OK ({{ index $statusCounts "tested_ok" }})
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        id="tested_not_ok_checkbox"
-        onclick="toggleVisibility('tested_not_ok')"
-        checked
-      />
-      Tested not OK ({{ index $statusCounts "tested_not_ok" }})
-    </label>
-  </fieldset>
-</div>
+{{ partial "disclosure.html" (dict "label" (i18n "filter_results_by_status") "contentId" "js-expandable-filters" "content" $filtersContent) }}
 
 {{ $current := . }}
-{{ $priorities := slice (slice "critical" 1) (slice "high" 2) (slice "medium" 3) (slice "low" 4) }}
+{{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
+{{ $priorityOrder := slice "critical" "high" "medium" "low" }}
 
-{{ range $priorityPair := $priorities }}
-  {{ $priority := index $priorityPair 0 }}
-  {{ $weight := index $priorityPair 1 }}
+{{ range $index, $priority := $priorityOrder }}
+  <!-- Range over the ordered slice -->
+  {{ $weight := index $priorities $priority }}
+  <!-- Get the weight for each priority -->
   {{ $hasPriority := false }}
   {{ range $.Site.Home.Sections }}
     {{ range .Pages.ByWeight }}
@@ -87,7 +37,9 @@
     {{ end }}
   {{ end }}
   {{ if $hasPriority }}
-    <h3>{{ i18n (printf "%s_priority" $priority) }}</h3>
+    <h3 style="margin-top: 2rem">
+      {{ i18n (printf "%s_priority" $priority) }}
+    </h3>
     {{ range $.Site.Home.Sections }}
       <ul aria-label="{{ i18n (printf "%s_priority_issues" $priority) }}">
         {{ range .Pages.ByWeight }}

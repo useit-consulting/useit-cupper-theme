@@ -149,12 +149,11 @@ function toggleFeedback (feedbackID) {
   }
 }
 function copyRichText(text) {
-  const listener = function(ev) {
-    ev.preventDefault();
-    ev.clipboardData.setData('text/html', text);
-    ev.clipboardData.setData('text/plain', text);
-  };
-  document.addEventListener('copy', listener);
-  document.execCommand('copy');
-  document.removeEventListener('copy', listener);
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      console.log('Text copied to clipboard successfully!');
+    })
+    .catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
 }

@@ -5,16 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex">
+    <script>
+      function darkTheme(media) {
+        if (media === "screen")
+          document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkTheme', media);
+      }
+      // Immediately invoked function to set dark theme if needed
+      (function() {
+
+        // Check local storage or system preference for dark mode
+        if (localStorage.getItem('darkTheme') === 'screen' || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')) {
+          darkTheme('screen');
+        }
+      })();
+    </script>
     <link rel="preload" as="image" href="{{ "images/useit.svg" | relURL }}">
     <link rel="preload" as="image" href="{{ "images/useit-dark.svg" | relURL }}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-    <link rel="icon" type="image/png" href='{{ "images/favicon.png" | absURL }}'>
     <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
             rel="stylesheet"
     >
     <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ "images/apple-touch-icon-57x57.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ "images/apple-touch-icon-60x60.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ "images/apple-touch-icon-72x72.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ "images/apple-touch-icon-76x76.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ "images/apple-touch-icon-114x114.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ "images/apple-touch-icon-120x120.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ "images/apple-touch-icon-144x144.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ "images/apple-touch-icon-152x152.png" | absURL }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ "images/apple-touch-icon-180x180.png" | absURL }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ "images/android-icon-192x192.png" | absURL }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon-32x32.png" | absURL }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ "images/favicon-96x96.png" | absURL }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ "images/favicon-16x16.png" | absURL }}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ "images/ms-icon-144x144.png" | absURL }}">
     <meta name="theme-color" content="#ffffff">
@@ -36,17 +65,6 @@
 
       gtag('config', 'G-QDNQYNPZPF');
     </script>
-    <script>
-      function darkTheme(media) {
-        if (media === "screen")
-          document.documentElement.classList.add('dark');
-        else document.documentElement.classList.remove('dark');
-        localStorage.setItem('darkTheme', media);
-      }
-      // Render blocking JS:
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkTheme') !== 'none')
-        darkTheme("screen");
-    </script>
 <!--    {{ if .IsHome }}-->
 <!--      <link rel="manifest" href="manifest.json">-->
 <!--    {{ end }}-->
@@ -65,7 +83,7 @@
                 <img class="useit-logo-dark no-border" width="210" height="210" src="{{ "images/staff/sjlogo.png" | relURL }}" alt="">
               </a>
               <p class="library-desc">
-                {{ "An accessibility review for SJ" | markdownify }}
+                {{ .Site.Params.Description | markdownify }}
                 {{ if ne .Type "print-version" }}
                   <a class="print" href="{{ "print-version" | absURL }}">
                     <svg viewBox="0 0 35 45" aria-hidden="true" focusable="false">
@@ -106,12 +124,15 @@
           {{ block "main" . }}
           {{ end }}
           <footer>
-            <div>
               <label for="themer">
                 {{ i18n "dark_theme" }}: <input type="checkbox" id="themer" class="vh">
                 <span aria-hidden="true"></span>
               </label>
+              <div class="powered-by">
+                Powered by <a href="https://thepaciellogroup.github.io/cupper/"><strong>Cupper</strong></a>
             </div>
+            </div>
+              </div>
             Powered by <a href="https://thepaciellogroup.github.io/cupper/"><strong>Cupper</strong></a><br>
           </footer>
           <div id="toast-notification" role="alert" hidden></div>
@@ -149,7 +170,7 @@
       }());
     </script>
     <script src="{{ "js/J2M.js" | absURL }}"></script>
-    <script src="{{ "js/bundle.js" | absURL }}"></script>
+    <script defer src="{{ "js/bundle.js" | absURL }}"></script>
     <!--{{ if .Page.IsHome }}
       <script src="{{ "js/service-worker-registration.js" | absURL }}"></script>
     {{ end }}-->

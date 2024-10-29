@@ -3,143 +3,21 @@
   {
     "id": "Tommy",
     "name": "Tommy Feldt",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": ["CPWA"],
-    "phone": "+46 79 313 86 96",
-    "email": "tommy.feldt@useit.se",
-    "img": "staff/tommy-f-illustration.svg"
-  },
-  {
-    "id": "Sandra",
-    "name": "Sandra Eriksson",
-    "titleEn": "Accessibility specialist",
-    "titleSv": "Tillgänglighetsexpert",
-    "certification": ["CPWA"],
-    "phone": "+46 76 94 42 70",
-    "email": "sandra.eriksson@useit.se",
-    "img": "staff/Sandra.svg"
-  },
-  {
-    "id": "Frida",
-    "name": "Frida Fredblad",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": ["CPACC"],
-    "phone": "+46 76 94 42 70",
-    "email": "frida.fredblad@useit.se",
-    "img": "staff/FridaF.svg"
-  },
-  {
-    "id": "Saja",
-    "name": "Saja Andersson",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "altSv": "Svartvitt porträtt av Saja som ler mot kameran. Hon är cirka 30 år och har kortklippt blont hår.",
-    "altEn": "Black and white portrait of Saja who is smiling towards the camera. She is about 30 years old with short blonde hair.",
-    "certification": ["CPWA", "ADS"],
-    "phone": "+47 41 307 694",
-    "email": "saja@useit.no",
-    "img": "staff/Saja.svg"
-  },
-  {
-    "id": "Danne",
-    "name": "Danne Borell",
-    "titleEn": "Accessibility specialist and educator",
-    "titleSv": "Tillgänglighetsexpert och utbildare",
-    "certification": ["CPWA", "ADS"],
-    "phone": "+46 73 643 647 6",
-    "email": "danne.borell@useit.se",
-    "img": "staff/Danne.svg"
-  },
-  {
-    "id": "Raouf",
-    "name": "Raouf Sormunen",
-    "titleEn": "Accessibility specialist",
-    "titleSv": "Tillgänglighetsexpert",
-    "certification": ["CPWA", "ADS"],
-    "phone": "+46 760 24 25 73",
-    "email": "raouf.sormunen@useit.se",
-    "img": "staff/Raouf.svg"
-  },
-  {
-    "id": "Moa",
-    "name": "Moa Glantz",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": "",
-    "phone": "+46 70 597 46 30",
-    "email": "moa.glantz@useit.se",
-    "img": "staff/Moa.svg"
-  },
-  {
-    "id": "Andreas",
-    "name": "Andreas Cederbom",
-    "titleEn": "Accessibility guru",
-    "titleSv": "Tillgänglighetsguru",
-    "certification": ["WAS"],
-    "phone": "+46 79 339 77 11",
-    "email": "andreas.cederbom@useit.se",
-    "img": "staff/Andreas.svg"
-  },
-  {
-    "id": "Melad",
-    "name": "Melad Munther",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": ["CPACC"],
-    "phone": "+46 76 028 72 33",
-    "email": "melad.munther@useit.se",
-    "img": "staff/Melad.svg"
-  },
-  {
-    "id": "Elsa",
-    "name": "Elsa Kristensen",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": ["CPACC"],
-    "phone": "+47 402 45 002",
-    "email": "elsa@useit.no",
-    "img": "staff/Elsa.svg"
-  },
-  {
-    "id": "Hanna",
-    "name": "Hanna Fredholm",
-    "titleEn": "Accessibility and documents specialist",
-    "titleSv": "Tillgänglighets- och dokumentexpert ",
-    "certification": ["ADS", "CPACC"],
-    "phone": "+46 76 035 43 62",
-    "email": "hanna.fredholm@useit.se",
-    "img": "staff/Hanna.svg"
-  },
-  {
-    "id": "Anna",
-    "name": "Anna Carlén",
-    "titleEn": "UX designer and accessibility specialist",
-    "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": "",
-    "phone": "+46 76-005 74 73",
-    "email": "anna.carlen@useit.se",
-    "img": "staff/Anna.svg"
-  },
-  {
-    "id": "Christopher SJ",
-    "name": "Christopher State",
-    "titleEn": "Acessibility lead at SJ",
-    "titleSv": "Tillgänglighetsexpert",
-    "certification": [],
-    "phone": "",
-    "email": "christopher.state@sj.se",
-    "img": "staff/sjlogo.png"
-  },
-  {
-    "id": "Tommy SJ",
-    "name": "Tommy Feldt",
-    "titleEn": "Acessibility developer at SJ",
+    "titleEn": "Acessibility expert at SJ",
     "titleSv": "Tillgänglighetsexpert",
     "certification": ["CPWA"],
     "phone": "",
     "email": "tommy.feldt@sj.se",
+    "img": "staff/sjlogo.png"
+  },
+  {
+    "id": "Hanna",
+    "name": "Hanna Fredholm",
+    "titleEn": "Accessibility lead at SJ",
+    "titleSv": "Tillgänglighetsansvarig på SJ",
+    "certification": ["ADS", "CPACC"],
+    "phone": "",
+    "email": "hanna.fredholm@sj.se",
     "img": "staff/sjlogo.png"
   }
 ]

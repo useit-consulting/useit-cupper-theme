@@ -96,7 +96,7 @@ p + p {
 .priority {
   margin-top: 0;
 }
-a {
+a:not(a:has(img)) {
   text-decoration: none;
   border-bottom: 1px solid;
 }
@@ -218,7 +218,7 @@ summary {
 }
 summary::-webkit-details-marker {
   display: none;
- }
+}
 details[open] summary {
   border-radius: 1rem 1rem 0 0rem;
 }
@@ -235,7 +235,7 @@ summary > .summary-inner {
 summary svg {
   width: 1em;
   height: 1em;
-  margin:0
+  margin: 0;
 }
 .disclosure-content {
   margin-top: 0;
@@ -409,7 +409,7 @@ select:hover {
 }
 
 .spinner {
-  border: 4px solid rgba(0,0,0,.1);
+  border: 4px solid rgba(0, 0, 0, 0.1);
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -418,8 +418,12 @@ select:hover {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 [for="themer"] {
@@ -622,7 +626,7 @@ footer {
   border-radius: 1rem;
   background-color: var(--bg-grey-alt);
   font-size: 0.875rem;
-  text-decoration: none!important;
+  text-decoration: none !important;
   text-align: center;
   text-wrap: nowrap;
 }
@@ -636,13 +640,13 @@ fieldset.filter-container {
   padding: 0.5rem;
   flex-wrap: wrap;
   box-sizing: border-box;
-  border: 0; 
+  border: 0;
 }
 .filter-container legend {
-  padding: 0;     
-  margin: 0;      
-  width: 100%;     
-  display: block; 
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: block;
   font-weight: bold;
 }
 
@@ -655,7 +659,6 @@ fieldset.filter-container {
   align-items: center;
   gap: 0.5rem;
 }
-
 
 .pattern a:hover {
   text-decoration: underline;
@@ -954,7 +957,8 @@ html:not(.dark) .expandable-section button:hover {
   border-bottom-left-radius: 0;
 }
 
-.expandable-section.expandable-priority button, .expandable-section.expandable-filters button {
+.expandable-section.expandable-priority button,
+.expandable-section.expandable-filters button {
   font-size: 1rem;
 }
 
@@ -1665,5 +1669,3 @@ iframe[src*="youtube.com"] {
   width: 100%;
   height: 400px;
 }
-
-

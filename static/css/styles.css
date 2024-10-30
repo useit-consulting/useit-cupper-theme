@@ -97,7 +97,7 @@ p + p {
 .priority {
   margin-top: 0;
 }
-a {
+a:not(a:has(img)) {
   text-decoration: none;
   border-bottom: 1px solid;
 }

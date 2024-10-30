@@ -1,0 +1,16 @@
+<!-- layouts/_default/_markup/render-image.html -->
+<a
+  href="{{ .Destination | safeURL }}"
+  data-lightbox="gallery"
+  data-title="{{ .Title | safeHTML }}"
+>
+  <img
+    src="{{ .Destination | safeURL }}"
+    alt="{{ with .Text }}
+      {{ . | safeHTML }}
+    {{ else }}
+      {{ .Title | safeHTML }}
+    {{ end }}"
+    {{ with .Title }}title="{{ . | safeHTML }}"{{ end }}
+  />
+</a>

@@ -160,3 +160,5 @@
   translation: "Filter results by status"
 - id: re_check
   translation: "Results of re-testing"
+- id: re_check_summary
+  translation: "Summary of re-test"

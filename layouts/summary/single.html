@@ -44,6 +44,25 @@
         {{ $.Page.Params.summary | markdownify }}
       </div>
     {{ end }}
+    {{ with .Params.reCheck }}
+      <div class="h2-container">
+        <h2 id="reCheck" tabindex="-1">{{ i18n "re_check" }}</h2>
+        <a
+          href="#reCheck"
+          aria-label="{{ i18n "this_section" }} ({{ i18n "re_check" }})"
+          ><svg
+            aria-hidden="true"
+            class="link-icon"
+            viewBox="0 0 50 50"
+            focusable="false"
+          >
+            <use xlink:href="#link"></use></svg
+        ></a>
+      </div>
+      <div class="text-container">
+        {{ $.Page.Params.reCheck | markdownify }}
+      </div>
+    {{ end }}
 
 
     <div class="h2-container">

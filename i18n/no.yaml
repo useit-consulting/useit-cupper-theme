@@ -146,3 +146,5 @@
   translation: "Testmetodikk"
 - id: re_check
   translation: "Resultat av återtest"
+- id: re_check_summary
+  translation: "Sammenfattning av återtest"

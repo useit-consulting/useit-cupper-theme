@@ -166,3 +166,5 @@
   translation: "Filtrera resultat efter status"
 - id: re_check
   translation: "Resultat vid återtest"
+- id: re_check_summary
+  translation: "Sammanfattning av återtest"

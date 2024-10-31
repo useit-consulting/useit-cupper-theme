@@ -164,3 +164,5 @@
   translation: "Metodik"
 - id: filter_results_by_status
   translation: "Filtrera resultat efter status"
+- id: re_check
+  translation: "Resultat vid återtest"

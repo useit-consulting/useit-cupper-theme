@@ -144,4 +144,5 @@
   translation: "Avvisad"
 - id: testing_methodology
   translation: "Testmetodikk"
-
+- id: re_check
+  translation: "Resultat av återtest"

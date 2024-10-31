@@ -151,6 +151,28 @@
       {{ .Params.suggestedSolution | markdownify }}
     </div>
 
+    {{ with .Params.reCheck }}
+      <div class="h2-container">
+        <h2 id="re-check" tabindex="-1">
+          {{ i18n "re_check" }}
+        </h2>
+        <a
+          href="#re-check"
+          aria-label="{{ i18n "this_section" }} ({{ i18n "re_check" }})"
+          ><svg
+            aria-hidden="true"
+            class="link-icon"
+            viewBox="0 0 50 50"
+            focusable="false"
+          >
+            <use xlink:href="#link"></use></svg
+        ></a>
+      </div>
+      <div class="text-container">
+        {{ . | markdownify }}
+      </div>
+    {{ end }}
+
     {{ $priorityContent := "" }}
     {{ if eq $.Page.Params.weight 1 }}
       {{ $priorityContent = print $priorityContent (i18n "critical_priority") " (" .Params.weight ")" }}

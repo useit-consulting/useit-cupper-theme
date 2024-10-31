@@ -158,4 +158,5 @@
   translation: "Test methodology"
 - id: filter_results_by_status
   translation: "Filter results by status"
-
+- id: re_check
+  translation: "Results of re-testing"

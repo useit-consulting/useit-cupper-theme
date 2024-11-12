@@ -2,4 +2,17 @@
 {{ $html := replace $html "((" "<span class='highlight'>" }}
 {{ $html := replace $html "))" "</span>" }}
 {{ $numbered := .Get "numbered" }}
-<div class="code-annotated {{ if and ($numbered) (ne $numbered "false") }}numbered{{ end }}"><code>{{ $html | safeHTML }}</code></div>
+<div
+  class="code-annotated {{ if and ($numbered) (ne $numbered "false") }}
+    numbered
+  {{ end }}
+  "
+>
+  <code>{{ $html | safeHTML }}</code>
+</div>
+
+<div class="search-box search-box--open">
+  <button type="submit" aria-label="Enter"></button>
+  <input aria-label="Search" />
+  <button aria-label="Clear search"></button>
+</div>

@@ -1,18 +1,47 @@
 {{ define "title" }}
-  {{ i18n "problems_tagged" }} {{ .Title }} | {{ .Site.Title }}
+  {{ i18n "problems_tagged" }} {{ .Title }} |
+  {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
   <main id="main">
     <h1>
-      <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+      <svg
+        class="tag-icon"
+        aria-hidden="true"
+        viewBox="0 0 177.16535 177.16535"
+        focusable="false"
+      >
         <use xlink:href="#tag"></use>
       </svg>
       {{ i18n "tagged" }} &#x201c;{{ .Title }}&#x201d;
     </h1>
-    <ul class="patterns-list">
-      {{ range .Data.Pages }}
-          {{ .Render "li"}}
+
+    {{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
+    {{ $priorityOrder := slice "critical" "high" "medium" "low" }}
+
+    {{ range $index, $priority := $priorityOrder }}
+      {{ $weight := index $priorities $priority }}
+      {{ $hasPriority := false }}
+      {{ range $.Data.Pages }}
+        {{ if eq .Weight $weight }}
+          {{ $hasPriority = true }}
+        {{ end }}
       {{ end }}
-    </ul>
+      {{ if $hasPriority }}
+        <h3 style="margin-top: 2rem">
+          {{ i18n (printf "%s_priority" $priority) }}
+        </h3>
+        <ul
+          class="patterns-list"
+          aria-label="{{ i18n (printf "%s_priority_issues" $priority) }}"
+        >
+          {{ range $.Data.Pages }}
+            {{ if eq .Weight $weight }}
+              {{ .Render "li" }}
+            {{ end }}
+          {{ end }}
+        </ul>
+      {{ end }}
+    {{ end }}
   </main>
 {{ end }}

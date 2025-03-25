@@ -1,6 +1,7 @@
 {{ define "title" }}WCAG 2.2, {{ .Title }} | {{ .Site.Title }}{{ end }}
 {{ define "main" }}
-  {{ $JSON := $.Site.Data.wcag }} {{ $this := "" }}
+  {{ $JSON := $.Site.Data.wcag }}
+  {{ $this := "" }}
   {{ range
     $JSON
   }}
@@ -108,12 +109,38 @@
         </ul>
 
         <h2>
-          {{ i18n "identified_issues_related_to" }} {{ $this.ref_id }}
+          {{ i18n "identified_issues_related_to" }}
+          {{ $this.ref_id }}
           ({{ $this.level }})
         </h2>
-        <ul class="patterns-list">
-          {{ range $.Page.Data.Pages }}{{ .Render "li" }}{{ end }}
-        </ul>
+
+        {{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
+        {{ $priorityOrder := slice "critical" "high" "medium" "low" }}
+
+        {{ range $index, $priority := $priorityOrder }}
+          {{ $weight := index $priorities $priority }}
+          {{ $hasPriority := false }}
+          {{ range $.Page.Data.Pages }}
+            {{ if eq .Weight $weight }}
+              {{ $hasPriority = true }}
+            {{ end }}
+          {{ end }}
+          {{ if $hasPriority }}
+            <h3 style="margin-top: 2rem">
+              {{ i18n (printf "%s_priority" $priority) }}
+            </h3>
+            <ul
+              class="patterns-list"
+              aria-label="{{ i18n (printf "%s_priority_issues" $priority) }}"
+            >
+              {{ range $.Page.Data.Pages }}
+                {{ if eq .Weight $weight }}
+                  {{ .Render "li" }}
+                {{ end }}
+              {{ end }}
+            </ul>
+          {{ end }}
+        {{ end }}
       </main>
     {{ end }}
   {{ end }}

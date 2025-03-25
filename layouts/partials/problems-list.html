@@ -10,7 +10,8 @@
   {{ end }}
 {{ end }}
 
-{{ $filtersContent := "<fieldset class='filter-container' aria-labelledby='filter-label'>" }}
+{{ $filtersContent := "<fieldset class='filter-container'><legend class='visually-hidden'>" }}
+{{ $filtersContent = print $filtersContent (i18n "filter_results_by_status") "</legend>" }}
 {{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='new_checkbox' onclick='toggleVisibility(\"new\")' checked>%s (%d)</label>" (i18n "new") (index $statusCounts "new")) }}
 {{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='in_progress_checkbox' onclick='toggleVisibility(\"in_progress\")' checked>%s (%d)</label>" (i18n "in_progress") (index $statusCounts "in_progress")) }}
 {{ $filtersContent = print $filtersContent (printf "<label><input type='checkbox' id='completed_checkbox' onclick='toggleVisibility(\"completed\")' checked>%s (%d)</label>" (i18n "completed") (index $statusCounts "completed")) }}

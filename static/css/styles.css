@@ -371,8 +371,10 @@ form#statusForm {
   flex-direction: row;
   gap: 0.5rem;
 }
-#statusForm span {
+#statusForm span,
+#formContainer span {
   text-transform: capitalize;
+  margin-top: 0;
 }
 
 .status-message {
@@ -384,7 +386,8 @@ form#statusForm {
   background-color: var(--accent-color);
 }
 
-form#statusForm button {
+form#statusForm button,
+#formContainer button {
   margin-top: 0;
   font-size: 0.85rem;
   padding: 0.25rem 0.5rem;
@@ -393,7 +396,8 @@ form#statusForm button {
   flex-direction: row;
   gap: 0.5rem;
 }
-form#statusForm select {
+form#statusForm select,
+#formContainer select {
   border-radius: 0.25rem;
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
@@ -403,6 +407,7 @@ form#statusForm select {
   padding-right: 0.5rem;
   min-width: 7rem;
   background-color: var(--input-bg);
+  margin-top: 0;
 }
 select:hover {
   filter: brightness(0.95);

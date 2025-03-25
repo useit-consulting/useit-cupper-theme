@@ -5,139 +5,84 @@
 {{ $hasMedium := false }}
 {{ $hasLow := false }}
 
-{{ range $.Site.Home.Sections }}
-  {{ range .Pages.ByWeight }}
-    {{ if eq .Weight 1 }}
-      {{ $hasCritical = true }}
-    {{ end }}
+{{ range .Pages.ByWeight }}
+  {{ if eq .Weight 1 }}
+    {{ $hasCritical = true }}
+  {{ end }}
 
-    {{ if eq .Weight 2 }}
-      {{ $hasHigh = true }}
-    {{ end }}
+  {{ if eq .Weight 2 }}
+    {{ $hasHigh = true }}
+  {{ end }}
 
-    {{ if eq .Weight 3 }}
-      {{ $hasMedium = true }}
-    {{ end }}
+  {{ if eq .Weight 3 }}
+    {{ $hasMedium = true }}
+  {{ end }}
 
-    {{ if eq .Weight 4 }}
-      {{ $hasLow = true }}
-    {{ end }}
+  {{ if eq .Weight 4 }}
+    {{ $hasLow = true }}
   {{ end }}
 {{ end }}
 
 {{ if eq $hasCritical true }}
   <h3>{{ i18n "critical_priority" }}</h3>
-  {{ range $.Site.Home.Sections }}
-    <ul aria-label="{{ i18n "critical_priority_issues" }}">
-      {{ range .Pages.ByWeight }}
-        {{ if and (eq .Weight 1) (ne .Params.draft true) }}
-          <li class="pattern">
-            <a
-              href="#{{ .Title | urlize }}"
-              {{ if eq $current.Title .Title }}aria-current="page"{{ end }}
-            >
-              <span class="problem-link-text-container">
-                <svg
-                  class="bookmark-icon"
-                  aria-hidden="true"
-                  viewBox="0 0 40 50"
-                  focusable="false"
-                >
-                  <use xlink:href="#bookmark"></use>
-                </svg>
-                <span class="text">{{ .Title }}</span>
-              </span>
-            </a>
-          </li>
-        {{ end }}
+  <ul aria-label="{{ i18n "critical_priority_issues" }}">
+    {{ range .Pages.ByWeight }}
+      {{ if and (eq .Weight 1) (ne .Params.draft true) }}
+        {{ $anchorID := replace .Title "/" "-" }}
+        <li>
+          <a href="#{{ $anchorID | urlize }}">
+            <span class="problem-title">{{ .Title }}</span>
+          </a>
+        </li>
       {{ end }}
-    </ul>
-  {{ end }}
+    {{ end }}
+  </ul>
 {{ end }}
+
 {{ if eq $hasHigh true }}
   <h3>{{ i18n "high_priority" }}</h3>
-  {{ range $.Site.Home.Sections }}
-    <ul aria-label="{{ i18n "high_priority_issues" }}">
-      {{ range .Pages.ByWeight }}
-        {{ if and (eq .Weight 2) (ne .Params.draft true) }}
-          <li class="pattern">
-            <a
-              href="#{{ .Title | urlize }}"
-              {{ if eq $current.Title .Title }}aria-current="page"{{ end }}
-            >
-              <span class="problem-link-text-container">
-                <svg
-                  class="bookmark-icon"
-                  aria-hidden="true"
-                  viewBox="0 0 40 50"
-                  focusable="false"
-                >
-                  <use xlink:href="#bookmark"></use>
-                </svg>
-                <span class="text">{{ .Title }}</span>
-              </span>
-            </a>
-          </li>
-        {{ end }}
+  <ul aria-label="{{ i18n "high_priority_issues" }}">
+    {{ range .Pages.ByWeight }}
+      {{ if and (eq .Weight 2) (ne .Params.draft true) }}
+        {{ $anchorID := replace .Title "/" "-" }}
+        <li>
+          <a href="#{{ $anchorID | urlize }}">
+            <span class="problem-title">{{ .Title }}</span>
+          </a>
+        </li>
       {{ end }}
-    </ul>
-  {{ end }}
+    {{ end }}
+  </ul>
 {{ end }}
+
 {{ if eq $hasMedium true }}
   <h3>{{ i18n "medium_priority" }}</h3>
-  {{ range $.Site.Home.Sections }}
-    <ul aria-label="{{ i18n "medium_priority_issues" }}">
-      {{ range .Pages.ByWeight }}
-        {{ if and (eq .Weight 3) (ne .Params.draft true) }}
-          <li class="pattern">
-            <a
-              href="#{{ .Title | urlize }}"
-              {{ if eq $current.Title .Title }}aria-current="page"{{ end }}
-            >
-              <span class="problem-link-text-container">
-                <svg
-                  class="bookmark-icon"
-                  aria-hidden="true"
-                  viewBox="0 0 40 50"
-                  focusable="false"
-                >
-                  <use xlink:href="#bookmark"></use>
-                </svg>
-                <span class="text">{{ .Title }}</span>
-              </span>
-            </a>
-          </li>
-        {{ end }}
+  <ul aria-label="{{ i18n "medium_priority_issues" }}">
+    {{ range .Pages.ByWeight }}
+      {{ if and (eq .Weight 3) (ne .Params.draft true) }}
+        {{ $anchorID := replace .Title "/" "-" }}
+        <li>
+          <a href="#{{ $anchorID | urlize }}">
+            <span class="problem-title">{{ .Title }}</span>
+          </a>
+        </li>
       {{ end }}
-    </ul>
-  {{ end }}
+    {{ end }}
+  </ul>
 {{ end }}
+
 {{ if eq $hasLow true }}
   <h3>{{ i18n "low_priority" }}</h3>
-  {{ range $.Site.Home.Sections }}
-    <ul aria-label="{{ i18n "low_priority_issues" }}">
-      {{ range .Pages.ByWeight }}
-        {{ if and (eq .Weight 4) (ne .Params.draft true) }}
-          <li class="pattern">
-            <a
-              href="#{{ .Title | urlize }}"
-              {{ if eq $current.Title .Title }}aria-current="page"{{ end }}
-            >
-              <span class="problem-link-text-container">
-                <svg
-                  class="bookmark-icon"
-                  aria-hidden="true"
-                  viewBox="0 0 40 50"
-                  focusable="false"
-                >
-                  <use xlink:href="#bookmark"></use>
-                </svg>
-                <span class="text">{{ .Title }}</span>
-              </span>
-            </a>
-          </li>
-        {{ end }}
+  <ul aria-label="{{ i18n "low_priority_issues" }}">
+    {{ range .Pages.ByWeight }}
+      {{ if and (eq .Weight 4) (ne .Params.draft true) }}
+        {{ $anchorID := replace .Title "/" "-" }}
+        <li>
+          <a href="#{{ $anchorID | urlize }}">
+            <span class="problem-title">{{ .Title }}</span>
+          </a>
+        </li>
       {{ end }}
-    </ul>
-  {{ end }}
+    {{ end }}
+  </ul>
 {{ end }}

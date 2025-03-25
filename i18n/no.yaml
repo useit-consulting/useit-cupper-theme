@@ -148,3 +148,5 @@
   translation: "Resultat av återtest"
 - id: re_check_summary
   translation: "Sammenfattning av återtest"
+- id: show_image
+  translation: "Vis bilde"

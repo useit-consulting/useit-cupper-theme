@@ -162,3 +162,5 @@
   translation: "Results of re-testing"
 - id: re_check_summary
   translation: "Summary of re-test"
+- id: show_image
+  translation: "Show image"

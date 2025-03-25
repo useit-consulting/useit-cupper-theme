@@ -2,15 +2,17 @@
 <a
   href="{{ .Destination | safeURL }}"
   data-lightbox="gallery"
-  data-title="{{ .Title | safeHTML }}"
+  {{ with .Title }}data-title="{{ . | safeHTML }}"{{ end }}
 >
   <img
     src="{{ .Destination | safeURL }}"
-    alt="{{ with .Text }}
-      {{ . | safeHTML }}
+    {{ if .Text }}
+      alt='{{ i18n "show_image" }} {{ .Text | safeHTML }}'
+    {{ else if .Title }}
+      alt='{{ i18n "show_image" }} {{ .Title | safeHTML }}'
     {{ else }}
-      {{ .Title | safeHTML }}
-    {{ end }}"
+      alt='{{ i18n "show_image" }}'
+    {{ end }}
     {{ with .Title }}title="{{ . | safeHTML }}"{{ end }}
   />
 </a>

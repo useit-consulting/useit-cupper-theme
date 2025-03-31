@@ -687,6 +687,7 @@ fieldset.filter-container {
 .problem-link-text-container {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   align-items: center;
   gap: 0.5em;
 }
@@ -1098,6 +1099,9 @@ html.dark .icon-background {
 }
 .bookmark-icon {
   vertical-align: middle;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
 }
 .icon-background .info-icon {
   color: #000;

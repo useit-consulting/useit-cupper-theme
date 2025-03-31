@@ -157,7 +157,7 @@
 - id: failed_wcag_criteria
   translation: "Underkända WCAG-krav"
 - id: failed_en301549_criteria
-  translation: "Underkända EN 301 549 krav"
+  translation: "Andra underkända EN 301 549 krav"
 - id: issues_outside_of_legal_requirements
   translation: "Problem utanför lagkraven"
 - id: methodology

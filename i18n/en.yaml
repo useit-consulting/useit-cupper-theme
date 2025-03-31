@@ -41,7 +41,7 @@
 - id: wcag_violations
   translation: "WCAG 2.2 (AA) violations"
 - id: en301549_violations
-  translation: "EN 301 549 violations"
+  translation: "Other EN 301 549 violations"
 - id: copy_as_markdown
   translation: "Copy as Markdown"
 - id: copy_as_jira

@@ -41,7 +41,7 @@
 - id: wcag_violations
   translation: "WCAG 2.2 (AA)"
 - id: en301549_violations
-  translation: "EN 301 549"
+  translation: "Andre EN 301 549-krav"
 - id: copy_as_markdown
   translation: "Kopier som Markdown"
 - id: copy_as_jira

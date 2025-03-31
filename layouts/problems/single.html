@@ -245,18 +245,6 @@
           {{ i18n "copied" }}
         </div>
       </div>
-      <div id="jira">
-        <button
-          type="button"
-          class="copyBtn"
-          onclick="generateJiraDescription()"
-        >
-          {{ i18n "copy_as_jira" }}
-        </button>
-        <div id="feedback-jira" aria-live="polite" hidden aria-atomic="true">
-          {{ i18n "copied" }}
-        </div>
-      </div>
     </div>
 
     <div id="copy-container">
@@ -269,33 +257,17 @@
       </button>
       <div id="js-expandable-copyhelp" hidden="hidden" lang="en">
         <h2>Copy as Markdown</h2>
-        <p>
-          <strong>Note: </strong>Use this option for JIRA Cloud installations,
-          since JIRA Cloud no longer accepts the old JIRA markup.
-        </p>
         <ol>
           <li>Click on the "Copy as Markdown" button.</li>
-          <li>Go to your organization's JIRA and click "Create new issue".</li>
+          <li>
+            Go to your organization's issue tracker and click "Create new
+            issue".
+          </li>
           <li>
             Paste into the editor (<kbd>CTRL</kbd> / <kbd>CMD</kbd> +
             <kbd>V</kbd>).
           </li>
           <li>Save the issue.</li>
-        </ol>
-        <h2>Copy as JIRA markup (legacy)</h2>
-        <p>
-          <strong>Note: </strong>This only works for old non-cloud JIRA
-          installations.
-        </p>
-        <ol>
-          <li>Click on the "Copy as JIRA" button</li>
-          <li>Go to your organization's JIRA, click "Create issue"</li>
-          <li>Change text editor mode from "Visual" to "Text"</li>
-          <li>
-            Paste into the editor (<kbd>CTRL</kbd> / <kbd>CMD</kbd> +
-            <kbd>V</kbd>)
-          </li>
-          <li>Save the issue</li>
         </ol>
       </div>
     </div>
@@ -328,15 +300,6 @@
       toggleFeedback("feedback-markdown");
 
       return copyRichText(markdownBase);
-    }
-
-    function generateJiraDescription() {
-      const cleanDescription = extractAndReplaceYoutubeUrls(problemDescriptionWithImage).replace(/\[([^\]]+)\]\(([^)]+)\)/g, '* [$$2]'); // Convert markdown links to JIRA links
-
-      const jiraBase = `# {{ .Title }}\n## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n## {{ i18n "affected_pages" }}\n{{ range .Params.pages }}- {{ . }}\n{{ end }}\n## {{ i18n "problem_description" }}\n${cleanDescription}\n## {{ i18n "suggested_solution" }}\n${suggestedSolutionsWithImage}\n## {{ i18n "priority" }}\n{{ if eq $.Page.Params.weight 1 }}{{ i18n "critical_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 2 }}{{ i18n "high_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 3 }}{{ i18n "medium_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 4 }}{{ i18n "low_priority" }} ({{ .Params.weight }}){{ end }}\n## {{ i18n "affected_user_groups" }}\n{{ range .Params.usergroups }}- {{ . }}\n{{ end }}\n## {{ i18n "wcag_violations" }}\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}`;
-      toggleFeedback("feedback-jira");
-
-      return copyRichText(jiraBase);
     }
   </script>
 {{ end }}

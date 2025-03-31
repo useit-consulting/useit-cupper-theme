@@ -125,7 +125,7 @@
 - id: useit_reports_link
   translation: "Link to the report"
 - id: copy_buttons_help
-  translation: "Instructions for copying to JIRA"
+  translation: "Instructions for copying to JIRA, Confluence, Github etc"
 - id: copied
   translation: "Copied!"
 - id: completed

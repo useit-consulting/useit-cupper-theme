@@ -605,7 +605,7 @@ footer {
   overflow: auto;
   margin-top: 1.5rem;
 }
-.patterns * {
+.patterns *:not(details) {
   margin-top: 0;
 }
 .patterns h3 {

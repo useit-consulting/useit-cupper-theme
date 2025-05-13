@@ -21,6 +21,10 @@
 
 {{ partial "disclosure.html" (dict "label" (i18n "filter_results_by_status") "contentId" "js-expandable-filters" "content" $filtersContent) }}
 
+{{ $legalFiltersContent := printf "<fieldset class='filter-container'><legend class='visually-hidden'>%s</legend><label><input type='checkbox' id='legal_wcag_checkbox' onclick=\"toggleLegalVisibility('wcag')\" checked>%s</label><label><input type='checkbox' id='legal_en301549_checkbox' onclick=\"toggleLegalVisibility('en301549')\" checked>%s</label><label><input type='checkbox' id='legal_beyond_checkbox' onclick=\"toggleLegalVisibility('beyond')\" checked>%s</label></fieldset>" (i18n "filter_results_by_legal") (i18n "legal_wcag") (i18n "legal_en301549") (i18n "legal_beyond") }}
+
+{{ partial "disclosure.html" (dict "label" (i18n "filter_results_by_legal") "contentId" "js-expandable-legal-filters" "content" $legalFiltersContent) }}
+
 {{ $current := . }}
 {{ $priorities := dict "critical" 1 "high" 2 "medium" 3 "low" 4 }}
 {{ $priorityOrder := slice "critical" "high" "medium" "low" }}
@@ -45,7 +49,11 @@
       <ul aria-label="{{ i18n (printf " %s_priority_issues" $priority) }}">
         {{ range .Pages.ByWeight }}
           {{ if and (eq .Weight $weight) (ne .Params.draft true) }}
-            <li class="pattern" data-status="{{ .Params.status }}">
+            {{ $legalTags := slice }}
+            {{ with .Params.wcag }}{{ $legalTags = $legalTags | append "wcag" }}{{ end }}
+            {{ with .Params.en301549 }}{{ $legalTags = $legalTags | append "en301549" }}{{ end }}
+            {{ if not (or .Params.wcag .Params.en301549) }}{{ $legalTags = $legalTags | append "beyond" }}{{ end }}
+            <li class="pattern" data-status="{{ .Params.status }}" data-legal="{{ delimit $legalTags " " }}">
               <a
                 href="{{ .RelPermalink }}"
                 {{ if eq $current.Permalink .Permalink }}
@@ -87,4 +95,21 @@
       item.style.display = checkbox.checked ? "" : "none";
     });
   }
+
+  function updateLegalVisibility() {
+    var legalFilters = ['wcag', 'en301549', 'beyond'];
+    var checked = {};
+    legalFilters.forEach(function (key) {
+      checked[key] = document.getElementById('legal_' + key + '_checkbox').checked;
+    });
+    document.querySelectorAll('.pattern').forEach(function (item) {
+      var legal = (item.getAttribute('data-legal') || '').split(' ');
+      var show = legal.some(function (tag) { return checked[tag]; });
+      item.style.display = show ? '' : 'none';
+    });
+  }
+  ['wcag', 'en301549', 'beyond'].forEach(function (key) {
+    var cb = document.getElementById('legal_' + key + '_checkbox');
+    if (cb) cb.addEventListener('change', updateLegalVisibility);
+  });
 </script>

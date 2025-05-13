@@ -164,3 +164,11 @@
   translation: "Summary of re-test"
 - id: show_image
   translation: "Show image"
+- id: filter_results_by_legal
+  translation: "Filter by legal requirements"
+- id: legal_wcag
+  translation: "WCAG 2.2"
+- id: legal_en301549
+  translation: "EN 301 549"
+- id: legal_beyond
+  translation: "Beyond legal requirements"

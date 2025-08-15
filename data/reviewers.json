@@ -1,4 +1,3 @@
-
 [
   {
     "id": "Tommy",
@@ -8,7 +7,7 @@
     "certification": ["CPWA"],
     "phone": "+46 79 313 86 96",
     "email": "tommy.feldt@useit.se",
-    "img": "staff/tommy-f-illustration.svg"
+    "img": "staff/tommyf.png"
   },
   {
     "id": "Sandra",
@@ -18,7 +17,7 @@
     "certification": ["CPWA"],
     "phone": "+46 76 94 42 70",
     "email": "sandra.eriksson@useit.se",
-    "img": "staff/Sandra.svg"
+    "img": "staff/sandra.png"
   },
   {
     "id": "Frida",
@@ -28,7 +27,7 @@
     "certification": ["CPACC"],
     "phone": "+46 76 94 42 70",
     "email": "frida.fredblad@useit.se",
-    "img": "staff/FridaF.svg"
+    "img": "staff/fridaf.png"
   },
   {
     "id": "Saja",
@@ -50,7 +49,7 @@
     "certification": ["CPWA", "ADS"],
     "phone": "+46 73 643 647 6",
     "email": "danne.borell@useit.se",
-    "img": "staff/Danne.svg"
+    "img": "staff/danne.png"
   },
   {
     "id": "Raouf",
@@ -60,7 +59,7 @@
     "certification": ["CPWA", "ADS"],
     "phone": "+46 760 24 25 73",
     "email": "raouf.sormunen@useit.se",
-    "img": "staff/Raouf.svg"
+    "img": "staff/raouf.png"
   },
   {
     "id": "Moa",
@@ -70,7 +69,7 @@
     "certification": "",
     "phone": "+46 70 597 46 30",
     "email": "moa.glantz@useit.se",
-    "img": "staff/Moa.svg"
+    "img": "staff/moa.png"
   },
   {
     "id": "Andreas",
@@ -80,7 +79,7 @@
     "certification": ["WAS"],
     "phone": "+46 79 339 77 11",
     "email": "andreas.cederbom@useit.se",
-    "img": "staff/Andreas.svg"
+    "img": "staff/andreas.png"
   },
   {
     "id": "Melad",
@@ -110,7 +109,7 @@
     "certification": "",
     "phone": "+46 76-005 74 73",
     "email": "anna.carlen@useit.se",
-    "img": "staff/Anna.svg"
+    "img": "staff/anna.png"
   },
   {
     "id": "Santino",
@@ -120,6 +119,6 @@
     "certification": ["CPACC"],
     "phone": "+46 70 499 30 50",
     "email": "santino.mariano@useit.se",
-    "img": "staff/Santino.svg"
+    "img": "staff/santino.png"
   }
 ]

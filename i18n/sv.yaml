@@ -170,3 +170,11 @@
   translation: "Sammanfattning av återtest"
 - id: show_image
   translation: "Visa bild"
+- id: filter_results_by_legal
+  translation: "Filtrera efter lagkrav"
+- id: legal_wcag
+  translation: "WCAG 2.2"
+- id: legal_en301549
+  translation: "EN 301 549"
+- id: legal_beyond
+  translation: "Bortom lagkrav"

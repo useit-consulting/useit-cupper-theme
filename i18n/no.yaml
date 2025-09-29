@@ -1,152 +1,182 @@
 - id: print_version
-  translation: "Utskriftsvennlig versjon"
+  translation: Utskriftsvennlig versjon
 - id: date
-  translation: "Dato"
+  translation: Dato
 - id: reviewers
-  translation: "Analysen er opprettet av"
+  translation: Analysen er opprettet av
 - id: materials
-  translation: "Gransket materiale"
+  translation: Gransket materiale
 - id: equipment
-  translation: "Testverktøy og nettlesere"
+  translation: Testverktøy og nettlesere
 - id: summary
-  translation: "Sammendrag"
+  translation: Sammendrag
 - id: results
-  translation: "Resultat"
+  translation: Resultat
 - id: critical_priority
-  translation: "Kritisk prioritet"
+  translation: Kritisk prioritet
 - id: critical_priority_issues
-  translation: "Problem med kritisk prioritet"
+  translation: Problem med kritisk prioritet
 - id: high_priority
-  translation: "Høy prioritet"
+  translation: Høy prioritet
 - id: high_priority_issues
-  translation: "Problem med høy prioritet"
+  translation: Problem med høy prioritet
 - id: medium_priority
-  translation: "Mellomstor prioritet"
+  translation: Mellomstor prioritet
 - id: medium_priority_issues
-  translation: "Problem med mellomstor prioritet"
+  translation: Problem med mellomstor prioritet
 - id: low_priority
-  translation: "Lav prioritet"
+  translation: Lav prioritet
 - id: low_priority_issues
-  translation: "Problem med lav prioritet"
+  translation: Problem med lav prioritet
 - id: tags
-  translation: "Tagger"
+  translation: Tagger
 - id: problem_description
-  translation: "Problembeskrivelse"
+  translation: Problembeskrivelse
 - id: suggested_solution
-  translation: "Løsningsforslag"
+  translation: Løsningsforslag
 - id: priority
-  translation: "Prioritet"
+  translation: Prioritet
 - id: affected_user_groups
-  translation: "Brukere som påvirkes"
+  translation: Brukere som påvirkes
 - id: wcag_violations
-  translation: "WCAG 2.2 (AA)"
+  translation: WCAG 2.2 (AA)
 - id: en301549_violations
-  translation: "Andre EN 301 549-krav"
+  translation: Andre EN 301 549-krav
 - id: copy_as_markdown
-  translation: "Kopier som Markdown"
+  translation: Kopier som Markdown
 - id: copy_as_jira
-  translation: "Kopier som JIRA (legacy)"
+  translation: Kopier som JIRA (legacy)
 - id: start_page
-  translation: "Startside"
+  translation: Startside
 - id: table_of_contents
-  translation: "Innholdsfortegnelse"
+  translation: Innholdsfortegnelse
 - id: dark_theme
-  translation: "Mørk modus"
+  translation: Mørk modus
 - id: fist_bump_alt
-  translation: "En bruker slenger ut en fist bump gjennom PC-skjermen, illustrasjon"
+  translation: En bruker slenger ut en fist bump gjennom PC-skjermen, illustrasjon
 - id: wcag_summary
-  translation: "Sammendrag WCAG 2.2 (AA)"
+  translation: Sammendrag WCAG 2.2 (AA)
 - id: en301549_summary
-  translation: "EN 301 549 status"
+  translation: EN 301 549 status
 - id: passed_or_not_applicable
-  translation: "Godkjente eller ikke bedmte krav"
+  translation: Godkjente eller ikke bedmte krav
 - id: failed_criteria
-  translation: "Ikke godkjente krav"
+  translation: Ikke godkjente krav
 - id: show_all_wcag_criteria
-  translation: "Vis alle WCAG-krav"
+  translation: Vis alle WCAG-krav
 - id: quick_navigation
-  translation: "Hurtignavigering"
+  translation: Hurtignavigering
 - id: what_does_the_criteria_say
-  translation: "Hva sier kravet?"
+  translation: Hva sier kravet?
 - id: identified_issues_related_to
-  translation: "Identifiserte problem relatert til "
+  translation: Identifiserte problem relatert til 
 - id: read_more
-  translation: "Les mer"
+  translation: Les mer
 - id: problems_tagged
-  translation: "Problem tagget med"
+  translation: Problem tagget med
 - id: tagged
-  translation: "Tagget med"
+  translation: Tagget med
 - id: this_section
-  translation: "Dette avsnittet"
+  translation: Dette avsnittet
 - id: problems
-  translation: "problem"
+  translation: problem
 - id: taking_you_to_report
-  translation: "Vent litt, rapporten lastes..."
+  translation: Vent litt, rapporten lastes...
 - id: critical_explanation
-  translation: "Kritiske problem har svært stor påvirkning på brukernes evne til å benytte grensesnittet."
+  translation: Kritiske problem har svært stor påvirkning på brukernes evne til å benytte grensesnittet.
 - id: critical_highlighted
-  translation: "En del brukere blir sannsynligvis helt utestengt."
+  translation: En del brukere blir sannsynligvis helt utestengt.
 - id: high_explanation
-  translation: "Dette er problem som har stor påvirkning på brukernes evner til å benytte og forstå grensesnittet."
+  translation: Dette er problem som har stor påvirkning på brukernes evner til å benytte og forstå grensesnittet.
 - id: medium_explanation
-  translation: "Dette er problem som påvirker en del brukeres evner til å forstå og benytte grensesnittet."
+  translation: Dette er problem som påvirker en del brukeres evner til å forstå og benytte grensesnittet.
 - id: low_explanation
-  translation: "Dette er problem som bør korrigeres for å minimere risikoen for problemer hos brukerne."
+  translation: Dette er problem som bør korrigeres for å minimere risikoen for problemer hos brukerne.
 - id: go_back
-  translation: "Gå tilbake"
+  translation: Gå tilbake
 - id: go_back_to_start
-  translation: "Gå tilbake til startsiden"
+  translation: Gå tilbake til startsiden
 - id: skip_to_content
-  translation: "Hopp til innholdet"
+  translation: Hopp til innholdet
 - id: main_navigation
-  translation: "Hovednavigasjon"
+  translation: Hovednavigasjon
 - id: wcag_results
-  translation: "Oversikt over WCAG 2.2 (AA)"
+  translation: Oversikt over WCAG 2.2 (AA)
 - id: issues_results
-  translation: "Identifiserte problem"
+  translation: Identifiserte problem
 - id: show_wcag_results
-  translation: "Vis ikke-godkjente og godkjente krav i WCAG 2.2 (AA)"
+  translation: Vis ikke-godkjente og godkjente krav i WCAG 2.2 (AA)
 - id: outside_wcag
-  translation: "Problem utenfor WCAG 2.2 (AA)"
+  translation: Problem utenfor WCAG 2.2 (AA)
 - id: outside_wcag_explanation
-  translation: "Utenfor WCAG"
+  translation: Utenfor WCAG
 - id: no_non_wcag_issues_found
-  translation: "Ingen problemer med WCAG funnet"
+  translation: Ingen problemer med WCAG funnet
 - id: nope
-  translation: "Nei"
+  translation: Nei
 - id: faces_alt_text
-  translation: "Ansikt som ser på en PC-skjerm, illustrasjon"
+  translation: Ansikt som ser på en PC-skjerm, illustrasjon
 - id: close
-  translation: "Lukk"
+  translation: Lukk
 - id: affected_pages
-  translation: "Sider som påvirkes"
+  translation: Sider som påvirkes
 - id: go_back_to_start
-  translation: "Tillbak til hovedsiden"
+  translation: Tillbak til hovedsiden
 - id: about_our_priority
-  translation: "Om våre prioriteringer"
+  translation: Om våre prioriteringer
 - id: useit_reports_link
-  translation: "Link til Useit Reports"
+  translation: Link til Useit Reports
 - id: copy_buttons_help
-  translation: "Instruksjoner for kopiering til JIRA"
+  translation: Instruksjoner for kopiering til JIRA
 - id: completed
-  translation: "Ferdig"
+  translation: Ferdig
 - id: not_completed
-  translation: "Ikke ferdig"
+  translation: Ikke ferdig
 - id: in_progress
-  translation: "Ikke ferdig"
+  translation: Ikke ferdig
 - id: tested_not_ok
-  translation: "Ikke OK"
+  translation: Ikke OK
 - id: tested_ok
-  translation: "OK"
+  translation: OK
 - id: new
-  translation: "Ny"
+  translation: Ny
 - id: rejected
-  translation: "Avist"
+  translation: Avist
 - id: testing_methodology
-  translation: "Testmetodikk"
+  translation: Testmetodikk
 - id: re_check
-  translation: "Resultat av återtest"
+  translation: Resultat av återtest
 - id: re_check_summary
-  translation: "Sammenfattning av återtest"
+  translation: Sammenfattning av återtest
 - id: show_image
-  translation: "Vis bilde"
+  translation: Vis bilde
+- id: show_all_en301549
+  translation: Vis alle EN 301 549-krav
+- id: menu
+  translation: Meny
+- id: copied
+  translation: Kopiert!
+- id: show_summary_of_legal_compliance
+  translation: Vis sammendrag av lovkrav
+- id: passed_or_not_applicable_wcag_criteria
+  translation: Godkjente eller ikke godkjente WCAG-krav
+- id: passed_or_not_applicable_en301549_criteria
+  translation: Godkjente eller ikke godkjente EN 301 549-krav
+- id: failed_wcag_criteria
+  translation: Ikke godkjente WCAG-krav
+- id: failed_en301549_criteria
+  translation: Ikke godkjente EN 301 549-krav
+- id: issues_outside_of_legal_requirements
+  translation: Problem utenfor lovkrav
+- id: methodology
+  translation: Metodikk
+- id: filter_results_by_status
+  translation: Filtrer resultater etter status
+- id: filter_results_by_legal
+  translation: Filtrer etter lovkrav
+- id: legal_wcag
+  translation: WCAG 2.2
+- id: legal_en301549
+  translation: EN 301 549
+- id: legal_beyond
+  translation: Utover lovkrav

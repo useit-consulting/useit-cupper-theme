@@ -3,11 +3,11 @@
 - id: date
   translation: "Dato"
 - id: reviewers
-  translation: "Gransker"
+  translation: "Analysen er opprettet av"
 - id: materials
   translation: "Gransket materiale"
 - id: equipment
-  translation: "Utstyr"
+  translation: "Testverktøy og nettlesere"
 - id: summary
   translation: "Sammendrag"
 - id: results
@@ -141,7 +141,7 @@
 - id: new
   translation: "Ny"
 - id: rejected
-  translation: "Avvisad"
+  translation: "Avist"
 - id: testing_methodology
   translation: "Testmetodikk"
 - id: re_check

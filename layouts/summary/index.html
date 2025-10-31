@@ -1,4 +1,5 @@
-{{ define "title" }}{{ .Site.Title }}{{ end }}
+{{ define "title" }}{{ .Site.Title }}
+{{ end }}
 {{ define "main" }}
   <main id="main">
     <h1>{{ .Title }}</h1>
@@ -7,17 +8,19 @@
       {{ partial "disclosure.html" (dict "iconClass" "write-icon" "iconHref" "#write" "label" (i18n "reviewers") "content" (partial "reviewers.html" .)) }}
     {{ end }}
     {{ with .Params.materials }}
-      {{ $materialsContent := "" }}
+      {{ $materialsContent := "<ul>" }}
       {{ range $.Page.Params.materials }}
         {{ $materialsContent = print $materialsContent "<li>" (. | markdownify) "</li>" }}
       {{ end }}
+      {{ $materialsContent = print $materialsContent "</ul>" }}
       {{ partial "disclosure.html" (dict "iconClass" "materials-icon" "iconHref" "#materials" "label" (i18n "materials") "contentId" "js-expandable-materials" "content" $materialsContent) }}
     {{ end }}
     {{ with .Params.equipment }}
-      {{ $equipmentContent := "" }}
+      {{ $equipmentContent := "<ul>" }}
       {{ range $.Page.Params.equipment }}
         {{ $equipmentContent = print $equipmentContent "<li>" (. | markdownify) "</li>" }}
       {{ end }}
+      {{ $equipmentContent = print $equipmentContent "</ul>" }}
       {{ partial "disclosure.html" (dict "iconClass" "devices-icon" "iconHref" "#devices" "label" (i18n "equipment") "contentId" "js-expandable-tools" "content" $equipmentContent) }}
     {{ end }}
     {{ with .Params.methodology }}
@@ -31,14 +34,17 @@
         <a
           href="#summary"
           aria-label="{{ i18n "this_section" }} ({{ i18n "summary" }})"
-          ><svg
+          >
+          <svg
             aria-hidden="true"
             class="link-icon"
             viewBox="0 0 50 50"
             focusable="false"
           >
-            <use xlink:href="#link"></use></svg
-        ></a>
+            <use xlink:href="#link"></use>
+          </svg
+        >
+        </a>
       </div>
       <div class="text-container">
         {{ $.Page.Params.summary | markdownify }}
@@ -50,34 +56,39 @@
         <a
           href="#reCheck"
           aria-label="{{ i18n "this_section" }} ({{ i18n "re_check_summary" }})"
-          ><svg
+          >
+          <svg
             aria-hidden="true"
             class="link-icon"
             viewBox="0 0 50 50"
             focusable="false"
           >
-            <use xlink:href="#link"></use></svg
-        ></a>
+            <use xlink:href="#link"></use>
+          </svg
+        >
+        </a>
       </div>
       <div class="text-container">
         {{ $.Page.Params.reCheck | markdownify }}
       </div>
     {{ end }}
 
-
     <div class="h2-container">
       <h2 id="results" tabindex="-1">{{ i18n "results" }}</h2>
       <a
         href="#results"
         aria-label="{{ i18n "this_section" }} ({{ i18n "results" }})"
-        ><svg
+        >
+        <svg
           aria-hidden="true"
           class="link-icon"
           viewBox="0 0 50 50"
           focusable="false"
         >
-          <use xlink:href="#link"></use></svg
-      ></a>
+          <use xlink:href="#link"></use>
+        </svg
+      >
+      </a>
     </div>
 
     <div class="results-container">

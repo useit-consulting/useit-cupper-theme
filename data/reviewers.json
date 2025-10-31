@@ -99,7 +99,7 @@
     "certification": ["CPACC"],
     "phone": "+47 402 45 002",
     "email": "elsa@useit.no",
-    "img": "staff/Elsa.svg"
+    "img": "staff/elsa.png"
   },
   {
     "id": "Anna",
@@ -120,5 +120,15 @@
     "phone": "+46 70 499 30 50",
     "email": "santino.mariano@useit.se",
     "img": "staff/santino.png"
+  },
+  {
+    "id": "Line",
+    "name": "Line Pehrson-Papadopoulou",
+    "titleEn": "UX designer and accessibility specialist",
+    "titleSv": "UX-designer och tillgänglighetsexpert",
+    "certification": ["CPWA"],
+    "phone": "+46 76 006 62 25",
+    "email": "line.pehrson-papadopoulou@useit.se",
+    "img": "staff/line.png"
   }
 ]

@@ -159,9 +159,9 @@
 - id: show_summary_of_legal_compliance
   translation: Vis sammendrag av lovkrav
 - id: passed_or_not_applicable_wcag_criteria
-  translation: Godkjente eller ikke godkjente WCAG-krav
+  translation: Godkjente eller ikke aktuelle WCAG 2.2 (AA) suksesskriterier
 - id: passed_or_not_applicable_en301549_criteria
-  translation: Godkjente eller ikke godkjente EN 301 549-krav
+  translation: Godkjente eller ikke aktuelle EN 301 549-krav
 - id: failed_wcag_criteria
   translation: Ikke godkjente WCAG-krav
 - id: failed_en301549_criteria

@@ -26,7 +26,6 @@
   --focus-color: var(--darkerblue);
   --bg-grey-alt: #efefef;
   --input-bg: #f5f5f5;
-  accent-color: var(--text-color);
 }
 
 @media not print {

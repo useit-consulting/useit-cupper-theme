@@ -285,8 +285,11 @@
 </script>
   <script src="{{ absURL "js/update-github-status.js" }}"></script>
   <script>
-    const problemDescriptionWithImage = '{{ .Params.problemDescription }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
-    const suggestedSolutionsWithImage = '{{ .Params.suggestedSolution }}'.replace(/\/img\//g, '{{ absURL "" }}img/');
+    const problemDescriptionRaw = {{ .Params.problemDescription | jsonify }};
+    const suggestedSolutionsRaw = {{ .Params.suggestedSolution | jsonify }};
+    const siteOrigin = window.location.origin;
+    const problemDescriptionWithImage = problemDescriptionRaw.replace(/\/img\//g, siteOrigin + '/img/');
+    const suggestedSolutionsWithImage = suggestedSolutionsRaw.replace(/\/img\//g, siteOrigin + '/img/');
 
     function extractAndReplaceYoutubeUrls(description) {
       const regex = /<iframe[^>]*src="(https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11})"[^>]*><\/iframe>/g;

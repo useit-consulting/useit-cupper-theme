@@ -82,14 +82,14 @@
     "img": "staff/andreas.png"
   },
   {
-    "id": "Melad",
-    "name": "Melad Munther",
+    "id": "Ingunn",
+    "name": "Ingunn Árnadóttir",
     "titleEn": "UX designer and accessibility specialist",
     "titleSv": "UX-designer och tillgänglighetsexpert",
-    "certification": ["CPACC"],
+    "certification": "",
     "phone": "+46 76 028 72 33",
-    "email": "melad.munther@useit.se",
-    "img": "staff/Melad.svg"
+    "email": "ingunn.arnadottir@useit.se",
+    "img": "staff/ingunn.png"
   },
   {
     "id": "Elsa",

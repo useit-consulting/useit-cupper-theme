@@ -200,11 +200,13 @@
     {{ partial "disclosure.html" (dict "iconClass" "users-icon" "iconHref" "#users" "label" (i18n "affected_user_groups") "contentId" "js-expandable-usergroups" "content" $userGroupsContent) }}
 
     {{ $wcagContent := "<ul class='wcag'>" }}
+    {{ $wcagCopyLines := slice }}
     {{ $isIncluded := false }}
     {{ range $.Site.Data.wcag }}
       {{ if in $.Page.Params.wcag .ref_id }}
         {{ $isIncluded = true }}
         {{ $wcagContent = print $wcagContent "<li><strong><a href='" (relLangURL "/wcag/") (.ref_id | urlize) "'>" .ref_id " " .title "</a> (level " .level ")</strong></li>" }}
+        {{ $wcagCopyLines = $wcagCopyLines | append (printf "- %s %s (level %s)" .ref_id .title .level) }}
       {{ end }}
     {{ end }}
     {{ if not $isIncluded }}
@@ -226,6 +228,27 @@
     {{ $en301Content = print $en301Content "</ul>" }}
     {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#en301" "label" (i18n "en301549_violations") "contentId" "js-expandable-en301" "content" $en301Content) }}
 
+    {{ $copyPayload := dict
+      "title" .Title
+      "permalink" .Permalink
+      "labelReport" (i18n "useit_reports_link")
+      "labelAffectedPages" (i18n "affected_pages")
+      "pages" (.Params.pages | default slice)
+      "labelProblem" (i18n "problem_description")
+      "labelSuggested" (i18n "suggested_solution")
+      "labelPriority" (i18n "priority")
+      "priorityLine" $priorityContent
+      "labelUsergroups" (i18n "affected_user_groups")
+      "usergroups" (.Params.usergroups | default slice)
+      "labelWcag" (i18n "wcag_violations")
+      "wcagBullets" $wcagCopyLines
+      "wcagHadEntries" (gt (len $wcagCopyLines) 0)
+      "wcagEmptyText" (i18n "nope")
+      "problemDescription" .Params.problemDescription
+      "suggestedSolution" .Params.suggestedSolution
+    }}
+    {{/* textarea avoids Go html/template JS-escaping JSON inside <script> (would double-encode). */}}
+    <textarea id="problem-copy-payload" hidden readonly class="visually-hidden">{{ $copyPayload | jsonify }}</textarea>
 
     <div class="copy-buttons">
       <div id="markdown">
@@ -285,24 +308,99 @@
 </script>
   <script src="{{ absURL "js/update-github-status.js" }}"></script>
   <script>
-    const problemDescriptionRaw = {{ .Params.problemDescription | jsonify }};
-    const suggestedSolutionsRaw = {{ .Params.suggestedSolution | jsonify }};
-    const siteOrigin = window.location.origin;
-    const problemDescriptionWithImage = problemDescriptionRaw.replace(/\/img\//g, siteOrigin + '/img/');
-    const suggestedSolutionsWithImage = suggestedSolutionsRaw.replace(/\/img\//g, siteOrigin + '/img/');
-
     function extractAndReplaceYoutubeUrls(description) {
       const regex = /<iframe[^>]*src="(https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11})"[^>]*><\/iframe>/g;
-      return description.replace(regex, (match, url) => `[${url}](${url})`); // Replace iframe with markdown link
+      return description.replace(regex, (match, url) => `[${url}](${url})`);
+    }
+
+    /** Jira/Notion: decode literal \\uXXXX and \\n if present; angle autolinks -> [url](url). */
+    function normalizeMarkdownForExport(text) {
+      let s = text;
+      if (/\\u[0-9a-fA-F]{4}/.test(s)) {
+        s = s.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) =>
+          String.fromCharCode(parseInt(hex, 16))
+        );
+      }
+      s = s.replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n');
+      s = s.replace(/<((https?:\/\/[^>\s]+))>/g, '[$1]($1)');
+      return s.replace(/\n{3,}/g, '\n\n');
+    }
+
+    function absolutizeImgPaths(text, origin) {
+      return text.replace(/\/img\//g, origin + '/img/');
+    }
+
+    function absolutePageUrl(pathOrUrl, origin) {
+      if (!pathOrUrl) {
+        return '';
+      }
+      if (/^https?:\/\//i.test(pathOrUrl)) {
+        return pathOrUrl;
+      }
+      const base = origin.replace(/\/$/, '');
+      const path = pathOrUrl.startsWith('/')
+        ? pathOrUrl
+        : '/' + pathOrUrl;
+      return base + path;
+    }
+
+    function markdownListLines(items, bullet) {
+      if (!items || !items.length) {
+        return '';
+      }
+      return items.map((line) => bullet + line).join('\n') + '\n';
+    }
+
+    function parseProblemCopyPayload() {
+      const raw = document
+        .getElementById('problem-copy-payload')
+        .value.trim();
+      let data = JSON.parse(raw);
+      if (typeof data === 'string') {
+        data = JSON.parse(data);
+      }
+      return data;
     }
 
     function generateMarkdownDescription() {
-      const cleanDescription = extractAndReplaceYoutubeUrls(problemDescriptionWithImage);
+      const payload = parseProblemCopyPayload();
+      const origin = window.location.origin;
+      const problem = absolutizeImgPaths(
+        payload.problemDescription || '',
+        origin
+      );
+      const suggested = absolutizeImgPaths(
+        payload.suggestedSolution || '',
+        origin
+      );
 
-      const markdownBase = `# {{ .Title }}\n## {{ i18n "useit_reports_link" }}\n[{{ .Page.Permalink }}]({{ .Page.Permalink }})\n## {{ i18n "affected_pages" }}\n{{ range .Params.pages }}- {{ . }}\n{{ end }}\n## {{ i18n "problem_description" }}\n${cleanDescription}\n## {{ i18n "suggested_solution" }}\n${suggestedSolutionsWithImage}\n## {{ i18n "priority" }}\n{{ if eq $.Page.Params.weight 1 }}{{ i18n "critical_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 2 }}{{ i18n "high_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 3 }}{{ i18n "medium_priority" }} ({{ .Params.weight }}){{ end }}{{ if eq $.Page.Params.weight 4 }}{{ i18n "low_priority" }} ({{ .Params.weight }}){{ end }}\n## {{ i18n "affected_user_groups" }}\n{{ range .Params.usergroups }}- {{ . }}\n{{ end }}\n## {{ i18n "wcag_violations" }}\n{{ $JSON := $.Site.Data.wcag }}{{$included := .Params.wcag}}{{ $isIncluded := false }}{{ range $JSON }}{{ if in $.Page.Params.wcag .ref_id }}{{ $isIncluded = true }}- {{ .ref_id }} {{ .title }} (level {{ .level }}){{ end }}{{ end }}{{ if eq $isIncluded false }} * {{ i18n "no" }} {{ end }}`;
-      toggleFeedback("feedback-markdown");
+      const reportUrl = absolutePageUrl(payload.permalink, origin);
+      let md = '# ' + payload.title + '\n';
+      md += '## ' + payload.labelReport + '\n';
+      md += '[' + reportUrl + '](' + reportUrl + ')\n';
+      md += '## ' + payload.labelAffectedPages + '\n';
+      md += markdownListLines(payload.pages, '- ');
+      md += '## ' + payload.labelProblem + '\n';
+      md +=
+        normalizeMarkdownForExport(
+          extractAndReplaceYoutubeUrls(problem)
+        ) + '\n';
+      md += '## ' + payload.labelSuggested + '\n';
+      md += normalizeMarkdownForExport(suggested) + '\n';
+      md += '## ' + payload.labelPriority + '\n';
+      md += payload.priorityLine + '\n';
+      md += '## ' + payload.labelUsergroups + '\n';
+      md += markdownListLines(payload.usergroups, '- ');
+      md += '## ' + payload.labelWcag + '\n';
+      const wcagLines = payload.wcagBullets || [];
+      if (payload.wcagHadEntries && wcagLines.length) {
+        md += wcagLines.join('\n') + '\n';
+      } else {
+        md += '* ' + payload.wcagEmptyText + '\n';
+      }
 
-      return copyRichText(markdownBase);
+      toggleFeedback('feedback-markdown');
+      return copyRichText(md);
     }
   </script>
 {{ end }}

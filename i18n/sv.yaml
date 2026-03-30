@@ -129,7 +129,7 @@
 - id: useit_reports_link
   translation: "Länk till Useit Reports"
 - id: copy_buttons_help
-  translation: "Instruktioner fr att kopiera till JIRA"
+  translation: "Instruktioner för att kopiera till JIRA"
 - id: completed
   translation: "Klar"
 - id: not_completed

@@ -155,6 +155,21 @@
       </div>
 
     {{ end }}
+    {{ with .Params.reCheck }}
+      <div class="summary-container">
+        <div class="h2-container">
+          <h2 id="recheck-summary" tabindex="-1">{{ i18n "recheck_summary" }}</h2>
+          <a href="#recheck-summary" aria-label='{{ i18n "this_section" }} ({{ i18n "recheck_summary" }})'>
+            <svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false">
+              <use xlink:href="#link"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="text-container">
+          {{ . | markdownify }}
+        </div>
+      </div>
+    {{ end }}
   {{ end }}
 {{ end }}
 

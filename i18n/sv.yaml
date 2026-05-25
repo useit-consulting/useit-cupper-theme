@@ -10,6 +10,8 @@
   translation: "Utrustning"
 - id: summary
   translation: "Sammanfattning"
+- id: recheck_summary
+  translation: "Sammanfattning av återtest"
 - id: results
   translation: "Resultat"
 - id: critical_priority

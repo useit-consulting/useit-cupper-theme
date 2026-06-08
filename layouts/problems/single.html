@@ -102,7 +102,21 @@
       <div class="text-container">
         <ul class="pages">
           {{ range .Params.pages }}
-            <li>{{ . | markdownify }}</li>
+            {{ if reflect.IsMap . }}
+              {{ $pageURL := .url | default "" }}
+              {{ $pageLabel := .label | default (.page | default "") }}
+              <li>
+                {{ if and $pageURL $pageLabel }}
+                  <a href="{{ $pageURL | safeURL }}">{{ $pageLabel }}</a>
+                {{ else if $pageURL }}
+                  <a href="{{ $pageURL | safeURL }}">{{ $pageURL }}</a>
+                {{ else if $pageLabel }}
+                  {{ $pageLabel }}
+                {{ end }}
+              </li>
+            {{ else }}
+              <li>{{ . | markdownify }}</li>
+            {{ end }}
           {{ end }}
         </ul>
       </div>
@@ -228,12 +242,29 @@
     {{ $en301Content = print $en301Content "</ul>" }}
     {{ partial "disclosure.html" (dict "iconClass" "wcag-icon" "iconHref" "#en301" "label" (i18n "en301549_violations") "contentId" "js-expandable-en301" "content" $en301Content) }}
 
+    {{ $copyPages := slice }}
+    {{ range (.Params.pages | default slice) }}
+      {{ if reflect.IsMap . }}
+        {{ $pageURL := .url | default "" }}
+        {{ $pageLabel := .label | default (.page | default "") }}
+        {{ if and $pageURL $pageLabel }}
+          {{ $copyPages = $copyPages | append (print "[" $pageLabel "](" $pageURL ")") }}
+        {{ else if $pageURL }}
+          {{ $copyPages = $copyPages | append $pageURL }}
+        {{ else if $pageLabel }}
+          {{ $copyPages = $copyPages | append $pageLabel }}
+        {{ end }}
+      {{ else if . }}
+        {{ $copyPages = $copyPages | append . }}
+      {{ end }}
+    {{ end }}
+
     {{ $copyPayload := dict
       "title" .Title
       "permalink" .Permalink
       "labelReport" (i18n "useit_reports_link")
       "labelAffectedPages" (i18n "affected_pages")
-      "pages" (.Params.pages | default slice)
+      "pages" $copyPages
       "labelProblem" (i18n "problem_description")
       "labelSuggested" (i18n "suggested_solution")
       "labelPriority" (i18n "priority")

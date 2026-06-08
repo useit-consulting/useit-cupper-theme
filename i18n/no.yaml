@@ -10,6 +10,8 @@
   translation: Testverktøy og nettlesere
 - id: summary
   translation: Sammendrag
+- id: recheck_summary
+  translation: Sammendrag av återtest
 - id: results
   translation: Resultat
 - id: critical_priority

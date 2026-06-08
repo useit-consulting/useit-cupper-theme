@@ -10,6 +10,8 @@
   translation: "Equipment used"
 - id: summary
   translation: "Summary"
+- id: recheck_summary
+  translation: "Summary of retest"
 - id: results
   translation: "Results"
 - id: critical_priority
